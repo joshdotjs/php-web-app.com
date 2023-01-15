@@ -1,3 +1,3 @@
 import './bootstrap';
 
-alert('this is a test!');
+console.log('VITE:  resources/js/app.js');
