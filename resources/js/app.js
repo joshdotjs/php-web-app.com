@@ -1,3 +1,5 @@
 import './bootstrap';
 
-alert('this is a test!');
+console.log('resources/js/app.js');
+
+import './web-comps/web-comp';
