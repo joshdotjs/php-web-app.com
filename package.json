@@ -3,7 +3,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "deploy": "npm run build  &&  git add .  &&  git commit -m 'deploy'  &&  git push prod main  &&  ssh root@php-web-app.com  &&  cd /var/www/ourapp"
+        "deploy": "npm run build  &&  git add .  &&  git commit -m 'deploy'  &&  git push prod main  &&  ssh root@php-web-app.com;  cd /var/www/ourapp"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.13",
