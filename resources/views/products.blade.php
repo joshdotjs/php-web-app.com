@@ -30,6 +30,8 @@
       @endforeach
     </div>
 
+    <div id="react-root" class="bg-red-500"></div>
+
 
     <section>
       <h2>Cart:</h2>
