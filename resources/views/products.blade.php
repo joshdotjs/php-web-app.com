@@ -30,7 +30,7 @@
       @endforeach
     </div>
 
-    <div id="react-root" class="bg-red-500"></div>
+    <div id="react-root--products-page"></div>
 
 
     <section>

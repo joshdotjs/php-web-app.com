@@ -23,3 +23,8 @@ Route::get('/products', function () {
   return view('products', ['products' => $products]);
   // return $products;
 });
+
+Route::get('/get-products', function () {  
+  $products = DB::table('products')->get();
+  return $products;
+});
