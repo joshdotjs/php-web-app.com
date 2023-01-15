@@ -101,7 +101,7 @@ mysql> CREATE DATABASE ourlaravelapp;
 mysql> CREATE USER 'ourappuser'@'%' IDENTIFIED WITH mysql_native_password BY 'ENTER-PASSWORD-HERE';
 mysql> GRANT ALL ON ourlaravelapp.* TO 'ourappuser'@'%';
 
-"Using Git to Push Files to our VPS":
+"Using Git to Push Files to our VPS - Part 1/2":
 On Linode:
 cd /var/www
 mkdir ourapp
@@ -125,3 +125,54 @@ chmod +x post-receive
 
 -On my machine in the local repo:
 git remote add prod ssh://root@php-web-app.com/var/www/ourrepos/ourapp
+git add .
+git commit -m "deploy"
+git push prod main
+
+-On Linode:
+cd /var/www/ourapp
+npm install
+npm run build
+composer install
+
+"Using Git to Push Files to our VPS - Part 2/2":
+cd /etc/nginx/sites-available
+touch mysite
+nano mysite
+
+-Copy contents from _html-templates/vps-nginx.txt into the mysite file (after changing the domain name in the file)
+
+sudo systemctl reload nginx
+
+cd /var/www/ourapp
+touch .env
+
+-Copy contents from local .env file into Linode .env file.
+-Change:
+APP_ENV=production
+APP_DEBUG=false
+APP_URL (delete)
+
+DB_DATABASE=ourlaravelapp
+DB_USERNAME=ourappuser
+DB_PASSWORD=ENTER-PASSWORD-HERE
+
+-migrate
+php artisan migrate
+
+chown -R www-data:www-data storage
+php artisan storage:link
+
+-Symlink sites-available directory to sites-enabled
+sudo ln -s /etc/nginx/sites-available/mysite /etc/nginx/sites-enabled/
+
+-confirm:
+cd /etc/nginx/sites-enabled
+ls
+
+-Reset NGINX:
+sudo systemctl reload nginx
+
+-Seed DB:
+cd /var/www/ourapp
+php artisan db:seed
