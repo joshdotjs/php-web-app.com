@@ -21,7 +21,7 @@
           <p>{{ $product->body }}</p>
           
           <a href="/product/{{$product->id}}" class="list-group-item list-group-item-action">
-            <web-comp title="Product Details"></web-comp>  
+            {{-- <web-comp title="Product Details"></web-comp>   --}}
           </a>
 
           {{-- <z-button class="add-to-cart-btn" title="Add to Cart" data-id={{ $product->id }}></z-button> --}}
