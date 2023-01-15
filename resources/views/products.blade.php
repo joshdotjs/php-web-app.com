@@ -1,5 +1,5 @@
 <x-layout>
-  @vite('resources/js/pages/products')
+  
 
   {{-- =============================================== --}}
 

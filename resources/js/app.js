@@ -7,4 +7,8 @@ import { lo, lg, lr, lb, ly } from './util/log';
 
 // ==============================================
 
+import './pages/products';
+
+// ==============================================
+
 lg('VITE: resources/js/appjs');
