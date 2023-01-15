@@ -1,6 +1,5 @@
 <x-layout>
-  {{-- @vite('resources/js/pages/products') --}}
-
+  @vite('resources/js/pages/products')
 
   {{-- =============================================== --}}
 
@@ -8,7 +7,7 @@
 
     <h1>Products Page</h1>
 
-    {{-- <z-button id="get-products-btn" title="Get Prdoucts"></z-button> --}}
+    <z-button id="get-products-btn" title="Get Prdoucts"></z-button>
 
     <hr>
 
@@ -21,10 +20,10 @@
           <p>{{ $product->body }}</p>
           
           <a href="/product/{{$product->id}}" class="list-group-item list-group-item-action">
-            {{-- <web-comp title="Product Details"></web-comp>   --}}
+            <web-comp title="Product Details"></web-comp>  
           </a>
 
-          {{-- <z-button class="add-to-cart-btn" title="Add to Cart" data-id={{ $product->id }}></z-button> --}}
+          <z-button class="add-to-cart-btn" title="Add to Cart" data-id={{ $product->id }}></z-button>
                     
         </div>
 
@@ -37,7 +36,7 @@
       <div id="cart">
       </div>
       
-      {{-- <z-button id="send-to-checkout-btn" title="Checkout"></z-button> --}}
+      <z-button id="send-to-checkout-btn" title="Checkout"></z-button>
     </section>
 
 
