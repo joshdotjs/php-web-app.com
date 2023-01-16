@@ -1,0 +1,1 @@
+.header{display:flex;justify-content:space-between;background:darkorange;padding:.5rem 1rem}.header nav{background:lightblue}.header nav li{display:inline-block}.header nav li:not(:last-child){margin-right:1.5rem}

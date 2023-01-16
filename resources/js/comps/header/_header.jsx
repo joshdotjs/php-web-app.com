@@ -1,6 +1,7 @@
 // resources/js/App.jsx
 import React, { useEffect, useState } from 'react';
-import { createRoot } from 'react-dom/client';
+
+import './.scss';
 
 // ==============================================
 
@@ -30,12 +31,5 @@ export default function Header() {
     </header>
   );
 };
-
-// ==============================================
-
-// const root_header = document.querySelector('#react-root--header');
-// if(root_header){
-//   createRoot(root_header).render(<Header />);
-// }
 
 // ==============================================

@@ -4,7 +4,8 @@ import { createRoot } from 'react-dom/client';
 
 import Header from '../../comps/header/_header';
 import Cart from '../../comps/cart/_cart';
-import Button from '../../comps/button/button';
+// import Button from '../../comps/button/button';
+import Products from './products';
 
 import { lo, lg, lr, lb, ly } from '../../util/log';
 import { fetchGET, fetchPOST } from '../../util/fetch';
@@ -12,33 +13,6 @@ import {
   getCartLS, setCartLS, 
 } from '../../util/local-storage';
 import { fireEvent } from '../../util/custom-event';
-
-import './_page-store.scss';
-
-// ==============================================
-
-const Products = ({ products, addToCart }) => {
-  return (
-    <section id="products" className="bg-orange-200">
-      <h2>Products:</h2>
-        
-      { products && products.map((product) => {
-
-        const {id, title, body, price} = product;
-
-        return (
-          <div key={id} className="mb-4 border p-4">
-            <h2>{title}</h2>
-            <p>{body}</p>
-            <p><strong>${price}</strong></p>
-
-            <Button onClick={() => addToCart(product)}>Add to Cart</Button>
-          </div>
-        );
-      })}
-    </section>
-  );
-};
 
 // ==============================================
 
