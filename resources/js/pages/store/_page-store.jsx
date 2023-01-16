@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import Header from '../../comps/header/_header';
+import Cart from '../../comps/cart/_cart';
 import Button from '../../comps/button/button';
 
 import { lo, lg, lr, lb, ly } from '../../util/log';
@@ -36,73 +37,6 @@ const Products = ({ products, addToCart }) => {
         );
       })}
     </section>
-  );
-};
-
-// ==============================================
-
-const Cart = ({ cart, removeFromCart }) => {
-  return (
-    <aside 
-      id="cart" 
-      className="border p-4"
-      style={{
-        position: 'fixed',
-        top: 0,
-        right: 0,
-        width: '200px',
-        height: '100vh',
-        background: 'lightblue'
-      }}
-    >
-      <h2>Cart: </h2>
-
-      { cart && cart.map(({ id, title, body, price, qty }) => {
-
-        return (
-          <div key={id} className="border mb-4 p-4">
-
-            <h2>{title}</h2>
-            <p>{body}</p>
-            <p><strong>${price}</strong></p>
-            <p>Quantity: {qty}</p>
-            <Button onClick={() => removeFromCart(id)}>Remove</Button>
-          </div>
-        );
-      }) }
-
-      <Button 
-        disabled={cart.length === 0}
-        onClick={ () => {
-
-        const submitOrderToNode = () => {
-          const url = `${process.env.NEXT_PUBLIC_API_URL}/api/checkout/stripe-checkout-node`;
-
-          fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json", },
-            body: JSON.stringify({ cart }),
-          })
-            .then(res => {
-              if (res.ok) return res.json();
-              return res.json().then(json => Promise.reject(json));
-            })
-            .then(({ url }) => {
-              window.location = url;
-            })
-            .catch(e => {
-              console.error(e.error);
-            });
-
-        };
-
-        submitOrderToNode();
-
-      }}
-      >
-        Checkout
-      </Button>
-    </aside>
   );
 };
 
