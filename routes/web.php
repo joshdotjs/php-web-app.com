@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::get('/store', function () {  
   $products = DB::table('products')->get();
-  return view('products', ['products' => $products]);
+  return view('store', ['products' => $products]);
   // return $products;
 });
 
