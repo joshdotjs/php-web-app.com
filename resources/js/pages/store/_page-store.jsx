@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
+import Header from '../../comps/header/_header';
 import Button from '../../comps/button/button';
 
 import { lo, lg, lr, lb, ly } from '../../util/log';
@@ -42,7 +43,18 @@ const Products = ({ products, addToCart }) => {
 
 const Cart = ({ cart, removeFromCart }) => {
   return (
-    <aside id="cart" className="border p-4">
+    <aside 
+      id="cart" 
+      className="border p-4"
+      style={{
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        width: '200px',
+        height: '100vh',
+        background: 'lightblue'
+      }}
+    >
       <h2>Cart: </h2>
 
       { cart && cart.map(({ id, title, body, price, qty }) => {
@@ -174,13 +186,18 @@ function Page() {
   // --------------------------------------------
 
   return(
-    <div className="bg-blue-500 p-4">
-
-      <Products { ...{ products, addToCart } } />
+    <>
+      <Header />
 
       <Cart { ...{ cart, removeFromCart } } />
 
-    </div>
+      <main>
+
+        <Products { ...{ products, addToCart } } />
+
+      </main>
+
+    </>
   );
 }
 

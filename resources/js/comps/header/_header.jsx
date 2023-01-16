@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 
 // ==============================================
 
-function Header() {
+export default function Header() {
 
   return (
     <header className="header">
@@ -33,9 +33,9 @@ function Header() {
 
 // ==============================================
 
-const root_header = document.querySelector('#react-root--header');
-if(root_header){
-  createRoot(root_header).render(<Header />);
-}
+// const root_header = document.querySelector('#react-root--header');
+// if(root_header){
+//   createRoot(root_header).render(<Header />);
+// }
 
 // ==============================================
