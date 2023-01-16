@@ -14,17 +14,28 @@ use Illuminate\Support\Facades\DB; // !!! ⚠️ !!!
 |
 */
 
+// ==============================================
+
 Route::get('/', function () {
     return view('welcome');
 });
 
+// ==============================================
+
 Route::get('/store', function () {  
   $products = DB::table('products')->get();
-  return view('store', ['products' => $products]);
-  // return $products;
+  $API_URL = env('API_URL');
+  return view('store', [
+    'products' => $products, 
+    'API_URL' => $API_URL
+  ]);
 });
+
+// ==============================================
 
 Route::get('/products', function () {  
   $products = DB::table('products')->get();
   return $products;
 });
+
+// ==============================================

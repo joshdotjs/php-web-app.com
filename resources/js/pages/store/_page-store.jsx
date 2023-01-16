@@ -113,6 +113,11 @@ function Page() {
 
 const root = document.querySelector('#react-root--products-page');
 if(root){
+
+  const api_url = root.dataset.apiUrl;
+  lr(api_url);
+  console.log('root.dataset: ', root.dataset);
+
   createRoot(root).render(<Page />);
 }
 
