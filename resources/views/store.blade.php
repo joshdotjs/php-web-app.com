@@ -11,7 +11,7 @@
 
     <hr>
 
-    <div class="grid grid-cols-2">
+    {{-- <div class="grid grid-cols-2">
       @foreach($products as $product)
 
         <div class="product-card p-4" style="border: solid black 1px;">
@@ -28,7 +28,7 @@
         </div>
 
       @endforeach
-    </div>
+    </div> --}}
 
 
     {{-- react --}}

@@ -2,17 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import { fetchGET, fetchPOST } from './util/fetch';
+import { fetchGET, fetchPOST } from '../../util/fetch';
 
-import './App.scss';
-
-// ==============================================
-
-const json = (str) => JSON.parse(JSON.stringify(str));
+import './_page-store.scss';
 
 // ==============================================
 
-export default function App() {
+function Page() {
 
   // --------------------------------------------
 
@@ -21,7 +17,7 @@ export default function App() {
   useEffect(() => {
     (async () => {
 
-      const data = await fetchGET('/get-products');
+      const data = await fetchGET('/products');
       console.log('data: ', data);
 
       setProducts(data);
@@ -32,8 +28,7 @@ export default function App() {
   // --------------------------------------------
 
   return(
-    <h1 className="bg-blue-500 p-4">
-
+    <div className="bg-blue-500 p-4">
 
       { products.length > 0 && products.map(({id, title, body, price}) => {
         return (
@@ -41,10 +36,13 @@ export default function App() {
             <h2>{title}</h2>
             <p>{body}</p>
             <p>${price}</p>
+
+            <button></button>
           </div>
         );
       })}
-    </h1>
+
+    </div>
   );
 }
 
@@ -52,41 +50,7 @@ export default function App() {
 
 const root = document.querySelector('#react-root--products-page');
 if(root){
-  createRoot(root).render(<App />);
-}
-
-// ==============================================
-
-function Header() {
-
-  return (
-    <header className="header">
-
-      <div>
-        <a href="/">Logo</a>
-      </div>
-
-      <nav>
-        <li>
-          <a href="/auth-register">Register</a>
-        </li>
-
-        <li>
-          <a href="/auth-login">Login</a>
-        </li>
-
-        <li>
-          <a href="/store">Store</a>
-        </li>
-      </nav>
-
-    </header>
-  );
-};
-
-const root_header = document.querySelector('#react-root--header');
-if(root_header){
-  createRoot(root_header).render(<Header />);
+  createRoot(root).render(<Page />);
 }
 
 // ==============================================

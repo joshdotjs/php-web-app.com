@@ -1,16 +1,10 @@
 import './bootstrap';
-import './App.jsx'
+import './pages/store/_page-store.jsx'
+import './comps/header/_header.jsx';
 
 // ==============================================
 
-import './web-comps/web-comp';
 import { lo, lg, lr, lb, ly } from './util/log';
-
-// ==============================================
-
-
-
-// import './pages/products';
 
 // ==============================================
 
