@@ -41,5 +41,81 @@ class DatabaseSeeder extends Seeder
 
       // ========================================
 
+      // - - - - - - - - - - - - - - - - - - - - 
+
+      // Variants for product A: 
+
+      DB::table('variants')->insert([
+        'product_id' => 1,
+        'size'  => 'lg',
+        'color' => 'red',
+        'qty'   => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('variants')->insert([
+        'product_id' => 1,
+        'size'  => 'sm',
+        'color' => 'red',
+        'qty'   => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('variants')->insert([
+        'product_id' => 1,
+        'size'  => 'lg',
+        'color' => 'blue',
+        'qty'   => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('variants')->insert([
+        'product_id' => 1,
+        'size'  => 'lg',
+        'color' => 'blue',
+        'qty'   => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      // - - - - - - - - - - - - - - - - - - - - 
+
+      // Variants for product B: 
+
+      DB::table('variants')->insert([
+        'product_id' => 2,
+        'size'  => 'lg',
+        'color' => 'red',
+        'qty'   => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('variants')->insert([
+        'product_id' => 2,
+        'size'  => 'sm',
+        'color' => 'red',
+        'qty'   => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('variants')->insert([
+        'product_id' => 2,
+        'size'  => 'lg',
+        'color' => 'blue',
+        'qty'   => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('variants')->insert([
+        'product_id' => 2,
+        'size'  => 'lg',
+        'color' => 'blue',
+        'qty'   => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      // - - - - - - - - - - - - - - - - - - - - 
+
+      // ========================================
+
     }
 }

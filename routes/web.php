@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Product;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB; // !!! ⚠️ !!!
 
@@ -24,10 +25,9 @@ Route::get('/', function () {
 
 Route::get('/store', function () {  
   $products = DB::table('products')->get();
-  $API_URL = env('API_URL');
-  return view('store', [
+  return view('products', [
     'products' => $products, 
-    'API_URL' => $API_URL
+    'API_URL' => env('API_URL'),
   ]);
 });
 
@@ -37,5 +37,9 @@ Route::get('/products', function () {
   $products = DB::table('products')->get();
   return $products;
 });
+
+// ==============================================
+
+Route::get('/product/{id}',  [Product::class, 'getProductByID']);
 
 // ==============================================
