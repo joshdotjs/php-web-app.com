@@ -47,7 +47,8 @@ export default function Cart({ cart, removeFromCart }) {
         onClick={ () => {
 
         const submitOrderToNode = () => {
-          const url = `${process.env.NEXT_PUBLIC_API_URL}/api/checkout/stripe-checkout-node`;
+          // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/checkout/stripe-checkout-node`;
+          const url = `${window.API_URL}/api/checkout/stripe-checkout-laravel`;
 
           fetch(url, {
             method: "POST",
