@@ -18,13 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/products', function () {  
+Route::get('/store', function () {  
   $products = DB::table('products')->get();
   return view('products', ['products' => $products]);
   // return $products;
 });
 
-Route::get('/get-products', function () {  
+Route::get('/products', function () {  
   $products = DB::table('products')->get();
   return $products;
 });

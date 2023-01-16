@@ -30,8 +30,11 @@
       @endforeach
     </div>
 
-    <div id="react-root--products-page"></div>
 
+    {{-- react --}}
+    <div id="react-root--products-page"></div>
+    {{-- react --}}
+    
 
     <section>
       <h2>Cart:</h2>
