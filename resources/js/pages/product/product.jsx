@@ -18,15 +18,6 @@ import '.scss';
 
 export default function Product ({ product, variants, addToCart }) {
 
-
-  const [count, setCount] = useState(0);
-
-  function handleClick() {
-    console.log('clicked');
-    setCount(count + 1);
-  }
-
-
   // --------------------------------------------
 
   const {product_id, title, body, price} = product;
@@ -53,7 +44,7 @@ export default function Product ({ product, variants, addToCart }) {
 
         <div className="radio-group">
 
-        { variants.map(({ id: variant_id }) => {
+        { variants.map(({ id: variant_id, size, color }) => {
 
 
           return (
@@ -67,7 +58,10 @@ export default function Product ({ product, variants, addToCart }) {
                 setVariant(new_variant);
               }}
               className="radio"
-            >JOSH</div>
+            >
+              <p>Size: {size}</p>
+              <p>Color: {color}</p>
+            </div>
             );
           })}
         </div>
