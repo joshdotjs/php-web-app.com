@@ -12,32 +12,76 @@ import Button from '../../comps/button/button';
 // } from '../../util/local-storage';
 // import { fireEvent } from '../../util/custom-event';
 
+import '.scss';
+
 // ==============================================
 
 export default function Product ({ product, variants, addToCart }) {
 
+
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    console.log('clicked');
+    setCount(count + 1);
+  }
+
+
   // --------------------------------------------
 
-  const {id, title, body, price} = product;
+  const {product_id, title, body, price} = product;
+
+  // --------------------------------------------
+
+  const [variant, setVariant] = useState(variants[0]);
+
+  useEffect(() => console.log('variant: ', variant), [variant]);
+
 
   // --------------------------------------------
 
   return (
     <section id="product" className="bg-orange-200">
         
-      <div key={id} className="mb-4 border p-4">
+
+
+      <div className="mb-4 border p-4">
         <h2>{title}</h2>
         <p>{body}</p>
         <p><strong>${price}</strong></p>
 
-        { variants.map(({ id, size, color }) => {
+
+        <div className="radio-group">
+
+        { variants.map(({ id: variant_id }) => {
+
+
           return (
-            <div>
-              {size}
-              {color}
-            </div>
-          );
-        }) }
+            <div
+              key={`variant-${variant_id}`}
+              onClick={() => {
+                
+                console.log('variant_id', variant_id);
+                const new_variant = variants.find(item => item.id === variant_id);
+                console.log('new_variant: ', new_variant);
+                setVariant(new_variant);
+              }}
+              className="radio"
+            >JOSH</div>
+            );
+          })}
+        </div>
+
+
+        <div style={{background: 'red', height: '100px', width: '100px'}}>
+
+          {JSON.stringify(variant)}
+        </div>
+
+
+
+
+
 
         <Button onClick={() => addToCart(product)}>Add to Cart</Button>
       </div>
