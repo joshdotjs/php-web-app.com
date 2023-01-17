@@ -24,15 +24,24 @@ export default function Products ({ products, addToCart }) {
         const {id, title, body, price} = product;
 
         return (
-          <div key={id} className="mb-4 border p-4">
+          <div
+            key={id} 
+            href={`/product/${id}`}
+            className="
+              mb-4 border p-4
+              bg-greeb-200
+
+            "
+          >
             <h2>{title}</h2>
             <p>{body}</p>
             <p><strong>${price}</strong></p>
 
             <Button onClick={() => addToCart(product)}>Add to Cart</Button>
+            <Button onClick={() => window.location.href = `/product/${id}`}>Details</Button>
           </div>
         );
-      })}
+      })}   
     </section>
   );
 };
