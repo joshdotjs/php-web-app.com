@@ -17,15 +17,19 @@ class Controller extends BaseController
   
   public function getProductByID($id) {
 
-    $product_variants = DB::table('products')
-                          ->join('variants', 'products.id', '=', 'variants.product_id')
-                          ->where('products.id', '=', $id)
-                          ->get();
+    // Join tables:
+    // $product_variants = DB::table('products')
+    //                       ->join('variants', 'products.id', '=', 'variants.product_id')
+    //                       ->where('products.id', '=', $id)
+    //                       ->get();
 
-    // return DB::table('products')->where('id', '=', $id)->get()[0];
+    $product  = DB::table('products')->where('id', '=', $id)->get();
+    // return $product;
+    $variants = DB::table('variants')->where('product_id', '=', $id)->get();
     // return $product_variants;
     return view('product', [
-      'variants' => $product_variants,
+      'product'  => $product,
+      'variants' => $variants,
       'API_URL'  => env('API_URL'),
     ]);
   }

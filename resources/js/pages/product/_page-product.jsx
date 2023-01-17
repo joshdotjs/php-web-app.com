@@ -16,13 +16,15 @@ import { fireEvent } from '../../util/custom-event';
 
 // ==============================================
 
-function Page({ variants_SSR }) {
+function Page({ product_SSR, variants_SSR }) {
 
   console.log('variants_SSR: ', variants_SSR);
+  console.log('product_SSR: ', product_SSR);
 
   // --------------------------------------------
 
-  const [product, setProduct] = useState(variants_SSR);
+  const [product, setProduct] = useState(product_SSR[0]);
+  const [variants, setVariants] = useState(variants_SSR);
   const [cart, setCart] = useState([]);
 
   // --------------------------------------------
@@ -92,7 +94,7 @@ function Page({ variants_SSR }) {
 
       <main>
 
-        <Product { ...{ product, addToCart } } />
+        <Product { ...{ product, variants, addToCart } } />
 
       </main>
 
@@ -106,9 +108,11 @@ const root = document.querySelector('#react-root--product-page');
 if(root){
   window.API_URL = root.dataset.apiUrl;
 
+  const product_SSR  = JSON.parse(root.dataset.product);
   const variants_SSR = JSON.parse(root.dataset.variants);
 
-  createRoot(root).render(<Page { ...{ variants_SSR } } />);
+
+  createRoot(root).render(<Page { ...{ product_SSR, variants_SSR } } />);
 }
 
 // ==============================================

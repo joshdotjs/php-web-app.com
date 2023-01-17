@@ -9,8 +9,9 @@
     {{-- react --}}
     <div 
       id="react-root--product-page" 
-      data-api-url="{{$API_URL}}"
+      data-product="{{$product}}"
       data-variants="{{$variants}}"
+      data-api-url="{{$API_URL}}"
     ></div>
     {{-- react --}}
     

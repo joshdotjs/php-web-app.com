@@ -14,7 +14,7 @@ import Button from '../../comps/button/button';
 
 // ==============================================
 
-export default function Product ({ product, addToCart }) {
+export default function Product ({ product, variants, addToCart }) {
 
   // --------------------------------------------
 
@@ -30,7 +30,14 @@ export default function Product ({ product, addToCart }) {
         <p>{body}</p>
         <p><strong>${price}</strong></p>
 
-        <div>VARIANTS: TODO</div>
+        { variants.map(({ id, size, color }) => {
+          return (
+            <div>
+              {size}
+              {color}
+            </div>
+          );
+        }) }
 
         <Button onClick={() => addToCart(product)}>Add to Cart</Button>
       </div>
