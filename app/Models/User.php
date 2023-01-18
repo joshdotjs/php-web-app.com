@@ -18,7 +18,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
         'email',
         'password',
     ];
@@ -29,8 +28,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+      'password',
+      'remember_token',
     ];
 
     /**
@@ -41,4 +40,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    // -TODO: Apply logic of "posts" to "orders" (see UsersController -> profilee() from project: 'php')
+    // -TODO: Apply logic of "posts" to "orders" (see UsersController -> profilee() from project: 'php')
+    // -TODO: Apply logic of "posts" to "orders" (see UsersController -> profilee() from project: 'php')
+    // -TODO: Apply logic of "posts" to "orders" (see UsersController -> profilee() from project: 'php')
+    // -TODO: Apply logic of "posts" to "orders" (see UsersController -> profilee() from project: 'php')
+    // -TODO: Apply logic of "posts" to "orders" (see UsersController -> profilee() from project: 'php')
+    // public function posts() {
+    //   return $this->hasMany(Post::class, 'user_id');
+    // }
 }

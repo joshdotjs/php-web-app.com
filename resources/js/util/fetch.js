@@ -8,14 +8,18 @@ const fetchGET = async (url) => {
 
 // ==============================================
 
-const fetchPOST = async (url, body={}, method='POST') => {
+const fetchPOST = async ({url, body={}, method='POST'}) => {
 
   
+  console.log('url: ', url);
+  console.log('method: ', method);
+  console.log('body: ', body);
+
   const res = await fetch(
     url, {
       method,
       headers: { 
-        "Content-Type": 'application/json',
+        // "Content-Type": 'application/json',
         // "X-WP-Nonce": PHP.nonce,
       },
       body: JSON.stringify(body)

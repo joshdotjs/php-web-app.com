@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Product;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB; // !!! ⚠️ !!!
 
@@ -18,9 +19,23 @@ use Illuminate\Support\Facades\DB; // !!! ⚠️ !!!
 // ==============================================
 
 Route::get('/', function () {
-    return view('welcome', [
-      'API_URL' => env('API_URL'),
-    ]);
+  return view('home', [
+    'API_URL' => env('API_URL'),
+  ]);
+});
+
+// ==============================================
+
+Route::get('/auth-register', function () {
+  return view('auth-register', [
+    'API_URL' => env('API_URL'),
+  ]);
+});
+
+Route::get('/auth-login', function () {
+  return view('auth-login', [
+    'API_URL' => env('API_URL'),
+  ]);
 });
 
 // ==============================================
@@ -45,3 +60,7 @@ Route::get('/products', function () {
 Route::get('/product/{id}',  [Product::class, 'getProductByID']);
 
 // ==============================================
+
+Route::post('/register', [UserController::class, 'register']);
+// Route::post('/login',    [UserController::class, 'login']);
+// TODDO: Route::post('/logout',    [UserController::class, 'logout']);
