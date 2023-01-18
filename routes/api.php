@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/login', [UserController::class, 'loginApi']);
-// Route::post('/create-order', [OrderController::class, 'loginApi']);
+Route::post('/create-order', [OrderController::class, 'createOrder'])->middleware('auth:sanctum'); // Middleware: only allow logged in user
+
+// Scantrum => token based API (instead of cookie based)
