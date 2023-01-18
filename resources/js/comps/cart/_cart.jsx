@@ -5,7 +5,7 @@ import CartContext from '../../context/cart-ctx';
 import Button from '../../comps/button/button';
 
 // import { lo, lg, lr, lb, ly } from '../../util/log';
-// import { fetchGET, fetchPOST } from '../../util/fetch';
+import { fetchGET, fetchPOST } from '../../util/fetch';
 // import { 
 //   getCartLS, setCartLS, 
 // } from '../../util/local-storage';
@@ -19,6 +19,53 @@ export default function Cart() {
   // --------------------------------------------
 
   const { cart, removeFromCart } = useContext(CartContext);
+
+  // --------------------------------------------
+
+  const handler = () => {
+
+    // - - - - - - - - - - - - - - - - - - - - - 
+
+    const submitOrderToNode = () => {
+      // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/checkout/stripe-checkout-node`;
+      const url = `${window.API_URL}/api/checkout/stripe-checkout-laravel`;
+
+      fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", },
+        body: JSON.stringify({ cart }),
+      })
+        .then(res => {
+          if (res.ok) return res.json();
+          return res.json().then(json => Promise.reject(json));
+        })
+        .then(({ url }) => {
+          window.location = url;
+        })
+        .catch(e => {
+          console.error(e.error);
+        });
+
+    };
+
+    submitOrderToNode();
+
+    // - - - - - - - - - - - - - - - - - - - - - 
+
+    const insertOrderInDB = async () => {
+
+      const data = await fetchPOST( {url: '', body: { cart }});
+
+      
+      
+    };
+
+    insertOrderInDB();
+
+
+    // - - - - - - - - - - - - - - - - - - - - - 
+
+  };
 
   // --------------------------------------------
 
@@ -62,33 +109,7 @@ export default function Cart() {
 
       <Button 
         disabled={cart.length === 0}
-        onClick={ () => {
-
-        const submitOrderToNode = () => {
-          // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/checkout/stripe-checkout-node`;
-          const url = `${window.API_URL}/api/checkout/stripe-checkout-laravel`;
-
-          fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json", },
-            body: JSON.stringify({ cart }),
-          })
-            .then(res => {
-              if (res.ok) return res.json();
-              return res.json().then(json => Promise.reject(json));
-            })
-            .then(({ url }) => {
-              window.location = url;
-            })
-            .catch(e => {
-              console.error(e.error);
-            });
-
-        };
-
-        submitOrderToNode();
-
-      }}
+        onClick={handler}
       >
         Checkout
       </Button>
