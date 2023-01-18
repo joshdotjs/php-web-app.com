@@ -23,7 +23,7 @@ Route::get('/', function () {
   return view('home', [
     'API_URL' => env('API_URL'), // Cart: Checkout
   ]);
-});
+})->name('login'); // middlewaure('auth') will redirect here if user not logged in
 
 // ==============================================
 
@@ -57,7 +57,7 @@ Route::get('/products', function () {
 });
 
 // Protected route (any logged in user)
-Route::get('/orders',  [OrderController::class, 'showOrders'])->middleware('auth');
+Route::get('/orders',  [OrderController::class, 'showOrders'])->middleware('auth'); // same as /profile/{user:email}
 
 // ==============================================
 
@@ -80,4 +80,4 @@ Route::get('/product/{id}',  [Product::class, 'getProductByID']);
 Route::post('/register',                [UserController::class, 'register']);
 Route::post('/login',                   [UserController::class, 'login']);
 // TODDO: Route::post('/logout',        [UserController::class, 'logout']);
-Route::get('/profile/{user:email}',     [UserController::class, 'profile']);
+Route::get('/profile/{user:email}',     [UserController::class, 'profile'])->middleware('auth'); // same as /orders

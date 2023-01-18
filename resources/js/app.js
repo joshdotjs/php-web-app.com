@@ -2,6 +2,7 @@ import './bootstrap';
 import './pages/home/_page-home.jsx';
 import './pages/store/_page-store.jsx';
 import './pages/product/_page-product.jsx';
+import './pages/orders/__page-orders.jsx';
 import './pages/auth-register/_page-register.jsx';
 
 

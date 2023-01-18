@@ -43,19 +43,12 @@ class OrderController extends Controller
     // Get orders:
     $orders = Order::where('user_id', $user_id)->get();
 
-    $to_return = [
-      'orders' => $orders,
+    return view('orders', [
+      'email' => $user->email, 
       'user'   => $user,
+      'orders' => $orders, 
       'API_URL' => env('API_URL'), // Cart: Checkout
-    ];
-
-    return $to_return;
-
-    // return view('orders', [
-    //   'orders' => $orders,
-    //   'user'   => $user,
-    //   'API_URL' => env('API_URL'), // Cart: Checkout
-    // ]);
+    ]);
   }
 
   // ------------------------------------------
