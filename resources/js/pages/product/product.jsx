@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 // import { createRoot } from 'react-dom/client';
 
 import Context from '../../context/context';
+import CartContext from '../../context/cart-ctx';
 
 // import Header from '../../comps/header/_header';
 // import Cart from '../../comps/cart/_cart';
@@ -18,10 +19,11 @@ import '.scss';
 
 // ==============================================
 
-export default function Product ({ product, variants, addToCart }) {
+export default function Product ({ product, variants }) {
 
 
   const ctx = useContext(Context);
+  const { cart, addToCart } = useContext(CartContext);
 
   // --------------------------------------------
 

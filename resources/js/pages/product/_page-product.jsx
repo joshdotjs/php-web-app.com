@@ -3,19 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { ContextProvider } from '../../context/context';
+import { CartContextProvider } from '../../context/cart-ctx';
 
 import Header from '../../comps/header/_header';
 import Cart from '../../comps/cart/_cart';
 // import Button from '../../comps/button/button';
 import Product from './product';
-
-import { lo, lg, lr, lb, ly } from '../../util/log';
-import { fetchGET, fetchPOST } from '../../util/fetch';
-import { 
-  getCartLS, setCartLS, 
-} from '../../util/local-storage';
-import { fireEvent } from '../../util/custom-event';
-
 
 // ==============================================
 
@@ -28,95 +21,25 @@ function Page({ product_SSR, variants_SSR }) {
 
   const [product, setProduct] = useState(product_SSR[0]);
   const [variants, setVariants] = useState(variants_SSR);
-  const [cart, setCart] = useState([]);
-
-  // --------------------------------------------
-
-  useEffect(() => {
-    setCart(getCartLS());
-  }, []);
-
-  useEffect(() => {
-    console.log('cart: ', cart);
-    
-  }, [cart]);
-
-
-  // --------------------------------------------
-
-  const addToCart = (product, variant) => {
-
-    console.log('product: ', product, '\nvariant: ', variant);
-
-    const { id: variant_id } = variant;
-
-    setCart((prev_cart) => {
-
-      const idx = prev_cart.findIndex(line => line.variant.id === variant_id);
-      
-      let new_cart;
-
-      if (idx < 0) {
-        lo('addToCart() - new line item');
-        new_cart = [...cart, { product, variant, qty: 1 }]; // clone local cart state and add a new product item to the array with the cloned cart.        
-      } else {
-        ly('addToCart() - updating quantity');
-        new_cart = [...cart]; // clone local cart state via deep copy.
-        new_cart[idx] = {...cart[idx], qty: cart[idx].qty + 1}; // update specific item's quantity in the cloned cart array.        
-      }
-
-      setCartLS(new_cart);
-      return new_cart;
-    });
-
-
-
-    // - - - - - - - - - - - - - - - - - - - - - 
-
-
-    // TODO: FLIP anim...
-
-    // - - - - - - - - - - - - - - - - - - - - - 
-
-    fireEvent('cart-add');
-  };
-
-  // --------------------------------------------
-
-  const removeFromCart = (variant_id) => {
-    lg('removeFromCart()');
-
-    console.log('cart: ', cart);
-
-    setCart((prev_cart) => {
-
-      const new_cart = prev_cart.filter(line => line.variant.id !== variant_id);
-      setCartLS(new_cart);
-      fireEvent('cart-remove');
-      return new_cart;
-    });
-
-    // if (new_cart.length < 1) {
-    //   closeCart();
-    // }
-  }
-
+  
   // --------------------------------------------
 
   return(
-    <ContextProvider>
+    <>
 
       <Header />
 
-      <Cart { ...{ cart, removeFromCart } } />
+      {/* <Cart { ...{ cart, removeFromCart } } /> */}
+      <Cart />
 
       <main>
 
-        <Product { ...{ product, variants, addToCart } } />
+        {/* <Product { ...{ product, variants, addToCart } } /> */}
+        <Product { ...{ product, variants } } />
 
       </main>
 
-    </ContextProvider>
+    </>
   );
 }
 
@@ -129,8 +52,13 @@ if(root){
   const product_SSR  = JSON.parse(root.dataset.product);
   const variants_SSR = JSON.parse(root.dataset.variants);
 
-
-  createRoot(root).render(<Page { ...{ product_SSR, variants_SSR } } />);
+  createRoot(root).render(
+    <ContextProvider>
+      <CartContextProvider>
+        <Page { ...{ product_SSR, variants_SSR } } />
+      </CartContextProvider>
+    </ContextProvider>
+  );
 }
 
 // ==============================================

@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+
+import CartContext from '../../context/cart-ctx';
 
 import Button from '../../comps/button/button';
 
@@ -12,7 +14,14 @@ import Button from '../../comps/button/button';
 
 // ==============================================
 
-export default function Cart({ cart, removeFromCart }) {
+export default function Cart() {
+
+  // --------------------------------------------
+
+  const cart_ctx = useContext(CartContext);
+
+  // --------------------------------------------
+
   return (
     <aside 
       id="cart" 
@@ -28,7 +37,7 @@ export default function Cart({ cart, removeFromCart }) {
     >
       <h2>Cart: </h2>
 
-      { cart && cart.map(({ 
+      { cart_ctx.cart.length > 0 && cart_ctx.cart.map(({ 
         product: { title, body, price, id: product_id },
         variant: { size, color, id: variant_id },
         qty 
@@ -45,14 +54,14 @@ export default function Cart({ cart, removeFromCart }) {
             <p>Quantity: {qty}</p>
             <Button onClick={() => {
               console.warn('removeFromCart()');
-              removeFromCart(variant_id);
+              cart_ctx.removeFromCart(variant_id);
             }}>Remove</Button>
           </div>
         );
       }) }
 
       <Button 
-        disabled={cart.length === 0}
+        disabled={cart_ctx.cart.length === 0}
         onClick={ () => {
 
         const submitOrderToNode = () => {
