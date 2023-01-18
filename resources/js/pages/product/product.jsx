@@ -77,7 +77,7 @@ export default function Product ({ product, variants, addToCart }) {
 
 
 
-        <Button onClick={() => addToCart(product)}>Add to Cart</Button>
+        <Button onClick={() => addToCart(product, variant)}>Add to Cart</Button>
       </div>
 
     </section>

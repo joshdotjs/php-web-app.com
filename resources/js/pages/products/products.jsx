@@ -14,7 +14,7 @@ import Button from '../../comps/button/button';
 
 // ==============================================
 
-export default function Products ({ products, addToCart }) {
+export default function Products ({ products }) {
   return (
     <section id="products" className="bg-orange-200">
       <h2>Products:</h2>
@@ -37,7 +37,6 @@ export default function Products ({ products, addToCart }) {
             <p>{body}</p>
             <p><strong>${price}</strong></p>
 
-            <Button onClick={() => addToCart(product)}>Add to Cart</Button>
             <Button onClick={() => window.location.href = `/product/${id}`}>Details</Button>
           </div>
         );

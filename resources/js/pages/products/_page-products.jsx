@@ -42,40 +42,7 @@ function Page() {
 
   useEffect(() => {
     console.log('cart: ', cart);
-    
   }, [cart]);
-
-
-  // --------------------------------------------
-
-  const addToCart = (product) => {
-
-    const { id } = product;
-
-    const idx = cart.findIndex(x => id === x.id);
-
-    if (idx < 0) {
-      lo('addToCart() - new line item');
-      const new_cart = [...cart, { ...product, qty: 1 }]; // clone local cart state and add a new product item to the array with the cloned cart.
-      setCartLS(new_cart);
-      setCart(new_cart);
-    } else {
-      ly('addToCart() - updating quantity');
-      const new_cart = [...cart]; // clone local cart state via deep copy.
-      new_cart[idx] = {...cart[idx], qty: cart[idx].qty + 1}; // update specific item's quantity in the cloned cart array.
-      setCartLS(new_cart);
-      setCart(new_cart);
-    }
-
-    // - - - - - - - - - - - - - - - - - - - - - 
-
-
-    // TODO: FLIP anim...
-
-    // - - - - - - - - - - - - - - - - - - - - - 
-
-    fireEvent('cart-add');
-  };
 
   // --------------------------------------------
 
@@ -101,7 +68,7 @@ function Page() {
 
       <main>
 
-        <Products { ...{ products, addToCart } } />
+        <Products { ...{ products } } />
 
       </main>
 
