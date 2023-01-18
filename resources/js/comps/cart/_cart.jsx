@@ -28,16 +28,25 @@ export default function Cart({ cart, removeFromCart }) {
     >
       <h2>Cart: </h2>
 
-      { cart && cart.map(({ id, title, body, price, qty }) => {
+      { cart && cart.map(({ 
+        product: { title, body, price, id: product_id },
+        variant: { size, color, id: variant_id },
+        qty 
+      }) => {
 
         return (
-          <div key={id} className="border mb-4 p-4">
+          <div key={`variant-${variant_id}`} className="border mb-4 p-4">
 
             <h2>{title}</h2>
             <p>{body}</p>
+            <p>Size: {size}</p>
+            <p>Color: {color}</p>
             <p><strong>${price}</strong></p>
             <p>Quantity: {qty}</p>
-            <Button onClick={() => removeFromCart(id)}>Remove</Button>
+            <Button onClick={() => {
+              console.warn('removeFromCart()');
+              removeFromCart(variant_id);
+            }}>Remove</Button>
           </div>
         );
       }) }

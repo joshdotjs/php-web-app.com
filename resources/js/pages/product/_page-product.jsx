@@ -45,17 +45,17 @@ function Page({ product_SSR, variants_SSR }) {
 
     console.log('product: ', product, '\nvariant: ', variant);
 
-    const { id } = product;
+    const { id: variant_id } = variant;
 
     setCart((prev_cart) => {
 
-      const idx = prev_cart.findIndex(x => id === x.id);
+      const idx = prev_cart.findIndex(line => line.variant.id === variant_id);
       
       let new_cart;
 
       if (idx < 0) {
         lo('addToCart() - new line item');
-        new_cart = [...cart, { ...product, qty: 1 }]; // clone local cart state and add a new product item to the array with the cloned cart.        
+        new_cart = [...cart, { product, variant, qty: 1 }]; // clone local cart state and add a new product item to the array with the cloned cart.        
       } else {
         ly('addToCart() - updating quantity');
         new_cart = [...cart]; // clone local cart state via deep copy.
@@ -80,12 +80,18 @@ function Page({ product_SSR, variants_SSR }) {
 
   // --------------------------------------------
 
-  const removeFromCart = (id) => {
+  const removeFromCart = (variant_id) => {
     lg('removeFromCart()');
-    const new_cart = cart.filter(item => item.id !== id);
-    setCartLS(new_cart);
-    setCart(new_cart);
-    fireEvent('cart-remove');
+
+    console.log('cart: ', cart);
+
+    setCart((prev_cart) => {
+
+      const new_cart = prev_cart.filter(line => line.variant.id !== variant_id);
+      setCartLS(new_cart);
+      fireEvent('cart-remove');
+      return new_cart;
+    });
 
     // if (new_cart.length < 1) {
     //   closeCart();

@@ -1,5 +1,5 @@
 import './bootstrap';
-import './pages/products/_page-products.jsx';
+import './pages/store/_page-store.jsx';
 import './pages/product/_page-product.jsx';
 import './comps/header/_header.jsx';
 

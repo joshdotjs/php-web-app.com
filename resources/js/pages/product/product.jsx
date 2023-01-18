@@ -20,7 +20,7 @@ export default function Product ({ product, variants, addToCart }) {
 
   // --------------------------------------------
 
-  const {product_id, title, body, price} = product;
+  const { id: product_id, title, body, price } = product;
 
   // --------------------------------------------
 
