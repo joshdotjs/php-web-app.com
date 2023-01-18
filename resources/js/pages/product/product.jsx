@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 // import { createRoot } from 'react-dom/client';
+
+import Context from '../../context/context';
 
 // import Header from '../../comps/header/_header';
 // import Cart from '../../comps/cart/_cart';
@@ -17,6 +19,9 @@ import '.scss';
 // ==============================================
 
 export default function Product ({ product, variants, addToCart }) {
+
+
+  const ctx = useContext(Context);
 
   // --------------------------------------------
 
@@ -73,12 +78,14 @@ export default function Product ({ product, variants, addToCart }) {
         </div>
 
 
-
+          
 
 
 
         <Button onClick={() => addToCart(product, variant)}>Add to Cart</Button>
       </div>
+
+      <button onClick={() => ctx.setState(prev => prev + 1)}>Context State: { ctx.state }</button>
 
     </section>
   );

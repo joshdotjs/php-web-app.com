@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
+import { ContextProvider } from '../../context/context';
+
 import Header from '../../comps/header/_header';
 import Cart from '../../comps/cart/_cart';
 // import Button from '../../comps/button/button';
@@ -13,6 +15,7 @@ import {
   getCartLS, setCartLS, 
 } from '../../util/local-storage';
 import { fireEvent } from '../../util/custom-event';
+
 
 // ==============================================
 
@@ -101,7 +104,8 @@ function Page({ product_SSR, variants_SSR }) {
   // --------------------------------------------
 
   return(
-    <>
+    <ContextProvider>
+
       <Header />
 
       <Cart { ...{ cart, removeFromCart } } />
@@ -112,7 +116,7 @@ function Page({ product_SSR, variants_SSR }) {
 
       </main>
 
-    </>
+    </ContextProvider>
   );
 }
 
