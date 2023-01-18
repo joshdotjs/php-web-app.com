@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Product;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB; // !!! ⚠️ !!!
 
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\DB; // !!! ⚠️ !!!
 
 Route::get('/', function () {
   return view('home', [
-    'API_URL' => env('API_URL'),
+    'API_URL' => env('API_URL'), // Cart: Checkout
   ]);
 });
 
@@ -28,13 +29,13 @@ Route::get('/', function () {
 
 Route::get('/auth-register', function () {
   return view('auth-register', [
-    'API_URL' => env('API_URL'),
+    'API_URL' => env('API_URL'), // Cart: Checkout
   ]);
 });
 
 Route::get('/auth-login', function () {
   return view('auth-login', [
-    'API_URL' => env('API_URL'),
+    'API_URL' => env('API_URL'), // Cart: Checkout
   ]);
 });
 
@@ -44,7 +45,7 @@ Route::get('/store', function () {
   $products = DB::table('products')->get();
   return view('store', [
     'products' => $products, 
-    'API_URL' => env('API_URL'),
+    'API_URL' => env('API_URL'), // Cart: Checkout
   ]);
 });
 
@@ -54,6 +55,20 @@ Route::get('/products', function () {
   $products = DB::table('products')->get();
   return $products;
 });
+
+// Protected route (any logged in user)
+Route::get('/orders',  [OrderController::class, 'showOrders'])->middleware('auth');
+
+// ==============================================
+
+// Protected route (admin)
+
+Route::get('/admin-dashboard', function () {  
+  $products = DB::table('products')->get();
+  return view('product-create', []);
+});
+
+// Route::post('/create-product', [ProductController::class, 'createProduct']);
 
 // ==============================================
 

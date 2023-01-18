@@ -44,8 +44,6 @@ class UserController extends Controller
     ]);
 
 
-    return "/api/login";
-
     // -Hash and compare
     // if (auth()->attempt(['username' => $incoming_fields['loginusername'], 'password' => $incoming_fields['loginpassword']])) {
     if (auth()->attempt([
@@ -56,9 +54,9 @@ class UserController extends Controller
       // Log user in if successful:
       $request->session()->regenerate();
       
-      return 'Congrats!!!';
+      return redirect('/');
     } else {
-        return 'Sorry!!!';
+        return 'TODO: Handle unsuccessful login';
     }
   }
 
