@@ -12,20 +12,25 @@ class UserController extends Controller
 
     public function profile(User $user) {
 
-      $thePosts = $user->posts()->latest()->get();
-      $postCount = $user->posts()->count();
+      // $thePosts = $user->posts()->latest()->get();
+      // $postCount = $user->posts()->count();
+      $theOrders = $user->orders()->latest()->get();
+      $orderCount = $user->orders()->count();
 
       // RETURN THIS AND REFRESH PAGE!!!
       // RETURN THIS AND REFRESH PAGE!!!
       // RETURN THIS AND REFRESH PAGE!!!
       // RETURN THIS AND REFRESH PAGE!!!
       // RETURN THIS AND REFRESH PAGE!!!
-      // return $thePosts;
+      // return $theOrders;
 
       return view('profile-posts', [
-        'username' => $user->username, 
-        'posts' => $thePosts, 
-        'postCount' => $postCount,
+        // 'username' => $user->username, 
+        'email' => $user->email, 
+        // 'posts' => $thePosts, 
+        'posts' => $theOrders, 
+        // 'postCount' => $postCount,
+        'postCount' => $orderCount,
       ]);
       // return view('profile-posts', ['username' => $user->username]);
     }

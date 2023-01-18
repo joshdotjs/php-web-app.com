@@ -61,6 +61,8 @@ Route::get('/product/{id}',  [Product::class, 'getProductByID']);
 
 // ==============================================
 
-Route::post('/register', [UserController::class, 'register']);
-Route::post('/login',    [UserController::class, 'login']);
-// TODDO: Route::post('/logout',    [UserController::class, 'logout']);
+// User Controller:
+Route::post('/register',                [UserController::class, 'register']);
+Route::post('/login',                   [UserController::class, 'login']);
+// TODDO: Route::post('/logout',        [UserController::class, 'logout']);
+Route::get('/profile/{user:email}',     [UserController::class, 'profile']);

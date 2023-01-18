@@ -48,7 +48,7 @@ class User extends Authenticatable
     // -TODO: Apply logic of "posts" to "orders" (see UsersController -> profilee() from project: 'php')
     // -TODO: Apply logic of "posts" to "orders" (see UsersController -> profilee() from project: 'php')
     // -TODO: Apply logic of "posts" to "orders" (see UsersController -> profilee() from project: 'php')
-    // public function posts() {
-    //   return $this->hasMany(Post::class, 'user_id');
-    // }
+    public function orders() {
+      return $this->hasMany(Order::class, 'user_id');
+    }
 }
