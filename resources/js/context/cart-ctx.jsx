@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, useEffect, createContext, } from 'react';
 
 import { 
   getCartLS, setCartLS, 
@@ -7,7 +7,7 @@ import {
 // ==============================================
 
 const CartContext = createContext({
-  cart: null,
+  cart: [],
   setCart: function() {},
 });
 
@@ -18,6 +18,13 @@ const CartContextProvider = ({ children }) => {
   // --------------------------------------------
 
   const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    const cart_ls = getCartLS();
+    if (cart_ls) {
+      setCart(cart_ls)
+    }
+  }, []);
 
   // --------------------------------------------
 
@@ -81,7 +88,6 @@ const CartContextProvider = ({ children }) => {
 
   const context = {
     cart,
-    setCart,
     addToCart,
     removeFromCart,
   };

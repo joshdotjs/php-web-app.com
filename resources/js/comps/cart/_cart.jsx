@@ -18,7 +18,7 @@ export default function Cart() {
 
   // --------------------------------------------
 
-  const cart_ctx = useContext(CartContext);
+  const { cart, removeFromCart } = useContext(CartContext);
 
   // --------------------------------------------
 
@@ -28,7 +28,7 @@ export default function Cart() {
       className="border p-4"
       style={{
         position: 'fixed',
-        top: 0,
+        top: 40,
         right: 0,
         width: '200px',
         height: '100vh',
@@ -37,7 +37,7 @@ export default function Cart() {
     >
       <h2>Cart: </h2>
 
-      { cart_ctx.cart.length > 0 && cart_ctx.cart.map(({ 
+      { cart.length > 0 && cart.map(({ 
         product: { title, body, price, id: product_id },
         variant: { size, color, id: variant_id },
         qty 
@@ -54,14 +54,14 @@ export default function Cart() {
             <p>Quantity: {qty}</p>
             <Button onClick={() => {
               console.warn('removeFromCart()');
-              cart_ctx.removeFromCart(variant_id);
+              removeFromCart(variant_id);
             }}>Remove</Button>
           </div>
         );
       }) }
 
       <Button 
-        disabled={cart_ctx.cart.length === 0}
+        disabled={cart.length === 0}
         onClick={ () => {
 
         const submitOrderToNode = () => {

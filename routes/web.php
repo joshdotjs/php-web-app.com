@@ -18,14 +18,16 @@ use Illuminate\Support\Facades\DB; // !!! ⚠️ !!!
 // ==============================================
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+      'API_URL' => env('API_URL'),
+    ]);
 });
 
 // ==============================================
 
 Route::get('/store', function () {  
   $products = DB::table('products')->get();
-  return view('products', [
+  return view('store', [
     'products' => $products, 
     'API_URL' => env('API_URL'),
   ]);

@@ -7,28 +7,12 @@ import { CartContextProvider } from '../../context/cart-ctx';
 import Header from '../../comps/header/_header';
 import Cart from '../../comps/cart/_cart';
 // import Button from '../../comps/button/button';
-import Products from './products';
 
-import { fetchGET, fetchPOST } from '../../util/fetch';
+// import { fetchGET, fetchPOST } from '../../util/fetch';
 
 // ==============================================
 
 function Page() {
-
-  // --------------------------------------------
-
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-
-      const data = await fetchGET('/products');
-      console.log('data: ', data);
-
-      setProducts(data);
-
-    })();
-  }, []);
 
   // --------------------------------------------
 
@@ -41,7 +25,7 @@ function Page() {
 
       <main>
 
-        <Products { ...{ products } } />
+        Home Page
 
       </main>
 
@@ -51,7 +35,7 @@ function Page() {
 
 // ==============================================
 
-const root = document.querySelector('#react-root--products-page');
+const root = document.querySelector('#react-root--home-page');
 if(root){
 
   const API_URL = root.dataset.apiUrl;
@@ -62,7 +46,7 @@ if(root){
     <CartContextProvider>
       <Page />
     </CartContextProvider>
-  );
+    );
 }
 
 // ==============================================

@@ -23,7 +23,7 @@ export default function Product ({ product, variants }) {
 
 
   const ctx = useContext(Context);
-  const { cart, addToCart } = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
 
   // --------------------------------------------
 

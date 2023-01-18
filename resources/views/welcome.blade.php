@@ -1,7 +1,15 @@
 <x-layout>
+  
+  {{-- =============================================== --}}
 
-  <h1 class="text-3xl font-bold underline bg-green-900">
-    Home Page
-  </h1>
+  <main id="page" class="bg-green-300">
+
+    {{-- react --}}
+    <div id="react-root--home-page" data-api-url="{{$API_URL}}"></div>
+    {{-- react --}}
+    
+  </main>
+
+  {{-- =============================================== --}}
 
 </x-layout>
