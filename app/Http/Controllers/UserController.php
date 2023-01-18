@@ -8,7 +8,50 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-  // ------------------------------------------
+    // ------------------------------------------
+
+    public function profile(User $user) {
+
+      $thePosts = $user->posts()->latest()->get();
+      $postCount = $user->posts()->count();
+
+      // RETURN THIS AND REFRESH PAGE!!!
+      // RETURN THIS AND REFRESH PAGE!!!
+      // RETURN THIS AND REFRESH PAGE!!!
+      // RETURN THIS AND REFRESH PAGE!!!
+      // RETURN THIS AND REFRESH PAGE!!!
+      // return $thePosts;
+
+      return view('profile-posts', [
+        'username' => $user->username, 
+        'posts' => $thePosts, 
+        'postCount' => $postCount,
+      ]);
+      // return view('profile-posts', ['username' => $user->username]);
+    }
+
+    // ------------------------------------------
+
+    public function login(Request $request) {
+      $incoming_fields = $request->validate([
+        'loginusername' => 'required',
+        'loginpassword' => 'required',
+      ]);
+
+      // -Hash and compare
+      // if (auth()->attempt(['username' => $incoming_fields['loginusername'], 'password' => $incoming_fields['loginpassword']])) {
+      if (auth()->attempt(['email' => $incoming_fields['loginusername'], 'password' => $incoming_fields['loginpassword']])) {
+        
+        // Log user in if successful:
+        $request->session()->regenerate();
+        
+        return 'Congrats!!!';
+      } else {
+          return 'Sorry!!!';
+      }
+    }
+
+    // ------------------------------------------
   
   public function register(Request $request) {
 
