@@ -1,13 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-import { CartContextProvider } from '../../context/cart-ctx';
-
-import Header from '../../comps/header/_header';
-import Cart from '../../comps/cart/_cart';
-// import Button from '../../comps/button/button';
-
-// import { fetchGET, fetchPOST } from '../../util/fetch';
+import Layout from '../../comps/_layout/layout';
 
 // ==============================================
 
@@ -16,36 +10,20 @@ function Page() {
   // --------------------------------------------
 
   return(
-    <>
-
-      <Header />
-
-      <Cart />
-
-      <main>
-
+    <Layout>
         Home Page
-
-      </main>
-
-    </>
+    </Layout>
   );
+
+  // --------------------------------------------
 }
 
 // ==============================================
 
 const root = document.querySelector('#react-root--home-page');
 if(root){
-
-  const API_URL = root.dataset.apiUrl;
-  // console.log('api_url: ', API_URL);
-  window.API_URL = API_URL;
-
-  createRoot(root).render(
-    <CartContextProvider>
-      <Page />
-    </CartContextProvider>
-    );
+  window.API_URL = root.dataset.apiUrl;
+  createRoot(root).render(<Page />);
 }
 
 // ==============================================

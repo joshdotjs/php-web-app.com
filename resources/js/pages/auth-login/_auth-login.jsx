@@ -50,9 +50,9 @@ export default function AuthLogin () {
     if (!error) {
       // console.log('data: ', data);
       console.log('JSON.parse(data): ', JSON.parse(data));
-      const { user, token } = JSON.parse(data)
-      setLS('token', token)
-      setLS('user',  user)
+      const { user, token } = JSON.parse(data);
+      setLS('token', token);
+      setLS('user',  user);
       redirect('/');
     }
 
