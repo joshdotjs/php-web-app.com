@@ -3,7 +3,11 @@
   {{-- =============================================== --}}
 
   {{-- react --}}
-  <div id="react-root--products-page" data-api-url="{{$API_URL}}"></div>
+  <div 
+    id="react-root--products-page" 
+    data-products="{{$products}}"
+    data-api-url="{{$API_URL}}"
+  ></div>
   {{-- react --}}
   
 

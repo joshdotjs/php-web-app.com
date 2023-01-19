@@ -13,22 +13,22 @@ import { fetchGET, fetchPOST } from '../../util/fetch';
 
 // ==============================================
 
-function Page() {
+function Page({ products_SSR }) {
 
   // --------------------------------------------
 
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-
-      const data = await fetchGET('/products');
-      console.log('data: ', data);
-
-      setProducts(data);
-
-    })();
-  }, []);
+  // const [products, setProducts] = useState([]);
+  //
+  // useEffect(() => {
+  //   (async () => {
+  //
+  //     const data = await fetchGET('/products');
+  //     console.log('data: ', data);
+  //
+  //     setProducts(data);
+  //
+  //   })();
+  // }, []);
 
   // --------------------------------------------
 
@@ -41,7 +41,7 @@ function Page() {
 
       <main>
 
-        <Products { ...{ products } } />
+        <Products products={products_SSR} />
 
       </main>
 
@@ -54,13 +54,13 @@ function Page() {
 const root = document.querySelector('#react-root--products-page');
 if(root){
 
-  const API_URL = root.dataset.apiUrl;
-  // console.log('api_url: ', API_URL);
-  window.API_URL = API_URL;
+  window.API_URL = root.dataset.apiUrl;
+  
+  const products_SSR  = JSON.parse(root.dataset.products); 
 
   createRoot(root).render(
     <CartContextProvider>
-      <Page />
+      <Page { ...{ products_SSR } } />
     </CartContextProvider>
   );
 }
