@@ -1,31 +1,45 @@
 // resources/js/App.jsx
-import React from 'react';
+import React, { useContext } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import Layout from '../../comps/_layout/layout';
+import AuthContext from '../../context/auth-ctx';
 
+import Layout from '../../comps/_layout/layout';
 import AdminDashboard from './_admin-dashboard';
+import { redirect } from '../../util/routes';
 
 // ==============================================
 
-function Page({ user_SSR }) {
+function Page() {
 
   // --------------------------------------------
 
-  return(
-    <Layout>
-      <AdminDashboard user={user_SSR} />
-    </Layout>
-  );
+  const { logged_in, user } = useContext(AuthContext);
+
+  console.log('logged in: ', logged_in);
+  console.log('user: ', user);
+
+  // --------------------------------------------
+
+  if (logged_in && user.is_admin) {
+    return(
+      <AdminDashboard />
+    );
+  }
+
+  redirect('/');
+
+  // --------------------------------------------
 }
 
 // ==============================================
 
 const root = document.querySelector('#react-root--admin-dashboard-page');
 if(root){
-  const user_SSR  = JSON.parse(root.dataset.user);
   createRoot(root).render(
-    <Page { ...{ user_SSR } } />
+    <Layout>
+      <Page />
+    </Layout>
   );
 }
 

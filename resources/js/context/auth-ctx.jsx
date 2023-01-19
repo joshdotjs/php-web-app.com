@@ -26,7 +26,11 @@ function AuthContextProvider ({ children }) {
   // --------------------------------------------
 
   // -Load data from LS on page load
+  console.log('auch context');
   useEffect(() => {
+
+    console.log('(auth-ctx.js) page load useEffect...');
+
     const logged_in = getLS('logged_in');
     if (logged_in) {
       setLoggedIn(logged_in);

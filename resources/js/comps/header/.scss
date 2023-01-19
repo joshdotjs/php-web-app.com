@@ -9,6 +9,7 @@
     background: lightblue;
   
     li {
+      cursor: pointer;
       display: inline-block;
       &:not(:last-child) {
         margin-right: 1.5rem;
