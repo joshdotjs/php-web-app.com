@@ -37,7 +37,7 @@ function Page({ products_SSR }) {
 
       <Header />
 
-      <Cart />
+      {/* <Cart /> */}
 
       <main>
 
