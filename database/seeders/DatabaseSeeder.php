@@ -29,13 +29,13 @@ class DatabaseSeeder extends Seeder
       DB::table('users')->insert([
         'email' => 'josh@josh.com',
         'password' => Hash::make('josh'),
-        'isAdmin' => 1
+        'is_admin' => 1
       ]);
 
       DB::table('users')->insert([
         'email' => 'steve@steve.com',
         'password' => Hash::make('steve'),
-        'isAdmin' => 0
+        'is_admin' => 0
       ]);
 
       // ========================================

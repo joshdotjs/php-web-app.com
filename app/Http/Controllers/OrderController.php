@@ -11,7 +11,7 @@ class OrderController extends Controller
   // ------------------------------------------
 
   public function createOrder(Request $request) {
-    // return "/api/create-order [POST]";
+    return "/api/create-order [POST]";
 
     $incoming_fields = $request-> validate([
       'total' => 'required', 

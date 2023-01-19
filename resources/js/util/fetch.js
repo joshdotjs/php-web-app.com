@@ -21,6 +21,7 @@ const fetchPOST = async ({url, body={}, method='POST'}) => {
       headers: { 
         // "Content-Type": 'application/json',
         // "X-WP-Nonce": PHP.nonce,
+        
       },
       body: JSON.stringify(body)
   });

@@ -93,4 +93,16 @@ class UserController extends Controller
   }
 
   // ------------------------------------------
+
+  public function showAdminDashboard() {  
+  
+    $user_id = auth()->id();
+    $user = User::where('id', $user_id)->first();
+  
+    return view('admin-dashboard', [
+      'user' => $user,
+    ]);
+
+  }
+  // ------------------------------------------
 }

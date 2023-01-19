@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Product;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
@@ -63,16 +63,16 @@ Route::get('/orders',  [OrderController::class, 'showOrders'])->middleware('auth
 
 // Protected route (admin)
 
-Route::get('/admin-dashboard', function () {  
-  $products = DB::table('products')->get();
-  return view('product-create', []);
-});
+// TODO: Make this route protected...
+// TODO: Make this route protected...
+// TODO: Make this route protected...
+Route::get('/admin-dashboard', [UserController::class, 'showAdminDashboard']);
 
 // Route::post('/create-product', [ProductController::class, 'createProduct']);
 
 // ==============================================
 
-Route::get('/product/{id}',  [Product::class, 'getProductByID']);
+Route::get('/product/{id}',  [ProductController::class, 'getProductByID']);
 
 // ==============================================
 
