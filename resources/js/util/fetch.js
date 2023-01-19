@@ -19,9 +19,8 @@ const fetchPOST = async ({url, body={}, method='POST'}) => {
     url, {
       method,
       headers: { 
-        // "Content-Type": 'application/json',
+        "Content-Type": 'application/json',
         // "X-WP-Nonce": PHP.nonce,
-        
       },
       body: JSON.stringify(body)
   });
@@ -31,4 +30,53 @@ const fetchPOST = async ({url, body={}, method='POST'}) => {
 
 // ==============================================
 
-export { fetchGET, fetchPOST };
+// ==============================================
+
+const fetchPOST2 = async ({url, body={}, method='POST', response_type='json'}) => {
+
+  console.log('url: ', url);
+  console.log('method: ', method);
+  console.log('body: ', body);
+
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  
+  const options = {
+    method,
+    headers: myHeaders,
+    body: JSON.stringify(body),
+    // redirect: 'follow'
+  };
+  
+  try {
+
+    // const url = 'http://127.0.0.1:8000/api/login';
+
+    const resp = await fetch(url, options);
+
+    if (!resp.ok) {
+      throw new Error('Response status not in 200 range');
+    }
+
+    let data;
+    if (response_type === 'text') {
+      data = await resp.text();
+    } 
+    else if (response_type === 'json') {
+      data = await resp.json();
+    }
+    else { 
+      throw new Error('invalid response type');
+    }
+
+    console.log(data);
+    return [data, null];
+  } catch(e) {
+    console.error('error: ', e);
+    return [null, e];
+  }
+};
+
+// ==============================================
+
+export { fetchGET, fetchPOST, fetchPOST2 };

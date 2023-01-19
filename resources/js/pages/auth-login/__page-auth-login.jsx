@@ -1,3 +1,4 @@
+// resources/js/App.jsx
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -5,9 +6,8 @@ import { CartContextProvider } from '../../context/cart-ctx';
 
 import Header from '../../comps/header/_header';
 import Cart from '../../comps/cart/_cart';
-// import Button from '../../comps/button/button';
 
-// import { fetchGET, fetchPOST } from '../../util/fetch';
+import AuthLogin from './_auth-login';
 
 // ==============================================
 
@@ -20,11 +20,12 @@ function Page() {
 
       <Header />
 
+      {/* <Cart { ...{ cart, removeFromCart } } /> */}
       <Cart />
 
-      <main>
+      <main id="page">
 
-        Home Page
+        <AuthLogin />
 
       </main>
 
@@ -34,18 +35,17 @@ function Page() {
 
 // ==============================================
 
-const root = document.querySelector('#react-root--home-page');
+const root = document.querySelector('#react-root--auth-login-page');
 if(root){
-
-  const API_URL = root.dataset.apiUrl;
-  // console.log('api_url: ', API_URL);
-  window.API_URL = API_URL;
+  window.API_URL = root.dataset.apiUrl;
 
   createRoot(root).render(
     <CartContextProvider>
       <Page />
     </CartContextProvider>
-    );
+  );
 }
 
 // ==============================================
+
+

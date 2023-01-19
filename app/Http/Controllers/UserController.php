@@ -59,7 +59,6 @@ class UserController extends Controller
     ]);
     // return $incoming_fields;
 
-
     $is_valid_login = auth()->attempt([
       'email' => $incoming_fields['email'], 
       'password' => $incoming_fields['password']]
