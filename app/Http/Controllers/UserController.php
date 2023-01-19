@@ -68,7 +68,10 @@ class UserController extends Controller
     if ($is_valid_login) {
       $user = User::where('email', $incoming_fields['email'])->first();
       $token = $user->createToken('ourapptoken')->plainTextToken;
-      return $token;
+      return [
+        'token' => $token,
+        'user'  => $user,
+      ];
     } else {
       return false;
     }

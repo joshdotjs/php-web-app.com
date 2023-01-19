@@ -11,6 +11,7 @@ import { redirect } from '../../util/routes';
 // import { fireEvent } from '../../util/custom-event';
 
 import '.scss';
+import { setLS } from '../../util/local-storage';
 
 // ==============================================
 
@@ -33,7 +34,9 @@ export default function AuthLogin () {
     const email = email_ref.current.value;
     const password = password_ref.current.value;
 
-    const [data, error] = await fetchPOST2({ url: 'http://127.0.0.1:8000/api/login', 
+    // const [data, error] = await fetchPOST2({ url: 'http://127.0.0.1:8000/api/login', 
+    const url = `${API_URL_LARAVEL}/api/login`;
+    const [data, error] = await fetchPOST2({ url, 
       response_type: 'text',
       body: {
         email,
@@ -45,6 +48,11 @@ export default function AuthLogin () {
       lr('ERROR');
     }
     if (!error) {
+      // console.log('data: ', data);
+      console.log('JSON.parse(data): ', JSON.parse(data));
+      const { user, token } = JSON.parse(data)
+      setLS('token', token)
+      setLS('user',  user)
       redirect('/');
     }
 
