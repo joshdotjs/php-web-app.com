@@ -24,28 +24,27 @@ class UserController extends Controller
 
   // ------------------------------------------
 
-  public function login(Request $request) {
-    $incoming_fields = $request->validate([
-      'loginusername' => 'required',
-      'loginpassword' => 'required',
-    ]);
-
-
-    // -Hash and compare
-    // if (auth()->attempt(['username' => $incoming_fields['loginusername'], 'password' => $incoming_fields['loginpassword']])) {
-    if (auth()->attempt([
-      'email' => $incoming_fields['loginusername'], 
-      'password' => $incoming_fields['loginpassword']]
-    )) {
-      
-      // Log user in if successful:
-      $request->session()->regenerate();
-      
-      return redirect('/');
-    } else {
-        return 'TODO: Handle unsuccessful login';
-    }
-  }
+  // public function login(Request $request) { { // NOT USED SINCE WE USE TOKEN BASED API ENDPOINTS ONLY 
+  //   $incoming_fields = $request->validate([
+  //     'loginusername' => 'required',
+  //     'loginpassword' => 'required',
+  //   ]);
+  //
+  //   // -Hash and compare
+  //   // if (auth()->attempt(['username' => $incoming_fields['loginusername'], 'password' => $incoming_fields['loginpassword']])) {
+  //   if (auth()->attempt([
+  //     'email' => $incoming_fields['loginusername'], 
+  //     'password' => $incoming_fields['loginpassword']]
+  //   )) {
+  //    
+  //     // Log user in if successful:
+  //     $request->session()->regenerate();
+  //    
+  //     return redirect('/');
+  //   } else {
+  //       return 'TODO: Handle unsuccessful login';
+  //   }
+  // }
 
   // ------------------------------------------
 
@@ -76,6 +75,12 @@ class UserController extends Controller
       return false;
     }
   }
+
+  // ------------------------------------------
+
+  // public function logout() { // NOT USED SINCE WE USE TOKEN BASED API ENDPOINTS ONLY 
+  //   auth()->logout();
+  // }
 
   // ------------------------------------------
 

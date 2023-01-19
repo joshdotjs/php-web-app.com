@@ -48,24 +48,6 @@ Route::post('/create-product', [PostController::class, 'createProduct'])->middle
 //    [DONE]---2. Orders page (any user)
 
 
-// -Put online to check for errors
-
-// -If works then add in the order placement routes
-// -If works then add in the order placement routes
-// -If works then add in the order placement routes
-// -If works then add in the order placement routes
-// -If works then add in the order placement routes
-
-
-// -If not works, then remove stuff till works
-// -If not works, then remove stuff till works
-// -If not works, then remove stuff till works
-// -If not works, then remove stuff till works
-// -If not works, then remove stuff till works
-// -If not works, then remove stuff till works
-
-
-
 
 
 

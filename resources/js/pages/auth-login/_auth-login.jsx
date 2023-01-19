@@ -1,22 +1,25 @@
 import React, { useEffect, useState, useRef, useContext } from 'react';
 
+import AuthContext from '../../context/auth-ctx';
+
 import Button from '../../comps/button/button';
 
 import { lo, lg, lr, lb, ly } from '../../util/log';
 import { fetchGET, fetchPOST, fetchPOST2 } from '../../util/fetch';
 import { redirect } from '../../util/routes';
+// import { setLS } from '../../util/local-storage';
 // import { 
 //   getCartLS, setCartLS, 
 // } from '../../util/local-storage';
 // import { fireEvent } from '../../util/custom-event';
 
 import '.scss';
-import { setLS } from '../../util/local-storage';
 
 // ==============================================
 
 export default function AuthLogin () {
 
+  const { logIn } = useContext(AuthContext);
 
   // --------------------------------------------
 
@@ -49,11 +52,12 @@ export default function AuthLogin () {
     }
     if (!error) {
       // console.log('data: ', data);
-      console.log('JSON.parse(data): ', JSON.parse(data));
+      // console.log('JSON.parse(data): ', JSON.parse(data));
       const { user, token } = JSON.parse(data);
-      setLS('token', token);
-      setLS('user',  user);
-      redirect('/');
+      console.log('user: ', user);
+      logIn({ user, token });
+
+      // redirect('/');
     }
 
   };

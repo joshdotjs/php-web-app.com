@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { AuthContextProvider } from "../../context/auth-ctx";
 import { CartContextProvider } from "../../context/cart-ctx";
 

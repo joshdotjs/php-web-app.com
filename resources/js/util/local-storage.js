@@ -8,6 +8,10 @@ const setLS = (key, value /*: string, object */) => localStorage.setItem(key, JS
 
 // ==============================================
 
+const removeLS = (key /*: string */) => localStorage.removeItem(key);
+
+// ==============================================
+
 const getCartLS = () => getLS('cart');
 const setCartLS = (cart) => setLS('cart', cart);
 
@@ -19,15 +23,15 @@ const setCartLS = (cart) => setLS('cart', cart);
 
 // ==============================================
 
-const getFiltersLS = () => getLS('filters');
-const setFiltersLS = ({ department, tag, category }) => {
-  setLS('filters', { department, tag, category });
-};
+// const getFiltersLS = () => getLS('filters');
+// const setFiltersLS = ({ department, tag, category }) => {
+//   setLS('filters', { department, tag, category });
+// };
 
 // ==============================================
 
 export { 
-  getLS, setLS,
+  getLS, setLS, removeLS,
   getCartLS, setCartLS, 
-  getFiltersLS, setFiltersLS
+  // getFiltersLS, setFiltersLS
  };
