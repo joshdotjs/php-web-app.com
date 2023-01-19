@@ -19,11 +19,6 @@ function Page({ product_SSR, variants_SSR }) {
 
   // --------------------------------------------
 
-  const [product, setProduct] = useState(product_SSR[0]);
-  const [variants, setVariants] = useState(variants_SSR);
-  
-  // --------------------------------------------
-
   return(
     <>
 
@@ -35,7 +30,8 @@ function Page({ product_SSR, variants_SSR }) {
       <main>
 
         {/* <Product { ...{ product, variants, addToCart } } /> */}
-        <Product { ...{ product, variants } } />
+        {/* <Product { ...{ product, variants } } /> */}
+        <Product product={product_SSR[0]} variants={variants_SSR} />
 
       </main>
 

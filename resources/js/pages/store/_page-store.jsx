@@ -9,7 +9,7 @@ import Cart from '../../comps/cart/_cart';
 // import Button from '../../comps/button/button';
 import Products from './products';
 
-import { fetchGET, fetchPOST } from '../../util/fetch';
+// import { fetchGET, fetchPOST } from '../../util/fetch';
 
 // ==============================================
 

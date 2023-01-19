@@ -20,8 +20,6 @@ export default function Cart() {
 
   const { cart, removeFromCart } = useContext(CartContext);
 
-  console.log('cart: ', cart);
-
   // --------------------------------------------
 
   const handler = () => {
@@ -91,8 +89,6 @@ export default function Cart() {
         variant: { size, color, id: variant_id },
         qty 
       }) => {
-
-        console.log('title: ', title);
 
         return (
           <div key={`variant-${variant_id}`} className="border mb-4 p-4">
