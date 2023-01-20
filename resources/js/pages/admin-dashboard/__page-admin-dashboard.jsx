@@ -17,6 +17,7 @@ function Page() {
   const { logged_in, user } = useContext(AuthContext);
 
   console.log('logged in: ', logged_in);
+  console.log('user.is_admin: ', user.is_admin);
   console.log('user: ', user);
 
   // --------------------------------------------
@@ -25,10 +26,12 @@ function Page() {
     return(
       <AdminDashboard />
     );
+  } else {
+    return (
+      <div>Logged in Admins only!</div>
+    )
   }
-
-  redirect('/');
-
+ 
   // --------------------------------------------
 }
 

@@ -56,8 +56,6 @@ export default function AuthLogin () {
       const { user, token } = JSON.parse(data);
       console.log('user: ', user);
       logIn({ user, token });
-
-      // redirect('/');
     }
 
   };

@@ -63,10 +63,6 @@ Route::get('/orders',  [OrderController::class, 'showOrders'])->middleware('auth
 // ==============================================
 
 // Protected route (admin)
-
-// TODO: Make this route protected...
-// TODO: Make this route protected...
-// TODO: Make this route protected...
 Route::get('/admin-dashboard', [UserController::class, 'showAdminDashboard']);
 
 // Route::post('/create-product', [ProductController::class, 'createProduct']);

@@ -37,15 +37,11 @@ Route::delete('/product/{id}', [ProductController::class, 'deleteProduct'])->mid
 
 
 // -TODO:
-//  --Set up endpoint for /api/create-product [POST]                                      Create-PRODUCT  (REST)
 //  --Add check to show / not show form page to create product                            ADMIN-DASHBOARD (VIEW)
 //      ---(what is middleware?) #28
 //      ---Redirect if not valid user.
 //  --Create form page to create product in view product-create                           ADMIN-DASHBOARD (VIEW)
-//  --Add sanctum check for "can:delete,post" to endpoint to to delete product            Create-PRODUCT  (REST)
-//    ---"Updating and deleteing posts (policy) - #30
-//  --Finish endpoint to delete product                                                   Create-PRODUCT  (REST)
-//    ---API Endpoints (part 2) #64
+
 
 //  --Add protected routes:
 //    ---1. Admin dashboard

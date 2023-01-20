@@ -1,7 +1,8 @@
 import React, { useState, createContext, useEffect } from 'react';
 
 import { getLS, setLS, removeLS } from '../util/local-storage';
-import { fetchGET } from '../util/fetch';
+// import { fetchGET } from '../util/fetch';
+import { redirect } from '../util/routes';
 
 // ==============================================
 
@@ -55,6 +56,11 @@ function AuthContextProvider ({ children }) {
 
     setLoggedIn(true);
     setLS('logged_in', true);
+
+    if (user.is_admin)
+      redirect('/admin-dashboard');
+    else
+      redirect('/orders');
   };
 
   // --------------------------------------------
@@ -69,35 +75,7 @@ function AuthContextProvider ({ children }) {
     setLoggedIn(false);
     removeLS('logged_in');
 
-    // DO I NEED TO LOG OUT ON THE SERVER?
-    // DO I NEED TO LOG OUT ON THE SERVER?
-    // DO I NEED TO LOG OUT ON THE SERVER?
-    // DO I NEED TO LOG OUT ON THE SERVER?
-    // DO I NEED TO LOG OUT ON THE SERVER?
-    // DO I NEED TO LOG OUT ON THE SERVER?
-
-    // -Specifically, how do I use auth middleware to ensure the user is an admin?
-    // -Specifically, how do I use auth middleware to ensure the user is an admin?
-    // -Specifically, how do I use auth middleware to ensure the user is an admin?
-    // -Specifically, how do I use auth middleware to ensure the user is an admin?
-    // -Specifically, how do I use auth middleware to ensure the user is an admin?
-    // -Specifically, how do I use auth middleware to ensure the user is an admin?
-
-    // -There must be user data encoded in the token.
-    // -There must be user data encoded in the token.
-    // -There must be user data encoded in the token.
-    // -There must be user data encoded in the token.
-
-    // -If so, then no need for logging out.
-
-    // -Yes, Token is created as $user->createToken(...)
-    //  => Encodes user info.
-    //  => Auth middleware work via this encoded data!
-
-
-    // -TODO:
-    //  --Add POLICY to Admin to 
-
+    redirect('/');
   };
   
   // --------------------------------------------

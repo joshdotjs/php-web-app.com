@@ -58,6 +58,8 @@ class UserController extends Controller
     ]);
     // return $incoming_fields;
 
+
+    // attempt(): If the two hashed passwords match an authenticated session will be started for the user.
     $is_valid_login = auth()->attempt([
       'email' => $incoming_fields['email'], 
       'password' => $incoming_fields['password']]
@@ -78,10 +80,10 @@ class UserController extends Controller
 
   // ------------------------------------------
 
-  // public function logoutApi() { // NOT USED SINCE WE USE TOKEN BASED API ENDPOINTS ONLY 
-  //   auth()->logout();
-  //   return "logged out";
-  // }
+  public function logoutApi() { // NOT USED SINCE WE USE TOKEN BASED API ENDPOINTS ONLY 
+    auth()->logout();
+    return "logged out";
+  }
 
   // ------------------------------------------
 
@@ -106,11 +108,11 @@ class UserController extends Controller
   
     $user_id = auth()->id();
     $user = User::where('id', $user_id)->first();
-  
-    return view('admin-dashboard', [
-      'user' => $user,
-    ]);
 
+    return view('admin-dashboard', [
+      'user'     => $user,
+      'API_URL'  => env('API_URL'),
+    ]);
   }
   // ------------------------------------------
 }

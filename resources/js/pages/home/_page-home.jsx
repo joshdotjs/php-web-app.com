@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client';
 
 import Layout from '../../comps/_layout/layout';
 
+import './.scss';
+
 // ==============================================
 
 function Page() {
@@ -11,7 +13,7 @@ function Page() {
 
   return(
     <Layout>
-        Home Page
+      <h2>Home Page</h2>
     </Layout>
   );
 

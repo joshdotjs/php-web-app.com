@@ -38,7 +38,7 @@ export default function Header() {
                 </li>
 
                 <li>
-                  <a href="/auth-register">{user.email}</a>
+                  <a href="/admin-dashboard">{user.email}</a>
                 </li>
               </>
             )
