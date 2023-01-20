@@ -78,8 +78,9 @@ class UserController extends Controller
 
   // ------------------------------------------
 
-  // public function logout() { // NOT USED SINCE WE USE TOKEN BASED API ENDPOINTS ONLY 
+  // public function logoutApi() { // NOT USED SINCE WE USE TOKEN BASED API ENDPOINTS ONLY 
   //   auth()->logout();
+  //   return "logged out";
   // }
 
   // ------------------------------------------

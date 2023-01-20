@@ -41,9 +41,11 @@ class ProductPolicy
      */
     public function create(User $user)
     {
-        if ($user->is_admin === 1) {
-          return true;
-        }
+        // if ($user->is_admin === 1) {
+        //   return true;
+        // }
+
+        return true;
     }
 
     /**
@@ -67,7 +69,7 @@ class ProductPolicy
      */
     public function delete(User $user, Product $product)
     {
-        //
+        return true;
     }
 
     /**

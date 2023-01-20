@@ -13,7 +13,26 @@ class ProductController extends Controller
   // ------------------------------------------
 
   public function createProduct(Request $request) {
-    // return "/api/create-order [POST]";
+
+    // Pass the request throught the sanctum middleware gives us access to ->user() decoded from token
+    $user = $request->user();
+    $id = $user->id;
+    $email = $user->email;
+    $is_admin = $user->is_admin;
+
+    if (!$is_admin) {
+      return "you are not an admin";
+    }
+
+    if ($is_admin) {
+      return "*** you ARE an ADMIN!!!";
+    }
+
+
+
+
+    
+    return "/api/create-order [POST]";
 
     // return '/api/create-product';
 
@@ -46,4 +65,16 @@ class ProductController extends Controller
 
   // ------------------------------------------
 
+  public function deleteProduct($id) {
+    
+    
+    // -This must not apply to me since I am making a request without cookies
+    $x = auth()->user();
+
+    
+    return "/api/product/{id} [DELETE]";
+    return $x;
+  }
+
+  // ------------------------------------------
 }

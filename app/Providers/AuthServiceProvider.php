@@ -13,6 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
+      Product::class => ProductPolicy::class, // for the Product model the ProductPolicy is the policy that should be applied.
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
 
