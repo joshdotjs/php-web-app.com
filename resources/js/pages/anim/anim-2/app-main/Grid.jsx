@@ -41,6 +41,8 @@ export default function Grid({
         style={{
           background: 'gray',
           height: `${height}px`,
+          // gridAutoFlow: 'dense',
+          gridAutoRows: 'min-content',
         }}
       >
         {layout.items.map((item, idx) => (
@@ -52,7 +54,8 @@ export default function Grid({
                 grid
               `}
               style={{
-                aspectRatio: 3 / 4,
+                // aspectRatio: 3 / 4,
+                height: '300px',
                 border: 'dashed yellow 2px',
               }}
             >
