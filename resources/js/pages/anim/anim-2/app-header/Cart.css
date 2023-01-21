@@ -1,0 +1,4 @@
+.box.exiting,
+.box.exited {
+  display: none;
+}
