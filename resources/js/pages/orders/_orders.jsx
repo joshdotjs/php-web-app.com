@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 
-import Context from '../../context/context';
-import CartContext from '../../context/cart-ctx';
+import Context from '@/context/context';
+import CartContext from '@/context/cart-ctx';
 
-import Button from '../../comps/button/button';
+import Button from '@/comps/button/button';
 
 import '.scss';
 

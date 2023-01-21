@@ -2,13 +2,13 @@
 import React, {  useState, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import { CartContextProvider } from '../../context/cart-ctx';
+import { CartContextProvider } from '@/context/cart-ctx';
 
-import Header from '../../comps/header/_header';
-import Cart from '../../comps/cart/_cart';
-import Button from '../../comps/button/button';
+import Header from '@/comps/header/_header';
+import Cart from '@/comps/cart/_cart';
+import Button from '@/comps/button/button';
 
-import { fetchGET, fetchPOST } from '../../util/fetch';
+import { fetchGET, fetchPOST } from '@/util/fetch';
 
 // ==============================================
 

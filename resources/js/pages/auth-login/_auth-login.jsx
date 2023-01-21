@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useContext } from 'react';
 
-import AuthContext from '../../context/auth-ctx';
+import AuthContext from '@/context/auth-ctx';
 
-import Button from '../../comps/button/button';
+import Button from '@/comps/button/button';
 
-import { lr } from '../../util/log';
-import { fetchPOST2 } from '../../util/fetch';
+import { lr } from '@/util/log';
+import { fetchPOST2 } from '@/util/fetch';
 
 import '.scss';
 

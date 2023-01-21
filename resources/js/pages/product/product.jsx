@@ -1,19 +1,19 @@
 import React, { useEffect, useState, useContext } from 'react';
 // import { createRoot } from 'react-dom/client';
 
-import Context from '../../context/context';
-import CartContext from '../../context/cart-ctx';
+import Context from '@/context/context';
+import CartContext from '@/context/cart-ctx';
 
-// import Header from '../../comps/header/_header';
-// import Cart from '../../comps/cart/_cart';
-import Button from '../../comps/button/button';
+// import Header from '@/comps/header/_header';
+// import Cart from '@/comps/cart/_cart';
+import Button from '@/comps/button/button';
 
-// import { lo, lg, lr, lb, ly } from '../../util/log';
-// import { fetchGET, fetchPOST } from '../../util/fetch';
+// import { lo, lg, lr, lb, ly } from '@/util/log';
+// import { fetchGET, fetchPOST } from '@/util/fetch';
 // import { 
 //   getCartLS, setCartLS, 
-// } from '../../util/local-storage';
-// import { fireEvent } from '../../util/custom-event';
+// } from '@/util/local-storage';
+// import { fireEvent } from '@/util/custom-event';
 
 import '.scss';
 

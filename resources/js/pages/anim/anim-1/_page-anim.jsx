@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-// import Layout from '../../comps/_layout/layout';
+// import Layout from '@/comps/_layout/layout';
 
 import MainApp from './app-main/App';
 import HeaderApp from './app-header/App';

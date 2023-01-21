@@ -11,12 +11,12 @@ import Grid from './Grid';
 import Aside from './Aside';
 import Filter from './Filter';
 
-import { init } from '../../../../util/util';
-import { fireEvent } from '../../../../util/custom-event';
-import { disableClick, enableClick } from '../../../../util/dom';
-import { getLS, setLS, getCartLS, updateCartLS } from '../../../../util/local-storage';
-import { lc, lg, lo, lp, lb, lr, ly } from '../../../../util/log';
-import { rand } from '../../../../util/rand';
+import { init } from '@/util/util';
+import { fireEvent } from '@/util/custom-event';
+import { disableClick, enableClick } from '@/util/dom';
+import { getLS, setLS, getCartLS, updateCartLS } from '@/util/local-storage';
+import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
+import { rand } from '@/util/rand';
 
 gsap.registerPlugin(
   Flip, 

@@ -11,12 +11,12 @@ import Grid from './Grid';
 import Aside from './Aside';
 import Filter from './Filter';
 
-import { init } from '../../../util/util';
-import { fireEvent } from '../../../util/custom-event';
-import { disableClick, enableClick } from '../../../util/dom';
-import { getLS, setLS, getCartLS, updateCartLS } from '../../../util/local-storage';
-import { lc, lg, lo, lp, lb, lr, ly } from '../../../util/log';
-import { rand } from '../../../util/rand';
+import { init } from '@/util/util';
+import { fireEvent } from '@/util/custom-event';
+import { disableClick, enableClick } from '@/util/dom';
+import { getLS, setLS, getCartLS, updateCartLS } from '@/util/local-storage';
+import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
+import { rand } from '@/util/rand';
 
 gsap.registerPlugin(
   Flip, 
@@ -159,18 +159,14 @@ export default function App() {
 
   // -Generalize to use state:
 
+  const num_rows = 40;
+  const createRow = () => ({ id: uuid(), title: 'josh', status: "entered", color: randColor(), location: 'grid' });
+
   // STEP 1: Set up layout in state with grid items initialized
   const [layout, setLayout] = useState(() => ({
-    items: [
-      { id: uuid(), title: 'josh', status: "entered", color: randColor(), location: 'grid' },
-      { id: uuid(), title: 'josh', status: "entered", color: randColor(), location: 'grid' },
-      { id: uuid(), title: 'josh', status: "entered", color: randColor(), location: 'grid' },
-      { id: uuid(), title: 'josh', status: "entered", color: randColor(), location: 'grid' },
-      { id: uuid(), title: 'josh', status: "entered", color: randColor(), location: 'grid' },
-      { id: uuid(), title: 'josh', status: "entered", color: randColor(), location: 'grid' },
-      { id: uuid(), title: 'josh', status: "entered", color: randColor(), location: 'grid' },
-      { id: uuid(), title: 'josh', status: "entered", color: randColor(), location: 'grid' },
-    ].reverse(),
+    items: 
+    init(num_rows, null).map(() => createRow()) // create an array of lenth num_rows filled with null, then map over that array replacing each element with a row defined by createRow().
+    .reverse(),
     state: undefined
     }
   ));

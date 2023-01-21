@@ -2,7 +2,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-import Layout from '../../comps/_layout/layout';
+import Layout from '@/comps/_layout/layout';
 
 import Orders from './_orders';
 

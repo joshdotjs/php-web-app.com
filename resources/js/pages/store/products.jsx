@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import Button from '../../comps/button/button';
+import Button from '@/comps/button/button';
 
 // ==============================================
 
