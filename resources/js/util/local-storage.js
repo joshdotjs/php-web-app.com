@@ -14,6 +14,7 @@ const removeLS = (key /*: string */) => localStorage.removeItem(key);
 
 const getCartLS = () => getLS('cart');
 const setCartLS = (cart) => setLS('cart', cart);
+const updateCartLS = (cart) => setLS('cart', cart);
 
 // ==============================================
 
@@ -33,5 +34,6 @@ const setCartLS = (cart) => setLS('cart', cart);
 export { 
   getLS, setLS, removeLS,
   getCartLS, setCartLS, 
+  updateCartLS
   // getFiltersLS, setFiltersLS
  };

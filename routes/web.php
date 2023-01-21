@@ -27,6 +27,14 @@ Route::get('/', function () {
 
 // ==============================================
 
+Route::get('/anim', function () {
+  return view('anim', [
+    'API_URL' => env('API_URL'), // Cart: Checkout
+  ]);
+}); // middlewaure('auth') will redirect here if user not logged in
+
+// ==============================================
+
 Route::get('/auth-register', function () {
   return view('auth-register', [
     'API_URL' => env('API_URL'), // Cart: Checkout

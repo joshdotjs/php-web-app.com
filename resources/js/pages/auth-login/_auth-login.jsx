@@ -1,17 +1,11 @@
-import React, { useEffect, useState, useRef, useContext } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 
 import AuthContext from '../../context/auth-ctx';
 
 import Button from '../../comps/button/button';
 
-import { lo, lg, lr, lb, ly } from '../../util/log';
-import { fetchGET, fetchPOST, fetchPOST2 } from '../../util/fetch';
-import { redirect } from '../../util/routes';
-// import { setLS } from '../../util/local-storage';
-// import { 
-//   getCartLS, setCartLS, 
-// } from '../../util/local-storage';
-// import { fireEvent } from '../../util/custom-event';
+import { lr } from '../../util/log';
+import { fetchPOST2 } from '../../util/fetch';
 
 import '.scss';
 

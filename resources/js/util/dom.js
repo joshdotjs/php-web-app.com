@@ -65,4 +65,5 @@ export {
   listen, listenAll,
   qs, qsAll,
   createElement, resetElement,  
+  disableClick, enableClick,
  };

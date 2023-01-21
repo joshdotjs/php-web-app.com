@@ -8,14 +8,6 @@ const fetchGET = async (url) => {
 
 // ==============================================
 
-const fetchGET2 = async (url) => {
-  const resp = await fetch(url);
-  const data = await resp.json();
-  return data;
-};
-
-// ==============================================
-
 const fetchPOST = async ({url, body={}, method='POST'}) => {
   
   console.log('url: ', url);

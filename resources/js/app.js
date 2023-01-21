@@ -6,6 +6,7 @@ import './pages/orders/__page-orders.jsx';
 import './pages/admin-dashboard/__page-admin-dashboard.jsx';
 // import './pages/auth-register/_page-register.jsx';
 import './pages/auth-login/__page-auth-login.jsx';
+import './pages/anim/_page-anim.jsx';
 
 
 // ==============================================
