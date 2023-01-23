@@ -1,8 +1,7 @@
 import React, { useState, createContext, useEffect } from 'react';
 
-import { getLS, setLS, removeLS } from '../util/local-storage';
-// import { fetchGET } from '../util/fetch';
-import { redirect } from '../util/routes';
+import { getLS, setLS, removeLS } from '@/util/local-storage';
+import { redirect } from '@/util/routes';
 
 // ==============================================
 
@@ -18,7 +17,11 @@ const AuthContext = createContext({
 
 // ==============================================
 
-function AuthContextProvider ({ children }) {
+function AuthContextProvider ({ children, restrict }) {
+
+  // --------------------------------------------
+
+  // const router = useRouter();
 
   // --------------------------------------------
 
@@ -29,24 +32,36 @@ function AuthContextProvider ({ children }) {
   // --------------------------------------------
 
   // -Load data from LS on page load
-  console.log('auch context');
   useEffect(() => {
-
-    console.log('(auth-ctx.js) page load useEffect...');
-
     const logged_in = getLS('logged_in');
     if (logged_in) {
       setLoggedIn(logged_in);
       setToken(getLS('token'));
       setUser(getLS('user'));
     }
+
+    if (restrict) {
+      const user = getLS('user');
+
+      if (restrict === 'admin' && user?.is_admin !== true) { 
+        // router.replace('/auth/login');
+        redirect('/auth/login');
+      }
+      if (restrict === 'user' && !user) { 
+        // router.replace('/auth/login'); 
+        redirect('/auth/login');
+      }
+    }
+
   }, []);
 
   // --------------------------------------------
 
   const logIn = ({token, user}) => {
 
-    console.log('logging user in');
+    console.log('logging user in (auth-ctx)');
+    console.log('user: ', user);
+    console.log('token: ', token);
 
     setToken(token);
     setLS('token', token);
@@ -58,9 +73,9 @@ function AuthContextProvider ({ children }) {
     setLS('logged_in', true);
 
     if (user.is_admin)
-      redirect('/admin-dashboard');
+      router.push('/admin');
     else
-      redirect('/orders');
+      router.push('/user');
   };
 
   // --------------------------------------------
@@ -75,7 +90,7 @@ function AuthContextProvider ({ children }) {
     setLoggedIn(false);
     removeLS('logged_in');
 
-    redirect('/');
+    router.replace('/');
   };
   
   // --------------------------------------------

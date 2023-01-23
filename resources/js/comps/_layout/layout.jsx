@@ -1,24 +1,24 @@
 import React from "react";
-import { AuthContextProvider } from "../../context/auth-ctx";
-import { CartContextProvider } from "../../context/cart-ctx";
+import { AuthContextProvider } from "@/context/auth-ctx";
+import { CartContextProvider } from "@/context/cart-ctx";
 
-import Header from "../header/_header";
-import Cart from "../cart/_cart";
+import Header from "@/comps/header/_header";
+import Cart from "@/comps/cart/_cart";
 
 // ==============================================
 
-export default function Layout({ children }) {
+export default function Layout({ children, name, restrict }) {
 
   return (
 
-    <AuthContextProvider>
+    <AuthContextProvider { ...{ restrict } }>
       <CartContextProvider>
 
       <Header />
 
       <Cart />
 
-      <main id="page">
+      <main id="page" className={name}>
         {children}
       </main> 
       

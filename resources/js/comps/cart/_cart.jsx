@@ -55,9 +55,6 @@ export default function Cart() {
     const insertOrderInDB = async () => {
 
       const data = await fetchPOST( {url: '', body: { cart }});
-
-      
-      
     };
 
     insertOrderInDB();
@@ -90,8 +87,10 @@ export default function Cart() {
         qty 
       }) => {
 
+        const key = `variant-${variant_id}`;
+
         return (
-          <div key={`variant-${variant_id}`} className="border mb-4 p-4">
+          <div key={key} className="border mb-4 p-4">
 
             <h2>{title}</h2>
             <p>{body}</p>

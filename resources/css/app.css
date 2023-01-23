@@ -4,13 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-}
-
 body {
   background: black;
-  color: white;
-  font-family: 'Nunito', sans-serif;
-  margin: 0;
+}
+* { color: white; }
+input { color: black; }
+
+#page {
+  padding: 75px 5%;
 }
