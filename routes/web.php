@@ -55,13 +55,13 @@ Route::get('/anim', function () {
 
 // ==============================================
 
-Route::get('/auth-register', function () {
+Route::get('/auth/register', function () {
   return view('auth-register', [
     'API_URL' => env('API_URL'), // Cart: Checkout
   ]);
 });
 
-Route::get('/auth-login', function () {
+Route::get('/auth/login', function () {
   return view('auth-login', [
     'API_URL'         => env('API_URL_NODE'), // Cart: Checkout
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'), 

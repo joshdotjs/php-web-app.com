@@ -44,16 +44,15 @@ function AuthContextProvider ({ children, restrict }) {
 
     if (restrict) {
       const user = getLS('user');
-      console.log('user.is_admin: ', user.is_admin);
+      console.log('user?.is_admin: ', user?.is_admin);
 
       if (restrict === 'admin' && user?.is_admin !== true) { 
-        console.log('user?.is_admin !== true', user?.is_admin !== true);
         // router.replace('/auth/login');
-        // redirect('/auth/login');
+        redirect('/auth/login');
       }
       if (restrict === 'user' && !user) { 
         // router.replace('/auth/login'); 
-        // redirect('/auth/login');
+        redirect('/auth/login');
       }
     }
 
@@ -71,12 +70,12 @@ function AuthContextProvider ({ children, restrict }) {
     setLS('token', token);
 
     setUser(user);
-    setLS('user', {...user, is_admin: !!user.is_admin}); // mysql 1 => true
+    setLS('user', {...user, is_admin: !!user?.is_admin}); // mysql 1 => true
 
     setLoggedIn(true);
     setLS('logged_in', true);
 
-    if (user.is_admin) {
+    if (user?.is_admin) {
       // router.push('/admin');
       redirect('/admin');
     }
