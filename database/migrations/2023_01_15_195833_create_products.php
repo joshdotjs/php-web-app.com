@@ -19,6 +19,7 @@ return new class extends Migration
 
             $table->string('title');
             $table->longText('body');
+            $table->string('category');
             $table->integer('price');
         });
     }

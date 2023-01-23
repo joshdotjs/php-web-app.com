@@ -43,6 +43,7 @@ class DatabaseSeeder extends Seeder
       DB::table('products')->insert([
         'title' => 'Product A',
         'body' => 'Description of product A...',
+        'category'   => 'shirts',
         'price' => 100,
         'created_at' => date("Y-m-d H:i:s")
       ]);
@@ -50,6 +51,7 @@ class DatabaseSeeder extends Seeder
       DB::table('products')->insert([
         'title' => 'Product B',
         'body' => 'Description of product B...',
+        'category'   => 'shoes',
         'price' => 200,
         'created_at' => date("Y-m-d H:i:s")
       ]);
@@ -62,33 +64,33 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 1,
-        'size'  => 'lg',
-        'color' => 'red',
-        'qty'   => 1,
+        'size'       => 'lg',
+        'color'      => 'red',
+        'qty'        => 1,
         'created_at' => date("Y-m-d H:i:s")
       ]);
 
       DB::table('variants')->insert([
         'product_id' => 1,
-        'size'  => 'sm',
-        'color' => 'red',
-        'qty'   => 1,
+        'size'       => 'sm',
+        'color'      => 'red',
+        'qty'        => 1,
         'created_at' => date("Y-m-d H:i:s")
       ]);
 
       DB::table('variants')->insert([
         'product_id' => 1,
-        'size'  => 'lg',
-        'color' => 'blue',
-        'qty'   => 1,
+        'size'       => 'lg',
+        'color'      => 'blue',
+        'qty'        => 1,
         'created_at' => date("Y-m-d H:i:s")
       ]);
 
       DB::table('variants')->insert([
         'product_id' => 1,
-        'size'  => 'lg',
-        'color' => 'blue',
-        'qty'   => 1,
+        'size'       => 'lg',
+        'color'      => 'blue',
+        'qty'        => 1,
         'created_at' => date("Y-m-d H:i:s")
       ]);
 
@@ -98,33 +100,33 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 2,
-        'size'  => 'lg',
-        'color' => 'red',
-        'qty'   => 1,
+        'size'       => 'lg',
+        'color'      => 'red',
+        'qty'        => 1,
         'created_at' => date("Y-m-d H:i:s")
       ]);
 
       DB::table('variants')->insert([
         'product_id' => 2,
-        'size'  => 'sm',
-        'color' => 'red',
-        'qty'   => 1,
+        'size'       => 'sm',
+        'color'      => 'red',
+        'qty'        => 1,
         'created_at' => date("Y-m-d H:i:s")
       ]);
 
       DB::table('variants')->insert([
         'product_id' => 2,
-        'size'  => 'lg',
-        'color' => 'blue',
-        'qty'   => 1,
+        'size'       => 'lg',
+        'color'      => 'blue',
+        'qty'        => 1,
         'created_at' => date("Y-m-d H:i:s")
       ]);
 
       DB::table('variants')->insert([
         'product_id' => 2,
-        'size'  => 'lg',
-        'color' => 'blue',
-        'qty'   => 1,
+        'size'       => 'lg',
+        'color'      => 'blue',
+        'qty'        => 1,
         'created_at' => date("Y-m-d H:i:s")
       ]);
 
@@ -133,8 +135,40 @@ class DatabaseSeeder extends Seeder
       // ========================================
 
       DB::table('orders')->insert([
-        'user_id' => 1,
-        'total' => 300,
+        'user_id'    => 1,
+        'total'      => 200, // 2 * product A = 2 * 100 = 200
+        'status'     => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('orders')->insert([
+        'user_id'    => 2,
+        'total'      => 300, // product A + product B = 100 + 200 = 300
+        'status'     => 2,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+
+      // ========================================
+
+      DB::table('order_2_variants')->insert([
+        'order_id'    => 1, 
+        'variant_id'  => 1,
+        'qty'         => 2,
+        'created_at'  => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('order_2_variants')->insert([
+        'order_id'    => 2, 
+        'variant_id'  => 1,
+        'qty'         => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('order_2_variants')->insert([
+        'order_id'    => 2, 
+        'variant_id'  => 2,
+        'qty'         => 1,
         'created_at' => date("Y-m-d H:i:s")
       ]);
 
