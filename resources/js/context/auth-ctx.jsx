@@ -71,7 +71,7 @@ function AuthContextProvider ({ children, restrict }) {
     setLS('token', token);
 
     setUser(user);
-    setLS('user', {...user, is_admin: !!is_admin}); // mysql 1 => true
+    setLS('user', {...user, is_admin: !!user.is_admin}); // mysql 1 => true
 
     setLoggedIn(true);
     setLS('logged_in', true);
