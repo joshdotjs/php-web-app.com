@@ -1,9 +1,57 @@
+import { getLS } from "./local-storage";
+
 // ==============================================
 
 const fetchGET = async (url) => {
   const resp = await fetch(url);
   const data = await resp.json();
   return data;
+};
+
+// ==============================================
+
+const fetchGET2 = async ({ url,  token='', }) => {
+  
+  // console.log('fetchGET2');
+  // console.log('url: ', url);
+  // console.log('token: ', token);
+
+  try {
+
+    const res = await fetch(url, {
+      headers: { 
+        "Content-Type": 'application/json',
+        // Authorization: token // NEXT
+        Authorization: `Bearer ${token}`, // LARAVEL
+      },
+    });
+
+    // -Get status off of response
+    // -My API sends status code 401 for auth failure
+    // -If status 401, then we want to notify the user via <Notification />.
+    const status = res.status;
+    
+    // -Get message from data:
+    const data = await res.json();
+    
+    // -My API's success status is 201 for auth protected endpoints.
+    if (!res.ok) { // Not in 200 range
+      return [null, data.message];
+    }
+    
+    // status in 200 range (My API set's status to 201, but shows up as 200)
+    return [data, null];
+
+  } catch (e) {
+    // NOTE: Not positive this catch is working with async code above.
+    //  -fetchGET3 below definetely works with catching as expectd.
+    //  -For now I will only handle the error case where the token auth failed.
+    //  -So assume this is not hit for now and if auth token failed
+    //   then the if statement in the try{} block already handled 
+    //   the error with a return statement.
+    console.error(e);
+    return [null, e];
+  }
 };
 
 // ==============================================
@@ -29,31 +77,35 @@ const fetchPOST = async ({url, body={}, method='POST'}) => {
 
 // ==============================================
 
-// ==============================================
+const fetchPOST2 = async ({url, body={}, method='POST', response_type='json', token}) => {
 
-const fetchPOST2 = async ({url, body={}, method='POST', response_type='json'}) => {
-
-  // console.log('url: ', url);
-  // console.log('method: ', method);
-  // console.log('body: ', body);
+  console.log('url: ', url);
+  console.log('method: ', method);
+  console.log('body: ', body);
 
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
-  
+  // myHeaders.append("Authorization", token); // NEXT
+  myHeaders.append("Authorization", `Bearer ${token}`); // LARAVEL
+
   const options = {
     method,
     headers: myHeaders,
     body: JSON.stringify(body),
     // redirect: 'follow'
   };
+
+  console.log('options: ', options);
   
   try {
 
-    // const url = 'http://127.0.0.1:8000/api/login';
-
     const resp = await fetch(url, options);
 
+    console.log('resp: ', resp);
+    debugger;
+
     if (!resp.ok) {
+      console.warn('response not okay');
       throw new Error('Response status not in 200 range');
     }
 
@@ -63,8 +115,10 @@ const fetchPOST2 = async ({url, body={}, method='POST', response_type='json'}) =
     } 
     else if (response_type === 'json') {
       data = await resp.json();
+      console.log('data: ', data);
     }
     else { 
+      console.log('invalid response type: ');
       throw new Error('invalid response type');
     }
 
@@ -78,4 +132,21 @@ const fetchPOST2 = async ({url, body={}, method='POST', response_type='json'}) =
 
 // ==============================================
 
-export { fetchGET, fetchPOST, fetchPOST2 };
+const authFetch = async ({ url, body={}, method='GET'}) => {
+  
+  console.log('authFetch');
+
+  const token = getLS('token'); // null if not found
+  console.log('token: ', token);
+
+  if (method === 'GET') {
+    return await fetchGET2({ url, token });
+  } else {
+    return await fetchPOST2({ url, token, body, method });
+  }
+
+};
+
+// ==============================================
+
+export { fetchGET, fetchPOST, fetchPOST2, authFetch };

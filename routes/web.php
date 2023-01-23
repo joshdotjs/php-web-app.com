@@ -45,6 +45,13 @@ Route::get('/admin', function () {
   ]);
 });
 
+Route::get('/admin/products', function () {
+  return view('admin-products', [
+    'API_URL'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+  ]);
+});
+
 // ==============================================
 
 Route::get('/anim', function () {
@@ -63,8 +70,8 @@ Route::get('/auth/register', function () {
 
 Route::get('/auth/login', function () {
   return view('auth-login', [
-    'API_URL'         => env('API_URL_NODE'), // Cart: Checkout
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'), 
+    'API_URL'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
 
@@ -72,6 +79,14 @@ Route::get('/auth/login', function () {
 
 Route::get('/store', function () {  
   $products = DB::table('products')->get();
+
+  // DB::table('products')->insert([
+  //   'title'    => 'A', 
+  //   'body'     => 'B', 
+  //   'price'    => 100, 
+  //   'category' => 'shirts', 
+  // ]);
+
   return view('store', [
     'products' => $products, 
     'API_URL' => env('API_URL'), // Cart: Checkout

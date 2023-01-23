@@ -30,28 +30,64 @@ Route::post('/create-order',      [OrderController::class, 'createOrder'])->midd
 
 
 // Route::post('/create-product', [ProductController::class, 'createProduct'])->middleware('auth:sanctum', 'can:create'); // create(): ProductPolicy.php
-Route::post('/create-product', [ProductController::class, 'createProduct'])->middleware('auth:sanctum'); // Middleware: only logged in 
+// Route::post('/create-product', [ProductController::class, 'createProduct'])->middleware('auth:sanctum'); // Middleware: only logged in 
+// Route::post('/products', [ProductController::class, 'createProduct_PORT'])->middleware('auth:sanctum'); // Middleware: only logged in 
+Route::post('/products', [ProductController::class, 'createProduct'])->middleware('auth:sanctum'); // Middleware: only logged in 
 // Route::post('/create-product', [ProductController::class, 'createProduct']);
 
 Route::delete('/product/{id}', [ProductController::class, 'deleteProduct'])->middleware('auth:sanctum')->middleware('can:delete,product');
 
-
-// -TODO:
-//  --Add check to show / not show form page to create product                            ADMIN-DASHBOARD (VIEW)
-//      ---(what is middleware?) #28
-//      ---Redirect if not valid user.
-//  --Create form page to create product in view product-create                           ADMIN-DASHBOARD (VIEW)
-
-
-//  --Add protected routes:
-//    ---1. Admin dashboard
-//    [DONE]---2. Orders page (any user)
-
-
-
-
-
-
-
-
 // Scantrum => token based API (instead of cookie based)
+
+// ==============================================
+
+Route::get('/josh', function() {
+  DB::table('products')->insert([
+    'title'    => 'Addd', 
+    'body'     => 'B', 
+    'price'    => 100, 
+    'category' => 'shirts', 
+  ]);     
+  return 'JOSH';
+});
+
+// ==============================================
+
+Route::post('/josh', function(Request $req) {
+
+  $user = $req->user();
+  $id = $user->id;
+  $email = $user->email;
+  $is_admin = $user->is_admin;
+
+  if (!$is_admin) {
+    return response([ 'message' => 'unauthorized' ], 401);
+  }
+
+  $product_id = DB::table('products')->insertGetId([
+    'title'    => $req['title'], 
+    'body'     => $req['body'], 
+    'price'    => $req['price'], 
+    'category' => $req['category'], 
+    'created_at' => date("Y-m-d H:i:s")
+  ]);
+
+  $variants = $req['variants'];
+
+  foreach ($variants as &$variant) {
+    $variant_id = DB::table('variants')->insertGetId([
+      'product_id' => $product_id,
+      'color'      => $variant['color'], 
+      'size'       => $variant['size'], 
+      'qty'        => $variant['qty'], 
+      'created_at' => date("Y-m-d H:i:s")
+    ]); 
+  }
+  
+  return response([ 
+    'message'    => 'success', 
+    'user'       => $user,
+    'product_id' => $product_id, 
+    'variants'   => $req['variants']
+   ], 201);
+})->middleware('auth:sanctum');

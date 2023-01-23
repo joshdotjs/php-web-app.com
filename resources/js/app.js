@@ -7,6 +7,7 @@ import '@/pages/about/_page-contact.jsx';
 
 // Admin:
 import '@/pages/admin/_page-admin.jsx';
+import '@/pages/admin/_page-admin-products.jsx';
 
 
 // Store:

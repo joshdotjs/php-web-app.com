@@ -46,11 +46,11 @@ export default function Header() {
             (
               <>
                 <li>
-                  <a href="/auth-register">Register</a>
+                  <a href="/auth/register">Register</a>
                 </li>
 
                 <li>
-                  <a href="/auth-login">Log in</a>
+                  <a href="/auth/login">Log in</a>
                 </li>
               </>
             )
