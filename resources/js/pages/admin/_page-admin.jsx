@@ -31,7 +31,6 @@ if(root){
   window.API_URL = root.dataset.apiUrl;
   createRoot(root).render(
     <Layout name="admin" restrict="admin">
-    {/* <Layout name="admin"> */}
       <Page />
     </Layout>
   );

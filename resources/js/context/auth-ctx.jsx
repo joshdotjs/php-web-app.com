@@ -76,10 +76,14 @@ function AuthContextProvider ({ children, restrict }) {
     setLoggedIn(true);
     setLS('logged_in', true);
 
-    if (user.is_admin)
-      router.push('/admin');
-    else
-      router.push('/user');
+    if (user.is_admin) {
+      // router.push('/admin');
+      redirect('/admin');
+    }
+    else {
+      // router.push('/user');
+      redirect('/user');
+    }
   };
 
   // --------------------------------------------
@@ -94,7 +98,8 @@ function AuthContextProvider ({ children, restrict }) {
     setLoggedIn(false);
     removeLS('logged_in');
 
-    router.replace('/');
+    // router.replace('/');
+    redirect('/');
   };
   
   // --------------------------------------------
