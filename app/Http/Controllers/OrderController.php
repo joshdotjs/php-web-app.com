@@ -31,6 +31,43 @@ class OrderController extends Controller
     return response($orders, 201);
   }
 
+  public function getOrderByID($id) {
+
+    $order = DB::table('users')
+      ->join('orders', 'users.id', 'orders.user_id')
+      ->select(
+        'orders.id', 
+        'orders.status', 
+        'orders.total',
+        'users.email',
+        'orders.created_at'
+      )
+      ->where('orders.id', '=', $id)
+      ->get();
+
+    $products = DB::table('order_2_variants')
+      ->join('variants', 'variants.id', 'order_2_variants.variant_id')
+      ->join('products', 'products.id', 'variants.product_id')
+      ->select(
+        'products.id as product_id',
+        'variants.id as variant_id',
+        'products.title',
+        'products.body',
+        'products.price',
+        'order_2_variants.qty',
+        'variants.size',
+        'variants.color',
+      )
+      ->where('order_2_variants.order_id', '=', $id)
+      ->get();
+
+    return response([ 
+      'order'    => $order[0], 
+      'products' => $products,
+    ],
+    201);
+  }
+
   // ------------------------------------------
 
   public function createOrder(Request $request) {

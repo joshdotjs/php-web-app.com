@@ -59,6 +59,14 @@ Route::get('/admin/orders', function () {
   ]);
 });
 
+Route::get('/admin/orders/{id}', function ($id) {
+  return view('admin-order-details', [
+    'API_URL'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+    'id'              => $id,
+  ]);
+});
+
 // ==============================================
 
 Route::get('/anim', function () {

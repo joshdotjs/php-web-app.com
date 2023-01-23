@@ -76,10 +76,7 @@ function Page() {
                 <th>{status}</th>
                 <th>{total}</th>
                 <th>
-                  <Link href={{
-                    pathname: '/admin/orders/[id]',
-                    query: { id }
-                  }}>
+                  <Link href={`/admin/orders/${id}`}>
                     <Button>Details</Button>
                   </Link>
                 </th>

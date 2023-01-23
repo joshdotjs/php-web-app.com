@@ -30,6 +30,7 @@ Route::post('/login',             [UserController::class, 'loginApi']);
 
 // Orders:
 Route::get('/orders',             [OrderController::class, 'getOrders']);//->middleware('auth:sanctum');
+Route::get('/orders/{id}',        [OrderController::class, 'getOrderByID']);//->middleware('auth:sanctum');
 Route::post('/create-order',      [OrderController::class, 'createOrder'])->middleware('auth:sanctum'); // Middleware: only allow logged in user
 // Route::delete('/delete-order/{id}', [OrderController::class, 'createOrder'])->middleware('auth:sanctum', 'can:delete,post');
 

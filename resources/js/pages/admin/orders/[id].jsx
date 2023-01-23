@@ -1,23 +1,24 @@
-import { useState, useEffect } from "react";
-import { useRouter } from 'next/router';
-import Link from "next/link";
+import React, { useState, useEffect } from "react";
+import { createRoot } from 'react-dom/client';
+// import { useRouter } from 'next/router';
+// import Link from "next/link";
+import Link from "@/comps/link/link";
 
-import Layout from "comps/_layout/layout";
-import Button from "comps/button/button";
+import Layout from "@/comps/_layout/layout";
+import Button from "@/comps/button/button";
 
-import { fetchGET2, authFetch } from "util/fetch";
-import { lg, lr } from "util/log";
+import { authFetch } from "@/util/fetch";
+import { lg, lr } from "@/util/log";
 
 // ==============================================
 
-function Page() {
+function Page({ id }) {
 
   // --------------------------------------------
 
-  const router = useRouter();
-  const { isReady: is_ready, query } = router;
-
-  console.log('router: ', router);
+  // const router = useRouter();
+  // const { isReady: is_ready, query } = router;
+  // console.log('router: ', router);
 
   // --------------------------------------------
 
@@ -27,14 +28,14 @@ function Page() {
   
   const getOrder = async () => {
 
-    // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/orders/${query.id}`;
-    const url = `/api/orders/${query.id}`;
+    // const url = `/api/orders/${query.id}`;
+    const url = `/api/orders/${id}`;
     const [data, error] = await authFetch({ url });
-    // const [data, error] = await fetchGET2({ url });
     console.log('data: ', data);
 
     if (error) {
       // alert('TODO: Unauthorized Notification...');
+      lr('TODO: Unauthorized Notification...');
     }
     if (!error) {
       lg('SUCCESS');
@@ -49,10 +50,13 @@ function Page() {
   
   // --------------------------------------------
 
+  // useEffect(() => {
+  //   if (is_ready)
+  //     getOrder();
+  // }, [is_ready]);
   useEffect(() => {
-    if (is_ready)
       getOrder();
-  }, [is_ready]);
+  }, []);
 
   // --------------------------------------------
 
@@ -140,13 +144,14 @@ function Page() {
 
 // ==============================================
 
-export default function Root() {
-
-  // --------------------------------------------
-
-  return(
-    <Layout name="admin--orders" restrict="admin">
-      <Page />
+const root = document.querySelector('#react-root--admin-order-details-page');
+if(root){
+  window.API_URL = root.dataset.apiUrl;
+  window.API_URL_LARAVEL = root.dataset.apiUrlLaravel;
+  const id = root.dataset.id;
+  createRoot(root).render(
+    <Layout name="admin--order-details" restrict="admin">
+      <Page id={id} />
     </Layout>
   );
 }

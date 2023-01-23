@@ -8,7 +8,6 @@ import Page from './_product';
 // ==============================================
 
 const root = document.querySelector('#react-root--store-product-page');
-console.log('root: ', root);
 if(root){
   window.API_URL = root.dataset.apiUrl;
   const product_SSR  = JSON.parse(root.dataset.product);

@@ -9,6 +9,7 @@ import '@/pages/about/__contact.jsx';
 import '@/pages/admin/__admin.jsx';
 import '@/pages/admin/__products.jsx';
 import '@/pages/admin/orders/__orders.jsx';
+import '@/pages/admin/orders/[id].jsx';
 
 // Store:
 import '@/pages/store/__store.jsx';
