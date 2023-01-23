@@ -18,23 +18,15 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+  return $request->user();
 });
 
 Route::post('/login',             [UserController::class, 'loginApi']);
-// Route::get('/logout',             [UserController::class, 'logoutApi'])->middleware('auth:sanctum');
-// Route::get('/logout',             [UserController::class, 'logoutApi']);
 Route::post('/create-order',      [OrderController::class, 'createOrder'])->middleware('auth:sanctum'); // Middleware: only allow logged in user
 // Route::delete('/delete-order/{id}', [OrderController::class, 'createOrder'])->middleware('auth:sanctum', 'can:delete,post');
 
 
-
-// Route::post('/create-product', [ProductController::class, 'createProduct'])->middleware('auth:sanctum', 'can:create'); // create(): ProductPolicy.php
-// Route::post('/create-product', [ProductController::class, 'createProduct'])->middleware('auth:sanctum'); // Middleware: only logged in 
-// Route::post('/products', [ProductController::class, 'createProduct_PORT'])->middleware('auth:sanctum'); // Middleware: only logged in 
-Route::post('/products', [ProductController::class, 'createProduct'])->middleware('auth:sanctum'); // Middleware: only logged in 
-// Route::post('/create-product', [ProductController::class, 'createProduct']);
-
+Route::post('/products', [ProductController::class, 'createProduct'])->middleware('auth:sanctum'); // Middleware: auth:sanctum allows us to extract the user info to authenticate admin in the callback function.
 Route::delete('/product/{id}', [ProductController::class, 'deleteProduct'])->middleware('auth:sanctum')->middleware('can:delete,product');
 
 // Scantrum => token based API (instead of cookie based)

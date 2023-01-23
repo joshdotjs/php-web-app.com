@@ -112,7 +112,7 @@ Route::get('/admin-dashboard', [UserController::class, 'showAdminDashboard']);
 
 // ==============================================
 
-Route::get('/product/{id}',  [ProductController::class, 'getProductByID']);
+Route::get('/store/product/{id}',  [ProductController::class, 'getProductByID']);
 
 // ==============================================
 

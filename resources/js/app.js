@@ -11,8 +11,8 @@ import '@/pages/admin/_page-admin-products.jsx';
 
 
 // Store:
-import '@/pages/store/_page-store.jsx';
-import '@/pages/product/_page-product.jsx';
+import '@/pages/store/__store.jsx';
+import '@/pages/store/product/__product.jsx';
 
 // User:
 import '@/pages/orders/__page-orders.jsx';

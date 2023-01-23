@@ -3,7 +3,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 
 import Layout from '@/comps/_layout/layout';
-import Product from './product';
+import Product from './_product';
 
 // ==============================================
 
@@ -20,7 +20,8 @@ function Page({ product_SSR, variants_SSR }) {
 
 // ==============================================
 
-const root = document.querySelector('#react-root--product-page');
+const root = document.querySelector('#react-root--store-product-page');
+console.log('root: ', root);
 if(root){
   window.API_URL = root.dataset.apiUrl;
   const product_SSR  = JSON.parse(root.dataset.product);
