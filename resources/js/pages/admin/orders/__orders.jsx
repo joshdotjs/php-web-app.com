@@ -51,6 +51,7 @@ function Page() {
   return (
     <>
 
+
       <table className="border-separate border-spacing-2 border border-slate-500 ">
         <thead>
           <tr>

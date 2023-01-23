@@ -14,9 +14,21 @@ class OrderController extends Controller
   // ------------------------------------------
 
   public function getOrders() {  
-
     $orders = DB::table('orders')->get();
-    return $orders;
+    $users = DB::table('users')->get();
+
+    $orders = DB::table('users')
+      ->join('orders', 'users.id', 'orders.user_id')
+      ->select(
+        'orders.id', 
+        'orders.status', 
+        'orders.total',
+        'users.email',
+        'orders.created_at'
+      )
+      ->get();
+
+    return response($orders, 201);
   }
 
   // ------------------------------------------
