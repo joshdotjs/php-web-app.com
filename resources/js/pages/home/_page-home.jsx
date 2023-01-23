@@ -3,15 +3,10 @@ import { createRoot } from 'react-dom/client';
 
 import Layout from '@/comps/_layout/layout';
 
-import './.scss';
-
 // ==============================================
 
-const Link = ({ href, children }) => {
-  return (
-    <a href={href}>{children}</a>
-  );
-};
+import Link from '@/comps/link/link';
+import './.scss';
 
 // ==============================================
 

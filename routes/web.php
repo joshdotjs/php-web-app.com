@@ -25,6 +25,26 @@ Route::get('/', function () {
   ]);
 })->name('login'); // middlewaure('auth') will redirect here if user not logged in
 
+Route::get('/about', function () {
+  return view('home-about', [
+    'API_URL' => env('API_URL'), // Cart: Checkout
+  ]);
+});
+
+Route::get('/about/contact', function () {
+  return view('home-contact', [
+    'API_URL' => env('API_URL'), // Cart: Checkout
+  ]);
+});
+
+// ==============================================
+
+Route::get('/admin', function () {
+  return view('admin', [
+    'API_URL' => env('API_URL'), // Cart: Checkout
+  ]);
+});
+
 // ==============================================
 
 Route::get('/anim', function () {

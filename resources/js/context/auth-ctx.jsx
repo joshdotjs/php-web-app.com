@@ -40,16 +40,20 @@ function AuthContextProvider ({ children, restrict }) {
       setUser(getLS('user'));
     }
 
+    console.log('auth-ctx -- useEffect(, []) -- restrict: ', restrict);
+
     if (restrict) {
       const user = getLS('user');
+      console.log('user.is_admin: ', user.is_admin);
 
       if (restrict === 'admin' && user?.is_admin !== true) { 
+        console.log('user?.is_admin !== true', user?.is_admin !== true);
         // router.replace('/auth/login');
-        redirect('/auth/login');
+        // redirect('/auth/login');
       }
       if (restrict === 'user' && !user) { 
         // router.replace('/auth/login'); 
-        redirect('/auth/login');
+        // redirect('/auth/login');
       }
     }
 
@@ -67,7 +71,7 @@ function AuthContextProvider ({ children, restrict }) {
     setLS('token', token);
 
     setUser(user);
-    setLS('user', user);
+    setLS('user', {...user, is_admin: !!is_admin}); // mysql 1 => true
 
     setLoggedIn(true);
     setLS('logged_in', true);
