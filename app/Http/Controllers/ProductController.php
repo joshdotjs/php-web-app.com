@@ -13,6 +13,13 @@ class ProductController extends Controller
 {
   // ------------------------------------------
 
+  public function getProducts() {  
+    $products = DB::table('products')->get();
+    return $products;
+  }
+
+  // ------------------------------------------
+
   public function createProduct(Request $req) {
 
     $user = $req->user();
@@ -71,14 +78,7 @@ class ProductController extends Controller
   // ------------------------------------------
 
   public function deleteProduct($id) {
-    
-    
-    // -This must not apply to me since I am making a request without cookies
-    $x = auth()->user();
-
-    
     return "/api/product/{id} [DELETE]";
-    return $x;
   }
 
   // ------------------------------------------

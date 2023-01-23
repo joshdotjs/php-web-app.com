@@ -21,11 +21,23 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
   return $request->user();
 });
 
+// ==============================================
+
+// Auth:
 Route::post('/login',             [UserController::class, 'loginApi']);
+
+// ==============================================
+
+// Orders:
+Route::get('/orders',             [OrderController::class, 'getOrders'])->middleware('auth:sanctum');
 Route::post('/create-order',      [OrderController::class, 'createOrder'])->middleware('auth:sanctum'); // Middleware: only allow logged in user
 // Route::delete('/delete-order/{id}', [OrderController::class, 'createOrder'])->middleware('auth:sanctum', 'can:delete,post');
 
 
+// ==============================================
+
+// Products:
+Route::get('/products', [ProductController::class, 'getProducts']);
 Route::post('/products', [ProductController::class, 'createProduct'])->middleware('auth:sanctum'); // Middleware: auth:sanctum allows us to extract the user info to authenticate admin in the callback function.
 Route::delete('/product/{id}', [ProductController::class, 'deleteProduct'])->middleware('auth:sanctum')->middleware('can:delete,product');
 
@@ -33,6 +45,7 @@ Route::delete('/product/{id}', [ProductController::class, 'deleteProduct'])->mid
 
 // ==============================================
 
+// Dev:
 Route::get('/josh', function() {
   DB::table('products')->insert([
     'title'    => 'Addd', 
@@ -42,44 +55,8 @@ Route::get('/josh', function() {
   ]);     
   return 'JOSH';
 });
+Route::post('/josh', function(Request $req) {
+  return 'PHP - createProduct()';
+})->middleware('auth:sanctum');
 
 // ==============================================
-
-Route::post('/josh', function(Request $req) {
-
-  $user = $req->user();
-  $id = $user->id;
-  $email = $user->email;
-  $is_admin = $user->is_admin;
-
-  if (!$is_admin) {
-    return response([ 'message' => 'unauthorized' ], 401);
-  }
-
-  $product_id = DB::table('products')->insertGetId([
-    'title'    => $req['title'], 
-    'body'     => $req['body'], 
-    'price'    => $req['price'], 
-    'category' => $req['category'], 
-    'created_at' => date("Y-m-d H:i:s")
-  ]);
-
-  $variants = $req['variants'];
-
-  foreach ($variants as &$variant) {
-    $variant_id = DB::table('variants')->insertGetId([
-      'product_id' => $product_id,
-      'color'      => $variant['color'], 
-      'size'       => $variant['size'], 
-      'qty'        => $variant['qty'], 
-      'created_at' => date("Y-m-d H:i:s")
-    ]); 
-  }
-  
-  return response([ 
-    'message'    => 'success', 
-    'user'       => $user,
-    'product_id' => $product_id, 
-    'variants'   => $req['variants']
-   ], 201);
-})->middleware('auth:sanctum');

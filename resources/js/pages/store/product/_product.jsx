@@ -19,7 +19,7 @@ import '.scss';
 
 // ==============================================
 
-export default function Product ({ product, variants }) {
+export default function Page ({ product, variants }) {
 
 
   const ctx = useContext(Context);

@@ -1,21 +1,15 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
-
-import Layout from '@/comps/_layout/layout';
-
-// ==============================================
 
 import Link from '@/comps/link/link';
-import './.scss';
 
 // ==============================================
 
-function Page() {
+export default function Page() {
 
   // --------------------------------------------
 
   return(
-    <Layout name="home">
+    
       <ul>
         <li className="all"> 
           <Link href="/">home</Link>
@@ -80,18 +74,10 @@ function Page() {
           </li>
         </ul>
       </ul>
-    </Layout>
+    
   );
 
   // --------------------------------------------
-}
-
-// ==============================================
-
-const root = document.querySelector('#react-root--home-page');
-if(root){
-  window.API_URL = root.dataset.apiUrl;
-  createRoot(root).render(<Page />);
 }
 
 // ==============================================

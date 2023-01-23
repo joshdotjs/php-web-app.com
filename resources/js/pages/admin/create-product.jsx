@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect  } from "react";
 
 import CheckBoxes from "@/comps/inputs/check-boxes/check-boxes";
 import RadioButtons from '@/comps/inputs/radio-buttons/radio-buttons';
@@ -68,7 +68,8 @@ export default function CreateProduct() {
     });
 
     // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products`;
-    const url = `${API_URL_LARAVEL}/api/products`;
+    // const url = `${API_URL_LARAVEL}/api/products`;
+    const url = '/api/products';
     const [data, error] = await authFetch({
       url: url, 
       method: 'POST', 
@@ -81,8 +82,11 @@ export default function CreateProduct() {
       },
     });
 
+    console.log('data: ', data);
+
     if (error) {
-      alert('TODO: Unauthorization Notification...');
+      // alert('TODO: Unauthorization Notification...');
+      lr('FAIL');
     }
     if (!error) {
       lg('SUCCESS');

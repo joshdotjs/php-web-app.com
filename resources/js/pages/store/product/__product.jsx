@@ -3,20 +3,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 
 import Layout from '@/comps/_layout/layout';
-import Product from './_product';
-
-// ==============================================
-
-function Page({ product_SSR, variants_SSR }) {
-
-  // --------------------------------------------
-
-  return(
-    <Layout>
-      <Product product={product_SSR[0]} variants={variants_SSR} />
-    </Layout>    
-  );
-}
+import Page from './_product';
 
 // ==============================================
 
@@ -27,7 +14,9 @@ if(root){
   const product_SSR  = JSON.parse(root.dataset.product);
   const variants_SSR = JSON.parse(root.dataset.variants);
   createRoot(root).render(
-    <Page { ...{ product_SSR, variants_SSR } } />
+    <Layout>
+      <Page product={product_SSR[0]} variants={variants_SSR} />
+    </Layout>   
   );
 }
 

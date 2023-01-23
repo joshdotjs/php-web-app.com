@@ -2,14 +2,15 @@
   
   {{-- =============================================== --}}
 
+
   {{-- react --}}
   <div 
-    id="react-root--orders-page" 
-    data-orders="{{$orders}}"
-    data-user="{{$user}}"
+    id="react-root--admin-orders-page"
     data-api-url="{{$API_URL}}"
+    data-api-url-laravel="{{$API_URL_LARAVEL}}"
   ></div>
   {{-- react --}}
+  
 
   {{-- =============================================== --}}
 

@@ -101,9 +101,6 @@ const fetchPOST2 = async ({url, body={}, method='POST', response_type='json', to
 
     const resp = await fetch(url, options);
 
-    console.log('resp: ', resp);
-    debugger;
-
     if (!resp.ok) {
       console.warn('response not okay');
       throw new Error('Response status not in 200 range');
@@ -136,17 +133,22 @@ const authFetch = async ({ url, body={}, method='GET'}) => {
   
   console.log('authFetch');
 
+  // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/orders`;
+  // const url = `${API_URL_LARAVEL}/api/products`;
+  // const url = `${process.env.NEXT_PUBLIC_API_URL}${url}`;
+  const url_full = `${API_URL_LARAVEL}${url}`;
+
   const token = getLS('token'); // null if not found
   console.log('token: ', token);
 
   if (method === 'GET') {
-    return await fetchGET2({ url, token });
+    return await fetchGET2({ url: url_full, token });
   } else {
-    return await fetchPOST2({ url, token, body, method });
+    return await fetchPOST2({ url: url_full, token, body, method });
   }
 
 };
 
 // ==============================================
 
-export { fetchGET, fetchPOST, fetchPOST2, authFetch };
+export { fetchGET, fetchGET2, fetchPOST, fetchPOST2, authFetch };

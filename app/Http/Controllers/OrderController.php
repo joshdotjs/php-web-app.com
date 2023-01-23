@@ -6,8 +6,19 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB; // !!! ⚠️ !!!
+
 class OrderController extends Controller
 {
+
+  // ------------------------------------------
+
+  public function getOrders() {  
+
+    $orders = DB::table('orders')->get();
+    return $orders;
+  }
+
   // ------------------------------------------
 
   public function createOrder(Request $request) {

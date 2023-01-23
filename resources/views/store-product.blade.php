@@ -2,10 +2,6 @@
   
   {{-- =============================================== --}}
 
-  <div class="bg-red-500">
-    STORE
-  </div>
-
   {{-- react --}}
   <div 
     id="react-root--store-product-page" 

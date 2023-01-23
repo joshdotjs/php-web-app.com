@@ -52,13 +52,20 @@ Route::get('/admin/products', function () {
   ]);
 });
 
+Route::get('/admin/orders', function () {
+  return view('admin-orders', [
+    'API_URL'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+  ]);
+});
+
 // ==============================================
 
 Route::get('/anim', function () {
   return view('anim', [
     'API_URL' => env('API_URL'), // Cart: Checkout
   ]);
-}); // middlewaure('auth') will redirect here if user not logged in
+});
 
 // ==============================================
 
@@ -95,29 +102,10 @@ Route::get('/store', function () {
 
 // ==============================================
 
-Route::get('/products', function () {  
-  $products = DB::table('products')->get();
-  return $products;
-});
-
-// Protected route (any logged in user)
-Route::get('/orders',  [OrderController::class, 'showOrders'])->middleware('auth'); // same as /profile/{user:email}
-
-// ==============================================
-
-// Protected route (admin)
-Route::get('/admin-dashboard', [UserController::class, 'showAdminDashboard']);
-
-// Route::post('/create-product', [ProductController::class, 'createProduct']);
-
-// ==============================================
-
+// Product:
 Route::get('/store/product/{id}',  [ProductController::class, 'getProductByID']);
 
 // ==============================================
 
-// User Controller:
+// User:
 Route::post('/register',                [UserController::class, 'register']);
-Route::post('/login',                   [UserController::class, 'login']);
-// TODDO: Route::post('/logout',        [UserController::class, 'logout']);
-Route::get('/profile/{user:email}',     [UserController::class, 'profile'])->middleware('auth'); // same as /orders

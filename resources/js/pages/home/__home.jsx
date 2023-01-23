@@ -2,17 +2,17 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 
 import Layout from '@/comps/_layout/layout';
-import Page from './_store.jsx';
+import Page from './_home';
+import './.scss';
 
 // ==============================================
 
-const root = document.querySelector('#react-root--products-page');
+const root = document.querySelector('#react-root--home-page');
 if(root){
-  window.API_URL = root.dataset.apiUrl; 
-  const products_SSR  = JSON.parse(root.dataset.products); 
+  window.API_URL = root.dataset.apiUrl;
   createRoot(root).render(
-    <Layout>
-      <Page products={products_SSR} />
+    <Layout name="home">
+      <Page />
     </Layout>
   );
 }

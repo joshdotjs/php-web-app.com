@@ -11,7 +11,7 @@ import '.scss';
 
 // ==============================================
 
-export default function AuthLogin () {
+export default function Page() {
 
   const { logIn } = useContext(AuthContext);
 

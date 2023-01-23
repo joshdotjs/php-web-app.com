@@ -1,24 +1,23 @@
 import '@/bootstrap';
 
 // Home / About:
-import '@/pages/home/_page-home.jsx';
-import '@/pages/about/_page-about.jsx';
-import '@/pages/about/_page-contact.jsx';
+import '@/pages/home/__home.jsx';
+import '@/pages/about/__about.jsx';
+import '@/pages/about/__contact.jsx';
 
 // Admin:
-import '@/pages/admin/_page-admin.jsx';
-import '@/pages/admin/_page-admin-products.jsx';
-
+import '@/pages/admin/__admin.jsx';
+import '@/pages/admin/__products.jsx';
+import '@/pages/admin/orders/__orders.jsx';
 
 // Store:
 import '@/pages/store/__store.jsx';
 import '@/pages/store/product/__product.jsx';
 
-// User:
-import '@/pages/orders/__page-orders.jsx';
-// import '@/pages/admin-dashboard/__page-admin-dashboard.jsx';
-// import '@/pages/auth-register/_page-register.jsx';
-import '@/pages/auth-login/__page-auth-login.jsx';
+// Auth:
+import '@/pages/auth/login/__login.jsx';
+
+// Dev:
 import '@/pages/anim/anim-3/_page-anim.jsx';
 
 // ==============================================
