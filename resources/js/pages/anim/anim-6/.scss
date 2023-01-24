@@ -1,0 +1,149 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: monospace, monospace;
+  background: black;
+}
+
+
+/* =========================================== */
+
+#btn-container { position: fixed; z-index: 100;
+  top: 10%;
+  left: 10%;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+
+}
+#btn-container .btn {
+  width: 40px;
+  padding: 0.2rem;
+
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+.radio {
+  color: white;
+  border: solid white 1px;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+/* =========================================== */
+
+.red   { background: hotpink; }
+.blue  { background: deepskyblue; }
+.green { background: lightgreen; }
+
+
+/* =========================================== */
+
+// <App>
+div#app-main { 
+
+  // --------------------------------------------
+  
+  // <Grid>
+  ul#grid-items { // Grid.jsx
+
+    li.box { position: relative; 
+
+      border: dashed orange 2px;
+      height: 300px;
+
+      // MOVE: .appendChild()
+      div.box-child {}
+
+
+    }
+  } // </ Grid>   #grid-items 
+
+
+  // --------------------------------------------
+
+  // <CartIcon>
+  header#navbar { position: fixed;
+    top: 40px;
+    left: 0;
+    width: 100vw;
+    background: red;
+
+    nav#top {
+      width: 100%;
+      height: 50px;
+      background: lightseagreen;
+    }
+
+    nav#bottom { position: relative;
+
+      display: flex;
+      justify-content: space-between;
+  
+      // height: 100px;
+      $px: 1rem;
+      $py: 0.5rem;
+      width: 100%;
+      padding: $py $px;
+      background: darkolivegreen;
+
+
+      div#cart-btn {
+  
+        // - - - - - - - - - - - - - - - - - - - - - 
+  
+        // <Top>
+        div#top-visible { position: absolute;
+          top: 0rem;
+          right: 0rem;
+          z-index: 1;
+  
+        } // </ Top>
+  
+        // - - - - - - - - - - - - - - - - - - - - - 
+  
+        // <Bottom>
+        div#bottom-hidden {
+          outline: yellow 10px solid;
+  
+        } // </ Bottom>
+  
+        // - - - - - - - - - - - - - - - - - - - - - 
+  
+      } 
+
+    }
+
+
+  } // </ CartIcon>
+
+  // --------------------------------------------
+
+} // </ App>   #app-main
+
+/* =========================================== */
+
+// MOVE: .appendChild()
+div.box-child { // .appendChild()
+  // outline: darkorchid 10px dotted;
+
+  button.dummy {
+    height: 100px;
+    width: 100px;
+    // background: red;
+    outline: solid white 10px;
+
+    font-size: 100px;
+    line-height: 1;
+  }
+}
+
+/* =========================================== */
