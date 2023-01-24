@@ -30,12 +30,6 @@ CustomWiggle.create("cartButtonWiggle", { wiggles: 8, type: "easeOut" });
 
 // ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
 
-// ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
-
-const setInCartClass = (item, inCart)   => item.parentNode.classList.toggle('in-cart', inCart);
-
-// ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
-
 const colors = ['red', 'blue', 'green'];
 // const randColor = () => colors[rand(0, colors.length-1)];
 
@@ -47,23 +41,11 @@ export default function App({ products, }) {
 
   const refs = useRef([]);
 
-  const cartBtnWrapper_ref = useRef(null); //cartBtnWrapper = cart.querySelector(".btn-cart-wrapper");
-  const cartBtn_ref = useRef(null); // cartBtn = cart.querySelector(".btn-cart");
+  const cart_btn_ref = useRef(null); // cartBtn = cart.querySelector(".btn-cart");
   const cart_icon_target_ref = useRef(null); // cartItems = cart.querySelector(".items");
-  const cartCount_ref = useRef(null); // cartCount = cart.querySelector(".count");
+  const cart_count_ref = useRef(null); // cartCount = cart.querySelector(".count");
   
-  // ============================================
-  
-  const updateCartIcon = () => {
-    const cartItems = cart_icon_target_ref.current;
-    const cartCount = cartCount_ref.current;
-    
-    const hasItems = cartItems.children.length > 0;
-    
-    cartCount.innerText = hasItems ? cartItems.children.length : null;
-
-    cartItems.hidden = !hasItems;
-  };
+  const [num_cart_items, setNumCartItems] = useState(0);
   
   // ============================================
 
@@ -84,8 +66,8 @@ export default function App({ products, }) {
     
     const cartBtnAnimation = () => {
   
-      const cartBtn = cartBtn_ref.current;
-      const cartCount = cartCount_ref.current;
+      const cartBtn = cart_btn_ref.current;
+      const cartCount = cart_count_ref.current;
   
       gsap.timeline()
         .fromTo(cartBtn, { yPercent: 0, rotation: 0 },
@@ -125,8 +107,7 @@ export default function App({ products, }) {
       const state = Flip.getState(item);
       // debugger;
     
-      setInCartClass(item, true);
-      cartBtnWrapper_ref.current.appendChild(item);
+      cart_icon_target_ref.current.appendChild(item);
     
       // disable double click and set position for in-cart
       item.style.pointerEvents = 'none';
@@ -136,10 +117,10 @@ export default function App({ products, }) {
         duration: 2, // 0.5
         ease: "back.in(0.8)",
         onComplete: () => {
-          cart_icon_target_ref.current.appendChild(item);
-    
-          updateCartIcon(item);
+          
+          
           cartBtnAnimation();
+          setNumCartItems(prev => prev + 1);
   
           remove(idx);
         }
@@ -367,10 +348,10 @@ export default function App({ products, }) {
       />
 
       <Header { ...{
-          cartBtnWrapper_ref,
-          cartBtn_ref,
-          cartCount_ref,
-          cart_icon_target_ref
+          cart_btn_ref,
+          cart_count_ref,
+          cart_icon_target_ref,
+          num_cart_items
         } }
       />
 

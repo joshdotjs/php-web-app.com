@@ -95,30 +95,56 @@ div#app-main {
       padding: $py $px;
       background: darkolivegreen;
 
+      h2#logo { }
 
-      div#cart-btn {
+      #cart-btn {  position: relative;
+        // position: absolute;
+        // top: 50%;
+        // transform: translateY(-50%);
+        // right: $px;   
+        // outline: dashed white 10px;
+        
+        // -Combine this with the scale factor of the hidden-target.
+        height: 50px;
+        width: 50px;
+      
+        color: black;
+        background: white;
+        padding: 0.75rem;
+      
+        border-radius: 0.25rem;
+        box-shadow: 0 1rem 2rem hsla(0 0% 0% / 0.2);
+        
+        #hidden-target { position: absolute;
+          top: 0;
+          left: 0;
+          // background: rgba(255, 255, 0, 0.5);
+          height: 200%;
+          width: 200%;
+          transform: scale(0.5); // this transforms the height / width => the animated card will end up this height
+          transform-origin: top left;
+        }
   
-        // - - - - - - - - - - - - - - - - - - - - - 
+        #cart-count { position: absolute;
+          top: -5px;
+          right: -5px;
+          background: black;
+          color: white;
+          border-radius: 50%;
+          height: 20px;
+          width: 20px;
   
-        // <Top>
-        div#top-visible { position: absolute;
-          top: 0rem;
-          right: 0rem;
-          z-index: 1;
+          div { 
+            height: 100%;
+            width: 100%;
+            // background: rgba(0, 0, 0, 0.5);
+            display: grid;
+            place-items: center;
+            font-size: 0.8rem;
+          }
   
-        } // </ Top>
-  
-        // - - - - - - - - - - - - - - - - - - - - - 
-  
-        // <Bottom>
-        div#bottom-hidden {
-          outline: yellow 10px solid;
-  
-        } // </ Bottom>
-  
-        // - - - - - - - - - - - - - - - - - - - - - 
-  
-      } 
+        }
+      }
 
     }
 

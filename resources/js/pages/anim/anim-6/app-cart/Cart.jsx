@@ -159,7 +159,7 @@ export default function Cart() {
   return (
     <div className="text-center" ref={container_ref}
       style={{ position: 'absolute',
-      top: '150px',
+      top: '300px',
       right: 0,
       background: 'lightblue',
       height: '100vh',

@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 import Layout from '@/comps/_layout/layout';
 
 import MainApp from './app-main/App';
-import HeaderApp from './app-header/App';
+import CartApp from './app-cart/App';
 
 import './.scss';
 
@@ -26,9 +26,9 @@ if(main_root){
 
 // ==============================================
 
-const header_root = document.querySelector('#root-header');
-if(header_root){
-  createRoot(header_root).render(<HeaderApp />);
+const cart_root = document.querySelector('#root-header'); // TODO: Change to #root-cart
+if(cart_root){
+  createRoot(cart_root).render(<CartApp />);
 }
 
 // ==============================================
