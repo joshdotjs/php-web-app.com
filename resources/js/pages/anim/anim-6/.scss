@@ -47,6 +47,21 @@ body {
 
 /* =========================================== */
 
+.box-child {
+  height: 100px;
+  width: 100px;
+
+  text-align: center;
+  padding: 1rem;
+
+  button {
+    margin-bottom: 1rem;
+  }
+}
+
+/* =========================================== */
+
+
 // <App>
 div#app-main { 
 
@@ -157,19 +172,5 @@ div#app-main {
 
 /* =========================================== */
 
-// MOVE: .appendChild()
-div.box-child { // .appendChild()
-  // outline: darkorchid 10px dotted;
-
-  button.dummy {
-    height: 100px;
-    width: 100px;
-    // background: red;
-    outline: solid white 10px;
-
-    font-size: 100px;
-    line-height: 1;
-  }
-}
 
 /* =========================================== */

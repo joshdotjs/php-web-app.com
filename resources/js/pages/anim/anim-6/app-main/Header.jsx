@@ -26,13 +26,12 @@ export default function Header({
         >
             
           <div ref={cart_icon_target_ref} id="hidden-target"></div>
+
           <BagSVG />
 
           <div ref={cart_count_ref} id="cart-count">
             <div>{num_cart_items}</div>
           </div>
-
-        
 
         </button>
 

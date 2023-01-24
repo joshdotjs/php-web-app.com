@@ -118,10 +118,10 @@ export default function App({ products, }) {
         ease: "back.in(0.8)",
         onComplete: () => {
           
-          
           cartBtnAnimation();
           setNumCartItems(prev => prev + 1);
   
+          // Collapse hole in grid:
           remove(idx);
         }
       });
