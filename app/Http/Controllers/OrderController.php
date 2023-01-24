@@ -31,6 +31,8 @@ class OrderController extends Controller
     return response($orders, 201);
   }
 
+  // ------------------------------------------
+  
   public function getOrderByID($id) {
 
     $order = DB::table('users')
@@ -70,19 +72,77 @@ class OrderController extends Controller
 
   // ------------------------------------------
 
-  public function createOrder(Request $request) {
-    return "/api/create-order [POST]";
+  // OLD:
+  // public function createOrder(Request $request) {
+  //   return "/api/create-order [POST]";
 
-    $incoming_fields = $request-> validate([
-      'total' => 'required', 
+  //   $incoming_fields = $request-> validate([
+  //     'total' => 'required', 
+  //   ]);
+
+  //   $new_order = Order::create([
+  //     'total'   => $incoming_fields['total'],
+  //     'user_id' => auth()->id(), 
+  //   ]);
+
+  //   return $new_order;
+  // }
+
+  // ------------------------------------------
+
+  public function createOrder(Request $req) {
+
+    // -Step 0: Get user_id from the decoded token
+    // -Step 1: Insert into orders table with { user_id, status}
+    // -Step 2: Loop over line_items (elements of cart array) and insert into order_2_variants
+    //          inserting a row with { order_id, variant_id, qty }, while accumulating the total.
+    // -Step 3: Update orders row with total
+
+    // Step 0:
+    $user_id = $req->user()->id;
+
+    // Step 1: 
+    $order_id = DB::table('orders')->insertGetId([
+      'user_id'    => $user_id, 
+      'total'      => 0, 
+      'status'     => 1, 
+      'created_at' => date("Y-m-d H:i:s")
     ]);
 
-    $new_order = Order::create([
-      'total'   => $incoming_fields['total'],
-      'user_id' => auth()->id(), 
-    ]);
+    $cart = $req['cart'];
 
-    return $new_order;
+    // Step 2: 
+    $total = 0;
+    for ($i = 0; $i < count($cart); $i++) {
+
+      $qty     = $cart[$i]['qty'];
+      $product = $cart[$i]['product'];
+      $variant = $cart[$i]['variant'];
+      
+      $price = $product['price'];
+      $total += $price * $qty;
+
+      $variant_id = $variant['id'];
+      
+      $line_item = [ 
+        'order_id'   => $order_id,
+        'variant_id' => $variant_id,
+        'qty'        => $qty,
+        'created_at' => date("Y-m-d H:i:s")
+      ];
+
+
+      $order_2_variants_id = DB::table('order_2_variants')
+        ->insertGetId($line_item);
+    }
+
+    // Step 3:
+    $num_rows_affected = DB::table('orders')
+      ->where('id', $order_id)
+      ->update(['total' => $total]);
+
+    // Return the order...
+    return $this->getOrderByID($order_id);
   }
 
   // ------------------------------------------

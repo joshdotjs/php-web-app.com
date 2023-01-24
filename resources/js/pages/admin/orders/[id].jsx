@@ -121,10 +121,7 @@ function Page({ id }) {
                 <th>{color}</th>
                 <th>{qty}</th>
                 <th>
-                  <Link href={{
-                    pathname: '/store/product/[id]',
-                    query: { id: product_id }
-                  }}>
+                  <Link href={`/store/product/${id}`}>
                     <Button>Details</Button>
                   </Link>
                 </th>
@@ -146,7 +143,7 @@ function Page({ id }) {
 
 const root = document.querySelector('#react-root--admin-order-details-page');
 if(root){
-  window.API_URL = root.dataset.apiUrl;
+  window.API_URL         = root.dataset.apiUrl;
   window.API_URL_LARAVEL = root.dataset.apiUrlLaravel;
   const id = root.dataset.id;
   createRoot(root).render(

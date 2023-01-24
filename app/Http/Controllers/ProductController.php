@@ -61,22 +61,6 @@ class ProductController extends Controller
 
   // ------------------------------------------
 
-  public function getProductByID($id) {
-
-    $product  = DB::table('products')->where('id', '=', $id)->get();
-    // return $product;
-    $variants = DB::table('variants')->where('product_id', '=', $id)->get();
-    // return $product_variants;
-
-    return view('store-product', [
-      'product'  => $product,
-      'variants' => $variants,
-      'API_URL'  => env('API_URL'),
-    ]);
-  }
-
-  // ------------------------------------------
-
   public function deleteProduct($id) {
     return "/api/product/{id} [DELETE]";
   }

@@ -3,6 +3,7 @@ import React, { useState, useEffect, createContext, } from 'react';
 import { 
   getCartLS, setCartLS, 
 } from '../util/local-storage';
+import { lo, lg, lr, lb, ly } from '@/util/log';
 
 // ==============================================
 
@@ -86,11 +87,21 @@ const CartContextProvider = ({ children }) => {
 
   // --------------------------------------------
 
+  const resetCart = () => {
+    lr('resetting cart');
+    setCart([]);
+    setCartLS([]);
+  };
+
+  // --------------------------------------------
+
   const context = {
     cart,
     addToCart,
     removeFromCart,
+    resetCart
   };
+
 
   // --------------------------------------------
 

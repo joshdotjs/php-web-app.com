@@ -2,8 +2,8 @@ import React from "react";
 import { AuthContextProvider } from "@/context/auth-ctx";
 import { CartContextProvider } from "@/context/cart-ctx";
 
-import Header from "@/comps/header/_header";
-import Cart from "@/comps/cart/_cart";
+import Header from "./header/_header";
+import Cart from "./cart/_cart";
 
 // ==============================================
 

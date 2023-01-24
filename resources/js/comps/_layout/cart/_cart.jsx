@@ -1,16 +1,13 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext } from 'react';
 
-import CartContext from '../../context/cart-ctx';
+import CartContext from '@/context/cart-ctx';
+import AuthContext from '@/context/auth-ctx';
 
-import Button from '../../comps/button/button';
+import Button from '@/comps/button/button';
 
-// import { lo, lg, lr, lb, ly } from '../../util/log';
-import { fetchGET, fetchPOST } from '../../util/fetch';
-// import { 
-//   getCartLS, setCartLS, 
-// } from '../../util/local-storage';
-// import { fireEvent } from '../../util/custom-event';
-
+import { lo, lg, lr, lb, ly } from '@/util/log';
+import { authFetch } from '@/util/fetch';
+import { redirect } from '@/util/routes';
 
 // ==============================================
 
@@ -18,11 +15,12 @@ export default function Cart() {
 
   // --------------------------------------------
 
-  const { cart, removeFromCart } = useContext(CartContext);
+  const { cart, removeFromCart, resetCart } = useContext(CartContext);
+  const { logged_in } = useContext(AuthContext);
 
   // --------------------------------------------
 
-  const handler = () => {
+  const submit = () => {
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
@@ -48,17 +46,35 @@ export default function Cart() {
 
     };
 
-    submitOrderToNode();
+    // submitOrderToNode();
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
     const insertOrderInDB = async () => {
 
-      const data = await fetchPOST( {url: '', body: { cart }});
+      // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/orders`;
+      const url = `/api/orders`;
+      debugger;
+      const [data, error] = await authFetch({
+        url: url, 
+        method: 'POST', 
+        body: { cart },
+      });
+  
+      if (error) {
+        // alert('TODO: Unauthorization Notification...');
+        lr('FAIL');
+        console.log('error: ', error);
+      }
+      if (!error) {
+        lg('SUCCESS');
+        console.log('data: ', data);
+        resetCart();
+      }
+
     };
 
     insertOrderInDB();
-
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
@@ -108,7 +124,16 @@ export default function Cart() {
 
       <Button 
         disabled={cart.length === 0}
-        onClick={handler}
+        onClick={() => {
+
+          if (logged_in)
+            submit();
+          else {
+            // router.push('/auth/login');
+            redirect('/auth/login');
+          }
+
+        }}
       >
         Checkout
       </Button>

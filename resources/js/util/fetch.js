@@ -137,6 +137,7 @@ const authFetch = async ({ url, body={}, method='GET'}) => {
   // const url = `${API_URL_LARAVEL}/api/products`;
   // const url = `${process.env.NEXT_PUBLIC_API_URL}${url}`;
   const url_full = `${API_URL_LARAVEL}${url}`;
+  console.log('url_full: ', url_full);
 
   const token = getLS('token'); // null if not found
   console.log('token: ', token);

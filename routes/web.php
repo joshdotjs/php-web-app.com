@@ -22,18 +22,21 @@ use Illuminate\Support\Facades\DB; // !!! ⚠️ !!!
 Route::get('/', function () {
   return view('home', [
     'API_URL' => env('API_URL'), // Cart: Checkout
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 })->name('login'); // middlewaure('auth') will redirect here if user not logged in
 
 Route::get('/about', function () {
   return view('home-about', [
     'API_URL' => env('API_URL'), // Cart: Checkout
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
 
 Route::get('/about/contact', function () {
   return view('home-contact', [
     'API_URL' => env('API_URL'), // Cart: Checkout
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
 
@@ -42,6 +45,7 @@ Route::get('/about/contact', function () {
 Route::get('/admin', function () {
   return view('admin', [
     'API_URL' => env('API_URL'), // Cart: Checkout
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
 
@@ -72,6 +76,7 @@ Route::get('/admin/orders/{id}', function ($id) {
 Route::get('/anim', function () {
   return view('anim', [
     'API_URL' => env('API_URL'), // Cart: Checkout
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
 
@@ -80,6 +85,7 @@ Route::get('/anim', function () {
 Route::get('/auth/register', function () {
   return view('auth-register', [
     'API_URL' => env('API_URL'), // Cart: Checkout
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
 
@@ -94,24 +100,26 @@ Route::get('/auth/login', function () {
 
 Route::get('/store', function () {  
   $products = DB::table('products')->get();
-
-  // DB::table('products')->insert([
-  //   'title'    => 'A', 
-  //   'body'     => 'B', 
-  //   'price'    => 100, 
-  //   'category' => 'shirts', 
-  // ]);
-
   return view('store', [
     'products' => $products, 
     'API_URL' => env('API_URL'), // Cart: Checkout
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
 
 // ==============================================
 
 // Product:
-Route::get('/store/product/{id}',  [ProductController::class, 'getProductByID']);
+Route::get('/store/product/{id}',  function($id) {
+  $product  = DB::table('products')->where('id', '=', $id)->get();
+  $variants = DB::table('variants')->where('product_id', '=', $id)->get();
+  return view('store-product', [
+    'product'  => $product,
+    'variants' => $variants,
+    'API_URL'  => env('API_URL'),
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+  ]);
+});
 
 // ==============================================
 

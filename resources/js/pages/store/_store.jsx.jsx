@@ -29,7 +29,7 @@ export default function Page ({ products }) {
             <p><strong>${price}</strong></p>
 
             <Link href={`/store/product/${id}`}>
-              <Button onClick={() => window.location.href = `/product/${id}`}>Details</Button>
+              <Button>Details</Button>
             </Link>
           </div>
         );

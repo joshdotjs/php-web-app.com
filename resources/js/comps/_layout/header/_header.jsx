@@ -1,7 +1,7 @@
 // resources/js/App.jsx
 import React, { useContext } from 'react';
 
-import AuthContext from '../../context/auth-ctx';
+import AuthContext from '@/context/auth-ctx';
 
 import './.scss';
 

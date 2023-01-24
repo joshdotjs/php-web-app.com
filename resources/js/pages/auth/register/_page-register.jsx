@@ -5,7 +5,7 @@ import { createRoot } from 'react-dom/client';
 import { CartContextProvider } from '@/context/cart-ctx';
 
 import Header from '@/comps/header/_header';
-import Cart from '@/comps/cart/_cart';
+import Cart from '@/comps/_layout/cart/_cart';
 import Button from '@/comps/button/button';
 
 import { fetchGET, fetchPOST } from '@/util/fetch';
@@ -69,9 +69,8 @@ function Page() {
 const root = document.querySelector('#react-root--auth-register-page');
 if(root){
 
-  const API_URL = root.dataset.apiUrl;
-  // console.log('api_url: ', API_URL);
-  window.API_URL = API_URL;
+  window.API_URL         = root.dataset.apiUrl;
+  window.API_URL_LARAVEL = root.dataset.apiUrlLaravel;
 
   createRoot(root).render(
     <CartContextProvider>
