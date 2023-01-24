@@ -103,6 +103,7 @@ export default function App({ products, }) {
 
     const animate = () => {
       const item = refs.current[idx];
+      console.log('item: ', item);
 
       const state = Flip.getState(item);
       // debugger;
@@ -116,6 +117,8 @@ export default function App({ products, }) {
       Flip.from(state, {
         duration: 2, // 0.5
         ease: "back.in(0.8)",
+        scale: true,
+        absolute: true,
         onComplete: () => {
           
           cartBtnAnimation();
