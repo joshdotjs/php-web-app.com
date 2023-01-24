@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB; // !!! ⚠️ !!!
+use  Illuminate\Support\Arr;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,8 +76,28 @@ Route::get('/admin/orders/{id}', function ($id) {
 
 Route::get('/anim', function () {
   $products = DB::table('products')->get();
+
+  // -Each row stores product data with an array storing the variants for that rows products
+  $arr = [];
+  foreach($products as $product) {
+    $product_id = $product->id;
+    $variants = DB::table('variants')
+      ->where('product_id', '=', $product_id)
+      ->get(); 
+    array_push($arr, [
+      'title'    => $product->title,
+      'body'     => $product->body,
+      'price'    => $product->price,
+      'category' => $product->category,
+      'variants' => $variants
+    ]);
+  };
+  $variants = DB::table('variants')->get();
+
+  
+
   return view('anim', [
-    'products' => $products, 
+    'products' => json_encode($arr), 
     'API_URL' => env('API_URL'), // Cart: Checkout
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);

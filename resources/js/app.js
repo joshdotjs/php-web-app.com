@@ -19,7 +19,7 @@ import '@/pages/store/product/__product.jsx';
 import '@/pages/auth/login/__login.jsx';
 
 // Dev:
-import '@/pages/anim/anim-3/_page-anim.jsx';
+import '@/pages/anim/anim-4/_page-anim.jsx';
 
 console.log('josh');;
 // ==============================================
