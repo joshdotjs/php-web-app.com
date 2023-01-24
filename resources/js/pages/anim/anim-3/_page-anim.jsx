@@ -10,37 +10,21 @@ import './.scss';
 
 // ==============================================
 
-// function Page() {
-
-//   // --------------------------------------------
-
-//   return(
-//     // <Layout>
-//       <h2>Anim Page</h2>
-//     // </Layout>
-//   );
-
-//   // --------------------------------------------
-// }
-
-// ==============================================
-
-// const root = document.querySelector('#react-root--anim-page');
-// if(root){
-//   window.API_URL = root.dataset.apiUrl;
-//   createRoot(root).render(<Page />);
-// }
-
-// ==============================================
-
 const main_root = document.querySelector('#root-main');
-// main_root.render(<MainApp />);
 if(main_root){
-  createRoot(main_root).render(<MainApp />);
+
+  window.API_URL         = main_root.dataset.apiUrl;
+  window.API_URL_LARAVEL = main_root.dataset.apiUrlLaravel;
+  const products_SSR  = JSON.parse(main_root.dataset.products); 
+
+  createRoot(main_root).render(
+    <MainApp products={products_SSR} />
+  );
 }
 
 const header_root = document.querySelector('#root-header');
-// header_root.render(<HeaderApp />);
 if(header_root){
   createRoot(header_root).render(<HeaderApp />);
 }
+
+// ==============================================

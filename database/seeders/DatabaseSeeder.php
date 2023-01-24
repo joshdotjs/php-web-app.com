@@ -41,18 +41,26 @@ class DatabaseSeeder extends Seeder
       // ========================================
 
       DB::table('products')->insert([
-        'title' => 'Product A',
-        'body' => 'Description of product A...',
+        'title'      => 'Product A',
+        'body'       => 'Description of product A...',
         'category'   => 'shirts',
-        'price' => 100,
+        'price'      => 100,
         'created_at' => date("Y-m-d H:i:s")
       ]);
 
       DB::table('products')->insert([
-        'title' => 'Product B',
-        'body' => 'Description of product B...',
+        'title'      => 'Product B',
+        'body'       => 'Description of product B...',
         'category'   => 'shoes',
-        'price' => 200,
+        'price'      => 200,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('products')->insert([
+        'title'      => 'Product C',
+        'body'       => 'Description of product C...',
+        'category'   => 'pants',
+        'price'      => 300,
         'created_at' => date("Y-m-d H:i:s")
       ]);
 
@@ -122,15 +130,28 @@ class DatabaseSeeder extends Seeder
         'created_at' => date("Y-m-d H:i:s")
       ]);
 
-      DB::table('variants')->insert([
-        'product_id' => 2,
-        'size'       => 'lg',
-        'color'      => 'blue',
-        'qty'        => 1,
-        'created_at' => date("Y-m-d H:i:s")
-      ]);
-
       // - - - - - - - - - - - - - - - - - - - - 
+
+      // Variants for product C: 
+
+        DB::table('variants')->insert([
+          'product_id' => 3,
+          'size'       => 'lg',
+          'color'      => 'red',
+          'qty'        => 1,
+          'created_at' => date("Y-m-d H:i:s")
+        ]);
+  
+        DB::table('variants')->insert([
+          'product_id' => 3,
+          'size'       => 'sm',
+          'color'      => 'red',
+          'qty'        => 1,
+          'created_at' => date("Y-m-d H:i:s")
+        ]);
+   
+        // - - - - - - - - - - - - - - - - - - - - 
+  
 
       // ========================================
 

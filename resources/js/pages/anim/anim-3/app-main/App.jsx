@@ -41,7 +41,7 @@ const randColor = () => colors[rand(0, colors.length-1)];
 
 // ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
 
-export default function App() {
+export default function App({ products }) {
 
   // ============================================
 
@@ -159,17 +159,21 @@ export default function App() {
 
   // -Generalize to use state:
 
-  const num_rows = 40;
-  const createRow = () => ({ id: uuid(), title: 'josh', status: "entered", color: randColor(), location: 'grid' });
+  const createColor = (category) => ({'shoes': 'red', 'shirts': 'blue', 'pants': 'green'}[category]);
+  const createRow = (category) => ({ id: uuid(), status: "entered", color: createColor(category), location: 'grid' });
 
   // STEP 1: Set up layout in state with grid items initialized
   const [layout, setLayout] = useState(() => ({
-    items: 
-    init(num_rows, null).map(() => createRow()) // create an array of lenth num_rows filled with null, then map over that array replacing each element with a row defined by createRow().
-    .reverse(),
+    items: products.map(({id, title, body, price, category}) => {
+      return {  product_id: id, title, body, price, category, ...createRow(category) };
+    }),
+      // init(num_rows, null).map(() => createRow()) // create an array of lenth num_rows filled with null, then map over that array replacing each element with a row defined by createRow().
+      // .reverse(),
     state: undefined
     }
   ));
+
+  
 
   // --------------------------------------------
 

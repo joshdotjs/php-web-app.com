@@ -74,7 +74,9 @@ Route::get('/admin/orders/{id}', function ($id) {
 // ==============================================
 
 Route::get('/anim', function () {
+  $products = DB::table('products')->get();
   return view('anim', [
+    'products' => $products, 
     'API_URL' => env('API_URL'), // Cart: Checkout
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);

@@ -73,7 +73,11 @@ export default function Grid({
                   addToCart(idx);
                 }}
               >
-                {item.status}
+                <div>
+                  <p>Status: {item.status}</p>
+                  <p>Title: {item.title}</p>
+                  <p>Category: {item.category}</p>
+                </div>
               </button>
             </li>
         ))}
