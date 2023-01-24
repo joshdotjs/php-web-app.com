@@ -126,7 +126,7 @@ export default function App({ products }) {
       item.style.position = 'absolute';
   
       Flip.from(state, {
-        duration: 0.5,
+        duration: 2.5, //0.5,
         ease: "back.in(0.8)",
         onComplete: () => {
           cartItems_ref.current.appendChild(item);
