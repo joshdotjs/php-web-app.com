@@ -85,21 +85,19 @@ div#app-main {
 
   // --------------------------------------------
 
-  // <CartIcon>
-  header#navbar { position: fixed;
-    top: 40px;
+  // <Header>
+  #navbar { position: fixed;
+    top: 0;
     left: 0;
     width: 100vw;
-    background: red;
-
+    
     nav#top {
       width: 100%;
       height: 50px;
-      background: lightseagreen;
+      background: lightgreen;
     }
-
-    nav#bottom { position: relative;
-
+    
+    nav#bottom {
       display: flex;
       justify-content: space-between;
   
@@ -108,10 +106,14 @@ div#app-main {
       $py: 0.5rem;
       width: 100%;
       padding: $py $px;
-      background: darkolivegreen;
-
-      h2#logo { }
-
+      background: lightblue;
+  
+      #logo {
+        margin: 0;
+        display: flex;
+        align-items: center;
+      }
+    
       #cart-btn {  position: relative;
         // position: absolute;
         // top: 50%;
@@ -160,11 +162,8 @@ div#app-main {
   
         }
       }
-
     }
-
-
-  } // </ CartIcon>
+  }// </ Header>
 
   // --------------------------------------------
 

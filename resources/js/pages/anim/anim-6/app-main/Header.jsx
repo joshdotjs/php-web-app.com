@@ -14,78 +14,30 @@ export default function Header({
     
     <header id="navbar">
 
-      <nav id="top"></nav>
+    <nav id="top"></nav>
 
-      <nav id="bottom">
-  
-        <h2 id="logo">Logo</h2>
+    <nav id="bottom">
 
-        <button
-          id="cart-btn"
-          ref={cart_btn_ref}
-        >
-            
-          <div ref={cart_icon_target_ref} id="hidden-target"></div>
+      <h2 id="logo">Logo</h2>
 
-          <BagSVG />
+      <div 
+        id="cart-btn"
+        ref={cart_btn_ref}
+      >
 
-          <div ref={cart_count_ref} id="cart-count">
-            <div>{num_cart_items}</div>
-          </div>
+        <div ref={cart_icon_target_ref} id="hidden-target"></div>
 
-        </button>
+        <BagSVG />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <div ref={cart_count_ref} id="cart-count">
+          <div>{num_cart_items}</div>
+        </div>
         
-      </nav>
+      </div>
 
-      
-    </header>
+    </nav>
+
+  </header>
 
 
   );
