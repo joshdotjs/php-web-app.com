@@ -6,7 +6,11 @@ import { MantineProvider, Text } from '@mantine/core';
 import { RangeCalendar } from '@mantine/dates';
 
 import { disableClick, enableClick } from './util/dom';
-import { timeStamp2Date, timeStamp2Time, getDateXDaysAgo } from '@/util/dates';
+import { 
+  timeStamp2Date, timeStamp2Time, 
+  date2TimeStamp,
+  getDateXDaysAgo 
+} from '@/util/dates';
 
 gsap.registerPlugin(Flip);
 
@@ -16,23 +20,11 @@ export default function App({ orders }) {
 
   // --------------------------------------------
 
-  console.log('orders: ', orders);
-
   const data = [
     { ...orders[0], date: timeStamp2Date(orders[0].time_stamp), time: timeStamp2Time(orders[0].time_stamp), color: 'green'  },
     { ...orders[1], date: timeStamp2Date(orders[1].time_stamp), time: timeStamp2Time(orders[1].time_stamp), color: 'purple' },
     { ...orders[2], date: timeStamp2Date(orders[2].time_stamp), time: timeStamp2Time(orders[2].time_stamp), color: 'orange' },
   ];
-
-  // --------------------------------------------
-
-  const [clicked_yet, setClickedYet] = useState(false);
-
-  const today = new Date();
-  const [date_range, setDateRange] = useState([
-    getDateXDaysAgo(6, today), // last week date range (including today)
-    today,
-  ]);
 
   // --------------------------------------------
 
@@ -182,19 +174,160 @@ export default function App({ orders }) {
 
   // --------------------------------------------
 
+  const [clicked_yet, setClickedYet] = useState(false);
+
+  const today = new Date();
+  const [date_range, setDateRange] = useState([
+    getDateXDaysAgo(6, today), // last week date range (including today)
+    today,
+  ]);
+
+  useEffect(() => {
+    console.log('date_range: ', date_range);
+    console.log('date_range[0]: ', date_range[0]);
+    console.log('date2TimeStamp(date_range[0]): ', date2TimeStamp(date_range[0]));
+  }, [date_range]);
+
+  // --------------------------------------------
+
+  const updateOrders = ({ date_range }) => {
+
+    const time_stamp_start = date2TimeStamp(date_range[0]);
+    const time_stamp_end   = date2TimeStamp(date_range[1]);
+
+    console.log('time_stamp_start: ', time_stamp_start, '\ttime_stamp_end: ', time_stamp_end);
+
+    // -Filter through 'orders' to store new 'data' array
+    // const updated_orders = orders.filter((order) => time_stamp_start <= order.time_stamp && order.time_stamp <= time_stamp_end);
+
+    // console.log('updated_orders: ', updated_orders);
+    // setData(updated_orders);
+
+
+
+
+    // ⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄
+    // BEGIN FLIP ANIMATION
+    // BEGIN FLIP ANIMATION
+    // BEGIN FLIP ANIMATION
+    // BEGIN FLIP ANIMATION
+    disableClick();
+
+    // Step 0: Grag refs:
+    const items = items_refs.current;
+    const container = container_ref.current;
+
+    // MOD: Fix height bug:
+    const startHeight = gsap.getProperty(container, "height");
+    console.log('startHeight: ', startHeight);
+
+    // Step 1: Get current state
+    const state = Flip.getState(items);
+
+
+    // Step 4: Adjust the 'display' attribute on the elements based on date range
+    data.forEach(({time_stamp}, idx) => {
+
+      if (time_stamp_start <= time_stamp && time_stamp <= time_stamp_end) {
+        items[idx].style.display = 'grid';
+      } else {
+        items[idx].style.display = 'none';
+      }
+
+    });
+
+    // MOD: Fix height bug:
+    const endHeight = gsap.getProperty(container, "height");
+    console.log('endHeight: ', endHeight);
+
+    // Step 5: Animate from the previous state
+    const flip = Flip.from(state, {
+        duration: 0.7,
+        scale: true,
+        ease: "power1.inOut",
+        stagger: 0.08,
+        absolute: true,
+        onEnter: elements => {
+          gsap.fromTo(elements, { 
+              opacity: 0, 
+              // scale: 0 
+            }, 
+            { 
+              opacity: 1, 
+              // scale: 1, 
+              duration: 1 
+            });
+        },
+        onLeave: elements => {
+          gsap.to(elements, { 
+            opacity: 0, 
+            // scale: 0, 
+            duration: 1 
+          });
+        },
+        onStart: () => {
+          const table = container.querySelector('#table');
+          table.style.borderBottomLeftRadius =  0;
+          table.style.borderBottomRightRadius =  0;
+          // gsap.to(container, { 
+          //   background: 'rgba(243,244,246, 0)',
+          // });
+        },
+        onComplete: () => {
+          const table = container.querySelector('#table');
+          table.style.borderBottomLeftRadius =  '0.5rem';
+          table.style.borderBottomRightRadius =  '0.5rem';
+          // gsap.to(container, { 
+          //   background: 'rgba(243,244,246, 1)',
+          // });
+
+          enableClick();
+        },
+    });
+
+    // MOD: Fix height bug: https://greensock.com/forums/topic/27117-filter-animation-with-flip-plugin/?do=findComment&comment=132519
+    flip.fromTo(container, {
+      height: startHeight
+    }, {
+      height: endHeight,
+      clearProps: "height",
+      duration: flip.duration()
+    }, 0);
+
+
+    // END FLIP ANIMATION
+    // END FLIP ANIMATION
+    // END FLIP ANIMATION
+    // END FLIP ANIMATION
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+  };
+
+  // --------------------------------------------
+
   return (
     <>
 
       {/* <MantineProvider withGlobalStyles withNormalizeCSS> */}
         {/* <Text>Welcome to Mantine!</Text> */}
         <RangeCalendar 
-          amountOfMonths={1}
+          amountOfMonths={2}
           value={date_range} 
           onChange={(new_date_range) => {
 
-            // if (new_date_range[1] !== null) { // prev === null => currently clicking second date range => update orders with new date range
-            //   updateOrders({ date_range: new_date_range });
-            // } 
+            if (new_date_range[1] !== null) { // prev === null => currently clicking second date range => update orders with new date range
+              console.clear();
+              console.log('TODO: Apply filter!');
+              updateOrders({ date_range: new_date_range });
+            } 
 
             setDateRange(new_date_range);
           }}
