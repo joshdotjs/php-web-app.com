@@ -2,8 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 
+import { MantineProvider, Text } from '@mantine/core';
+import { RangeCalendar } from '@mantine/dates';
+
 import { disableClick, enableClick } from './util/dom';
-import { timeStamp2Date, timeStamp2Time } from '@/util/dates';
+import { timeStamp2Date, timeStamp2Time, getDateXDaysAgo } from '@/util/dates';
 
 gsap.registerPlugin(Flip);
 
@@ -20,6 +23,16 @@ export default function App({ orders }) {
     { ...orders[1], date: timeStamp2Date(orders[1].time_stamp), time: timeStamp2Time(orders[1].time_stamp), color: 'purple' },
     { ...orders[2], date: timeStamp2Date(orders[2].time_stamp), time: timeStamp2Time(orders[2].time_stamp), color: 'orange' },
   ];
+
+  // --------------------------------------------
+
+  const [clicked_yet, setClickedYet] = useState(false);
+
+  const today = new Date();
+  const [date_range, setDateRange] = useState([
+    getDateXDaysAgo(6, today), // last week date range (including today)
+    today,
+  ]);
 
   // --------------------------------------------
 
@@ -171,6 +184,43 @@ export default function App({ orders }) {
 
   return (
     <>
+
+      {/* <MantineProvider withGlobalStyles withNormalizeCSS> */}
+        {/* <Text>Welcome to Mantine!</Text> */}
+        <RangeCalendar 
+          amountOfMonths={1}
+          value={date_range} 
+          onChange={(new_date_range) => {
+
+            // if (new_date_range[1] !== null) { // prev === null => currently clicking second date range => update orders with new date range
+            //   updateOrders({ date_range: new_date_range });
+            // } 
+
+            setDateRange(new_date_range);
+          }}
+          onClick={() => setClickedYet(true)}
+          dayStyle={(date) => {
+
+            const chosen_date_1_month  = date_range[0]?.getMonth();
+            const chosen_date_1_date   = date_range[0]?.getDate();
+            // const chosen_date_2_month  = date_range[1]?.getMonth();
+            const chosen_date_2_date   = date_range[1]?.getDate();
+
+            const calendar_month = date.getMonth();
+            const calendar_date = date.getDate();
+
+            // This is only for the inital page load with last week
+            if (!clicked_yet) {
+              if (calendar_month === chosen_date_1_month) {
+                if (chosen_date_1_date < calendar_date && calendar_date < chosen_date_2_date) {
+                  return { backgroundColor: '#E7F5FF', borderRadius: 0 };
+                } 
+              }
+            }
+          }}
+        />
+      {/* </MantineProvider> */}
+
       <div className="buttons-container">
         <div>Show:&nbsp;</div>
         <div>
