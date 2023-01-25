@@ -85,6 +85,7 @@ Route::get('/anim', function () {
       ->where('product_id', '=', $product_id)
       ->get(); 
     array_push($arr, [
+      'id'       => $product->id,
       'title'    => $product->title,
       'body'     => $product->body,
       'price'    => $product->price,

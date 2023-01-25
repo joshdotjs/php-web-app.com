@@ -58,7 +58,7 @@ export default function App({ products, }) {
     
     // ------------------------------------------
 
-    // cartCtx.addToCart();
+    cartCtx.addToCart(product, variant);
 
     disableClick();
     
@@ -164,7 +164,8 @@ export default function App({ products, }) {
 
   // STEP 1: Set up layout in state with grid items initialized
   const [layout, setLayout] = useState(() => ({
-    items: products.map(({id, title, body, price, category, variants}) => {
+    items: products.map((product) => {
+      const {id, title, body, price, category, variants} = product;
       return {  product_id: id, title, body, price, category, variants, ...createRow(category) };
     }),
       // init(num_rows, null).map(() => createRow()) // create an array of lenth num_rows filled with null, then map over that array replacing each element with a row defined by createRow().
