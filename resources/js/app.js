@@ -18,7 +18,7 @@ import '@/pages/store/product/__product.jsx';
 // Auth:
 import '@/pages/auth/login/__login.jsx';
 
-// Dev:
+// Dev - Filtering / Cart:
 // import '@/pages/anim/anim-1/_page-anim.jsx';
 // import '@/pages/anim/anim-2/_page-anim.jsx';
 // import '@/pages/anim/anim-3/_page-anim.jsx';
@@ -27,6 +27,9 @@ import '@/pages/auth/login/__login.jsx';
 // import '@/pages/anim/anim-6/_page-anim.jsx';
 // import '@/pages/anim/anim-7/_page-anim.jsx';
 import '@/pages/anim/anim-8/_page-anim.jsx';
+
+// Dev - Anim 1D:
+import '@/pages/anim-orders/anim-orders-1/_page-anim-orders';
 
 console.log('josh');
 

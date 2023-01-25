@@ -1,0 +1,25 @@
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+
+import Layout from '@/comps/_layout/layout';
+
+import App from './App';
+import './.scss';
+
+// ==============================================
+
+const root = document.querySelector('#root-main--anim-orders');
+if(root) {
+
+  window.API_URL         = root.dataset.apiUrl;
+  window.API_URL_LARAVEL = root.dataset.apiUrlLaravel;
+  const products_SSR  = JSON.parse(root.dataset.products); // encodes variants
+
+  createRoot(root).render(
+    <Layout>
+      <App products={products_SSR} />
+    </Layout>
+  );
+}
+
+// ==============================================
