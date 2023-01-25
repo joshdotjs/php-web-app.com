@@ -25,7 +25,8 @@ import '@/pages/auth/login/__login.jsx';
 // import '@/pages/anim/anim-4/_page-anim.jsx';
 // import '@/pages/anim/anim-5/_page-anim.jsx';
 // import '@/pages/anim/anim-6/_page-anim.jsx';
-import '@/pages/anim/anim-7/_page-anim.jsx';
+// import '@/pages/anim/anim-7/_page-anim.jsx';
+import '@/pages/anim/anim-8/_page-anim.jsx';
 
 console.log('josh');
 

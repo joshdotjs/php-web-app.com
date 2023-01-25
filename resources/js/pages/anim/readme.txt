@@ -5,12 +5,11 @@ v4: send in variants to each card
 v5: choose the variant
   --Radio buttons wired up but the variant data is not used besides to highlight the radio button selected.
 v6: scale item correctly
-v7: ...size of card takes up entire size of grid card (works in flip-toy-6--cart-5)...
-
+v7: size of card takes up entire size of grid card (works in flip-toy-6--cart-5)
+v8: ...place item data in the cart (select variant and click 'add-to-cart')...
 
 
 TODO: 
 .
 .
 .
-v?: place item data in the cart (select variant and click 'add-to-cart')
