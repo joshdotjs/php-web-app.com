@@ -95,8 +95,6 @@ Route::get('/anim', function () {
   };
   $variants = DB::table('variants')->get();
 
-  
-
   return view('anim', [
     'products' => json_encode($arr), 
     'API_URL' => env('API_URL'), // Cart: Checkout
