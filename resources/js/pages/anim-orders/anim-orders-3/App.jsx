@@ -19,29 +19,27 @@ gsap.registerPlugin(Flip);
 export default function App({ orders }) {
 
   // --------------------------------------------
-
-  // -We want to keep around all of the orders in order to easily filter over them.
-  // -In the future we need to update these orders from backend upon filtering over date range 
-  //  because there will be too many orders to load all of them into memory at one time.
-  // const [data, setData] = useState([
-  //   { ...orders[0], date: timeStamp2Date(orders[0].time_stamp), time: timeStamp2Time(orders[0].time_stamp), display: 'grid' },
-  //   { ...orders[1], date: timeStamp2Date(orders[1].time_stamp), time: timeStamp2Time(orders[1].time_stamp), display: 'grid' },
-  //   { ...orders[2], date: timeStamp2Date(orders[2].time_stamp), time: timeStamp2Time(orders[2].time_stamp), display: 'grid' },
-  // ]);
-
+  
   const today = new Date();
   const init_date_range = [
     getDateXDaysAgo(6, today), // last week date range (including today)
     today,
   ];
 
-  const data = orders.map((order) => {
+  // --------------------------------------------
+  
+  const [clicked_yet, setClickedYet] = useState(false);
+  const [date_range, setDateRange] = useState(init_date_range);
 
+  // --------------------------------------------
+  
+  // -We want to keep around all of the orders in order to easily filter over them.
+  // -In the future we need to update these orders from backend upon filtering over date range 
+  //  because there will be too many orders to load all of them into memory at one time.
+  const data = orders.map((order) => {
     const time_stamp_start = date2TimeStamp(init_date_range[0]);
     const time_stamp_end   = date2TimeStamp(init_date_range[1]);
-
     const is_in_date_range = time_stamp_start <= order.time_stamp && order.time_stamp <= time_stamp_end;
-
     return { ...order, date: timeStamp2Date(order.time_stamp), time: timeStamp2Time(order.time_stamp), display: is_in_date_range ? 'grid' : 'none' };
   });
 
@@ -83,8 +81,6 @@ export default function App({ orders }) {
         items[idx].style.display = 'none';
       }
     });
-
-    
 
     // MOD: Fix height bug:
     const endHeight = gsap.getProperty(container, "height");
@@ -148,16 +144,6 @@ export default function App({ orders }) {
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   };
-
-  // --------------------------------------------
-
-  const [clicked_yet, setClickedYet] = useState(false);
-
-  const [date_range, setDateRange] = useState(() => {
-    // -quick and dirty way of filtering the orders on page load over the initialized date range:
-    // updateOrders({ date_range: init_date_range });
-    return init_date_range;
-  });
 
   // --------------------------------------------
 
