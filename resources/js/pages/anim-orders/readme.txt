@@ -7,4 +7,3 @@ v2: Add calendar
     --Port in calendar component
     --Convert dates to nice display
     --Filter on dates
-

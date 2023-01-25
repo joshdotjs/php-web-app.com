@@ -24,7 +24,8 @@ class OrderController extends Controller
         'orders.status', 
         'orders.total',
         'users.email',
-        'orders.created_at'
+        'orders.created_at',
+        'orders.time_stamp',
       )
       ->get();
 
