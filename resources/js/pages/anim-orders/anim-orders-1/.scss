@@ -1,4 +1,7 @@
-* { box-sizing: border-box; }
+* { 
+  box-sizing: border-box; 
+  color: black;
+}
 
 :root {
   --container-gray: rgba(243,244,246, 1);
@@ -19,23 +22,28 @@ label {
 
 #container {
   background: var(--container-gray);
-}
-
-.tr {
-  padding: 1rem 2rem;
-  text-align: left;
-  display: grid;
-  gap: 1rem;
-  width: 100%;
-  background: var(--tr-white);
-}
 
 
-.tr.thead {
-  background: var(--thead-gray);
+  #table {
+    .tr {
+      padding: 1rem 2rem;
+      text-align: left;
+      display: grid;
+      gap: 1rem;
+      width: 100%;
+      background: var(--tr-white);
+    }
+    
+    
+    .tr.thead {
+      background: var(--thead-gray);
+    }
+    .td {
+    }
+  }
 }
-.td {
-}
+
+
 
 
 /* .purple {

@@ -109,30 +109,14 @@ Route::get('/anim', function () {
 
 // ==============================================
 
+// -Same as /admin/orders!!!
 Route::get('/anim-orders', function () {
-  $products = DB::table('products')->get();
-
-  // -Each row stores product data with an array storing the variants for that rows products
-  $arr = [];
-  foreach($products as $product) {
-    $product_id = $product->id;
-    $variants = DB::table('variants')
-      ->where('product_id', '=', $product_id)
-      ->get(); 
-    array_push($arr, [
-      'id'       => $product->id,
-      'title'    => $product->title,
-      'body'     => $product->body,
-      'price'    => $product->price,
-      'category' => $product->category,
-      'variants' => $variants
-    ]);
-  };
-  $variants = DB::table('variants')->get();
+  $orderController = new OrderController();
+  $orders = $orderController->getOrders();
 
   return view('anim-orders', [
-    'products' => json_encode($arr), 
-    'API_URL' => env('API_URL'), // Cart: Checkout
+    'orders'          => $orders,
+    'API_URL'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });

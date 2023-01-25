@@ -18,11 +18,11 @@ if(root) {
 
   window.API_URL         = root.dataset.apiUrl;
   window.API_URL_LARAVEL = root.dataset.apiUrlLaravel;
-  const products_SSR  = JSON.parse(root.dataset.products); // encodes variants
+  const orders_SSR = JSON.parse(root.dataset.orders);
 
   createRoot(root).render(
     <Layout>
-      <App products={products_SSR} />
+      <App orders={orders_SSR} />
     </Layout>
   );
 }

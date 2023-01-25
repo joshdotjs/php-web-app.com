@@ -3,23 +3,23 @@ import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 
 import { disableClick, enableClick } from './util/dom';
+import { rand } from '@/util/rand';
 
 gsap.registerPlugin(Flip);
 
 // ==============================================
 
-const data = [
-  { name: 'Lindsay Walton',  title: 'Front-end Developer', email: 'lindsay@apple.com',       role: 'Member', color: 'green'  },
-  { name: 'Courtney Henry',  title: 'Designer',            email: 'courtney@bluetooth.com',  role: 'Admin',  color: 'orange' },
-  { name: 'Tom Cook',        title: 'Director',            email: 'tom@samsung.com',         role: 'Member', color: 'purple' },
-  { name: 'Whitney Francis', title: 'Copywriter',          email: 'whitney@software.com',    role: 'Owner',  color: 'green'  },
-  { name: 'Leonard Krasner', title: 'Senior Designer',     email: 'leonard@5g.com',          role: 'Admin',  color: 'orange' },
-  { name: 'Floyd Miles',     title: 'Principal Designer',  email: 'floyd@floyd/cp,',         role: 'Member', color: 'purple' },
-];
+export default function App({ orders }) {
 
-// ==============================================
+  // --------------------------------------------
 
-export default function App() {
+  console.log('orders: ', orders);
+
+  const data = [
+    { ...orders[0], color: 'green'  },
+    { ...orders[1], color: 'purple' },
+    { ...orders[2], color: 'orange' },
+  ];
 
   // --------------------------------------------
 
@@ -34,6 +34,8 @@ export default function App() {
     purple: true,
   });
 
+  // --------------------------------------------
+
   const onChange = (e) => {
     const { checked, name, value } = e.target;
     // console.log('name: ', name, '\tchecked: ', checked, '\tvalue: ', value);
@@ -44,10 +46,6 @@ export default function App() {
       return new_state;
     });
   };
-
-  // useEffect(() => {
-  //   console.log('form: ', form);
-  // }, [form]);
 
   // --------------------------------------------
 
@@ -139,9 +137,9 @@ export default function App() {
   // --------------------------------------------
 
   function getAtiveClasses(new_form) {
-
     // -Return an array of classes corresponding to checked checkboxes
     // -ex: ['.green', '.purple']
+
     const filters = filters_refs.current;
     // const checked_array = filters.filter(checkbox => checkbox.checked);
     const checked_array = filters.filter(checkbox => {
@@ -159,7 +157,6 @@ export default function App() {
   // --------------------------------------------
 
   function getMatches(classes) {
-
     // -Input:   array of classes corresponding to checked checkboxes
     // -Output:  array of elements with classes from input
     // -ex:  ['.orange']  =>  [div.item.orange, div.item.orange]
@@ -184,9 +181,6 @@ export default function App() {
       </div>
 
 
-      {/* <div className="overflow-hidden ">
-              <table className="min-w-full divide-y divide-gray-300">
-                <thead className="bg-gray-50"> */}
 
       <div // container 
         ref={container_ref}
@@ -217,28 +211,30 @@ export default function App() {
               tr thead 
               grid-cols-2  xs:grid-cols-3  sm:grid-cols-4  md:grid-cols-5  lg:grid-cols-6
             "
+            style={{ background: 'black' }}
           >
-            <div className="th text-left text-sm font-semibold text-gray-900">Name</div>
-            <div className="th text-left text-sm font-semibold text-gray-900  hidden  sm:inline-block">Title</div>
-            <div className="th text-left text-sm font-semibold text-gray-900  hidden  md:inline-block">Email</div>
-            <div className="th text-left text-sm font-semibold text-gray-900  hidden  lg:inline-block">Role</div>
+            <div className="th text-left text-sm font-semibold text-gray-900">User</div>
+            <div className="th text-left text-sm font-semibold text-gray-900  hidden  sm:inline-block">Status</div>
+            <div className="th text-left text-sm font-semibold text-gray-900  hidden  md:inline-block">Total</div>
+            <div className="th text-left text-sm font-semibold text-gray-900  hidden  lg:inline-block">Date</div>
             <div className="th text-left text-sm font-semibold text-gray-900  hidden  xs:inline-block  text-right"></div>
             <div className="th text-left text-sm font-semibold text-gray-900                           text-right"></div>
           </div>
 
-          {data.map((datum, idx) => (
+          {data.map(({ id, email, status, total, created_at, color }, idx) => (
             <div 
-              key={datum.email} 
+              key={`order-${id}`} 
               ref={el => items_refs.current[idx] = el} 
               className={`
-                tr ${datum.color}  
+                tr ${color}  
                 grid-cols-2  xs:grid-cols-3  sm:grid-cols-4  md:grid-cols-5  lg:grid-cols-6
               `}
+              style={{ background: 'black' }}
             >
-              <div className="td truncate">{datum.name}</div>
-              <div className="td truncate  hidden  sm:inline-block">{datum.title}</div>
-              <div className="td truncate  hidden  md:inline-block">{datum.email}</div>
-              <div className="td truncate  hidden  lg:inline-block">{datum.role}</div>
+              <div className="td truncate">{email}</div>
+              <div className="td truncate  hidden  sm:inline-block">{status}</div>
+              <div className="td truncate  hidden  md:inline-block">{total}</div>
+              <div className="td truncate  hidden  lg:inline-block">{created_at}</div>
               <button className="td truncate  hidden  xs:inline-block  text-right  text-indigo-600 hover:text-indigo-900">Edit</button>
               <button className="td truncate                           text-right  text-indigo-600 hover:text-indigo-900">Details</button>
             </div>
