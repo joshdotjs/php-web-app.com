@@ -28,9 +28,10 @@ class OrderController extends Controller
       )
       ->get();
 
-    return response($orders, 201);
+    return $orders;
+    // return response($orders, 201);
   }
-
+  
   // ------------------------------------------
   
   public function getOrderByID($id) {

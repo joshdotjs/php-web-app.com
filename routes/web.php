@@ -58,7 +58,12 @@ Route::get('/admin/products', function () {
 });
 
 Route::get('/admin/orders', function () {
+
+  $orderController = new OrderController();
+  $orders = $orderController->getOrders();
+
   return view('admin-orders', [
+    'orders'          => $orders,
     'API_URL'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
