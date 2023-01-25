@@ -39,6 +39,10 @@ export default function App({ products, }) {
 
   // ============================================
 
+  const [card_size, setCardSize] = useState({ height: null, width: null});
+
+  // ============================================
+
   const refs = useRef([]);
 
   const cart_btn_ref = useRef(null); // cartBtn = cart.querySelector(".btn-cart");
@@ -52,13 +56,6 @@ export default function App({ products, }) {
   const addToCart = (idx) => {
     
     // ------------------------------------------
-
-    // -Add product data to cart flow:
-    //  -User clicks 'Add to cart' button in the card.
-    //  -addToCart() function (here) is called.
-    //  -call 
- 
-
 
     disableClick();
     
@@ -103,12 +100,18 @@ export default function App({ products, }) {
 
     const animate = () => {
       const item = refs.current[idx];
-      console.log('item: ', item);
+      
 
       const state = Flip.getState(item);
       // debugger;
     
       cart_icon_target_ref.current.appendChild(item);
+      
+      // dynamically set size
+      // console.log('setting height: ', card_size.height);
+      // item.style.height = card_size.height;
+      // item.style.width  = card_size.width;
+      // console.log('item: ', item);
     
       // disable double click and set position for in-cart
       item.style.pointerEvents = 'none';
@@ -349,7 +352,7 @@ export default function App({ products, }) {
           refs,
           layout,
           addToCart,
-          remove
+          setCardSize,
         } }
       />
 
