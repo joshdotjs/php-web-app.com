@@ -58,7 +58,7 @@ export default function App({ products, }) {
     
     // ------------------------------------------
 
-    cartCtx.addToCart(product, variant);
+    // cartCtx.addToCart(product, variant);
 
     disableClick();
     
