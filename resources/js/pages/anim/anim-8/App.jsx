@@ -38,10 +38,6 @@ export default function App({ products, }) {
 
   // ============================================
 
-  const [card_size, setCardSize] = useState({ height: null, width: null});
-
-  // ============================================
-
   const refs = useRef([]);
 
   const cart_btn_ref = useRef(null); // cartBtn = cart.querySelector(".btn-cart");
@@ -351,7 +347,6 @@ export default function App({ products, }) {
           refs,
           layout,
           addToCart,
-          setCardSize,
         } }
       />
 

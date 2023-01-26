@@ -9,7 +9,9 @@ import { addToCartLS } from './cart-fn';
 // ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
 
 
-const CartInterior = ({ item, chosen_variant_id, setChosenVariantId, addToCart, idx }) => {
+const CartInterior = ({ item, addToCart, idx }) => {
+
+  const [chosen_variant_id, setChosenVariantId] = useState();
 
   return (
     <div>
@@ -92,10 +94,6 @@ export default function Grid({
 
   // ============================================
 
-  const [chosen_variant_id, setChosenVariantId] = useState();
-
-  // ============================================
-
   return (
       <ul // items
         id="grid-items"
@@ -133,7 +131,7 @@ export default function Grid({
                 width: `${card_size.width}px`,
                }}
             >
-              <CartInterior { ...{ item, chosen_variant_id, setChosenVariantId, addToCart, idx } } />
+              <CartInterior { ...{ item, addToCart, idx } } />
 
               {/* <Button className="dummy" onClick={() => addToCart(idx)}>
                 Add to Cart
