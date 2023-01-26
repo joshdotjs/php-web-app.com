@@ -15,11 +15,11 @@ export default function Layout({ children, name, restrict }) {
     <AuthContextProvider { ...{ restrict } }>
       <CartContextProvider>
 
-      {/* <Header /> */}
+      <Header />
 
-      {/* <Cart /> */}
+      <Cart />
 
-      {/* <Notifications /> */}
+      <Notifications />
 
       <main id="page" className={name}>
         {children}

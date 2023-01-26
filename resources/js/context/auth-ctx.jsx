@@ -33,17 +33,19 @@ function AuthContextProvider ({ children, restrict }) {
 
   // -Load data from LS on page load
   useEffect(() => {
+    // -We want to get all of these here to invalidate their data in LS if TTL has expired.
     const logged_in = getLS('logged_in');
+    const user = getLS('token');
+    const token = getLS('user');
+
     if (logged_in) {
       setLoggedIn(logged_in);
-      setToken(getLS('token'));
-      setUser(getLS('user'));
+      setToken(token);
+      setUser(user);
     }
 
-    console.log('auth-ctx -- useEffect(, []) -- restrict: ', restrict);
-
     if (restrict) {
-      const user = getLS('user');
+      console.log('auth-ctx -- useEffect(, []) -- restrict: ', restrict);
       console.log('user?.is_admin: ', user?.is_admin);
 
       if (restrict === 'admin' && user?.is_admin !== true) { 
