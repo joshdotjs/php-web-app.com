@@ -7,7 +7,9 @@ import Button from '@/comps/button/button';
 // ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
 
 
-const CartInterior = ({ item, chosen_variant_id, setChosenVariantId, addToCart, idx }) => {
+const CartInterior = ({ item, addToCart, idx }) => {
+
+  const [chosen_variant_id, setChosenVariantId] = useState();
 
   return (
     <div>
@@ -25,8 +27,17 @@ const CartInterior = ({ item, chosen_variant_id, setChosenVariantId, addToCart, 
         />
       </div>
 
-      <Button onClick={() => {
-        addToCart(idx);
+      <Button 
+        disabled={!chosen_variant_id}
+        onClick={() => {
+        const { product_id, title, body, price, category, variants } = item;
+        const variant = variants.find((variant) => variant.id === chosen_variant_id);
+        const { id: variant_id, color, size, qty } = variant;
+        addToCart({ 
+          idx, 
+          product: { id: product_id, title, body, price, category }, 
+          variant: { id: variant_id, color, size, qty },
+        });
       }}>
         add to cart
       </Button>
@@ -82,10 +93,6 @@ export default function Grid({
 
   // ============================================
 
-  const [chosen_variant_id, setChosenVariantId] = useState();
-
-  // ============================================
-
   return (
       <ul // items
         id="grid-items"
@@ -122,7 +129,7 @@ export default function Grid({
                 width: `${card_size.width}px`,
                }}
             >
-              <CartInterior { ...{ item, chosen_variant_id, setChosenVariantId, addToCart, idx } } />
+              <CartInterior { ...{ item, addToCart, idx } } />
 
               {/* <Button className="dummy" onClick={() => addToCart(idx)}>
                 Add to Cart

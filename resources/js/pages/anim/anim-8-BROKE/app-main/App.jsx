@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useLayoutEffect, useContext } from 'react';
 import uuid from 'react-uuid';
 
 import { gsap } from "gsap";
@@ -6,6 +6,8 @@ import { ExpoScaleEase, RoughEase } from "gsap/EasePack";
 import { Flip } from "gsap/Flip";
 import { CustomEase } from "gsap/CustomEase";
 import { CustomWiggle } from "gsap/CustomWiggle";
+
+import CartContext from '@/context/cart-ctx';
 
 import Grid from './Grid';
 import Header from './Header';
@@ -31,7 +33,6 @@ CustomWiggle.create("cartButtonWiggle", { wiggles: 8, type: "easeOut" });
 // ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
 
 const colors = ['red', 'blue', 'green'];
-// const randColor = () => colors[rand(0, colors.length-1)];
 
 // ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
 
@@ -39,7 +40,7 @@ export default function App({ products, }) {
 
   // ============================================
 
-  const [card_size, setCardSize] = useState({ height: null, width: null});
+  const cartCtx = useContext(CartContext);
 
   // ============================================
 
@@ -53,9 +54,11 @@ export default function App({ products, }) {
   
   // ============================================
 
-  const addToCart = (idx) => {
+  const addToCart = ({idx, product, variant}) => {
     
     // ------------------------------------------
+
+    console.log('adding item to cart - product: ', product, '\tvariant: ', variant);
 
     disableClick();
     
@@ -118,7 +121,7 @@ export default function App({ products, }) {
       item.style.position = 'absolute';
   
       Flip.from(state, {
-        duration: 2, // 0.5
+        duration: 0.75, // 0.5
         ease: "back.in(0.8)",
         scale: true,
         absolute: true,
@@ -132,6 +135,15 @@ export default function App({ products, }) {
 
           // Hide the contents inside the hidden target
           item.style.visibility = 'hidden';
+
+          // Update the state of cart
+          cartCtx.addToCart(product, variant);
+          //  --Note: there is a bug in adding to the cart.
+          //    ---Adding to cart here does "fix" the problem thought.
+          //    ---The problem is if you add to the cart state via cartCtx
+          //       before the collapse animation is complete after 
+          //       filtering out one of the categories the grid 
+          //       jumps during the add-to-cart animation.
         }
       });
     };
@@ -161,7 +173,8 @@ export default function App({ products, }) {
 
   // STEP 1: Set up layout in state with grid items initialized
   const [layout, setLayout] = useState(() => ({
-    items: products.map(({id, title, body, price, category, variants}) => {
+    items: products.map((product) => {
+      const {id, title, body, price, category, variants} = product;
       return {  product_id: id, title, body, price, category, variants, ...createRow(category) };
     }),
       // init(num_rows, null).map(() => createRow()) // create an array of lenth num_rows filled with null, then map over that array replacing each element with a row defined by createRow().
@@ -352,7 +365,6 @@ export default function App({ products, }) {
           refs,
           layout,
           addToCart,
-          setCardSize,
         } }
       />
 

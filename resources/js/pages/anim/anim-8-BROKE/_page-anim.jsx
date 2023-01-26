@@ -4,7 +4,6 @@ import { createRoot } from 'react-dom/client';
 import Layout from '@/comps/_layout/layout';
 
 import MainApp from './app-main/App';
-import CartApp from './app-cart/App';
 
 import './.scss';
 
@@ -18,17 +17,10 @@ if(main_root){
   const products_SSR  = JSON.parse(main_root.dataset.products); // encodes variants
 
   createRoot(main_root).render(
-    <Layout>
+    <Layout name="anim">
       <MainApp products={products_SSR} />
     </Layout>
   );
-}
-
-// ==============================================
-
-const cart_root = document.querySelector('#root-header'); // TODO: Change to #root-cart
-if(cart_root){
-  createRoot(cart_root).render(<CartApp />);
 }
 
 // ==============================================
