@@ -5,7 +5,6 @@ import { Flip } from "gsap/Flip";
 
 // import { disableClick, enableClick } from '../util/dom';
 
-import './Cart.css';
 
 gsap.registerPlugin(Flip);
 
@@ -158,12 +157,15 @@ export default function Cart() {
   
   return (
     <div className="text-center" ref={container_ref}
-      style={{ position: 'absolute',
+      style={{ position: 'fixed',
       top: '300px',
       right: 0,
       background: 'lightblue',
       height: '100vh',
       width: '300px',
+
+      zIndex: 10,
+
     }}
     >
       
@@ -174,6 +176,7 @@ export default function Cart() {
         const key = `line-item-${item.id}`;
 
         return (
+
           <div      
             id={key} 
             key={key}
@@ -183,8 +186,8 @@ export default function Cart() {
             `} 
             onClick={() => remove(item)}
             style={{ 
-              display: item.status === 'exiting' ? 'none' : 'grid'
-            }}
+              display: item.status === 'exiting' ? 'none' : 'grid',
+             }}
           >
             <p>{item.id}</p>
             <p>{item.status}</p>

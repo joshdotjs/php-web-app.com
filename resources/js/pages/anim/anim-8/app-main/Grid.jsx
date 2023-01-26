@@ -9,9 +9,6 @@ import Button from '@/comps/button/button';
 
 const CartInterior = ({ item, addToCart, idx }) => {
 
-  const product = {};
-  const variant = {};
-
   const [chosen_variant_id, setChosenVariantId] = useState();
 
   return (
