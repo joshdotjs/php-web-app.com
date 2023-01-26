@@ -10,13 +10,7 @@ import { lo, lg, lr, lb, ly } from '@/util/log';
 
 const CartContext = createContext({
   cart: [],
-  addToCart: function() {},
-  removeFromCart: function() {},
-  resetCart: function() {},
-
-  layout: {items: [], state: undefined },
-  setLayout: function() {},
-
+  setCart: function() {},
 });
 
 // ==============================================
@@ -36,30 +30,6 @@ const CartContextProvider = ({ children }) => {
       setCart(cart_ls.map(item => ({ ...item, id: uuid(), status: "entered" }))); // id / status for cart FLIP animation
     }
   }, []);
-
-  // --------------------------------------------
-
-  // Goal:
-  //  -Step 1: cart state is set in cart-context
-  //  -Step 2: layout is set in <Cart />
-  //  -Step 3: addItem() in <Cart /> updates layout
-
-  const [layout, setLayout] = useState(() => {
-    
-    // TODO: Initialize items with cart from local-storage
-    // TODO: Initialize items with cart from local-storage
-
-    const init_layout = {
-      items: [
-        { id: uuid(), status: "entered" },
-      ].reverse(),
-      state: undefined,
-    };
-
-    console.log('Cart Context - init_layout: ', init_layout);
-
-    return init_layout;
-  });
 
   // --------------------------------------------
 
@@ -134,9 +104,6 @@ const CartContextProvider = ({ children }) => {
     addToCart,
     removeFromCart,
     resetCart,
-
-    layout,
-    setLayout,
   };
 
 

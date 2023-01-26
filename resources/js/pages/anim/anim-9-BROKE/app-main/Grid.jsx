@@ -7,7 +7,9 @@ import Button from '@/comps/button/button';
 // ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
 
 
-const CartInterior = ({ item, chosen_variant_id, setChosenVariantId, addToCart, idx }) => {
+const CartInterior = ({ item, addToCart, idx }) => {
+
+  const [chosen_variant_id, setChosenVariantId] = useState();
 
   return (
     <div>
@@ -26,7 +28,16 @@ const CartInterior = ({ item, chosen_variant_id, setChosenVariantId, addToCart, 
       </div>
 
       <Button onClick={() => {
-        addToCart(idx);
+
+        const { product_id, title, body, price, category, variants } = item;
+        const variant = variants.find((variant) => variant.id === chosen_variant_id);
+        const { id: variant_id, color, size, qty } = variant;
+        addToCart({ 
+          idx, 
+          product: { id: product_id, title, body, price, category }, 
+          variant: { id: variant_id, color, size, qty },
+        });
+
       }}>
         add to cart
       </Button>
@@ -87,51 +98,54 @@ export default function Grid({
   // ============================================
 
   return (
-      <ul // items
-        id="grid-items"
-        // ref={container_ref}
-        className="
-          grid  gap-4
-          grid-cols-1  sm:grid-cols-2  md:grid-cols-3  lg:grid-cols-4
-          max-w-screen-2xl  mx-auto
-          p-4
-        "
-        style={{
-          background: 'gray',
-          height: `${grid_height}px`,
-          // gridAutoFlow: 'dense',
-          gridAutoRows: 'min-content',
-          marginTop: '200px',
-        }}
-      >
-        {layout.items.map((item, idx) => (
-          <li // item
-            id={`box-${item.id}`} 
-            key={item.id}
-            className={`box  
-              ${item.status} 
+    <ul // items
+      id="grid-items"
+      // ref={container_ref}
+      className="
+        grid  gap-4
+        grid-cols-1  sm:grid-cols-2  md:grid-cols-3  lg:grid-cols-4
+        max-w-screen-2xl  mx-auto
+        p-4
+      "
+      style={{
+        background: 'gray',
+        height: `${grid_height}px`,
+        // gridAutoFlow: 'dense',
+        gridAutoRows: 'min-content',
+        marginTop: '200px',
+      }}
+    >
+      {layout.items.map((item, idx) => (
+        <li // item
+          id={`box-${item.id}`} 
+          key={item.id}
+          className={`box  
+            ${item.status} 
+          `}
+          style={{ 
+            display: item.status === 'exiting' ? 'none' : 'grid'
+          }}
+        >
+          <div 
+            ref={el => refs.current[idx] = el}
+            className={`box-child
+              ${item.color} 
             `}
+            style={{
+              height: `${card_size.height}px`,
+              width: `${card_size.width}px`,
+              }}
           >
-            <div 
-              ref={el => refs.current[idx] = el}
-              className={`box-child
-                ${item.color} 
-              `}
-              style={{
-                height: `${card_size.height}px`,
-                width: `${card_size.width}px`,
-               }}
-            >
-              <CartInterior { ...{ item, chosen_variant_id, setChosenVariantId, addToCart, idx } } />
+            <CartInterior { ...{ item, chosen_variant_id, setChosenVariantId, addToCart, idx } } />
 
-              {/* <Button className="dummy" onClick={() => addToCart(idx)}>
-                Add to Cart
-              </Button> */}
+            {/* <Button className="dummy" onClick={() => addToCart(idx)}>
+              Add to Cart
+            </Button> */}
 
-            </div>
-          </li>
-        ))}
-      </ul>
+          </div>
+        </li>
+      ))}
+    </ul>
   );
 
   // ============================================

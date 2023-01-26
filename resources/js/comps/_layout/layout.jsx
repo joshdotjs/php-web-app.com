@@ -4,7 +4,6 @@ import { CartContextProvider } from "@/context/cart-ctx";
 
 import Header from "./header/_header";
 import Cart from "./cart/_cart";
-import Cart2 from './cart/Cart';
 import Notifications from './notify/notify';
 
 // ==============================================
@@ -18,8 +17,7 @@ export default function Layout({ children, name, restrict }) {
 
       <Header />
 
-      <Cart />
-      {/* <Cart2 /> */}
+      {/* <Cart /> */}
 
       <Notifications />
 
