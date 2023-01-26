@@ -6,6 +6,8 @@ v5: choose the variant
   --Radio buttons wired up but the variant data is not used besides to highlight the radio button selected.
 v6: scale item correctly
 v7: size of card takes up entire size of grid card (works in flip-toy-6--cart-5)
+v8: adding item data to cart - synchronized via local storage (see notes below)
+v9: ...add duplicate item increases quantity...
 
 
 Scrapped:
@@ -19,12 +21,11 @@ v8: move layout from <Cart /> into cart-ctx
 TODO: 
 v?: ...cartCtx.addToCart() places the item into cart context using logic from currently broken v8
 v?: ...place item data in the cart (select variant and click 'add-to-cart')...
-.
-.
-.
+
 
 
 NOTES:
+  -DO NOT SPEND ANY MORE TIME DEBUGGING - JUST USE THE LOCAL STORAGE SOLUTION
   -The moment I try to use cartContext in App.jsx there is a glitch 
     directly between onStart() and onComplete() of the onEnter() callback
     in useLayoutEffect() for <Cart />.

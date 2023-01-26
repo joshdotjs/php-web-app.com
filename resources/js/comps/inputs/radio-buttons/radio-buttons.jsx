@@ -9,9 +9,9 @@ export default function RadioButtons({ name, options, selected, setSelected }) {
   // const options = ['sm', 'lg'];
   // const [selected, setSelected] = useState('');
 
-  useEffect(() => {
-    console.log('selected: ', selected);
-  }, [selected]);
+  // useEffect(() => {
+  //   console.log('selected: ', selected);
+  // }, [selected]);
 
 
   // --------------------------------------------
