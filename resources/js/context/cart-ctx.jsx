@@ -10,7 +10,13 @@ import { lo, lg, lr, lb, ly } from '@/util/log';
 
 const CartContext = createContext({
   cart: [],
-  setCart: function() {},
+  addToCart: function() {},
+  removeFromCart: function() {},
+  resetCart: function() {},
+
+  layout: {items: [], state: undefined },
+  setLayout: function() {},
+
 });
 
 // ==============================================
@@ -38,16 +44,21 @@ const CartContextProvider = ({ children }) => {
   //  -Step 2: layout is set in <Cart />
   //  -Step 3: addItem() in <Cart /> updates layout
 
-
-
   const [layout, setLayout] = useState(() => {
-    return {
+    
+    // TODO: Initialize items with cart from local-storage
+    // TODO: Initialize items with cart from local-storage
+
+    const init_layout = {
       items: [
         { id: uuid(), status: "entered" },
       ].reverse(),
-      // items: cart,
       state: undefined,
     };
+
+    console.log('Cart Context - init_layout: ', init_layout);
+
+    return init_layout;
   });
 
   // --------------------------------------------

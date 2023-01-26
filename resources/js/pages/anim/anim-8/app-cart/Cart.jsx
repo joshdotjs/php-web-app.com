@@ -1,7 +1,9 @@
-import React, { useCallback, useEffect, useLayoutEffect, useRef, useState, } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState, useContext } from 'react';
 import uuid from 'react-uuid';
 import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
+
+import CartContext from '@/context/cart-ctx';
 
 gsap.registerPlugin(Flip);
 
@@ -32,13 +34,20 @@ export default function Cart() {
 
   // --------------------------------------------
     
-  const [layout, setLayout] = useState(() => ({
-      items: [
-        { id: uuid(), status: "entered" },
-      ].reverse(),
-      state: undefined,
-    }
-  ));
+
+  const cartCtx = useContext(CartContext);
+  const { layout, setLayout } = cartCtx;
+  useEffect(() => {
+    console.log('cartCtx: ', cartCtx);
+  }, [cartCtx]);
+
+  // const [layout, setLayout] = useState(() => ({
+  //     items: [
+  //       { id: uuid(), status: "entered" },
+  //     ].reverse(),
+  //     state: undefined,
+  //   }
+  // ));
 
   // --------------------------------------------
   
@@ -53,9 +62,6 @@ export default function Cart() {
   }, []);
 
   // --------------------------------------------
-    
-
-
   // --------------------------------------------
     
   const remove = (item) => {  
@@ -107,7 +113,7 @@ export default function Cart() {
   // --------------------------------------------
 
   useLayoutEffect(() => {
-    if (!layout.state) return;
+    if (!layout?.state) return;
 
     const duration = 0.3;
     
@@ -166,7 +172,7 @@ export default function Cart() {
       
       {/* - - - - - - - - - - - - - - - - - - */}
 
-      {layout.items.map((item) => {
+      {layout && layout?.items.map((item) => {
 
         const key = `line-item-${item.id}`;
 

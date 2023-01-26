@@ -19,16 +19,12 @@ if(main_root){
 
   createRoot(main_root).render(
     <Layout>
+
+      <CartApp />
+
       <MainApp products={products_SSR} />
     </Layout>
   );
-}
-
-// ==============================================
-
-const cart_root = document.querySelector('#root-header'); // TODO: Change to #root-cart
-if(cart_root){
-  createRoot(cart_root).render(<CartApp />);
 }
 
 // ==============================================
@@ -94,7 +90,12 @@ if(cart_root){
 //
 //  * * * Sequence 3: 1D Cart Insert * * * 
 //  
-
+//  1. useEffect()
+//      -step 1: event listener is added for 'cart-add' event
+//      -step 2: event: 'cart-add' triggers addItem()
+//      -step 3: setLayout() adds new item to front of layout.items
+//  2. useLayoutEffect()
+//      -step 1: 
 
 
 //
