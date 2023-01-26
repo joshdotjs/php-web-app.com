@@ -111,6 +111,9 @@ export default function Grid({
             className={`box  
               ${item.status} 
             `}
+            style={{ 
+              display: item.status === 'exiting' ? 'none' : 'grid'
+            }}
           >
             <div 
               ref={el => refs.current[idx] = el}

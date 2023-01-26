@@ -3,10 +3,6 @@ import uuid from 'react-uuid';
 import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 
-// import { disableClick, enableClick } from '../util/dom';
-
-import './Cart.css';
-
 gsap.registerPlugin(Flip);
 
 
@@ -158,13 +154,14 @@ export default function Cart() {
   
   return (
     <div className="text-center" ref={container_ref}
-      style={{ position: 'absolute',
-      top: '300px',
-      right: 0,
-      background: 'lightblue',
-      height: '100vh',
-      width: '300px',
-    }}
+      style={{ position: 'fixed',
+        top: '300px',
+        right: 0,
+        background: 'lightblue',
+        height: '100vh',
+        width: '300px',
+        zIndex: 100,
+      }}
     >
       
       {/* - - - - - - - - - - - - - - - - - - */}
