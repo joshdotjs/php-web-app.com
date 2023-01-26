@@ -7,7 +7,7 @@ v5: choose the variant
 v6: scale item correctly
 v7: size of card takes up entire size of grid card (works in flip-toy-6--cart-5)
 v8: adding item data to cart - synchronized via local storage (see notes below)
-v9: ...add duplicate item increases quantity...
+v9: handling duplicate cart items => increase quantity
 
 
 Scrapped:
