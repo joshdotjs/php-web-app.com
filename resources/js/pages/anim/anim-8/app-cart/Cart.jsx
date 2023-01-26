@@ -23,8 +23,23 @@ export default function Cart() {
       console.log('cart: ', cart);
 
 
+      // -Assume we didn't add an item already in the cart
+
+
+      //  -Page load:
+      // [
+      //  { id: 'AAA', status: 'entered' }
+      // ]
+
+      //  -Next:
+      // [
+      //  { id: 'BBB', status: 'entered' }
+      //  { id: 'AAA', status: 'entered' }
+      // ]
+
+
       setLayout((prev) => { 
-        const new_item = { id: uuid(), status: "entered" };
+        const new_item = { id: 'BBB', status: "entered" };
         const items = [new_item, ...prev.items];
         const state = Flip.getState(q(".line-item")); 
         return { items, state }; 
@@ -41,13 +56,22 @@ export default function Cart() {
 
   // --------------------------------------------
     
-  const [layout, setLayout] = useState(() => ({
-      items: [
-        { id: uuid(), status: "entered" },
-      ].reverse(),
+  const [layout, setLayout] = useState(() => {
+
+
+    const cart = getCartLS();
+    console.log('cart: ', cart);
+
+    const init_items = cart.map(({ product, variant, qty }) => ({ id: variant.id, status: 'entered', product, variant, qty }));
+
+    return {
+      // items: [
+      //   { id: 'AAA', status: "entered" },
+      // ].reverse(),
+      items: init_items.reverse(),
       state: undefined,
-    }
-  ));
+    };
+  });
 
   // --------------------------------------------
   

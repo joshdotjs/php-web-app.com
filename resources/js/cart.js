@@ -9,7 +9,7 @@ import {
 
 // ==============================================
 
- const addToCartLS = ({ product, variant }) => {
+ const addToCartLS = ({ product, variant, fire=false }) => {
 
   console.log('cart.js -- addToCart() -- product: ', product, '\nvariant: ', variant);
 
@@ -47,7 +47,8 @@ import {
   setCartLS(new_cart);
 
   // Step 4:
-  fireEvent('cart-add');
+  if (fire)
+    fireEvent('cart-add');
 };
 
 // ==============================================
