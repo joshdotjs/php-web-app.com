@@ -35,8 +35,10 @@ function AuthContextProvider ({ children, restrict }) {
   useEffect(() => {
     // -We want to get all of these here to invalidate their data in LS if TTL has expired.
     const logged_in = getLS('logged_in');
-    const user = getLS('token');
-    const token = getLS('user');
+    const user = getLS('user');
+    const token = getLS('token');
+
+
 
     if (logged_in) {
       setLoggedIn(logged_in);
@@ -50,10 +52,12 @@ function AuthContextProvider ({ children, restrict }) {
 
       if (restrict === 'admin' && user?.is_admin !== true) { 
         // router.replace('/auth/login');
+        // debugger;
         redirect('/auth/login');
       }
       if (restrict === 'user' && !user) { 
         // router.replace('/auth/login'); 
+        // debugger;
         redirect('/auth/login');
       }
     }
