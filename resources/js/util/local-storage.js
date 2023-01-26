@@ -49,12 +49,6 @@ const removeLS = (key /*: string */) => localStorage.removeItem(key);
 
 // ==============================================
 
-const getCartLS = () => getLS('cart');
-const setCartLS = (cart) => setLS('cart', cart);
-const updateCartLS = (cart) => setLS('cart', cart);
-
-// ==============================================
-
 // -Not using local storage at all for auth - using PHP SSR with cookies sent with each request
 // const setLoggedInLS = (x) => setLS('logged_in', x);
 // const getLoggedInLS = (x) => getLS('logged_in');
@@ -70,7 +64,4 @@ const updateCartLS = (cart) => setLS('cart', cart);
 
 export { 
   getLS, setLS, removeLS,
-  getCartLS, setCartLS, 
-  updateCartLS
-  // getFiltersLS, setFiltersLS
  };

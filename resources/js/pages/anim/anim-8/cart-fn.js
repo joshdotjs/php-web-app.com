@@ -1,11 +1,10 @@
 import { fireEvent } from '@/util/custom-event';
-import { 
-  getLS, setLS, removeLS,
-  getCartLS, setCartLS, 
-  updateCartLS
-  // getFiltersLS, setFiltersLS
- } from '@/util/local-storage';
+import { getLS, setLS, removeLS } from '@/util/local-storage';
 
+// ==============================================
+
+const getCartLS = () => getLS('cart');
+const setCartLS = (cart) => setLS('cart', cart);
 
 // ==============================================
 
@@ -53,4 +52,24 @@ import {
 
 // ==============================================
 
-export { addToCartLS };
+const removeFromCartLS = (variant_id) => {
+  // lg('removeFromCart()');
+
+  const prev_cart = getCartLS();
+  console.log('prev_cart: ', prev_cart);
+
+  const new_cart = prev_cart.filter(line => line.variant.id !== variant_id);
+  setCartLS(new_cart);
+  // fireEvent('cart-remove');
+
+  // if (new_cart.length < 1) {
+  //   closeCart();
+  // }
+}
+
+// ==============================================
+
+export { 
+  getCartLS,
+  addToCartLS, removeFromCartLS
+ };

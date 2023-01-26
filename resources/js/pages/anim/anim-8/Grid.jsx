@@ -4,7 +4,7 @@ import { useState, useRef, useLayoutEffect, useEffect } from 'react';
 import RadioButtons from '@/comps/inputs/radio-buttons/radio-buttons-variants';
 import Button from '@/comps/button/button';
 
-import { addToCartLS } from '@/cart';
+import { addToCartLS } from './cart-fn';
 
 // ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
 

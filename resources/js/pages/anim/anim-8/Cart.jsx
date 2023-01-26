@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
-import { getCartLS } from '@/util/local-storage';
+import { getCartLS, removeFromCartLS } from './cart-fn';
 
 gsap.registerPlugin(Flip);
 
@@ -17,29 +17,15 @@ export default function Cart() {
 
   useEffect(() => {
     const addItem = () => { 
-      
-      lr('<Cart /> -- addItem() callback for cart-add event');
       const cart = getCartLS();
-      console.log('cart: ', cart);
-
-
       // -Assume we didn't add an item already in the cart
-
-
-      //  -Page load:
-      // [
-      //  { id: 'AAA', status: 'entered' }
-      // ]
-
-      //  -Next:
-      // [
-      //  { id: 'BBB', status: 'entered' }
-      //  { id: 'AAA', status: 'entered' }
-      // ]
-
+      // -Assume we didn't add an item already in the cart
+      // -Assume we didn't add an item already in the cart
+      // -Assume we didn't add an item already in the cart
+      const { product, variant, qty } = cart.at(-1);
+      const new_item = { id: variant.id, status: 'entered', product, variant, qty };
 
       setLayout((prev) => { 
-        const new_item = { id: 'BBB', status: "entered" };
         const items = [new_item, ...prev.items];
         const state = Flip.getState(q(".line-item")); 
         return { items, state }; 
@@ -58,16 +44,14 @@ export default function Cart() {
     
   const [layout, setLayout] = useState(() => {
 
-
     const cart = getCartLS();
     console.log('cart: ', cart);
 
-    const init_items = cart.map(({ product, variant, qty }) => ({ id: variant.id, status: 'entered', product, variant, qty }));
+    let init_items = [];
+    if (cart?.length > 0)
+      init_items = cart.map(({ product, variant, qty }) => ({ id: variant.id, status: 'entered', product, variant, qty }));
 
     return {
-      // items: [
-      //   { id: 'AAA', status: "entered" },
-      // ].reverse(),
       items: init_items.reverse(),
       state: undefined,
     };
@@ -94,6 +78,9 @@ export default function Cart() {
   const remove = (item) => {  
 
     console.log('item: ', item);
+
+    const { variant: { id: variant_id }} = item;
+    removeFromCartLS( variant_id );
 
     // set the item as exiting which will add a CSS class for display: none;
     item.status = "exiting"; // JOSH: This mutates the state!!!!
@@ -216,8 +203,9 @@ export default function Cart() {
               display: item.status === 'exiting' ? 'none' : 'grid'
             }}
           >
-            <p>{item.id}</p>
-            <p>{item.status}</p>
+            <p>Variant ID: {item.id}</p>
+            <p>{item.product.title}</p>
+            <p>{item.variant.size} {' '} {item.variant.color}</p>
           </div>
         );
       })}

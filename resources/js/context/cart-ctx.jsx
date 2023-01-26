@@ -1,9 +1,9 @@
 import React, { useState, useEffect, createContext, } from 'react';
 import uuid from 'react-uuid';
 
-import { 
-  getCartLS, setCartLS, 
-} from '../util/local-storage';
+// import { 
+//   getCartLS, setCartLS, 
+// } from '../util/local-storage';
 import { lo, lg, lr, lb, ly } from '@/util/log';
 
 // ==============================================
