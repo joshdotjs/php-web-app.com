@@ -30,21 +30,12 @@ const CartInterior = ({ item, addToCart, idx }) => {
         />
       </div>
 
-      <Button onClick={() => {
-
-        console.log('item: ', item);
-
-
-        // TODO: 
-        //  1. Disable button until a variant is selected.
-        //  2. onClick() gets variant via lookup of id in items.varaints.find((variant) => variant.id === chosen_variant_id);
-        //  3. Send in product and variant
-
+      <Button 
+        disabled={!chosen_variant_id}
+        onClick={() => {
         const { product_id, title, body, price, category, variants } = item;
         const variant = variants.find((variant) => variant.id === chosen_variant_id);
         const { id: variant_id, color, size, qty } = variant;
-        console.log('variant: ', variant);
-
         addToCart({ 
           idx, 
           product: { id: product_id, title, body, price, category }, 
