@@ -16,7 +16,7 @@ if(root) {
   const orders_SSR = JSON.parse(root.dataset.orders);
 
   createRoot(root).render(
-    <Layout>
+    <Layout name="anim-orders">
       <App orders={orders_SSR} />
     </Layout>
   );
