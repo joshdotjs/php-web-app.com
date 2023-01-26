@@ -3,9 +3,8 @@ import uuid from 'react-uuid';
 import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 
-// import { disableClick, enableClick } from '../util/dom';
-
-import './Cart.css';
+import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
+import { getCartLS } from '@/util/local-storage';
 
 gsap.registerPlugin(Flip);
 
@@ -17,7 +16,13 @@ export default function Cart() {
   // --------------------------------------------
 
   useEffect(() => {
-    const addItem = () => {  
+    const addItem = () => { 
+      
+      lr('<Cart /> -- addItem() callback for cart-add event');
+      const cart = getCartLS();
+      console.log('cart: ', cart);
+
+
       setLayout((prev) => { 
         const new_item = { id: uuid(), status: "entered" };
         const items = [new_item, ...prev.items];
@@ -158,12 +163,13 @@ export default function Cart() {
   
   return (
     <div className="text-center" ref={container_ref}
-      style={{ position: 'absolute',
+      style={{ position: 'fixed',
       top: '300px',
       right: 0,
       background: 'lightblue',
       height: '100vh',
       width: '300px',
+      zIndex: 100
     }}
     >
       
@@ -178,7 +184,7 @@ export default function Cart() {
             id={key} 
             key={key}
             // data-flip-id={key}
-            className={`line-item  ${item.status} 
+            className={`line-item
               bg-green-400 mb-5 px-4 py-2
             `} 
             onClick={() => remove(item)}

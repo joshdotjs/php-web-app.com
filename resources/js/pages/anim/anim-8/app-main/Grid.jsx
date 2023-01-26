@@ -4,6 +4,8 @@ import { useState, useRef, useLayoutEffect, useEffect } from 'react';
 import RadioButtons from '@/comps/inputs/radio-buttons/radio-buttons-variants';
 import Button from '@/comps/button/button';
 
+import { addToCartLS } from '@/cart';
+
 // ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
 
 
@@ -26,7 +28,15 @@ const CartInterior = ({ item, chosen_variant_id, setChosenVariantId, addToCart, 
       </div>
 
       <Button onClick={() => {
-        addToCart(idx);
+        const { product_id, title, body, price, category, variants } = item;
+        const variant = variants.find((variant) => variant.id === chosen_variant_id);
+        const { id: variant_id, color, size, qty } = variant;
+        addToCartLS({ 
+          idx, 
+          product: { id: product_id, title, body, price, category }, 
+          variant: { id: variant_id, color, size, qty },
+        });
+        addToCart(idx); // animation in <App />
       }}>
         add to cart
       </Button>
@@ -108,9 +118,10 @@ export default function Grid({
           <li // item
             id={`box-${item.id}`} 
             key={item.id}
-            className={`box  
-              ${item.status} 
-            `}
+            className="box"
+            style={{ 
+              display: item.status === 'exiting' ? 'none' : 'grid'
+            }}
           >
             <div 
               ref={el => refs.current[idx] = el}

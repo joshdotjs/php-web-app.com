@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 import Layout from '@/comps/_layout/layout';
 
 import MainApp from './app-main/App';
-import CartApp from './app-cart/App';
+import CartApp from './app-cart/Cart';
 
 import './.scss';
 

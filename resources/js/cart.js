@@ -1,3 +1,4 @@
+import { fireEvent } from '@/util/custom-event';
 import { 
   getLS, setLS, removeLS,
   getCartLS, setCartLS, 
@@ -8,7 +9,7 @@ import {
 
 // ==============================================
 
- const addToCart = ({ product, variant }) => {
+ const addToCartLS = ({ product, variant }) => {
 
   console.log('cart.js -- addToCart() -- product: ', product, '\nvariant: ', variant);
 
@@ -24,15 +25,18 @@ import {
 
   // Step 1:
   const prev_cart = getCartLS();
+  // -if cart-ls not set then prev_cart === null  =>  idx===undefined
 
   // Step 2:
-  const idx = prev_cart.findIndex(line => line.variant.id === variant_id);
+  const idx = prev_cart?.findIndex(line => line?.variant.id === variant_id);
   
   let new_cart;
 
-  if (idx < 0) {
+  if (idx === undefined) {
+    new_cart = [{ product, variant, qty: 1 }];
+  } else if (idx < 0) {
     // lo('addToCart() - new line item');
-    new_cart = [...prev_cart, { product, variant, qty: 1 }]; // clone local cart state and add a new product item to the array with the cloned cart.        
+    new_cart = [...prev_cart, { product, variant, qty: 1 }]; 
   } else {
     // ly('addToCart() - updating quantity');
     new_cart = [...prev_cart]; // clone local cart state via deep copy.
@@ -47,3 +51,5 @@ import {
 };
 
 // ==============================================
+
+export { addToCartLS };
