@@ -18,7 +18,7 @@ if(main_root){
   const products_SSR  = JSON.parse(main_root.dataset.products); // encodes variants
 
   createRoot(main_root).render(
-    <Layout>
+    <Layout name="anim">
       <MainApp products={products_SSR} />
     </Layout>
   );

@@ -58,7 +58,7 @@ export default function App({ products, }) {
     
     // ------------------------------------------
 
-    // cartCtx.addToCart(product, variant);
+    console.log('adding item to cart - product: ', product, '\tvariant: ', variant);
 
     disableClick();
     
@@ -121,7 +121,7 @@ export default function App({ products, }) {
       item.style.position = 'absolute';
   
       Flip.from(state, {
-        duration: 2, // 0.5
+        duration: 0.75, // 0.5
         ease: "back.in(0.8)",
         scale: true,
         absolute: true,
@@ -135,6 +135,15 @@ export default function App({ products, }) {
 
           // Hide the contents inside the hidden target
           item.style.visibility = 'hidden';
+
+          // Update the state of cart
+          cartCtx.addToCart(product, variant);
+          //  --Note: there is a bug in adding to the cart.
+          //    ---Adding to cart here does "fix" the problem thought.
+          //    ---The problem is if you add to the cart state via cartCtx
+          //       before the collapse animation is complete after 
+          //       filtering out one of the categories the grid 
+          //       jumps during the add-to-cart animation.
         }
       });
     };

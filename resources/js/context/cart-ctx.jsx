@@ -35,6 +35,9 @@ const CartContextProvider = ({ children }) => {
 
     const { id: variant_id } = variant;
 
+    const deep_product = structuredClone(product);
+    const deep_variant = structuredClone(variant);
+
     setCart((prev_cart) => {
 
       const idx = prev_cart.findIndex(line => line.variant.id === variant_id);
@@ -43,7 +46,7 @@ const CartContextProvider = ({ children }) => {
 
       if (idx < 0) {
         // lo('addToCart() - new line item');
-        new_cart = [...prev_cart, { product, variant, qty: 1 }]; // clone local cart state and add a new product item to the array with the cloned cart.        
+        new_cart = [...prev_cart, { product: deep_product, variant: deep_variant, qty: 1 }]; // clone local cart state and add a new product item to the array with the cloned cart.        
       } else {
         // ly('addToCart() - updating quantity');
         new_cart = [...prev_cart]; // clone local cart state via deep copy.
