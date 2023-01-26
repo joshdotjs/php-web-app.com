@@ -1,10 +1,12 @@
-import React, { useCallback, useEffect, useLayoutEffect, useRef, useState, } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState, useContext } from 'react';
 import uuid from 'react-uuid';
 import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 
-// import { disableClick, enableClick } from '../util/dom';
+import CartContext from '@/context/cart-ctx';
 
+// import { disableClick, enableClick } from '../util/dom';
+import { getCartLS } from '@/util/local-storage';
 
 gsap.registerPlugin(Flip);
 
@@ -15,15 +17,30 @@ export default function Cart() {
 
   // --------------------------------------------
 
+  // const { cart, removeFromCart, resetCart } = useContext(CartContext);
+
+  // --------------------------------------------
+
+
+  const addItem = () => {  
+    setLayout((prev) => { 
+      
+      // Get top most item in cart and push onto front here.
+      const cart = getCartLS();
+      console.log('cart: ', cart);
+      
+      const new_cart_item = cart.at(-1);
+      const { product, variant, qty } = new_cart_item;
+      console.log('new_cart_item: ', new_cart_item);
+      const new_item = { id: uuid(), status: "entered", product, variant, qty };
+
+      const items = [new_item, ...prev.items];
+      const state = Flip.getState(q(".line-item")); 
+      return { items, state }; 
+    });
+  };
+
   useEffect(() => {
-    const addItem = () => {  
-      setLayout((prev) => { 
-        const new_item = { id: uuid(), status: "entered" };
-        const items = [new_item, ...prev.items];
-        const state = Flip.getState(q(".line-item")); 
-        return { items, state }; 
-      });
-    };
     window.addEventListener('cart-add', addItem);
     return () => window.removeEventListener('cart-add', addItem);
   }, []);
@@ -183,14 +200,17 @@ export default function Cart() {
             // data-flip-id={key}
             className={`line-item  ${item.status} 
               bg-green-400 mb-5 px-4 py-2
+              mb-4
             `} 
             onClick={() => remove(item)}
             style={{ 
               display: item.status === 'exiting' ? 'none' : 'grid',
              }}
           >
-            <p>{item.id}</p>
             <p>{item.status}</p>
+            <p>{item?.product?.title}</p>
+            <p>{item?.variant?.color}{' '}{item?.variant?.size}</p>
+            <p>{item?.qty}</p>
           </div>
         );
       })}

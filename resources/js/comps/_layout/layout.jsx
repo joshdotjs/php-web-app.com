@@ -18,7 +18,7 @@ export default function Layout({ children, name, restrict }) {
 
       <Header />
 
-      {/* <Cart /> */}
+      <Cart />
       <Cart2 />
 
       <Notifications />

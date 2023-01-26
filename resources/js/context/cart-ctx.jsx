@@ -1,4 +1,5 @@
 import React, { useState, useEffect, createContext, } from 'react';
+import uuid from 'react-uuid';
 
 import { 
   getCartLS, setCartLS, 
@@ -21,11 +22,33 @@ const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
+
+    ly('1: useEffect() cart-ctx');
+
     const cart_ls = getCartLS();
     if (cart_ls) {
-      setCart(cart_ls)
+      setCart(cart_ls.map(item => ({ ...item, id: uuid(), status: "entered" }))); // id / status for cart FLIP animation
     }
   }, []);
+
+  // --------------------------------------------
+
+  // Goal:
+  //  -Step 1: cart state is set in cart-context
+  //  -Step 2: layout is set in <Cart />
+  //  -Step 3: addItem() in <Cart /> updates layout
+
+
+
+  const [layout, setLayout] = useState(() => {
+    return {
+      items: [
+        { id: uuid(), status: "entered" },
+      ].reverse(),
+      // items: cart,
+      state: undefined,
+    };
+  });
 
   // --------------------------------------------
 
@@ -99,7 +122,10 @@ const CartContextProvider = ({ children }) => {
     cart,
     addToCart,
     removeFromCart,
-    resetCart
+    resetCart,
+
+    layout,
+    setLayout,
   };
 
 
