@@ -2,6 +2,8 @@ import React from 'react';
 
 import Link from '@/comps/link/link';
 
+import Storefront from './storefront';
+
 // ==============================================
 
 export default function Page() {
@@ -9,7 +11,7 @@ export default function Page() {
   // --------------------------------------------
 
   return(
-    
+    <>
       <ul>
         <li className="all"> 
           <Link href="/">home</Link>
@@ -75,6 +77,21 @@ export default function Page() {
         </ul>
       </ul>
     
+
+
+      <hr className="mb-8" />
+
+
+
+
+      <Storefront />
+
+
+
+
+
+
+    </>
   );
 
   // --------------------------------------------
