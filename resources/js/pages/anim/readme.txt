@@ -8,7 +8,7 @@ v6: scale item correctly
 v7: size of card takes up entire size of grid card (works in flip-toy-6--cart-5)
 v8: adding item data to cart - synchronized via local storage (see notes below)
 v9: handling duplicate cart items => increase quantity
-
+v10: ...checkout button...
 
 Scrapped:
 v8: move layout from <Cart /> into cart-ctx

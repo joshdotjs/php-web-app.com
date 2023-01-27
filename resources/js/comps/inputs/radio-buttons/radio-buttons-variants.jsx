@@ -26,7 +26,7 @@ export default function RadioButtons({ name, options, option_labels, selected, s
             <div 
               key={key} 
               onClick={() => setSelected(option)} 
-              className={`border inline my-1 py-1cursor-pointer ${selected === option ? 'bg-green-300' : ''}`}
+              className={`border inline my-1 py-2 px-2 text-center cursor-pointer ${selected === option ? 'bg-green-300' : ''}`}
             >
               {option_labels[idx]}
             </div>

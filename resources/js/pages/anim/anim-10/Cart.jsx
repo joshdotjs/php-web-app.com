@@ -3,10 +3,15 @@ import uuid from 'react-uuid';
 import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 
-import CartContext from '@/context/cart-ctx';
+import AuthContext from '@/context/auth-ctx';
 
-// import { disableClick, enableClick } from '../util/dom';
-import { getCartLS } from '@/util/local-storage';
+import Button from '@/comps/button/button';
+
+import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
+import { authFetch } from '@/util/fetch';
+import { redirect } from '@/util/routes';
+import { getCartLS, removeFromCartLS } from './cart-fn';
+
 
 gsap.registerPlugin(Flip);
 
@@ -17,30 +22,97 @@ export default function Cart() {
 
   // --------------------------------------------
 
-  // const { cart, removeFromCart, resetCart } = useContext(CartContext);
+  const { logged_in } = useContext(AuthContext);
 
   // --------------------------------------------
 
+  const submit = () => {
 
-  const addItem = () => {  
-    setLayout((prev) => { 
-      
-      // Get top most item in cart and push onto front here.
+    // - - - - - - - - - - - - - - - - - - - - - 
+
+    const submitOrderToNode = () => {
+      // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/checkout/stripe-checkout-node`;
+      const url = `${window.API_URL}/api/checkout/stripe-checkout-laravel`;
+
       const cart = getCartLS();
-      console.log('cart: ', cart);
       
-      const new_cart_item = cart.at(-1);
-      const { product, variant, qty } = new_cart_item;
-      console.log('new_cart_item: ', new_cart_item);
-      const new_item = { id: uuid(), status: "entered", product, variant, qty };
+      fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", },
+        body: JSON.stringify({ cart }),
+      })
+        .then(res => {
+          if (res.ok) return res.json();
+          return res.json().then(json => Promise.reject(json));
+        })
+        .then(({ url }) => {
+          window.location = url;
+        })
+        .catch(e => {
+          console.error(e.error);
+        });
 
-      const items = [new_item, ...prev.items];
-      const state = Flip.getState(q(".line-item")); 
-      return { items, state }; 
-    });
+    };
+
+    submitOrderToNode();
+
+    // - - - - - - - - - - - - - - - - - - - - - 
+
+    const insertOrderInDB = async () => {
+
+      const cart = getCartLS();
+
+      // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/orders`;
+      const url = `/api/orders`;
+      debugger;
+      const [data, error] = await authFetch({
+        url: url, 
+        method: 'POST', 
+        body: { cart },
+      });
+  
+      if (error) {
+        // alert('TODO: Unauthorization Notification...');
+        lr('FAIL');
+        console.log('error: ', error);
+      }
+      if (!error) {
+        lg('SUCCESS');
+        console.log('data: ', data);
+        resetCart();
+      }
+
+    };
+
+    // insertOrderInDB();
+
+    // - - - - - - - - - - - - - - - - - - - - - 
+
   };
 
+  // --------------------------------------------
+
   useEffect(() => {
+    const addItem = () => { 
+      setLayout((prev_layout) => { 
+
+        const cart = getCartLS();
+        const prev_items = prev_layout.items;
+
+        let items;
+        if (cart.length === prev_items.length) { // duplicate item => only increase quantity (already updated)
+          lr('duplicate');
+          items = cart.map(({ product, variant, qty}) => ({ id: variant.id, status: 'entered', product, variant, qty }));
+        } else { // new item => add to cart
+          const { product, variant, qty } = cart.at(-1);
+          const new_item = { id: variant.id, status: 'entered', product, variant, qty };
+          items = [new_item, ...prev_items];
+        }
+
+        const state = Flip.getState(q(".line-item")); 
+        return { items, state }; 
+      });
+    };
     window.addEventListener('cart-add', addItem);
     return () => window.removeEventListener('cart-add', addItem);
   }, []);
@@ -52,13 +124,20 @@ export default function Cart() {
 
   // --------------------------------------------
     
-  const [layout, setLayout] = useState(() => ({
-      items: [
-        { id: uuid(), status: "entered" },
-      ].reverse(),
+  const [layout, setLayout] = useState(() => {
+
+    const cart = getCartLS();
+    console.log('cart: ', cart);
+
+    let init_items = [];
+    if (cart?.length > 0)
+      init_items = cart.map(({ product, variant, qty }) => ({ id: variant.id, status: 'entered', product, variant, qty }));
+
+    return {
+      items: init_items.reverse(),
       state: undefined,
-    }
-  ));
+    };
+  });
 
   // --------------------------------------------
   
@@ -81,6 +160,9 @@ export default function Cart() {
   const remove = (item) => {  
 
     console.log('item: ', item);
+
+    const { variant: { id: variant_id }} = item;
+    removeFromCartLS( variant_id );
 
     // set the item as exiting which will add a CSS class for display: none;
     item.status = "exiting"; // JOSH: This mutates the state!!!!
@@ -180,9 +262,7 @@ export default function Cart() {
       background: 'lightblue',
       height: '100vh',
       width: '300px',
-
-      zIndex: 10,
-
+      zIndex: 100
     }}
     >
       
@@ -193,27 +273,43 @@ export default function Cart() {
         const key = `line-item-${item.id}`;
 
         return (
-
           <div      
             id={key} 
             key={key}
             // data-flip-id={key}
-            className={`line-item  ${item.status} 
+            className={`line-item
               bg-green-400 mb-5 px-4 py-2
-              mb-4
             `} 
             onClick={() => remove(item)}
             style={{ 
-              display: item.status === 'exiting' ? 'none' : 'grid',
-             }}
+              display: item.status === 'exiting' ? 'none' : 'grid'
+            }}
           >
-            <p>{item.status}</p>
-            <p>{item?.product?.title}</p>
-            <p>{item?.variant?.color}{' '}{item?.variant?.size}</p>
-            <p>{item?.qty}</p>
+            <p>Variant ID: {item.id}</p>
+            <p>{item.product.title}</p>
+            <p>{item.variant.size} {' '} {item.variant.color}</p>
+            <p>Qty: {item.qty}</p>
           </div>
         );
       })}
+
+      {/* - - - - - - - - - - - - - - - - - - */}
+
+      <Button 
+        // disabled={cart.length === 0}
+        onClick={() => {
+
+          if (logged_in)
+            submit();
+          else {
+            // router.push('/auth/login');
+            redirect('/auth/login');
+          }
+
+        }}
+      >
+        Checkout
+      </Button>
 
       {/* - - - - - - - - - - - - - - - - - - */}
 
