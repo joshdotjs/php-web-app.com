@@ -5,8 +5,6 @@ import { gsap } from 'gsap';
 import RadioButtons from '@/comps/inputs/radio-buttons/radio-buttons-variants';
 import Button from '@/comps/button/button';
 
-import { disableClick, enableClick } from '@/util/dom';
-
 import { addToCartLS } from './cart-fn';
 
 // ==============================================
@@ -15,10 +13,8 @@ export default function Card ({ item, addToCart, idx }) {
 
   // --------------------------------------------
 
-  const imgs = ['/img/products/shoes/pegasus-green.webp', '/img/products/shoes/pegasus-pink.webp', '/img/products/shoes/pegasus-purple.webp', '/img/products/shoes/pegasus-white.webp'];
-
-  const [hovered_image, setHoveredImage]       = useState(imgs[0]);
-  const [chosen_variant_id, setChosenVariantId] = useState();
+  const [hovered_image, setHoveredImage]       = useState(item.variants[0].img);
+  const [chosen_variant_id, setChosenVariantId] = useState(item.variants[0].id);
 
   // TODO: Get these images from the DB
   // --------------------------------------------
@@ -69,22 +65,24 @@ export default function Card ({ item, addToCart, idx }) {
         </div>
 
         <div ref={reveal_ref} className="back">
-          <RadioButtons 
-            name="variants" 
-            options={item.variants.map(({id}) => id)} 
-            option_labels={item.variants.map(({size, color}) => `${size} ${color}`)} 
-            selected={chosen_variant_id} 
-            setSelected={setChosenVariantId} 
-          />
-
           {
             item.variants.map(({id, product_id, qty, size, color, img}) => {
+
+              const key = `radio-${id}`;
+
               return (
                 <img 
-                  key={img} 
+                  id={key}
+                  key={key} 
                   src={img}
-                  onMouseEnter={() => { setHoveredImage(img) }}
-                  onClick={() => { alert('todo: set variant') }}
+                  onMouseEnter={() => { 
+                    setHoveredImage(img);
+                    setChosenVariantId(id);
+                   }}
+                  // onClick={() => { setChosenVariantId(id) }}
+                  style={{
+                    outline: chosen_variant_id === id ? 'dashed limegreen 3px' : ''
+                  }}
                 />
               );
             })
