@@ -192,7 +192,7 @@ export default function Storefront() {
             {/* <img src="/img/white-shoes.webp" alt="" className="h-full w-full object-cover object-center" /> */}
 
 
-            <video autoPlay={true} loop={true} >
+            <video autoPlay={true} loop={true} src="/video/Nike_Volume_2-Hero_Loop.mp4">
               <source src="/video/Nike_Volume_2-Hero_Loop.mp4" type="video/webm" />
             </video>
             
