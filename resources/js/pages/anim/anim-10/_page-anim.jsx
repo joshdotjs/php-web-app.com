@@ -23,6 +23,7 @@ if(main_root){
       <CartApp />
 
       <MainApp products={products_SSR} />
+
     </Layout>
   );
 }

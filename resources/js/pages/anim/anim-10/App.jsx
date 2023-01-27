@@ -113,7 +113,7 @@ export default function App({ products, }) {
       item.style.position = 'absolute';
   
       Flip.from(state, {
-        duration: 2, // 0.5
+        duration: 0.8, // 0.5
         ease: "back.in(0.8)",
         scale: true,
         absolute: true,

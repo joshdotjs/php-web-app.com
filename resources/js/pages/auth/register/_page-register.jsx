@@ -5,7 +5,7 @@ import { createRoot } from 'react-dom/client';
 import { CartContextProvider } from '@/context/cart-ctx';
 
 import Header from '@/comps/header/_header';
-import Cart from '@/comps/_layout/cart/_cart';
+
 import Button from '@/comps/button/button';
 
 import { fetchGET, fetchPOST } from '@/util/fetch';
@@ -42,7 +42,6 @@ function Page() {
 
       <Header />
 
-      <Cart />
 
       <main className="text-black">
 

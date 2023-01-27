@@ -295,8 +295,9 @@ export default function Cart() {
 
       {/* - - - - - - - - - - - - - - - - - - */}
 
-      <Button 
-        // disabled={cart.length === 0}
+      <Button
+        classes="absolute bottom-[350px] left-[35%]" 
+        disabled={layout.items.length === 0}
         onClick={() => {
 
           if (logged_in)
