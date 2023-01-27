@@ -17,8 +17,13 @@ export default function RadioButtons({ name, options, option_labels, selected, s
   // --------------------------------------------
 
   return (
-    <div className="my-4 flex flex-col">
-      <div className={`py-2 px-4 ml-4`}>{name}: </div>
+    <div
+      className="my-4"
+      style={{
+        display: 'flex'
+      }}
+    >
+
       {
         options.map((option, idx) => {
           const key = `radio-${idx}`;
@@ -26,9 +31,17 @@ export default function RadioButtons({ name, options, option_labels, selected, s
             <div 
               key={key} 
               onClick={() => setSelected(option)} 
-              className={`border inline my-1 py-2 px-2 text-center cursor-pointer ${selected === option ? 'bg-green-300' : ''}`}
+              className={`my-1 p-1 text-center cursor-pointer ${selected === option ? 'bg-green-300' : ''}`}
+              style={{
+                height: '75px'
+              }}
             >
-              {option_labels[idx]}
+              <img 
+                src="/img/products/shoes/pegasus-purple.webp" 
+                style={{
+                  height: '100%'
+                }}
+              />
             </div>
           );
         })

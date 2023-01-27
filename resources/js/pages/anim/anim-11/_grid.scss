@@ -1,0 +1,88 @@
+// <Grid>
+ul#grid-items { // Grid.jsx
+  $break: 960px;
+
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  background: gray;
+  grid-auto-rows: min-content;
+  // gridAutoFlow: 'dense',
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 200px;
+
+  @media (max-width: #{$break}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: #{$break}) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+
+
+  li.box { position: relative; 
+    outline: dashed orange 2px;
+    // aspect-ratio: 1;
+
+    // .box-child lives here during status: 'entered'
+    div.box-child {}
+  }
+} // </ Grid>   #grid-items 
+
+// ==============================================
+
+// -status: 'entered'  =>  div#app-main  >  ul#grid-items  >  li.box
+// -status: 'exiting'  =>  div#app-main  >  #navbar        >  nav#bottom  >  #cart-btn  >  #hidden-target
+div.box-child { 
+  // <Card>
+  div.card {
+
+    $light: #757575;
+    $green: #41A139;
+
+    background: white;
+    * { color: black; }
+
+
+
+    .card-bottom { position: relative;
+
+      .front { position: absolute;
+        opacity: 1;
+        .title {
+          font-weight: 500;
+        }
+        .sub-title {
+          color: $light;
+        }
+        .num-colors {
+          color: $light;
+        }
+        .price {
+          span { color: $light; }
+        }
+        .discount {
+          color: $green;
+          font-weight: 500;
+        }
+      }
+      
+      
+      .back { 
+        position: absolute;
+        opacity: 0;
+        // height: 100px;
+        width: 100%;
+        background: red;
+
+        display: flex;
+        height: 70px;
+        $gap: 5px;
+        gap: $gap;
+        padding: $gap;
+      }
+    }
+  }
+  // </Card>
+}
