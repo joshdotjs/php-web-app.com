@@ -16,6 +16,7 @@ return new class extends Migration
       Schema::create('variants', function (Blueprint $table) {
         $table->id();
         $table->timestamps();
+        $table->string('img'); // path
         $table->string('size');
         $table->string('color');
         $table->integer('qty');

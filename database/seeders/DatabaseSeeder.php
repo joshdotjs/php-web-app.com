@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
       //     'email' => 'test@example.com',
       // ]);
 
-
       // ========================================
 
       DB::table('users')->insert([
@@ -72,6 +71,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 1,
+        'img'        => '/img/products/shoes/pegasus-green.webp',
         'size'       => 'lg',
         'color'      => 'red',
         'qty'        => 1,
@@ -80,6 +80,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 1,
+        'img'        => '/img/products/shoes/pegasus-pink.webp',
         'size'       => 'sm',
         'color'      => 'red',
         'qty'        => 1,
@@ -88,6 +89,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 1,
+        'img'        => '/img/products/shoes/pegasus-purple.webp',
         'size'       => 'lg',
         'color'      => 'blue',
         'qty'        => 1,
@@ -96,7 +98,8 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 1,
-        'size'       => 'lg',
+        'img'        => '/img/products/shoes/pegasus-white.webp',
+        'size'       => 'sm',
         'color'      => 'blue',
         'qty'        => 1,
         'created_at' => date("Y-m-d H:i:s")
@@ -108,6 +111,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 2,
+        'img'        => '/img/products/shoes/invincible-2-pink.webp',
         'size'       => 'lg',
         'color'      => 'red',
         'qty'        => 1,
@@ -116,6 +120,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 2,
+        'img'        => '/img/products/shoes/invincible-2-grey.webp',
         'size'       => 'sm',
         'color'      => 'red',
         'qty'        => 1,
@@ -124,7 +129,17 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 2,
+        'img'        => '/img/products/shoes/invincible-2-orange.webp',
         'size'       => 'lg',
+        'color'      => 'blue',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('variants')->insert([
+        'product_id' => 2,
+        'img'        => '/img/products/shoes/invincible-2-black.webp',
+        'size'       => 'sm',
         'color'      => 'blue',
         'qty'        => 1,
         'created_at' => date("Y-m-d H:i:s")
@@ -136,6 +151,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 3,
+        'img'        => '/img/products/shoes/Flex-Experience-Run-11-grey-1.webp',
         'size'       => 'lg',
         'color'      => 'red',
         'qty'        => 1,
@@ -144,6 +160,24 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 3,
+        'img'        => '/img/products/shoes/Flex-Experience-Run-11-grey-2.webp',
+        'size'       => 'sm',
+        'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+      
+      DB::table('variants')->insert([
+        'product_id' => 3,
+        'img'        => '/img/products/shoes/Flex-Experience-Run-11-black.webp',
+        'size'       => 'sm',
+        'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+      DB::table('variants')->insert([
+        'product_id' => 3,
+        'img'        => '/img/products/shoes/Flex-Experience-Run-11-blue.webp',
         'size'       => 'sm',
         'color'      => 'red',
         'qty'        => 1,

@@ -69,16 +69,16 @@ export default function Card ({ item, addToCart, idx }) {
         </div>
 
         <div ref={reveal_ref} className="back">
-          {/* <RadioButtons 
+          <RadioButtons 
             name="variants" 
             options={item.variants.map(({id}) => id)} 
             option_labels={item.variants.map(({size, color}) => `${size} ${color}`)} 
             selected={chosen_variant_id} 
             setSelected={setChosenVariantId} 
-          /> */}
+          />
 
           {
-            imgs.map((img) => {
+            item.variants.map(({id, product_id, qty, size, color, img}) => {
               return (
                 <img 
                   key={img} 
