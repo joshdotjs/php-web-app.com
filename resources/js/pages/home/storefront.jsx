@@ -92,7 +92,7 @@ export default function Storefront() {
       <section aria-labelledby="social-impact-heading" className="mx-auto max-w-7xl px-4 pt-24 sm:px-6 sm:pt-32 lg:px-8">
         <div className="relative overflow-hidden rounded-lg">
           <div className="absolute inset-0">
-            <img src="https://tailwindui.com/img/ecommerce-images/home-page-01-feature-section-01.jpg" alt="" className="h-full w-full object-cover object-center" />
+            <img src="/img/streak-1.webp" alt="" className="h-full w-full object-cover object-center" />
           </div>
           <div className="relative bg-gray-900 bg-opacity-75 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
             <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
@@ -149,16 +149,18 @@ export default function Storefront() {
                   <span className="relative mt-auto text-center text-xl font-bold text-white">Workspace</span>
                 </a>
   
+  
                 <a href="#" className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
                   <span aria-hidden="true" className="absolute inset-0">
-                    {/* <img src={`${PHP.site_url}/wp-content/uploads/2023/01/category-hats.webp`}  alt="" className="h-full w-full object-cover object-center" /> */}
-                    {/* <img src={`img/shoes-a-2.webp`}  alt="" className="h-full w-full object-cover object-center" /> */}
-                    {/* <img src={`img/white-shoes.webp`}  alt="" className="h-full w-full object-cover object-center" /> */}
+                    {/* <img src={`${PHP.site_url}/wp-content/uploads/2023/01/category-shoes.webp`}  alt="" className="h-full w-full object-cover object-center" /> */}
+                    <img src={`/img/leggings.webp`}  alt="" className="h-full w-full object-cover object-center" />
+                    {/* <img src={`/img/yoga-3.webp`}  alt="" className="h-full w-full object-cover object-center" /> */}
+                    {/* <img src={`/img/yoga-3.webp`}  alt="" className="h-full w-full object-cover object-center" /> */}
                   </span>
                   <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
-                  <span className="relative mt-auto text-center text-xl font-bold text-white">Accessories</span>
+                  <span className="relative mt-auto text-center text-xl font-bold text-white">Sale</span>
                 </a>
-  
+                
                 <a href="#" className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
                   <span aria-hidden="true" className="absolute inset-0">
                     {/* <img src={`${PHP.site_url}/wp-content/uploads/2023/01/category-shoes.webp`}  alt="" className="h-full w-full object-cover object-center" /> */}
@@ -168,6 +170,8 @@ export default function Storefront() {
                   <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
                   <span className="relative mt-auto text-center text-xl font-bold text-white">Sale</span>
                 </a>
+
+
               </div>
             </div>
           </div>
@@ -181,21 +185,14 @@ export default function Storefront() {
         </div>
       </section>
 
-
-
-
       {/* <!-- Featured section --> */}
       <section aria-labelledby="comfort-heading" className="mx-auto max-w-7xl py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-lg">
           <div className="absolute inset-0">
             {/* <img src="/img/red-women-shoes.webp" alt="" className="h-full w-full object-cover object-center" /> */}
             {/* <img src="/img/white-shoes.webp" alt="" className="h-full w-full object-cover object-center" /> */}
+            <img src="/img/streak-2.webp" alt="" className="h-full w-full object-cover object-center" />
 
-
-            <video autoPlay={true} loop={true} src="/video/Nike_Volume_2-Hero_Loop.mp4">
-              <source src="/video/Nike_Volume_2-Hero_Loop.mp4" type="video/webm" />
-            </video>
-            
           </div>
           <div className="relative bg-gray-900 bg-opacity-75 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
             <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
