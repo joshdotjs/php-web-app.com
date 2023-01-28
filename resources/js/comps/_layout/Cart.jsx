@@ -1,18 +1,14 @@
-import React, { useCallback, useEffect, useLayoutEffect, useRef, useState, useContext } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import uuid from 'react-uuid';
 import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 
-import AuthContext from '@/context/auth-ctx';
-// import CartContext from '@/context/cart-ctx';
-import { getCartLS, removeFromCartLS } from '@/context/cart-ctx/cart-fn';
 
 import Button from '@/comps/button/button';
 
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 import { authFetch } from '@/util/fetch';
-import { redirect } from '@/util/routes';
-
+import { getCartLS, removeFromCartLS } from '@/context/cart-ctx/cart-fn';
 
 gsap.registerPlugin(Flip);
 
@@ -22,9 +18,7 @@ export default function Cart() {
 
   // --------------------------------------------
 
-  const { logged_in } = useContext(AuthContext);
-  // const { getCartLS, removeFromCartLS } = useContext(CartContext);
-
+  
   // --------------------------------------------
 
   const submit = () => {
@@ -97,25 +91,33 @@ export default function Cart() {
     const addItem = () => { 
 
       // open cart:
+      const container = container_ref.current;
+      tl_ref.current = gsap.to(container, { 
+        x: 0,
+        duration: 0.3,
+        onComplete: () => {
+          setLayout((prev_layout) => { 
+    
+            const cart = getCartLS();
+            const prev_items = prev_layout.items;
+    
+            let items;
+            if (cart.length === prev_items.length) { // duplicate item => only increase quantity (already updated)
+              lr('duplicate');
+              items = cart.map(({ product, variant, qty}) => ({ id: variant.id, status: 'entered', product, variant, qty }));
+            } else { // new item => add to cart
+              const { product, variant, qty } = cart.at(-1);
+              const new_item = { id: variant.id, status: 'entered', product, variant, qty };
+              items = [new_item, ...prev_items];
+            }
+    
+            const state = Flip.getState(q(".line-item")); 
+            return { items, state }; 
+          });
+        },
+       });
 
-      setLayout((prev_layout) => { 
 
-        const cart = getCartLS();
-        const prev_items = prev_layout.items;
-
-        let items;
-        if (cart.length === prev_items.length) { // duplicate item => only increase quantity (already updated)
-          lr('duplicate');
-          items = cart.map(({ product, variant, qty}) => ({ id: variant.id, status: 'entered', product, variant, qty }));
-        } else { // new item => add to cart
-          const { product, variant, qty } = cart.at(-1);
-          const new_item = { id: variant.id, status: 'entered', product, variant, qty };
-          items = [new_item, ...prev_items];
-        }
-
-        const state = Flip.getState(q(".line-item")); 
-        return { items, state }; 
-      });
     };
     window.addEventListener('cart-add', addItem);
     return () => window.removeEventListener('cart-add', addItem);
@@ -123,7 +125,8 @@ export default function Cart() {
 
   // --------------------------------------------
 
-  const container_ref = useRef();
+  const tl_ref = useRef(null);
+  const container_ref = useRef(null);
   const q = gsap.utils.selector(container_ref); // Returns a selector function that's scoped to a particular Element, meaning it'll only find descendants of that Element .
 
   // --------------------------------------------
@@ -261,14 +264,26 @@ export default function Cart() {
   return (
     <div className="text-center" ref={container_ref}
       style={{ position: 'fixed',
-      top: '300px',
-      right: 0,
-      background: 'lightblue',
-      height: '100vh',
-      width: '300px',
-      zIndex: 100
-    }}
+        top: 0,
+        right: 0,
+        background: 'lightblue',
+        height: '100vh',
+        width: '300px',
+        zIndex: 100,
+        transform: 'translate(100%)'
+      }}
     >
+
+      {/* - - - - - - - - - - - - - - - - - - */}
+
+      <svg 
+        onClick={() => tl_ref.current?.reverse()}
+        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
+        className="bi bi-x  cursor-pointer m-4" viewBox="0 0 16 16"
+
+      >
+        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+      </svg>
       
       {/* - - - - - - - - - - - - - - - - - - */}
 
@@ -288,9 +303,7 @@ export default function Cart() {
               display: item.status === 'exiting' ? 'none' : 'grid'
             }}
           >
-            <p>Variant ID: {item.id}</p>
             <p>{item.product.title}</p>
-            <p>{item.variant.size} {' '} {item.variant.color}</p>
             <p>Qty: {item.qty}</p>
 
             <svg 
@@ -312,7 +325,7 @@ export default function Cart() {
         id="cart-btn-container" 
         style={{ 
           position: 'absolute',
-          bottom: '350px',
+          bottom: '2rem',
           left: '50%',
           transform: 'translateX(-50%)',
           width: '50%'
