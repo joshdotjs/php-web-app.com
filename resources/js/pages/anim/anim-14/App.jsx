@@ -76,7 +76,9 @@ export default function App({ products }) {
           y: 0,
           clearProps: 'transform',
           onStart: () => {
-            fireEvent('cart-add');
+            setTimeout(() => {
+              fireEvent('cart-add');
+            }, 250);
           },
           onComplete: () => {
             enableClick();
