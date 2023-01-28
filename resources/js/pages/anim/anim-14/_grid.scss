@@ -44,39 +44,17 @@ div.box-child {
     background: white;
     * { color: black; }
 
-
-
     .card-bottom { position: relative;
-
       .front { 
         // position: absolute;
         opacity: 1;
-        .title {
-        }
-        .sub-title {
-        }
-        .num-colors {
-        }
-        .price {
-        }
-        .discount {
-        }
+        .title {}
+        .sub-title {}
+        .num-colors {}
+        .price {}
+        .discount {}
       }
-      
-      
-      .back.radio-container { 
-        // position: absolute;
-        opacity: 0;
-        // height: 100px;
-        width: 100%;
-        background: red;
-
-        display: flex;
-        height: 70px;
-        $gap: 5px;
-        gap: $gap;
-        padding: $gap;
-      }
+      .back.radio-container { }
     }
   }
   // </Card>

@@ -69,7 +69,13 @@ const removeFromCartLS = (variant_id) => {
 
 // ==============================================
 
+const getNumItemsInCart = () => getCartLS().length;
+
+// ==============================================
+
 export { 
   getCartLS,
-  addToCartLS, removeFromCartLS
+  addToCartLS, 
+  removeFromCartLS,
+  getNumItemsInCart,
  };

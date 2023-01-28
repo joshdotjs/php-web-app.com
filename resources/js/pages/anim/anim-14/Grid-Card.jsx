@@ -50,7 +50,7 @@ export default function Card ({ item, addToCartAnim, idx }) {
   };
 
   const exit = () => {
-    tl_ref.current.reverse();
+    tl_ref.current?.reverse();
   }
 
   // --------------------------------------------
@@ -115,7 +115,7 @@ export default function Card ({ item, addToCartAnim, idx }) {
 
       <div className="card-bottom">
 
-        <div className="front">
+        <div className="front" style={{ opacity: 1 }}>
           <h5 className="title" style={{ color: 'black', fontWeight: '500' }}>{ title }</h5>
           <p className="sub-title" style={{ color: light, }}>{sub_title}</p>
           <p className="num-colors" style={{ color: light, }}>6 Colors</p>
@@ -126,7 +126,21 @@ export default function Card ({ item, addToCartAnim, idx }) {
 
         </div>
 
-        <div ref={reveal_ref} className="back radio-container">
+        <div 
+          ref={reveal_ref} 
+          className="back radio-container"
+          style={{
+            position: 'absolute',
+            background: 'white',
+            top: 0,
+            opacity: 0,
+            width: '100%',
+            display: 'flex',
+            height: '70px',
+            gap: '5px',
+            padding: '5px',
+          }}
+        >
           {
             item.variants.map(({id, product_id, qty, size, color, img}) => {
 
@@ -146,8 +160,8 @@ export default function Card ({ item, addToCartAnim, idx }) {
                     setChosenVariantId(id);
                   }}
                   style={{
-                    outline: chosen_variant_id === id ? 'dashed limegreen 3px' : '',
-                    height: '70px'
+                    // outline: chosen_variant_id === id ? 'dashed limegreen 3px' : '',
+                    height: '60px',
                   }}
                 />
               );
