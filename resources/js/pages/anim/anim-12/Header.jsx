@@ -1,6 +1,7 @@
 import React from 'react';
 
 import BagSVG from './bag-svg';
+import './_header.scss';
 
 // ==============================================
 
