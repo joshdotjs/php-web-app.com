@@ -10,7 +10,7 @@ import Button from '@/comps/button/button';
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 import { authFetch } from '@/util/fetch';
 import { redirect } from '@/util/routes';
-import { getCartLS, removeFromCartLS } from '../../../util/cart-fn';
+import { getCartLS, removeFromCartLS } from '../../util/cart-fn';
 
 
 gsap.registerPlugin(Flip);

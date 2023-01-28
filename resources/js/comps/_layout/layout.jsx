@@ -3,6 +3,7 @@ import { AuthContextProvider } from "@/context/auth-ctx";
 import { CartContextProvider } from "@/context/cart-ctx";
 
 import Header from './Header';
+import Cart from './Cart';
 import Notifications from './notify/notify';
 
 // ==============================================
@@ -15,6 +16,8 @@ export default function Layout({ children, name, restrict }) {
       <CartContextProvider>
 
         <Header />
+
+        <Cart />
 
         <Notifications />
 

@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 import Layout from '@/comps/_layout/layout';
 
 import MainApp from './App';
-import CartApp from './Cart';
+import CartApp from '../../../comps/_layout/Cart';
 // import Header from './Header';
 
 import './_.scss';
@@ -20,10 +20,7 @@ if(main_root){
 
   createRoot(main_root).render(
     <Layout>
-
-      <CartApp />
       <MainApp products={products_SSR} />
-
     </Layout>
   );
 }
