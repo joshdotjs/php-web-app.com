@@ -315,6 +315,12 @@ export default function App({ products }) {
 
       console.log('prev_filter: ', prev);
 
+      // -Keep height of grid constant through FLIP animation:
+      const grid_items = document.querySelector('#grid-items');
+      console.log('grid items: ', grid_items);
+      const grid_height = grid_items.offsetHeight;
+      grid_items.style.height = `${grid_height}px`;
+
       // - - - - - - - - - - - - - - - - - - - - 
 
       // Clone to avoid mutation
