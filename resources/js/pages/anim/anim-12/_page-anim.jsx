@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import Layout from '@/comps/_layout/layout';
 
 import MainApp from './App';
 import CartApp from './Cart';
+// import Header from './Header';
 
 import './_.scss';
 
@@ -22,28 +23,14 @@ if(main_root){
   createRoot(main_root).render(
     <Layout>
 
-      <Temp {  ...{ products_SSR } }/>
+      <CartApp />
+      <MainApp products={products_SSR} />
 
     </Layout>
   );
 }
 
 // ==============================================
-
-function Temp( {products_SSR} ) {
-
-  const [num_cart_items, setNumCartItems] = useState(0);
-
-  return (
-    <>
-      <CartApp />
-
-      <MainApp products={products_SSR} 
-        { ...{ num_cart_items, setNumCartItems }  }
-      />
-    </>
-  );
-};
 
 // -Different animations in cart flow:
 //

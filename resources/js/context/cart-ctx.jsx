@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, } from 'react';
+import React, { useState, useEffect, useRef, createContext, } from 'react';
 import uuid from 'react-uuid';
 
 // import { 
@@ -19,91 +19,19 @@ const CartContextProvider = ({ children }) => {
 
   // --------------------------------------------
 
-  const [cart, setCart] = useState([]);
-
-  useEffect(() => {
-
-    ly('1: useEffect() cart-ctx');
-
-    const cart_ls = getCartLS();
-    if (cart_ls) {
-      setCart(cart_ls.map(item => ({ ...item, id: uuid(), status: "entered" }))); // id / status for cart FLIP animation
-    }
-  }, []);
-
-  // --------------------------------------------
-
-  const addToCart = (product, variant) => {
-
-    console.log('product: ', product, '\nvariant: ', variant);
-
-    const { id: variant_id } = variant;
-
-    setCart((prev_cart) => {
-
-      const idx = prev_cart.findIndex(line => line.variant.id === variant_id);
-      
-      let new_cart;
-
-      if (idx < 0) {
-        // lo('addToCart() - new line item');
-        new_cart = [...prev_cart, { product, variant, qty: 1 }]; // clone local cart state and add a new product item to the array with the cloned cart.        
-      } else {
-        // ly('addToCart() - updating quantity');
-        new_cart = [...prev_cart]; // clone local cart state via deep copy.
-        new_cart[idx] = {...prev_cart[idx], qty: prev_cart[idx].qty + 1}; // update specific item's quantity in the cloned cart array.        
-      }
-
-      setCartLS(new_cart);
-      return new_cart;
-    });
-
-
-
-    // - - - - - - - - - - - - - - - - - - - - - 
-
-
-    // TODO: FLIP anim...
-
-    // - - - - - - - - - - - - - - - - - - - - - 
-
-  };
-
-  // --------------------------------------------
-
-  const removeFromCart = (variant_id) => {
-    // lg('removeFromCart()');
-
-    console.log('cart: ', cart);
-
-    setCart((prev_cart) => {
-
-      const new_cart = prev_cart.filter(line => line.variant.id !== variant_id);
-      setCartLS(new_cart);
-      // fireEvent('cart-remove');
-      return new_cart;
-    });
-
-    // if (new_cart.length < 1) {
-    //   closeCart();
-    // }
-  }
-
-  // --------------------------------------------
-
-  const resetCart = () => {
-    lr('resetting cart');
-    setCart([]);
-    setCartLS([]);
-  };
+  const [num_cart_items, setNumCartItems] = useState(0);
+  const cart_btn_ref = useRef(null); // cartBtn = cart.querySelector(".btn-cart");
+  const cart_icon_target_ref = useRef(null); // cartItems = cart.querySelector(".items");
+  const cart_count_ref = useRef(null); // cartCount = cart.querySelector(".count");
 
   // --------------------------------------------
 
   const context = {
-    cart,
-    addToCart,
-    removeFromCart,
-    resetCart,
+    num_cart_items,
+    setNumCartItems,
+    cart_btn_ref,
+    cart_icon_target_ref,
+    cart_count_ref,
   };
 
 

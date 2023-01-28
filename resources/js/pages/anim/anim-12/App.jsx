@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useRef, useCallback, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useLayoutEffect, useContext } from 'react';
 import uuid from 'react-uuid';
-
 import { gsap } from "gsap";
 import { ExpoScaleEase, RoughEase } from "gsap/EasePack";
 import { Flip } from "gsap/Flip";
 import { CustomEase } from "gsap/CustomEase";
 import { CustomWiggle } from "gsap/CustomWiggle";
 
+import CartContext from '@/context/cart-ctx';
+
 import Grid from './Grid';
-import Header from './Header';
+// import Header from './Header';
 import Filter from './Filter';
 
 import { init } from '@/util/util';
@@ -34,17 +35,25 @@ const colors = ['red', 'blue', 'green'];
 
 // ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
 
-export default function App({ products, num_cart_items, setNumCartItems }) {
+export default function App({ products, 
+  // num_cart_items, setNumCartItems, cart_btn_ref, cart_icon_target_ref, cart_count_ref  
+}) {
 
   // ============================================
 
   const refs = useRef([]);
 
-  const cart_btn_ref = useRef(null); // cartBtn = cart.querySelector(".btn-cart");
-  const cart_icon_target_ref = useRef(null); // cartItems = cart.querySelector(".items");
-  const cart_count_ref = useRef(null); // cartCount = cart.querySelector(".count");
-  
+  // const cart_btn_ref = useRef(null); // cartBtn = cart.querySelector(".btn-cart");
+  // const cart_icon_target_ref = useRef(null); // cartItems = cart.querySelector(".items");
+  // const cart_count_ref = useRef(null); // cartCount = cart.querySelector(".count");
 
+  const {
+    num_cart_items,
+    setNumCartItems,
+    cart_btn_ref,
+    cart_icon_target_ref,
+    cart_count_ref,
+  } = useContext(CartContext);
   
   // ============================================
 
@@ -353,13 +362,6 @@ export default function App({ products, num_cart_items, setNumCartItems }) {
         } }
       />
 
-      <Header { ...{
-          cart_btn_ref,
-          cart_count_ref,
-          cart_icon_target_ref,
-          num_cart_items
-        } }
-      />
 
     </div>
   );

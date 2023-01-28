@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import CartContext from '@/context/cart-ctx';
 
 import BagSVG from './bag-svg';
 import './_header.scss';
 
 // ==============================================
 
-export default function Header({
-  cart_btn_ref,
-  cart_count_ref,
-  cart_icon_target_ref,
-  num_cart_items
-}) {
+export default function Header() {
+
+  // --------------------------------------------
+
+  const {
+    num_cart_items,
+    setNumCartItems,
+    cart_btn_ref,
+    cart_icon_target_ref,
+    cart_count_ref,
+  } = useContext(CartContext);
+  
+
+  // --------------------------------------------
+
   return (
     
     <header id="navbar" style={{ position: 'fixed' }}>
@@ -30,7 +41,7 @@ export default function Header({
           <BagSVG />
 
           <div ref={cart_count_ref} id="cart-count">
-            <div>{num_cart_items}</div>
+            <div style={{ color: 'white' }} >{num_cart_items}</div>
           </div>
           
         </div>
