@@ -332,7 +332,6 @@ export default function Cart() {
         }}
       >
         <Button
-          classes="absolute bottom-[350px] left-[35%]" 
           disabled={layout.items.length === 0}
           onClick={() => {
             submit();

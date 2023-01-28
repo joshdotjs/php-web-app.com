@@ -69,12 +69,12 @@ export default function Card ({ item, addToCartAnim, idx }) {
   // --------------------------------------------
 
   return (
-    <div 
+    <div // wrapper used to have local onMouseEnter callbacks
       // ref={container_ref}    
       className="card"
       onMouseEnter={enter}
       onMouseLeave={exit}
-      style={{ height: '100%' }}
+      style={{ height: '100%',  }}
     >
       <div 
         className="img-container"
@@ -85,16 +85,18 @@ export default function Card ({ item, addToCartAnim, idx }) {
 
         <div // btn-container
           className={`btn-container
-            w-fit sm:w-[45%] 
+            w-[65%] sm:w-[45%] 
           `} 
           style={{
             position: 'absolute',
-            bottom: '1.25rem',
-            right: '1.25rem',
+            // bottom: '1.25rem',
+            bottom: '5%',
+            // right: '1.25rem',
+            right: '5%',
           }}
         >
           <Button 
-            classes="absolute bottom-6 right-6"
+            classes=""
             disabled={!chosen_variant_id}
             onClick={() => {
             const { product, variants } = item;
@@ -114,9 +116,14 @@ export default function Card ({ item, addToCartAnim, idx }) {
 
       </div>
 
-      <div className="card-bottom">
+      <div className="card-bottom  relative">
 
-        <div className="front">
+        <div 
+          className="front"
+          style={{
+            // opacity: 1,
+          }}
+        >
           <h5 className="title" style={{ color: 'black', fontWeight: '500' }}>{ title }</h5>
           <p className="sub-title" style={{ color: light, }}>{sub_title}</p>
           <p className="num-colors" style={{ color: light, }}>6 Colors</p>
@@ -127,7 +134,20 @@ export default function Card ({ item, addToCartAnim, idx }) {
 
         </div>
 
-        <div ref={reveal_ref} className="back radio-container">
+        <div 
+          ref={reveal_ref} 
+          className="back radio-container"
+          style={{ 
+            opacity: 0,
+            display: 'flex',
+            gap: '5px',
+            padding: '5px',
+            background: 'lightgreen',
+            position: 'absolute',
+            top: 0,
+            width: '100%',
+          }}
+        >
           {
             item.variants.map(({id, product_id, qty, size, color, img}) => {
 
@@ -147,8 +167,8 @@ export default function Card ({ item, addToCartAnim, idx }) {
                     setChosenVariantId(id);
                   }}
                   style={{
-                    outline: chosen_variant_id === id ? 'dashed limegreen 3px' : '',
-                    height: '70px'
+                    // outline: chosen_variant_id === id ? 'dashed limegreen 3px' : '',
+                    height: '60px'
                   }}
                 />
               );

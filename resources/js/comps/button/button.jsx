@@ -12,6 +12,13 @@ export default function Button({ children, onClick, disabled=false, classes, wid
       //   ${disabled ? 'opacity-50' : 'hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'}
       //   ${classes}
       // `}
+      
+      className={`
+        ${disabled ? 'opacity-50' : ''}
+        ${classes}
+        text-sm md:text-md
+      `}
+      
       style={{
         background: 'black',
         color: 'white',
@@ -19,7 +26,6 @@ export default function Button({ children, onClick, disabled=false, classes, wid
         width: '100%',
         borderRadius: '100vmax',
         fontWeight: '500',
-        fontSize: '1.1rem'
       }}
       disabled={disabled}
     >

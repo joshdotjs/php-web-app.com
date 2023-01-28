@@ -37,20 +37,9 @@ ul#grid-items { // Grid.jsx
 div.box-child { 
   // <Card>
   div.card {
-
-    $light: #757575;
-    $green: #41A139;
-
-    background: white;
-    * { color: black; }
-
-
-
-    .card-bottom { position: relative;
-
+    .card-bottom { 
       .front { 
         // position: absolute;
-        opacity: 1;
         .title {
         }
         .sub-title {
@@ -62,21 +51,7 @@ div.box-child {
         .discount {
         }
       }
-      
-      
-      .back.radio-container { 
-        // position: absolute;
-        opacity: 0;
-        // height: 100px;
-        width: 100%;
-        background: red;
-
-        display: flex;
-        height: 70px;
-        $gap: 5px;
-        gap: $gap;
-        padding: $gap;
-      }
+      .back.radio-container {}
     }
   }
   // </Card>
