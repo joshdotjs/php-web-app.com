@@ -30,7 +30,8 @@ import '@/pages/auth/login/__login.jsx';
 // import '@/pages/anim/anim-9-WORKING/_page-anim.jsx';
 // import '@/pages/anim/anim-10-WORKING-checkout/_page-anim.jsx';
 // import '@/pages/anim/anim-11-WORKING-variant-images/_page-anim.jsx';
-import '@/pages/anim/anim-12/_page-anim.jsx';
+// import '@/pages/anim/anim-12-WORKING-fixed-grid/_page-anim.jsx';
+import '@/pages/anim/anim-13/_page-anim.jsx';
 
 // Dev - Anim 1D:
 // import '@/pages/anim-orders/anim-orders-1/_page-anim-orders';
@@ -42,5 +43,3 @@ import '@/pages/anim-orders/anim-orders-2/_page-anim-orders';
 import { lo, lg, lr, lb, ly } from '@/util/log';
 
 // ==============================================
-
-lg('VITE: resources/js/app.js');

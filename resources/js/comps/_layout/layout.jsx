@@ -2,9 +2,7 @@ import React from "react";
 import { AuthContextProvider } from "@/context/auth-ctx";
 import { CartContextProvider } from "@/context/cart-ctx";
 
-import Header from "./header/_header";
-import Header2 from './Header';
-// import Cart from "./cart/_cart";
+import Header from './Header';
 import Notifications from './notify/notify';
 
 // ==============================================
@@ -17,9 +15,6 @@ export default function Layout({ children, name, restrict }) {
       <CartContextProvider>
 
         <Header />
-        <Header2 />
-
-        {/* <Cart /> */}
 
         <Notifications />
 

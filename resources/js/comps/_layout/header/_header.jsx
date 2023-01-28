@@ -24,37 +24,7 @@ export default function Header() {
 
       <nav>
         
-        <li>
-          <a href="/store">Store</a>
-        </li>
 
-        {
-          logged_in 
-          ? 
-            (
-              <>
-                <li onClick={logOut}>
-                  Log out
-                </li>
-
-                <li>
-                  <a href="/admin-dashboard">{user?.email}</a>
-                </li>
-              </>
-            )
-          : 
-            (
-              <>
-                <li>
-                  <a href="/auth/register">Register</a>
-                </li>
-
-                <li>
-                  <a href="/auth/login">Log in</a>
-                </li>
-              </>
-            )
-        }
 
 
 

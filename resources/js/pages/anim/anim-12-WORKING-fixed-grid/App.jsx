@@ -95,24 +95,20 @@ export default function App({ products }) {
     const animate = () => {
       const item = refs.current[idx];
       console.log('item: ', item);
-      
-      const radio_container = item.querySelector('.radio-container');
-      // radio_container.remove(); // -we don't want to see the radio contaienr during move, just remove it.
-      // console.log('radio container: ', radio_container);
-      
+           
       // Grab height from rendered element - currently computed relative to current location.
       const height = item.offsetHeight;
       const width  = item.offsetWidth;
+
+      // Explicitly set inline styles of height so it won't change when re-positioned
+      item.style.height = `${height}px`;
+      item.style.width  = `${width}px`;
 
       // -Follow same procedure for the grid container:
       const grid_items = document.querySelector('#grid-items');
       console.log('grid items: ', grid_items);
       const grid_height = grid_items.offsetHeight;
       grid_items.style.height = `${grid_height}px`;
-
-      // Explicitly set inline styles of height so it won't change when re-positioned
-      item.style.height = `${height}px`;
-      item.style.width  = `${width}px`;
 
       const state = Flip.getState(item);
       // debugger;
@@ -130,7 +126,7 @@ export default function App({ products }) {
       item.style.position = 'absolute';
   
       Flip.from(state, {
-        duration: 3.8, // 0.5
+        duration: 0.8, // 0.5
         ease: "back.in(0.8)",
         scale: true,
         absolute: true,
@@ -142,10 +138,10 @@ export default function App({ products }) {
           // Collapse hole in grid:
           remove(idx);
 
-          // Hide the contents inside the hidden target
-          item.style.visibility = 'hidden';
+          // -Hide the contents inside the hidden target
+          // item.style.visibility = 'hidden';
 
-          // just remove item from dom:
+          // -just remove item from dom:
           item.remove();
         }
       });

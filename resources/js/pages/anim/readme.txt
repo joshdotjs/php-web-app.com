@@ -10,12 +10,8 @@ v8: adding item data to cart - synchronized via local storage (see notes below)
 v9: handling duplicate cart items => increase quantity
 v10: checkout button
 v11: variant images
-v12: ...fix styling (height of grid and dynamicly selected height of grid item to ensure scaling during add-to-cart FLIP animation does not distort grid-item)...
-
-// -Issue is with header jumping because it is inside the page.
-// -To move to layout we need to move following state up to higher levels:
-//  -
-
+v12: fixed styling (height of grid and dynamicly selected height of grid item to ensure scaling during add-to-cart FLIP animation does not distort grid-item)
+v13: ...filter on categories...
 
 
 
