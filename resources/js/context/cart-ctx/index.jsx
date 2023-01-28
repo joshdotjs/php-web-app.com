@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef, createContext, } from 'react';
 import uuid from 'react-uuid';
 
-// import { 
-//   getCartLS, setCartLS, 
-// } from '../util/local-storage';
 import { lo, lg, lr, lb, ly } from '@/util/log';
+
+// import { 
+//   getCartLS,
+//   addToCartLS, removeFromCartLS
+//  } from './cart-fn';
 
 // ==============================================
 
@@ -24,6 +26,8 @@ const CartContextProvider = ({ children }) => {
   const cart_icon_target_ref = useRef(null); // cartItems = cart.querySelector(".items");
   const cart_count_ref = useRef(null); // cartCount = cart.querySelector(".count");
 
+  // const cart_open = useState(false);
+
   // --------------------------------------------
 
   const context = {
@@ -32,6 +36,7 @@ const CartContextProvider = ({ children }) => {
     cart_btn_ref,
     cart_icon_target_ref,
     cart_count_ref,
+    // cart_open,
   };
 
 
@@ -46,4 +51,8 @@ const CartContextProvider = ({ children }) => {
 // ==============================================
 
 export default CartContext;
-export { CartContextProvider };
+export { CartContextProvider, 
+  // getCartLS,
+  // addToCartLS, 
+  // removeFromCartLS
+};

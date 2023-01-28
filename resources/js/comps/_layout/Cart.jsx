@@ -4,17 +4,17 @@ import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 
 import AuthContext from '@/context/auth-ctx';
+// import CartContext from '@/context/cart-ctx';
+import { getCartLS, removeFromCartLS } from '@/context/cart-ctx/cart-fn';
 
 import Button from '@/comps/button/button';
 
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 import { authFetch } from '@/util/fetch';
 import { redirect } from '@/util/routes';
-import { getCartLS, removeFromCartLS } from '../../util/cart-fn';
 
 
 gsap.registerPlugin(Flip);
-
 
 // ==============================================
 
@@ -23,6 +23,7 @@ export default function Cart() {
   // --------------------------------------------
 
   const { logged_in } = useContext(AuthContext);
+  // const { getCartLS, removeFromCartLS } = useContext(CartContext);
 
   // --------------------------------------------
 
@@ -94,6 +95,9 @@ export default function Cart() {
 
   useEffect(() => {
     const addItem = () => { 
+
+      // open cart:
+
       setLayout((prev_layout) => { 
 
         const cart = getCartLS();
@@ -295,22 +299,25 @@ export default function Cart() {
 
       {/* - - - - - - - - - - - - - - - - - - */}
 
-      <Button
-        classes="absolute bottom-[350px] left-[35%]" 
-        disabled={layout.items.length === 0}
-        onClick={() => {
-
-          if (logged_in)
-            submit();
-          else {
-            // router.push('/auth/login');
-            redirect('/auth/login');
-          }
-
+      <div 
+        id="cart-btn-container" 
+        style={{ 
+          position: 'absolute',
+          bottom: '350px',
+          left: '50%',
+          transform: 'translateX(-50%)'
         }}
       >
-        Checkout
-      </Button>
+        <Button
+          classes="absolute bottom-[350px] left-[35%]" 
+          disabled={layout.items.length === 0}
+          onClick={() => {
+            submit();
+          }}
+          >
+          Checkout
+        </Button>
+      </div>
 
       {/* - - - - - - - - - - - - - - - - - - */}
 

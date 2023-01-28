@@ -8,7 +8,7 @@ import Card from './Grid-Card';
 export default function Grid({
   refs,
   layout,
-  addToCart,
+  addToCartAnim,
 }) {
 
   // --------------------------------------------
@@ -31,7 +31,7 @@ export default function Grid({
                 ref={el => refs.current[idx] = el}
                 className="box-child"
               >
-                <Card { ...{ item, addToCart, idx } } />
+                <Card { ...{ item, addToCartAnim, idx } } />
               </div>
             </li>);
         })}

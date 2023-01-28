@@ -8,13 +8,6 @@ import CartContext from '@/context/cart-ctx';
 // import Cart from '@/comps/cart/_cart';
 import Button from '@/comps/button/button';
 
-// import { lo, lg, lr, lb, ly } from '@/util/log';
-// import { fetchGET, fetchPOST } from '@/util/fetch';
-// import { 
-//   getCartLS, setCartLS, 
-// } from '@/util/local-storage';
-// import { fireEvent } from '@/util/custom-event';
-
 import '.scss';
 
 // ==============================================

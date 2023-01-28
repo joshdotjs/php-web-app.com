@@ -11,7 +11,7 @@ import CartContext from '@/context/cart-ctx';
 import Grid from './Grid';
 import Filter from './Filter';
 
-import { fireEvent } from '@/util/custom-event';
+import { fireEvent } from '@/util/events';
 import { disableClick, enableClick } from '@/util/dom';
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 
@@ -42,7 +42,7 @@ export default function App({ products }) {
   
   // --------------------------------------------
 
-  const addToCart = (idx) => {
+  const addToCartAnim = (idx) => {
     
     // ------------------------------------------
 
@@ -366,7 +366,7 @@ export default function App({ products }) {
       <Grid { ...{
           refs,
           layout,
-          addToCart,
+          addToCartAnim,
         } }
       />
 

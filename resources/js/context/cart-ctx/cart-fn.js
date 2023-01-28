@@ -1,4 +1,4 @@
-import { fireEvent } from '@/util/custom-event';
+import { fireEvent } from '@/util/events';
 import { getLS, setLS, removeLS } from '@/util/local-storage';
 
 // ==============================================

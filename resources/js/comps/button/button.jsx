@@ -15,7 +15,7 @@ export default function Button({ children, onClick, disabled=false, classes, wid
       style={{
         background: 'black',
         color: 'white',
-        padding: '1rem',
+        padding: '0.75rem',
         width: '100%',
         borderRadius: '100vmax',
         fontWeight: '500',

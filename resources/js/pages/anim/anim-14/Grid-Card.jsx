@@ -1,18 +1,25 @@
 import React from 'react';
-import { useState, useRef, useLayoutEffect, useEffect } from 'react';
+import { useState, useRef, useLayoutEffect, useEffect, useContext } from 'react';
 import { gsap } from 'gsap';
 
-import RadioButtons from '@/comps/inputs/radio-buttons/radio-buttons-variants';
+// import CartContext from '@/context/cart-ctx';
+import { addToCartLS } from '@/context/cart-ctx/cart-fn';
+
+// import RadioButtons from '@/comps/inputs/radio-buttons/radio-buttons-variants';
 import Button from '@/comps/button/button';
 
-import { addToCartLS } from '@/util/cart-fn';
+// import { addToCartLS } from '@/context/cart-fn';
 
 // Import this here because the moving of the .box-child's means that their styles should not be nested
 import './_grid.scss'; 
 
 // ==============================================
 
-export default function Card ({ item, addToCart, idx }) {
+export default function Card ({ item, addToCartAnim, idx }) {
+
+  // --------------------------------------------
+
+  // const { addToCartLS } = useContext(CartContext);
 
   // --------------------------------------------
 
@@ -65,13 +72,14 @@ export default function Card ({ item, addToCart, idx }) {
         <img src={hovered_image} />
 
 
-        <div 
-          className="btn-container" 
+        <div // btn-container
+          className={`btn-container
+            w-fit sm:w-[45%] 
+          `} 
           style={{
             position: 'absolute',
             bottom: '1.25rem',
             right: '1.25rem',
-            width: '50%'
           }}
         >
           <Button 
@@ -86,7 +94,7 @@ export default function Card ({ item, addToCart, idx }) {
               product: { id: product_id, title, body, price, category }, 
               variant: { id: variant_id, color, size, qty },
             });
-            addToCart(idx); // animation in <App />
+            addToCartAnim(idx); // animation in <App />
           }}>
             Add to Bag
           </Button>
