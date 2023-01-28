@@ -64,22 +64,33 @@ export default function Card ({ item, addToCart, idx }) {
       >
         <img src={hovered_image} />
 
-        <Button 
-          classes="absolute bottom-6 right-6"
-          disabled={!chosen_variant_id}
-          onClick={() => {
-          const { product_id, title, body, price, category, variants } = item;
-          const variant = variants.find((variant) => variant.id === chosen_variant_id);
-          const { id: variant_id, color, size, qty } = variant;
-          addToCartLS({ 
-            idx, 
-            product: { id: product_id, title, body, price, category }, 
-            variant: { id: variant_id, color, size, qty },
-          });
-          addToCart(idx); // animation in <App />
-        }}>
-          add to cart
-        </Button>
+
+        <div 
+          className="btn-container" 
+          style={{
+            position: 'absolute',
+            bottom: '1.25rem',
+            right: '1.25rem',
+            width: '50%'
+          }}
+        >
+          <Button 
+            classes="absolute bottom-6 right-6"
+            disabled={!chosen_variant_id}
+            onClick={() => {
+            const { product_id, title, body, price, category, variants } = item;
+            const variant = variants.find((variant) => variant.id === chosen_variant_id);
+            const { id: variant_id, color, size, qty } = variant;
+            addToCartLS({ 
+              idx, 
+              product: { id: product_id, title, body, price, category }, 
+              variant: { id: variant_id, color, size, qty },
+            });
+            addToCart(idx); // animation in <App />
+          }}>
+            Add to Bag
+          </Button>
+        </div>
 
       </div>
 
