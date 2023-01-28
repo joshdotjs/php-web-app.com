@@ -12,6 +12,9 @@ v10: checkout button
 v11: variant images
 v12: ...fix styling (height of grid and dynamicly selected height of grid item to ensure scaling during add-to-cart FLIP animation does not distort grid-item)...
 
+// -Issue is with header jumping because it is inside the page.
+// -To move to layout we need to move following state up to higher levels:
+//  -
 
 
 

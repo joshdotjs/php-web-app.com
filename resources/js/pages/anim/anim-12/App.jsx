@@ -34,7 +34,7 @@ const colors = ['red', 'blue', 'green'];
 
 // ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
 
-export default function App({ products, }) {
+export default function App({ products, num_cart_items, setNumCartItems }) {
 
   // ============================================
 
@@ -44,7 +44,7 @@ export default function App({ products, }) {
   const cart_icon_target_ref = useRef(null); // cartItems = cart.querySelector(".items");
   const cart_count_ref = useRef(null); // cartCount = cart.querySelector(".count");
   
-  const [num_cart_items, setNumCartItems] = useState(0);
+
   
   // ============================================
 

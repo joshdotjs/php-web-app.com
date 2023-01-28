@@ -6,6 +6,7 @@ import Header from "./header/_header";
 // import Cart from "./cart/_cart";
 import Notifications from './notify/notify';
 
+
 // ==============================================
 
 export default function Layout({ children, name, restrict }) {

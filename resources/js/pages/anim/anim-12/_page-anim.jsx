@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import Layout from '@/comps/_layout/layout';
@@ -17,18 +17,33 @@ if(main_root){
   window.API_URL_LARAVEL = main_root.dataset.apiUrlLaravel;
   const products_SSR  = JSON.parse(main_root.dataset.products); // encodes variants
 
+  
+
   createRoot(main_root).render(
     <Layout>
 
-      <CartApp />
-
-      <MainApp products={products_SSR} />
+      <Temp {  ...{ products_SSR } }/>
 
     </Layout>
   );
 }
 
 // ==============================================
+
+function Temp( {products_SSR} ) {
+
+  const [num_cart_items, setNumCartItems] = useState(0);
+
+  return (
+    <>
+      <CartApp />
+
+      <MainApp products={products_SSR} 
+        { ...{ num_cart_items, setNumCartItems }  }
+      />
+    </>
+  );
+};
 
 // -Different animations in cart flow:
 //
