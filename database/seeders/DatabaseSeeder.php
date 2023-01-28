@@ -88,15 +88,16 @@ class DatabaseSeeder extends Seeder
         'price_compare' => 130,
         'created_at'    => date("Y-m-d H:i:s")
       ]);
-      // DB::table('products')->insert([ // 5
-      //   'title'         => 'Pegasus 38',
-      //   'sub_title'     => "",
-      //   'body'          => "",
-      //   'category'      => 'shoes',
-      //   'price'         => 0,
-      //   'price_compare' => 0,
-      //   'created_at'    => date("Y-m-d H:i:s")
-      // ]);
+
+      DB::table('products')->insert([ // 6
+        'title'         => 'Repel Miler',
+        'sub_title'     => "Men's Running Jacket",
+        'body'          => "An essential piece to your running game gets an update on the Nike Repel Miler Jacket. It's built to take on wet weather with a water-repellent design and a hood. The packable design features a look steeped in Nike's heritage. This product is made with 100% recycled polyester fibers.",
+        'category'      => 'clothes',
+        'price'         => 9000,
+        'price_compare' => 9000,
+        'created_at'    => date("Y-m-d H:i:s")
+      ]);
       // DB::table('products')->insert([ // 5
       //   'title'         => 'Pegasus 38',
       //   'sub_title'     => "",
@@ -300,7 +301,38 @@ class DatabaseSeeder extends Seeder
         'created_at' => date("Y-m-d H:i:s")
       ]);
     
-        // - - - - - - - - - - - - - - - - - - - - 
+      // - - - - - - - - - - - - - - - - - - - - 
+
+      // Variants for product 6: 
+
+      DB::table('variants')->insert([
+        'product_id' => 6,
+        'img'        => '/img/clothes/men/Repel-Miler-1.webp',
+        'size'       => 'lg',
+        'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('variants')->insert([
+        'product_id' => 6,
+        'img'        => '/img/clothes/men/Repel-Miler-2.webp',
+        'size'       => 'sm',
+        'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('variants')->insert([
+        'product_id' => 6,
+        'img'        => '/img/clothes/men/Repel-Miler-1.webp',
+        'size'       => 'sm',
+        'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      // - - - - - - - - - - - - - - - - - - - - 
 
       // ========================================
 

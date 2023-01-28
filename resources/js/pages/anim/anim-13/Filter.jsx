@@ -2,16 +2,15 @@ import React from 'react';
 
 // ==============================================
 
-export default function Filter({ filter, setFilter, applyFilter }) {
+export default function Filter({ filter, applyFilter }) {
 
-  // --------------------------------------------
   // --------------------------------------------
 
   return (
     <div id="btn-container">
-      <div className="radio" onClick={() => applyFilter('red')}   style={ filter.has('red')   ? { background: 'darkorange'} : {} }>Red</div>
-      <div className="radio" onClick={() => applyFilter('blue')}  style={ filter.has('blue')  ? { background: 'darkorange'} : {} }>Blue</div>
-      <div className="radio" onClick={() => applyFilter('green')} style={ filter.has('green') ? { background: 'darkorange'} : {} }>Green</div>
+      <div className="radio" onClick={() => applyFilter('shoes')}       style={ filter.has('shoes')       ? { background: 'darkorange'} : {} }>Shoes</div>
+      <div className="radio" onClick={() => applyFilter('clothes')}     style={ filter.has('clothes')     ? { background: 'darkorange'} : {} }>Clothes</div>
+      <div className="radio" onClick={() => applyFilter('accessories')} style={ filter.has('accessories') ? { background: 'darkorange'} : {} }>Accessories</div>
     </div>
   );
 

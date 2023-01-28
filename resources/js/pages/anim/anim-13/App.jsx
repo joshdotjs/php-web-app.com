@@ -25,16 +25,11 @@ gsap.registerPlugin(
 
 CustomWiggle.create("cartButtonWiggle", { wiggles: 8, type: "easeOut" });
 
-// ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
-
-const colors = ['red', 'blue', 'green'];
-// const randColor = () => colors[rand(0, colors.length-1)];
-
-// ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
+// ==============================================
 
 export default function App({ products }) {
 
-  // ============================================
+  // --------------------------------------------
 
   const refs = useRef([]);
 
@@ -45,7 +40,7 @@ export default function App({ products }) {
     cart_count_ref,
   } = useContext(CartContext);
   
-  // ============================================
+  // --------------------------------------------
 
   const addToCart = (idx) => {
     
@@ -310,20 +305,22 @@ export default function App({ products }) {
 
   // --------------------------------------------
 
-  const [filter, setFilter] = useState(new Set(colors));
+  const [filter, setFilter] = useState(new Set(['shoes', 'clothes', 'accessories']));
 
   // --------------------------------------------
 
-  const applyFilter = (color) => {
+  const applyFilter = (category) => {
 
     setFilter((prev) => {
+
+      console.log('prev_filter: ', prev);
 
       // - - - - - - - - - - - - - - - - - - - - 
 
       // Clone to avoid mutation
       const clone_prev_filters = new Set([...prev])
-      if (prev.has(color))  clone_prev_filters.delete(color)
-      if (!prev.has(color)) clone_prev_filters.add(color);
+      if (prev.has(category))  clone_prev_filters.delete(category)
+      if (!prev.has(category)) clone_prev_filters.add(category);
 
       // - - - - - - - - - - - - - - - - - - - - 
 
@@ -332,8 +329,8 @@ export default function App({ products }) {
         const prev_items = prev_layout.items;
   
         const new_items = prev_items.map(prev_item => {        
-          if (clone_prev_filters.has(prev_item.color))  return { ...prev_item, status: 'entered' }
-          if (!clone_prev_filters.has(prev_item.color)) return { ...prev_item, status: 'exiting' };
+          if (clone_prev_filters.has(prev_item.category))  return { ...prev_item, status: 'entered' }
+          if (!clone_prev_filters.has(prev_item.category)) return { ...prev_item, status: 'exiting' };
         })
   
         const new_layout = {
@@ -369,3 +366,5 @@ export default function App({ products }) {
     </div>
   );
 }
+
+// ==============================================
