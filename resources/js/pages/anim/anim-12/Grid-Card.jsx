@@ -7,13 +7,16 @@ import Button from '@/comps/button/button';
 
 import { addToCartLS } from '@/util/cart-fn';
 
+// Import this here because the moving of the .box-child's means that their styles should not be nested
+import './_grid.scss'; 
+
 // ==============================================
 
 export default function Card ({ item, addToCart, idx }) {
 
   // --------------------------------------------
 
-  const [hovered_image, setHoveredImage]       = useState(item.variants[0].img);
+  const [hovered_image, setHoveredImage]        = useState(item.variants[0].img);
   const [chosen_variant_id, setChosenVariantId] = useState(item.variants[0].id);
 
   // TODO: Get these images from the DB
@@ -64,7 +67,7 @@ export default function Card ({ item, addToCart, idx }) {
 
         </div>
 
-        <div ref={reveal_ref} className="back">
+        <div ref={reveal_ref} className="back radio-container">
           {
             item.variants.map(({id, product_id, qty, size, color, img}) => {
 
@@ -81,7 +84,8 @@ export default function Card ({ item, addToCart, idx }) {
                    }}
                   // onClick={() => { setChosenVariantId(id) }}
                   style={{
-                    outline: chosen_variant_id === id ? 'dashed limegreen 3px' : ''
+                    outline: chosen_variant_id === id ? 'dashed limegreen 3px' : '',
+                    height: '70px'
                   }}
                 />
               );

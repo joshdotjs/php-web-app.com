@@ -9,14 +9,11 @@ import { CustomWiggle } from "gsap/CustomWiggle";
 import CartContext from '@/context/cart-ctx';
 
 import Grid from './Grid';
-// import Header from './Header';
 import Filter from './Filter';
 
-import { init } from '@/util/util';
 import { fireEvent } from '@/util/custom-event';
 import { disableClick, enableClick } from '@/util/dom';
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
-import { rand } from '@/util/rand';
 
 gsap.registerPlugin(
   Flip, 
@@ -35,20 +32,13 @@ const colors = ['red', 'blue', 'green'];
 
 // ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
 
-export default function App({ products, 
-  // num_cart_items, setNumCartItems, cart_btn_ref, cart_icon_target_ref, cart_count_ref  
-}) {
+export default function App({ products }) {
 
   // ============================================
 
   const refs = useRef([]);
 
-  // const cart_btn_ref = useRef(null); // cartBtn = cart.querySelector(".btn-cart");
-  // const cart_icon_target_ref = useRef(null); // cartItems = cart.querySelector(".items");
-  // const cart_count_ref = useRef(null); // cartCount = cart.querySelector(".count");
-
   const {
-    num_cart_items,
     setNumCartItems,
     cart_btn_ref,
     cart_icon_target_ref,
@@ -104,7 +94,25 @@ export default function App({ products,
 
     const animate = () => {
       const item = refs.current[idx];
+      console.log('item: ', item);
       
+      const radio_container = item.querySelector('.radio-container');
+      // radio_container.remove(); // -we don't want to see the radio contaienr during move, just remove it.
+      // console.log('radio container: ', radio_container);
+      
+      // Grab height from rendered element - currently computed relative to current location.
+      const height = item.offsetHeight;
+      const width  = item.offsetWidth;
+
+      // -Follow same procedure for the grid container:
+      const grid_items = document.querySelector('#grid-items');
+      console.log('grid items: ', grid_items);
+      const grid_height = grid_items.offsetHeight;
+      grid_items.style.height = `${grid_height}px`;
+
+      // Explicitly set inline styles of height so it won't change when re-positioned
+      item.style.height = `${height}px`;
+      item.style.width  = `${width}px`;
 
       const state = Flip.getState(item);
       // debugger;
@@ -122,7 +130,7 @@ export default function App({ products,
       item.style.position = 'absolute';
   
       Flip.from(state, {
-        duration: 0.8, // 0.5
+        duration: 3.8, // 0.5
         ease: "back.in(0.8)",
         scale: true,
         absolute: true,
@@ -361,7 +369,6 @@ export default function App({ products,
           addToCart,
         } }
       />
-
 
     </div>
   );
