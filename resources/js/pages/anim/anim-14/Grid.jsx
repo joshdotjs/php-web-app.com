@@ -20,8 +20,8 @@ export default function Grid({
         {layout.items.map((item, idx) => {
           return (
             <li // item
-              key={item.id}
-              id={`box-${item.id}`} 
+              key={item.product.id}
+              id={`box-${item.product.id}`} 
               className="box"
               style={{ 
                 display: item.status === 'exiting' ? 'none' : 'grid'

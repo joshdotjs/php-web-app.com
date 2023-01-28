@@ -86,7 +86,8 @@ export default function Card ({ item, addToCartAnim, idx }) {
             classes="absolute bottom-6 right-6"
             disabled={!chosen_variant_id}
             onClick={() => {
-            const { product_id, title, body, price, category, variants } = item;
+            const { product, variants } = item;
+            const { id: product_id, title, body, price, category } = product;
             const variant = variants.find((variant) => variant.id === chosen_variant_id);
             const { id: variant_id, color, size, qty } = variant;
             addToCartLS({ 
@@ -105,11 +106,11 @@ export default function Card ({ item, addToCartAnim, idx }) {
       <div className="card-bottom">
 
         <div className="front">
-          <h5 className="title" style={{ color: 'black', fontWeight: '500' }}>Nike Pegasus 39</h5>
-          <p className="sub-title" style={{ color: light, }}>Men's Road Running Shoes</p>
+          <h5 className="title" style={{ color: 'black', fontWeight: '500' }}>{ item.title }</h5>
+          <p className="sub-title" style={{ color: light, }}>{item.sub_title}</p>
           <p className="num-colors" style={{ color: light, }}>6 Colors</p>
 
-          <p className="price" style={{ color: black, }}>$74.97  <span style={{ color: light, textDecoration: 'line-through' }}>$139</span></p>
+          <p className="price" style={{ color: black, }}>${item.price / 100}  {item?.price_compare && <span style={{ color: light, textDecoration: 'line-through' }}>${item.price_compare / 100}</span>}</p>
 
           <p className="discount" style={{ color: green, fontWeight: '500' }}>42% off</p>
 

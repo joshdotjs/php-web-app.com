@@ -163,12 +163,13 @@ export default function App({ products }) {
   // -Generalize to use state:
 
   const createColor = (category) => ({'shoes': 'red', 'shirts': 'blue', 'pants': 'green'}[category]);
-  const createRow = (category) => ({ id: uuid(), status: "entered", color: createColor(category), location: 'grid' });
+  const createRow = (category) => ({ id: uuid(), status: "entered", location: 'grid' });
 
   // STEP 1: Set up layout in state with grid items initialized
   const [layout, setLayout] = useState(() => ({
-    items: products.map(({id, title, body, price, category, variants}) => {
-      return {  product_id: id, title, body, price, category, variants, ...createRow(category) };
+    items: products.map(({id, title, body, price, category, product, variants}) => {
+      // return {  product_id: id, title, sub_title: product.sub_title, body, price, price_compare: product.price_compare, category, variants, ...createRow(category) };
+      return { product, variants, ...createRow(category) };
     }),
       // init(num_rows, null).map(() => createRow()) // create an array of lenth num_rows filled with null, then map over that array replacing each element with a row defined by createRow().
       // .reverse(),
@@ -334,10 +335,15 @@ export default function App({ products }) {
       setLayout((prev_layout) => { 
 
         const prev_items = prev_layout.items;
+
+        
   
-        const new_items = prev_items.map(prev_item => {        
-          if (clone_prev_filters.has(prev_item.category))  return { ...prev_item, status: 'entered' }
-          if (!clone_prev_filters.has(prev_item.category)) return { ...prev_item, status: 'exiting' };
+        const new_items = prev_items.map(prev_item => {
+
+          const product_category = prev_item.product.category;
+
+          if (clone_prev_filters.has( product_category))  return { ...prev_item, status: 'entered' }
+          if (!clone_prev_filters.has(product_category))  return { ...prev_item, status: 'exiting' };
         })
   
         const new_layout = {
