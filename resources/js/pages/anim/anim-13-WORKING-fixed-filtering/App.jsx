@@ -310,8 +310,9 @@ export default function App({ products }) {
   // --------------------------------------------
 
   const applyFilter = (category) => {
-
     setFilter((prev) => {
+
+      // - - - - - - - - - - - - - - - - - - - - 
 
       console.log('prev_filter: ', prev);
 

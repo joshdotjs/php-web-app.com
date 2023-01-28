@@ -78,11 +78,14 @@ export default function Card ({ item, addToCart, idx }) {
                   id={key}
                   key={key} 
                   src={img}
-                  onMouseEnter={() => { 
+                  // onMouseEnter={() => { 
+                  //   setHoveredImage(img);
+                  //   setChosenVariantId(id);
+                  //  }}
+                  onClick={() => { 
                     setHoveredImage(img);
                     setChosenVariantId(id);
                    }}
-                  // onClick={() => { setChosenVariantId(id) }}
                   style={{
                     outline: chosen_variant_id === id ? 'dashed limegreen 3px' : '',
                     height: '70px'

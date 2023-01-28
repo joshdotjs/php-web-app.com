@@ -11,7 +11,8 @@ v9: handling duplicate cart items => increase quantity
 v10: checkout button
 v11: variant images
 v12: fixed styling (height of grid and dynamicly selected height of grid item to ensure scaling during add-to-cart FLIP animation does not distort grid-item)
-v13: ...filter on categories...
+v13: filter on categories
+v14: card styling
 
 
 
