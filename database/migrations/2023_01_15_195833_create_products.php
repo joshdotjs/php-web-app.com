@@ -18,9 +18,11 @@ return new class extends Migration
             $table->timestamps();
 
             $table->string('title');
+            $table->string('sub_title');
             $table->longText('body');
             $table->string('category');
             $table->integer('price');
+            $table->integer('price_compare');
         });
     }
 

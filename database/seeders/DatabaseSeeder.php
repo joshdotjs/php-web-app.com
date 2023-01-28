@@ -40,34 +40,87 @@ class DatabaseSeeder extends Seeder
       // ========================================
 
       DB::table('products')->insert([
-        'title'      => 'Product A',
-        'body'       => 'Description of product A...',
-        'category'   => 'shirts',
-        'price'      => 100,
-        'created_at' => date("Y-m-d H:i:s")
+        'title'         => 'Pegasus 39',
+        'sub_title'     => "Men's Road Running Shoes",
+        'body'          => "Let the Nike Pegasus 39 help you ascend to new heights. More lightweight up top than the Pegasus 38 and ideal to wear in any season, it has a supportive sensation to help keep your feet contained, while underfoot cushioning and double Zoom Air units (1 more than the Peg 38) give you an extra pop to your step. Your trusted workhorse with wings is back. Time to fly.",
+        'category'      => 'shoes',
+        'price'         => 10497,
+        'price_compare' => 13900,
+        'created_at'    => date("Y-m-d H:i:s")
       ]);
 
       DB::table('products')->insert([
-        'title'      => 'Product B',
-        'body'       => 'Description of product B...',
-        'category'   => 'shoes',
-        'price'      => 200,
-        'created_at' => date("Y-m-d H:i:s")
+        'title'         => 'Invincible 2',
+        'sub_title'     => "Men's Road Running Shoes",
+        'body'          => "The Nike Invincible 2 has the same supersoft feel that lets you feel the potential when your foot hits the pavement. We created the shoe with plenty of snappy responsiveness and incredible support to help keep you feeling secure and competitive. It's 1 of our most tested shoes, still designed for you to stay on the track and away from the sidelines.",
+        'category'      => 'shoes',
+        'price'         => 10497,
+        'price_compare' => 18000,
+        'created_at'    => date("Y-m-d H:i:s")
       ]);
 
       DB::table('products')->insert([
-        'title'      => 'Product C',
-        'body'       => 'Description of product C...',
-        'category'   => 'pants',
-        'price'      => 300,
-        'created_at' => date("Y-m-d H:i:s")
+        'title'         => 'Flex Experience Run 11 Next Nature',
+        'sub_title'     => "Men's Road Running Shoes",
+        'body'          => "Comfortably zen, just like every run should be. With the Nike Flex Experience Run 11 Next Nature, we created a lightweight, clean design that feels as good as it looks. The shoes are supportive in all the right ways with movement so natural, you'll swear you've been wearing them for years.",
+        'category'      => 'shoes',
+        'price'         => 4197,
+        'price_compare' => 7000,
+        'created_at'    => date("Y-m-d H:i:s")
       ]);
+
+      DB::table('products')->insert([
+        'title'         => 'Zegama',
+        'sub_title'     => "Men's Trail Running Shoes",
+        'body'          => "Navigate the up and downs of uncompromising terrain with the Nike Zegama. Developed with great grip and stability, it has you covered so you can keep climbing and reach greater personal heights when the going gets grimy and gritty. Whether it's a challenging, rocky landscape going uphill or a steep, slick decline down a treacherous trail, feel confident when you decide to off-road it.",
+        'category'      => 'shoes',
+        'price_compare' => 16000,
+        'price'         => 11197,
+        'created_at'    => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('products')->insert([ // 5
+        'title'         => 'Pegasus 38',
+        'sub_title'     => "Men's Running Shoes",
+        'body'          => "Your workhorse with wings returns. The Nike Air Zoom Pegasus 38 (NFL New Orleans Saints) puts a spring in your step while showing love for your team. Breathable mesh in the upper combines the comfort and durability you want with a wider fit at the toes.",
+        'category'      => 'shoes',
+        'price'         => 65,
+        'price_compare' => 130,
+        'created_at'    => date("Y-m-d H:i:s")
+      ]);
+      // DB::table('products')->insert([ // 5
+      //   'title'         => 'Pegasus 38',
+      //   'sub_title'     => "",
+      //   'body'          => "",
+      //   'category'      => 'shoes',
+      //   'price'         => 0,
+      //   'price_compare' => 0,
+      //   'created_at'    => date("Y-m-d H:i:s")
+      // ]);
+      // DB::table('products')->insert([ // 5
+      //   'title'         => 'Pegasus 38',
+      //   'sub_title'     => "",
+      //   'body'          => "",
+      //   'category'      => 'shoes',
+      //   'price'         => 0,
+      //   'price_compare' => 0,
+      //   'created_at'    => date("Y-m-d H:i:s")
+      // ]);
+      // DB::table('products')->insert([ // 5
+      //   'title'         => 'Pegasus 38',
+      //   'sub_title'     => "",
+      //   'body'          => "",
+      //   'category'      => 'shoes',
+      //   'price'         => 0,
+      //   'price_compare' => 0,
+      //   'created_at'    => date("Y-m-d H:i:s")
+      // ]);
 
       // ========================================
 
       // - - - - - - - - - - - - - - - - - - - - 
 
-      // Variants for product A: 
+      // Variants for product 1: 
 
       DB::table('variants')->insert([
         'product_id' => 1,
@@ -107,7 +160,7 @@ class DatabaseSeeder extends Seeder
 
       // - - - - - - - - - - - - - - - - - - - - 
 
-      // Variants for product B: 
+      // Variants for product 2: 
 
       DB::table('variants')->insert([
         'product_id' => 2,
@@ -147,7 +200,7 @@ class DatabaseSeeder extends Seeder
 
       // - - - - - - - - - - - - - - - - - - - - 
 
-      // Variants for product C: 
+      // Variants for product 3: 
 
       DB::table('variants')->insert([
         'product_id' => 3,
@@ -175,6 +228,7 @@ class DatabaseSeeder extends Seeder
         'qty'        => 1,
         'created_at' => date("Y-m-d H:i:s")
       ]);
+
       DB::table('variants')->insert([
         'product_id' => 3,
         'img'        => '/img/products/shoes/Flex-Experience-Run-11-blue.webp',
@@ -185,6 +239,68 @@ class DatabaseSeeder extends Seeder
       ]);
    
       // - - - - - - - - - - - - - - - - - - - - 
+
+      // Variants for product 4: 
+
+      DB::table('variants')->insert([
+        'product_id' => 4,
+        'img'        => '/img/products/shoes/Zegama-1.webp',
+        'size'       => 'lg',
+        'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('variants')->insert([
+        'product_id' => 4,
+        'img'        => '/img/products/shoes/Zegama-2.webp',
+        'size'       => 'sm',
+        'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+    
+      // - - - - - - - - - - - - - - - - - - - - 
+
+      // Variants for product 5: 
+
+      DB::table('variants')->insert([
+        'product_id' => 5,
+        'img'        => '/img/products/shoes/Pegasus-38-1.webp',
+        'size'       => 'lg',
+        'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('variants')->insert([
+        'product_id' => 5,
+        'img'        => '/img/products/shoes/Pegasus-38-2.webp',
+        'size'       => 'sm',
+        'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('variants')->insert([
+        'product_id' => 5,
+        'img'        => '/img/products/shoes/Pegasus-38-3.webp',
+        'size'       => 'sm',
+        'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('variants')->insert([
+        'product_id' => 5,
+        'img'        => '/img/products/shoes/Pegasus-38-4.webp',
+        'size'       => 'sm',
+        'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+    
+        // - - - - - - - - - - - - - - - - - - - - 
 
       // ========================================
 

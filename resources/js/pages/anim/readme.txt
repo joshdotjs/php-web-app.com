@@ -9,22 +9,15 @@ v7: size of card takes up entire size of grid card (works in flip-toy-6--cart-5)
 v8: adding item data to cart - synchronized via local storage (see notes below)
 v9: handling duplicate cart items => increase quantity
 v10: checkout button
-v11: ...styling...
+v11: variant images
+v12: ...fix styling (height of grid and dynamicly selected height of grid item to ensure scaling during add-to-cart FLIP animation does not distort grid-item)...
+
+
+
 
 
 Scrapped:
 v8: move layout from <Cart /> into cart-ctx
-
-
-
-
-
-
-TODO: 
-v?: ...cartCtx.addToCart() places the item into cart context using logic from currently broken v8
-v?: ...place item data in the cart (select variant and click 'add-to-cart')...
-
-
 
 NOTES:
   -DO NOT SPEND ANY MORE TIME DEBUGGING - JUST USE THE LOCAL STORAGE SOLUTION
