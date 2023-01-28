@@ -12,32 +12,30 @@ export default function Header({
 }) {
   return (
     
-    <header id="navbar">
+    <header id="navbar" style={{ position: 'fixed' }}>
+      <nav id="top"></nav>
 
-    <nav id="top"></nav>
+        <nav id="bottom">
 
-    <nav id="bottom">
+        <h2 id="logo">Logo</h2>
 
-      <h2 id="logo">Logo</h2>
+        <div 
+          id="cart-btn"
+          ref={cart_btn_ref}
+        >
 
-      <div 
-        id="cart-btn"
-        ref={cart_btn_ref}
-      >
+          <div ref={cart_icon_target_ref} id="hidden-target"></div>
 
-        <div ref={cart_icon_target_ref} id="hidden-target"></div>
+          <BagSVG />
 
-        <BagSVG />
-
-        <div ref={cart_count_ref} id="cart-count">
-          <div>{num_cart_items}</div>
+          <div ref={cart_count_ref} id="cart-count">
+            <div>{num_cart_items}</div>
+          </div>
+          
         </div>
-        
-      </div>
 
-    </nav>
-
-  </header>
+      </nav>
+    </header>
 
 
   );

@@ -127,6 +127,9 @@ export default function App({ products, }) {
 
           // Hide the contents inside the hidden target
           item.style.visibility = 'hidden';
+
+          // just remove item from dom:
+          item.remove();
         }
       });
     };

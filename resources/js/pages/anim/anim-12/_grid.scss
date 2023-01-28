@@ -48,7 +48,8 @@ div.box-child {
 
     .card-bottom { position: relative;
 
-      .front { position: absolute;
+      .front { 
+        // position: absolute;
         opacity: 1;
         .title {
           font-weight: 500;
@@ -70,7 +71,7 @@ div.box-child {
       
       
       .back { 
-        position: absolute;
+        // position: absolute;
         opacity: 0;
         // height: 100px;
         width: 100%;
