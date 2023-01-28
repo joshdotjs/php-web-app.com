@@ -23,8 +23,11 @@ export default function Card ({ item, addToCartAnim, idx }) {
 
   // --------------------------------------------
 
-  const [hovered_image, setHoveredImage]        = useState(item.variants[0].img);
-  const [chosen_variant_id, setChosenVariantId] = useState(item.variants[0].id);
+  const { product, variants } = item;
+  const { price, price_compare, title, sub_title, body, category } = product;
+
+  const [hovered_image, setHoveredImage]        = useState(variants[0].img);
+  const [chosen_variant_id, setChosenVariantId] = useState(variants[0].id);
 
   // TODO: Get these images from the DB
   // --------------------------------------------
@@ -36,7 +39,7 @@ export default function Card ({ item, addToCartAnim, idx }) {
   const enter = () => {
 
 
-    const container = container_ref.current;
+    // const container = container_ref.current;
     const reveal = reveal_ref.current;
 
     tl_ref.current = gsap.to(reveal, {
@@ -55,6 +58,13 @@ export default function Card ({ item, addToCartAnim, idx }) {
   const black = 'black';
   const light = '#757575';
   const green = '#41A139';
+
+  // --------------------------------------------
+
+  const display = (price) => price / 100;
+  const is_price_different = price < price_compare;
+
+  const percent_diff = Math.round((Math.abs(price_compare - price) / ((price_compare + price) / 2)) * 100);
 
   // --------------------------------------------
 
@@ -106,13 +116,13 @@ export default function Card ({ item, addToCartAnim, idx }) {
       <div className="card-bottom">
 
         <div className="front">
-          <h5 className="title" style={{ color: 'black', fontWeight: '500' }}>{ item.title }</h5>
-          <p className="sub-title" style={{ color: light, }}>{item.sub_title}</p>
+          <h5 className="title" style={{ color: 'black', fontWeight: '500' }}>{ title }</h5>
+          <p className="sub-title" style={{ color: light, }}>{sub_title}</p>
           <p className="num-colors" style={{ color: light, }}>6 Colors</p>
 
-          <p className="price" style={{ color: black, }}>${item.price / 100}  {item?.price_compare && <span style={{ color: light, textDecoration: 'line-through' }}>${item.price_compare / 100}</span>}</p>
+          <p className="price" style={{ color: black, }}>${display(price)}  {is_price_different && <span style={{ color: light, textDecoration: 'line-through' }}>${display(price_compare)}</span>}</p>
 
-          <p className="discount" style={{ color: green, fontWeight: '500' }}>42% off</p>
+          {is_price_different && <p className="discount" style={{ color: green, fontWeight: '500' }}>{percent_diff}% off</p>}
 
         </div>
 
