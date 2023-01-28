@@ -26,8 +26,6 @@ const CartContextProvider = ({ children }) => {
   const cart_icon_target_ref = useRef(null); // cartItems = cart.querySelector(".items");
   const cart_count_ref = useRef(null); // cartCount = cart.querySelector(".count");
 
-  // const cart_open = useState(false);
-
   // --------------------------------------------
 
   const context = {

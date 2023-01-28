@@ -74,6 +74,7 @@ export default function Card ({ item, addToCartAnim, idx }) {
       className="card"
       onMouseEnter={enter}
       onMouseLeave={exit}
+      style={{ height: '100%' }}
     >
       <div 
         className="img-container"

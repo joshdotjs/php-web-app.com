@@ -24,7 +24,7 @@ export default function Grid({
               id={`box-${item.product.id}`} 
               className="box"
               style={{ 
-                display: item.status === 'exiting' ? 'none' : 'grid'
+                display: item.status === 'exiting' ? 'none' : 'grid',
               }}
             >
               <div 
