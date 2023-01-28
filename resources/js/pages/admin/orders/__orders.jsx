@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 // import Link from "next/link";
 import Link from '@/comps/link/link';
 
-import Layout from "@/comps/_layout/layout";
+import Layout from "@/comps/_layout/_layout";
 import Button from "@/comps/button/button";
 
 import { authFetch } from "@/util/fetch";

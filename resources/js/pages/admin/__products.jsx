@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-import Layout from '@/comps/_layout/layout';
+import Layout from '@/comps/_layout/_layout';
 import CreateProduct from "@/pages/admin/create-product";
 import ModifyProduct from "@/pages/admin/modify-product";
 // import ModifyProduct from "@/comps/__pages/admin/modify-product";
