@@ -24,6 +24,10 @@
       border-radius: 0.15em;
       margin-right: 0.5em;
 
+      background: white;
+      color: black !important;
+      padding: 0.5em !important;
+
       // clip-path: polygon(
       //   100% 0,      /* upper-left */
       //   100% 0,     
@@ -42,13 +46,13 @@
 
   input[type='checkbox'] {
     cursor: pointer;
-    opacity: 0.1; // need to leave in DOM for tab'ing, etc.
+    opacity: 0; // need to leave in DOM for tab'ing, etc.
     position: absolute;
 
     &:hover + label::before { background: limegreen; }
 
     &:focus + label::before {
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     }
 
     &:checked + label::before { 
@@ -56,8 +60,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
-      background: white; 
       // clip-path: polygon(
       //   0% 0,       /* upper-left */
       //   100% 0, 

@@ -16,8 +16,8 @@ function Page() {
 
   // --------------------------------------------
 
-  const options = ['sm', 'lg'];
-  const [set, setSet]   = useState(new Set());
+  const sizes = ['sm', 'lg'];
+  const [selected_sizes, setSelectedSizes]   = useState(new Set());
 
   // --------------------------------------------
 
@@ -28,9 +28,9 @@ function Page() {
 
       <div id="playground" style={{ height: '300px', width: '100vw', background: 'white', display: 'grid', placeItems: 'center' }}>
         <Checkboxes 
-          options={options}
-          set={set}
-          setSet={setSet}
+          options={sizes}
+          set={selected_sizes}
+          setSet={setSelectedSizes}
         />
       </div>
 
