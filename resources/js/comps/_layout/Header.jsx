@@ -11,7 +11,7 @@ import './_header.scss';
 
 // ==============================================
 
-export default function Header() {
+export default function Header({ header_ref }) {
 
   // --------------------------------------------
 
@@ -28,7 +28,11 @@ export default function Header() {
   // --------------------------------------------
 
   return (
-    <header id="navbar" style={{ position: 'fixed' }}>
+    <header 
+      id="navbar" 
+      ref={header_ref}
+      style={{ position: 'fixed' }}
+    >
 
       {/* ----------------------------------- */}
 
