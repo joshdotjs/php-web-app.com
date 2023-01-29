@@ -6,7 +6,7 @@
   <div 
     id="root-main--anim-orders"
     data-orders="{{$orders}}"
-    data-api-url="{{$API_URL_NODE}}"
+    data-api-url-node="{{$API_URL_NODE}}"
     data-api-url-laravel="{{$API_URL_LARAVEL}}"
   ></div>
 

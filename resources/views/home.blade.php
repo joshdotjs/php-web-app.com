@@ -6,7 +6,7 @@
   {{-- react --}}
   <div 
     id="react-root--home-page" 
-    data-api-url="{{$API_URL_NODE}}"
+    data-api-url-node="{{$API_URL_NODE}}"
     data-api-url-laravel="{{$API_URL_LARAVEL}}"
   ></div>
 

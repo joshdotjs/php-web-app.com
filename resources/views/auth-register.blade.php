@@ -11,7 +11,7 @@
 
 
   {{-- react --}}
-  {{-- <div id="react-root--home-page" data-api-url="{{$API_URL}}"></div> --}}
+  {{-- <div id="react-root--home-page" data-api-url-node="{{$API_URL}}"></div> --}}
   {{-- react --}}
   
   {{-- =============================================== --}}

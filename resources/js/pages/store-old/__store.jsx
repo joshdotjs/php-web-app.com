@@ -8,8 +8,8 @@ import Page from './_store.jsx.jsx';
 
 const root = document.querySelector('#react-root--products-page');
 if(root){
-  window.API_URL_NODE         = root.dataset.apiUrl;
-  window.API_URL_LARAVEL = root.dataset.apiUrlLaravel;
+  window.API_URL_NODE         = root.dataset.apiUrlNode;
+  window.API_URL_LARAVEL = root.dataset.apiUrlNodeLaravel;
   const products_SSR  = JSON.parse(root.dataset.products); 
 
   createRoot(root).render(
