@@ -12,8 +12,8 @@ import '@/pages/admin/orders/__orders.jsx';
 import '@/pages/admin/orders/[id].jsx';
 
 // Store:
-import '@/pages/store/__store.jsx';
-import '@/pages/store/product/__product.jsx';
+import '@/pages/store-old/__store.jsx';
+import '@/pages/store-old/product/__product.jsx';
 
 // Auth:
 import '@/pages/auth/login/__login.jsx';
@@ -32,7 +32,7 @@ import '@/pages/auth/login/__login.jsx';
 // import '@/pages/anim/anim-11-WORKING-variant-images/_page-anim.jsx';
 // import '@/pages/anim/anim-12-WORKING-fixed-grid/_page-anim.jsx';
 // import '@/pages/anim/anim-13-WORKING-fixed-filtering/_page-anim.jsx';
-import '@/pages/anim/anim-14/_page-anim.jsx';
+import '@/pages/store/_page-anim.jsx';
 
 // Dev - Anim 1D:
 // import '@/pages/anim-orders/anim-orders-1/_page-anim-orders';

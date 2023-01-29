@@ -4,8 +4,6 @@ import { createRoot } from 'react-dom/client';
 import Layout from '@/comps/_layout/_layout';
 
 import MainApp from './App';
-import CartApp from '../../../comps/_layout/Cart';
-// import Header from './Header';
 
 import './_.scss';
 

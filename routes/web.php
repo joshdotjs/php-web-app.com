@@ -79,7 +79,7 @@ Route::get('/admin/orders/{id}', function ($id) {
 
 // ==============================================
 
-Route::get('/anim', function () {
+Route::get('/store', function () {
   $products = DB::table('products')->get();
 
   // -Each row stores product data with an array storing the variants for that rows products
@@ -140,14 +140,14 @@ Route::get('/auth/login', function () {
 
 // ==============================================
 
-Route::get('/store', function () {  
-  $products = DB::table('products')->get();
-  return view('store', [
-    'products' => $products, 
-    'API_URL' => env('API_URL'), // Cart: Checkout
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
-  ]);
-});
+// Route::get('/store', function () {  
+//   $products = DB::table('products')->get();
+//   return view('store', [
+//     'products' => $products, 
+//     'API_URL' => env('API_URL'), // Cart: Checkout
+//     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+//   ]);
+// });
 
 // ==============================================
 

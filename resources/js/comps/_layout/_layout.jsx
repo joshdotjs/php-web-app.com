@@ -29,8 +29,9 @@ export default function Layout({ children, name, restrict }) {
     console.log('header: ', header);
 
     const duration = 0.5;
-    gsap.to(page, { opacity: 1, scale: 1, duration });
-    gsap.to(blur_overlay, { opacity: 0, duration, onComplete: () => blur_overlay.remove() });
+    const delay = 0.125;
+    gsap.to(page, { opacity: 1, scale: 1, duration, delay });
+    gsap.to(blur_overlay, { opacity: 0, duration, delay, onComplete: () => blur_overlay.remove() });
     // gsap.to(header, { opacity: 1, duration: 1 });
 
   }, []);
@@ -41,8 +42,6 @@ export default function Layout({ children, name, restrict }) {
 
     <AuthContextProvider { ...{ restrict } }>
       <CartContextProvider>
-
-        
 
         <Cart />
 
@@ -58,22 +57,18 @@ export default function Layout({ children, name, restrict }) {
           id="blur-overlay" 
           ref={blur_ref}
           style={{ 
-          // backdropFilter: 'blur(10px)', 
+          backdropFilter: 'blur(10px)', 
           // background: 'rgba(0, 0, 0, 0.5)', 
-          backdropFilter: 'blur(10px) saturate(180%)',
+          // backdropFilter: 'blur(10px) saturate(180%)',
           // '-webkit-backdrop-filter': 'blur(10px) saturate(180%)',
           WebkitBackdropFilter: 'blur(10px) saturate(180%)',
           // backgroundColor: 'rgba(17, 25, 40, 0.75)',
-          // border: '1px solid rgba(255, 255, 255, 0.125)',
-          // color: 'white',
-          // marginTop: '-1px', 
           position: 'fixed', 
           height: '100vh',
           width: '100vw',
           top: 0,
           left: 0,
           zIndex: 10,
-          // zIndex: '-1' // offset upwards a little to hide the edge effect (it is very evident between the top and bottom), cover with the top navbar
           }}
         ></div>
       
