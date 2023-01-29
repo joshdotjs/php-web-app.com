@@ -84,8 +84,8 @@ class DatabaseSeeder extends Seeder
         'sub_title'     => "Men's Running Shoes",
         'body'          => "Your workhorse with wings returns. The Nike Air Zoom Pegasus 38 (NFL New Orleans Saints) puts a spring in your step while showing love for your team. Breathable mesh in the upper combines the comfort and durability you want with a wider fit at the toes.",
         'category'      => 'shoes',
-        'price'         => 65,
-        'price_compare' => 130,
+        'price'         => 6500,
+        'price_compare' => 13000,
         'created_at'    => date("Y-m-d H:i:s")
       ]);
 
@@ -98,15 +98,16 @@ class DatabaseSeeder extends Seeder
         'price_compare' => 9000,
         'created_at'    => date("Y-m-d H:i:s")
       ]);
-      // DB::table('products')->insert([ // 5
-      //   'title'         => 'Pegasus 38',
-      //   'sub_title'     => "",
-      //   'body'          => "",
-      //   'category'      => 'shoes',
-      //   'price'         => 0,
-      //   'price_compare' => 0,
-      //   'created_at'    => date("Y-m-d H:i:s")
-      // ]);
+
+      DB::table('products')->insert([ // 7
+        'title'         => 'Nike Sportswear',
+        'sub_title'     => "Faux Fur Blanket",
+        'body'          => "Celebrate the seasonal shift of weather by bundling up in this blanket. Made of the coziest faux fur fleece, this statement piece does double-duty as oversized layering piece or softest spot on your couch.",
+        'category'      => 'accessories',
+        'price'         => 17097,
+        'price_compare' => 20000,
+        'created_at'    => date("Y-m-d H:i:s")
+      ]);
       // DB::table('products')->insert([ // 5
       //   'title'         => 'Pegasus 38',
       //   'sub_title'     => "",
@@ -326,6 +327,37 @@ class DatabaseSeeder extends Seeder
       DB::table('variants')->insert([
         'product_id' => 6,
         'img'        => '/img/clothes/men/Repel-Miler-1.webp',
+        'size'       => 'sm',
+        'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      // - - - - - - - - - - - - - - - - - - - - 
+
+      // Variants for product 7: 
+
+      DB::table('variants')->insert([
+        'product_id' => 7,
+        'img'        => '/img/accessories/Faux-Fur-Blanket-1.webp',
+        'size'       => 'lg',
+        'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('variants')->insert([
+        'product_id' => 7,
+        'img'        => '/img/accessories/Faux-Fur-Blanket-2.webp',
+        'size'       => 'sm',
+        'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('variants')->insert([
+        'product_id' => 7,
+        'img'        => '/img/accessories/Faux-Fur-Blanket-3.webp',
         'size'       => 'sm',
         'color'      => 'red',
         'qty'        => 1,
