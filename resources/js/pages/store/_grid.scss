@@ -26,7 +26,7 @@ ul#grid-items { // Grid.jsx
 
   li.box { 
     // position: relative; 
-    outline: dashed orange 1px;
+    outline: dashed hsl(33, 100%, 50%, 0.1) 1px;
     // aspect-ratio: 1;
 
     // .box-child lives here during status: 'entered'

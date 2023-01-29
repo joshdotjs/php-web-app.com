@@ -66,7 +66,8 @@ export default function Card ({ item, addToCartAnim, idx }) {
   const tl_ref        = useRef(null);
 
   const enter = () => {
-
+    // prevent partial tween
+    tl_ref.current?.revert(); 
 
     // const container = container_ref.current;
     const reveal = reveal_ref.current;
