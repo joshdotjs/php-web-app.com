@@ -11,10 +11,13 @@ import { updateNumCartItems } from '@/context/cart-ctx/cart-fn';
 
 import Grid from './Grid';
 import Filter from './Filter';
+// import Checkboxes from '@/comps/forms/checkboxes/checkboxes';
+import Checkboxes from '@/comps/forms/checkboxes-flip-layout/checkboxes';
 
 import { fireEvent } from '@/util/events';
 import { disableClick, enableClick } from '@/util/dom';
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
+
 
 gsap.registerPlugin(
   Flip, 
@@ -303,7 +306,14 @@ export default function App({ products }) {
 
   // --------------------------------------------
 
-  const [filter, setFilter] = useState(new Set(['shoes', 'clothes', 'accessories']));
+  // const [filter, setFilter] = useState(new Set(['shoes', 'clothes', 'accessories']));
+
+  // --------------------------------------------
+
+  // const sizes = ['sm', 'lg'];
+  // const [selected_sizes, setSelectedSizes] = useState(new Set());
+  const categories = ['shoes', 'clothes', 'accessories'];
+  const [filter, setFilter] = useState(new Set(categories));
 
   // --------------------------------------------
 
@@ -368,7 +378,18 @@ export default function App({ products }) {
   return (
     <div id="app-main" ref={container_ref}>
 
-      <Filter filter={filter} setFilter={setFilter} applyFilter={applyFilter} />
+      {/* <Filter filter={filter} setFilter={setFilter} applyFilter={applyFilter} /> */}
+      
+      <div id="playground" style={{ height: '300px', width: '100vw', background: 'white', display: 'grid', placeItems: 'center' }}>
+        <Checkboxes 
+          options={categories}
+          // set={selected_sizes}
+          set={filter}
+          // setSet={setSelectedSizes}
+          // setSet={setFilter}
+          applyFilter={applyFilter}
+        />
+      </div>
 
       <Grid { ...{
           refs,

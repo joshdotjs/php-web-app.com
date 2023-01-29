@@ -1,0 +1,11 @@
+.checkboxes-container {
+  border: solid black 1px;
+  padding: 0.5em;
+
+  background: lightblue;
+
+  > :not(:last-child) {
+    // * {color: white; }
+    margin-bottom: 1em;
+  }
+}
