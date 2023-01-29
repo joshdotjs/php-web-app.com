@@ -322,6 +322,10 @@ export default function App({ products }) {
 
       // - - - - - - - - - - - - - - - - - - - - 
 
+
+
+      // - - - - - - - - - - - - - - - - - - - - 
+
       // Clone to avoid mutation
       const clone_prev_filters = new Set([...prev])
       if (prev.has(category))  clone_prev_filters.delete(category)

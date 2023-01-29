@@ -15,6 +15,35 @@ import './_grid.scss';
 
 // ==============================================
 
+const Ellipsis = ({ children, name, classes, color, fontSize, fontWeight }) => {
+
+  const ellipsis = {
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+  };
+
+  return (
+    <p 
+      className={`
+        ${name}
+        ${classes}
+        w-[150px] sm:w-full
+      `}
+      style={{ 
+        color,
+        fontSize,
+        fontWeight,
+        ...ellipsis
+      }}
+    >
+      {children}
+    </p>
+  );
+};
+
+// ==============================================
+
 export default function Card ({ item, addToCartAnim, idx }) {
 
   // --------------------------------------------
@@ -127,8 +156,8 @@ export default function Card ({ item, addToCartAnim, idx }) {
             // opacity: 1,
           }}
         >
-          <h5 className="title" style={{ color: 'black', fontWeight: '500' }}>{ title }</h5>
-          <p className="sub-title" style={{ color: light, }}>{sub_title}</p>
+          <Ellipsis color={light} fontSize='1.1rem' fontWeight='500'>{title}</Ellipsis>
+          <Ellipsis color={light} fontSize='1rem' fontWeight='400'>{sub_title}</Ellipsis>
           <p className="num-colors" style={{ color: light, }}>6 Colors</p>
 
           <p className="price" style={{ color: black, }}>${display(price)}  {is_price_different && <span style={{ color: light, textDecoration: 'line-through' }}>${display(price_compare)}</span>}</p>
