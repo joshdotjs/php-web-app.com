@@ -36,9 +36,9 @@ class DatabaseSeeder extends Seeder
         'password' => Hash::make('steve'),
         'is_admin' => 0
       ]);
-
+      
       // ========================================
-
+      
       DB::table('products')->insert([
         'title'         => 'Pegasus 39',
         'sub_title'     => "Men's Road Running Shoes",
@@ -48,16 +48,18 @@ class DatabaseSeeder extends Seeder
         'price_compare' => 13900,
         'created_at'    => date("Y-m-d H:i:s")
       ]);
-
-      DB::table('products')->insert([
-        'title'         => 'Invincible 2',
-        'sub_title'     => "Men's Road Running Shoes",
-        'body'          => "The Nike Invincible 2 has the same supersoft feel that lets you feel the potential when your foot hits the pavement. We created the shoe with plenty of snappy responsiveness and incredible support to help keep you feeling secure and competitive. It's 1 of our most tested shoes, still designed for you to stay on the track and away from the sidelines.",
-        'category'      => 'shoes',
-        'price'         => 10497,
-        'price_compare' => 18000,
+      
+      DB::table('products')->insert([ // 6 -> 2
+        'title'         => 'Repel Miler',
+        'sub_title'     => "Men's Running Jacket",
+        'body'          => "An essential piece to your running game gets an update on the Nike Repel Miler Jacket. It's built to take on wet weather with a water-repellent design and a hood. The packable design features a look steeped in Nike's heritage. This product is made with 100% recycled polyester fibers.",
+        'category'      => 'clothes',
+        'price'         => 9000,
+        'price_compare' => 9000,
         'created_at'    => date("Y-m-d H:i:s")
       ]);
+
+
 
       DB::table('products')->insert([
         'title'         => 'Flex Experience Run 11 Next Nature',
@@ -69,16 +71,17 @@ class DatabaseSeeder extends Seeder
         'created_at'    => date("Y-m-d H:i:s")
       ]);
 
-      DB::table('products')->insert([
-        'title'         => 'Zegama',
-        'sub_title'     => "Men's Trail Running Shoes",
-        'body'          => "Navigate the up and downs of uncompromising terrain with the Nike Zegama. Developed with great grip and stability, it has you covered so you can keep climbing and reach greater personal heights when the going gets grimy and gritty. Whether it's a challenging, rocky landscape going uphill or a steep, slick decline down a treacherous trail, feel confident when you decide to off-road it.",
-        'category'      => 'shoes',
-        'price_compare' => 16000,
-        'price'         => 11197,
+      
+      DB::table('products')->insert([ // 7 -> 4
+        'title'         => 'Nike Sportswear',
+        'sub_title'     => "Faux Fur Blanket",
+        'body'          => "Celebrate the seasonal shift of weather by bundling up in this blanket. Made of the coziest faux fur fleece, this statement piece does double-duty as oversized layering piece or softest spot on your couch.",
+        'category'      => 'accessories',
+        'price'         => 17097,
+        'price_compare' => 20000,
         'created_at'    => date("Y-m-d H:i:s")
       ]);
-
+      
       DB::table('products')->insert([ // 5
         'title'         => 'Pegasus 38',
         'sub_title'     => "Men's Running Shoes",
@@ -89,25 +92,26 @@ class DatabaseSeeder extends Seeder
         'created_at'    => date("Y-m-d H:i:s")
       ]);
 
-      DB::table('products')->insert([ // 6
-        'title'         => 'Repel Miler',
-        'sub_title'     => "Men's Running Jacket",
-        'body'          => "An essential piece to your running game gets an update on the Nike Repel Miler Jacket. It's built to take on wet weather with a water-repellent design and a hood. The packable design features a look steeped in Nike's heritage. This product is made with 100% recycled polyester fibers.",
-        'category'      => 'clothes',
-        'price'         => 9000,
-        'price_compare' => 9000,
+      DB::table('products')->insert([ // 2 -> 6
+        'title'         => 'Invincible 2',
+        'sub_title'     => "Men's Road Running Shoes",
+        'body'          => "The Nike Invincible 2 has the same supersoft feel that lets you feel the potential when your foot hits the pavement. We created the shoe with plenty of snappy responsiveness and incredible support to help keep you feeling secure and competitive. It's 1 of our most tested shoes, still designed for you to stay on the track and away from the sidelines.",
+        'category'      => 'shoes',
+        'price'         => 10497,
+        'price_compare' => 18000,
+        'created_at'    => date("Y-m-d H:i:s")
+      ]);
+      
+      DB::table('products')->insert([ // 4 -> 7
+        'title'         => 'Zegama',
+        'sub_title'     => "Men's Trail Running Shoes",
+        'body'          => "Navigate the up and downs of uncompromising terrain with the Nike Zegama. Developed with great grip and stability, it has you covered so you can keep climbing and reach greater personal heights when the going gets grimy and gritty. Whether it's a challenging, rocky landscape going uphill or a steep, slick decline down a treacherous trail, feel confident when you decide to off-road it.",
+        'category'      => 'shoes',
+        'price_compare' => 16000,
+        'price'         => 11197,
         'created_at'    => date("Y-m-d H:i:s")
       ]);
 
-      DB::table('products')->insert([ // 7
-        'title'         => 'Nike Sportswear',
-        'sub_title'     => "Faux Fur Blanket",
-        'body'          => "Celebrate the seasonal shift of weather by bundling up in this blanket. Made of the coziest faux fur fleece, this statement piece does double-duty as oversized layering piece or softest spot on your couch.",
-        'category'      => 'accessories',
-        'price'         => 17097,
-        'price_compare' => 20000,
-        'created_at'    => date("Y-m-d H:i:s")
-      ]);
       // DB::table('products')->insert([ // 5
       //   'title'         => 'Pegasus 38',
       //   'sub_title'     => "",
@@ -126,13 +130,13 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 1,
-        'img'        => '/img/products/shoes/pegasus-green.webp',
-        'size'       => 'lg',
-        'color'      => 'red',
+        'img'        => '/img/products/shoes/pegasus-white.webp',
+        'size'       => 'sm',
+        'color'      => 'blue',
         'qty'        => 1,
         'created_at' => date("Y-m-d H:i:s")
       ]);
-
+        
       DB::table('variants')->insert([
         'product_id' => 1,
         'img'        => '/img/products/shoes/pegasus-pink.webp',
@@ -150,22 +154,22 @@ class DatabaseSeeder extends Seeder
         'qty'        => 1,
         'created_at' => date("Y-m-d H:i:s")
       ]);
-
+      
       DB::table('variants')->insert([
         'product_id' => 1,
-        'img'        => '/img/products/shoes/pegasus-white.webp',
-        'size'       => 'sm',
-        'color'      => 'blue',
+        'img'        => '/img/products/shoes/pegasus-green.webp',
+        'size'       => 'lg',
+        'color'      => 'red',
         'qty'        => 1,
         'created_at' => date("Y-m-d H:i:s")
       ]);
-
+      
       // - - - - - - - - - - - - - - - - - - - - 
 
       // Variants for product 2: 
 
       DB::table('variants')->insert([
-        'product_id' => 2,
+        'product_id' => 6,
         'img'        => '/img/products/shoes/invincible-2-pink.webp',
         'size'       => 'lg',
         'color'      => 'red',
@@ -174,7 +178,7 @@ class DatabaseSeeder extends Seeder
       ]);
 
       DB::table('variants')->insert([
-        'product_id' => 2,
+        'product_id' => 6,
         'img'        => '/img/products/shoes/invincible-2-grey.webp',
         'size'       => 'sm',
         'color'      => 'red',
@@ -183,7 +187,7 @@ class DatabaseSeeder extends Seeder
       ]);
 
       DB::table('variants')->insert([
-        'product_id' => 2,
+        'product_id' => 6,
         'img'        => '/img/products/shoes/invincible-2-orange.webp',
         'size'       => 'lg',
         'color'      => 'blue',
@@ -192,7 +196,7 @@ class DatabaseSeeder extends Seeder
       ]);
 
       DB::table('variants')->insert([
-        'product_id' => 2,
+        'product_id' => 6,
         'img'        => '/img/products/shoes/invincible-2-black.webp',
         'size'       => 'sm',
         'color'      => 'blue',
@@ -245,7 +249,7 @@ class DatabaseSeeder extends Seeder
       // Variants for product 4: 
 
       DB::table('variants')->insert([
-        'product_id' => 4,
+        'product_id' => 7,
         'img'        => '/img/products/shoes/Zegama-1.webp',
         'size'       => 'lg',
         'color'      => 'red',
@@ -254,7 +258,7 @@ class DatabaseSeeder extends Seeder
       ]);
 
       DB::table('variants')->insert([
-        'product_id' => 4,
+        'product_id' => 7,
         'img'        => '/img/products/shoes/Zegama-2.webp',
         'size'       => 'sm',
         'color'      => 'red',
@@ -307,7 +311,7 @@ class DatabaseSeeder extends Seeder
       // Variants for product 6: 
 
       DB::table('variants')->insert([
-        'product_id' => 6,
+        'product_id' => 2,
         'img'        => '/img/clothes/men/Repel-Miler-1.webp',
         'size'       => 'lg',
         'color'      => 'red',
@@ -316,7 +320,7 @@ class DatabaseSeeder extends Seeder
       ]);
 
       DB::table('variants')->insert([
-        'product_id' => 6,
+        'product_id' => 2,
         'img'        => '/img/clothes/men/Repel-Miler-2.webp',
         'size'       => 'sm',
         'color'      => 'red',
@@ -325,7 +329,7 @@ class DatabaseSeeder extends Seeder
       ]);
 
       DB::table('variants')->insert([
-        'product_id' => 6,
+        'product_id' => 2,
         'img'        => '/img/clothes/men/Repel-Miler-1.webp',
         'size'       => 'sm',
         'color'      => 'red',
@@ -338,7 +342,7 @@ class DatabaseSeeder extends Seeder
       // Variants for product 7: 
 
       DB::table('variants')->insert([
-        'product_id' => 7,
+        'product_id' => 4,
         'img'        => '/img/accessories/Faux-Fur-Blanket-1.webp',
         'size'       => 'lg',
         'color'      => 'red',
@@ -347,7 +351,7 @@ class DatabaseSeeder extends Seeder
       ]);
 
       DB::table('variants')->insert([
-        'product_id' => 7,
+        'product_id' => 4,
         'img'        => '/img/accessories/Faux-Fur-Blanket-2.webp',
         'size'       => 'sm',
         'color'      => 'red',
@@ -356,7 +360,7 @@ class DatabaseSeeder extends Seeder
       ]);
 
       DB::table('variants')->insert([
-        'product_id' => 7,
+        'product_id' => 4,
         'img'        => '/img/accessories/Faux-Fur-Blanket-3.webp',
         'size'       => 'sm',
         'color'      => 'red',

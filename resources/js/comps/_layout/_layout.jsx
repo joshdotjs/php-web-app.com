@@ -28,7 +28,7 @@ export default function Layout({ children, name, restrict }) {
     console.log('blur_overlay: ', blur_overlay);
     console.log('header: ', header);
 
-    const duration = 0.75;
+    const duration = 0.5;
     gsap.to(page, { opacity: 1, scale: 1, duration });
     gsap.to(blur_overlay, { opacity: 0, duration, onComplete: () => blur_overlay.remove() });
     // gsap.to(header, { opacity: 1, duration: 1 });
