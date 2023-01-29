@@ -2,10 +2,8 @@ import React, { useState, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import Layout from '@/comps/_layout/_layout';
-import Checkbox from '@/comps/forms/checkbox/checkbox';
 
 import MainApp from './App';
-
 
 // ==============================================
 
@@ -18,15 +16,9 @@ if(main_root){
   main_root.removeAttribute('data-products');
 
   createRoot(main_root).render(
-    <>
-      <div id="playground" style={{ height: '300px', width: '100vw', background: 'white', display: 'grid', placeItems: 'center' }}>
-        <Checkbox id="cb1">Checkbox 1</Checkbox>
-      </div>
-
-      {/* <Layout>
-        <MainApp products={products_SSR} />
-      </Layout> */}
-    </>
+    <Layout>
+      <MainApp products={products_SSR} />
+    </Layout>
   );
 }
 

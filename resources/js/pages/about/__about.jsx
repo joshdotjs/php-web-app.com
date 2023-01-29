@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import Layout from '@/comps/_layout/_layout';
+import Checkboxes from '@/comps/forms/checkboxes/checkboxes';
 
 // ==============================================
 
@@ -15,9 +16,24 @@ function Page() {
 
   // --------------------------------------------
 
+  const options = ['sm', 'lg'];
+  const [set, setSet]   = useState(new Set());
+
+  // --------------------------------------------
+
   return(
     <Layout name="about">
+      
       <h1>About Page</h1>
+
+      <div id="playground" style={{ height: '300px', width: '100vw', background: 'white', display: 'grid', placeItems: 'center' }}>
+        <Checkboxes 
+          options={options}
+          set={set}
+          setSet={setSet}
+        />
+      </div>
+
     </Layout>
   );
 
