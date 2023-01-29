@@ -78,7 +78,7 @@ const updateNumCartItems = () => {
   const cart = getCartLS();
   const cart_count_span = cart_count.querySelector('span');
   console.log('cart: ', cart);
-  cart_count_span.textContent = cart.length;
+  cart_count_span.textContent = cart?.length;
 
 };
 

@@ -128,7 +128,7 @@ export default function Cart() {
           const prev_items = prev_layout.items;
   
           let items;
-          if (cart.length === prev_items.length) { // duplicate item => only increase quantity (already updated)
+          if (cart?.length === prev_items?.length) { // duplicate item => only increase quantity (already updated)
             lr('duplicate');
             items = cart.map(({ product, variant, qty}) => ({ id: variant.id, status: 'entered', product, variant, qty }));
           } else { // new item => add to cart
