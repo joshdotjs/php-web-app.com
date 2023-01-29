@@ -5,6 +5,8 @@ import CartContext from '@/context/cart-ctx';
 
 import BagSVG from './bag-svg';
 
+import { openCart } from './Cart';
+
 import './_header.scss';
 
 // ==============================================
@@ -87,6 +89,10 @@ export default function Header() {
         <div 
           id="cart-btn"
           ref={cart_btn_ref}
+          onClick={() => {
+            console.log('clicked cart button');
+            openCart({});
+          }}
         >
 
           <div ref={cart_icon_target_ref} id="hidden-target"></div>

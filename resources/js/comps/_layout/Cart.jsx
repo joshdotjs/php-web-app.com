@@ -14,6 +14,10 @@ gsap.registerPlugin(Flip);
 
 // ==============================================
 
+let openCart;
+
+// ==============================================
+
 export default function Cart() {
 
   // --------------------------------------------
@@ -87,6 +91,25 @@ export default function Cart() {
 
   // --------------------------------------------
 
+  openCart = ({ onComplete=null }) => {
+
+    console.log('openCart()');
+
+    const container = container_ref.current;
+    tl_ref.current = gsap.to(container, { 
+      x: 0,
+      duration: 0.3,
+      onComplete,
+     });
+
+  };
+
+  // --------------------------------------------
+
+  const closeCart = () => tl_ref.current?.reverse()
+
+  // --------------------------------------------
+
   useEffect(() => {
 
     // Initialize num items in cart synchronized with local-state:
@@ -96,33 +119,26 @@ export default function Cart() {
     const addItem = () => { 
 
       // open cart:
-      const container = container_ref.current;
-      tl_ref.current = gsap.to(container, { 
-        x: 0,
-        duration: 0.3,
-        onComplete: () => {
-          setLayout((prev_layout) => { 
-    
-            const cart = getCartLS();
-            const prev_items = prev_layout.items;
-    
-            let items;
-            if (cart.length === prev_items.length) { // duplicate item => only increase quantity (already updated)
-              lr('duplicate');
-              items = cart.map(({ product, variant, qty}) => ({ id: variant.id, status: 'entered', product, variant, qty }));
-            } else { // new item => add to cart
-              const { product, variant, qty } = cart.at(-1);
-              const new_item = { id: variant.id, status: 'entered', product, variant, qty };
-              items = [new_item, ...prev_items];
-            }
-    
-            const state = Flip.getState(q(".line-item")); 
-            return { items, state }; 
-          });
-        },
-       });
-
-
+      openCart({ onComplete: () => {
+        setLayout((prev_layout) => { 
+  
+          const cart = getCartLS();
+          const prev_items = prev_layout.items;
+  
+          let items;
+          if (cart.length === prev_items.length) { // duplicate item => only increase quantity (already updated)
+            lr('duplicate');
+            items = cart.map(({ product, variant, qty}) => ({ id: variant.id, status: 'entered', product, variant, qty }));
+          } else { // new item => add to cart
+            const { product, variant, qty } = cart.at(-1);
+            const new_item = { id: variant.id, status: 'entered', product, variant, qty };
+            items = [new_item, ...prev_items];
+          }
+  
+          const state = Flip.getState(q(".line-item")); 
+          return { items, state }; 
+        });
+      }});
     };
     window.addEventListener('cart-add', addItem);
     return () => window.removeEventListener('cart-add', addItem);
@@ -284,11 +300,9 @@ export default function Cart() {
 
       {/* - - - - - - - - - - - - - - - - - - */}
 
-      <svg 
-        onClick={() => tl_ref.current?.reverse()}
+      <svg onClick={closeCart}
         xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
         className="bi bi-x  cursor-pointer m-4" viewBox="0 0 16 16"
-
       >
         <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
       </svg>
@@ -358,3 +372,5 @@ export default function Cart() {
 };
 
 // ==============================================
+
+export { openCart };

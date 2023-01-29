@@ -61,6 +61,8 @@ header#navbar { position: fixed;
       border-radius: 0.25rem;
       box-shadow: 0 1rem 2rem hsla(0 0% 0% / 0.2);
 
+      cursor: pointer;
+
       // -status === 'entered' => child of li.box
       // -status === 'exiting' => child of #hidden-target
       // -Scaling of .box-child:
