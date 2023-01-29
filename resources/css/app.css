@@ -38,5 +38,5 @@ aside#cart {
 #root-main > main#page {
   position: relative;
   z-index: 0;
-  padding: 75px 5%;
+  padding: 75px 0;
 }
