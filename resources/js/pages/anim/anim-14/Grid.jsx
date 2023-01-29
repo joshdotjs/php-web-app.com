@@ -16,9 +16,6 @@ export default function Grid({
   return (
       <ul // items
         id="grid-items"
-        style={{
-          background: 'white'
-        }}
       >
         {layout.items.map((item, idx) => {
           return (

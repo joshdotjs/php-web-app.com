@@ -21,7 +21,7 @@ const CartContextProvider = ({ children }) => {
 
   // --------------------------------------------
 
-  const [num_cart_items, setNumCartItems] = useState(0);
+  // const [num_cart_items, setNumCartItems] = useState(0);
   const cart_btn_ref = useRef(null); // cartBtn = cart.querySelector(".btn-cart");
   const cart_icon_target_ref = useRef(null); // cartItems = cart.querySelector(".items");
   const cart_count_ref = useRef(null); // cartCount = cart.querySelector(".count");
@@ -29,8 +29,8 @@ const CartContextProvider = ({ children }) => {
   // --------------------------------------------
 
   const context = {
-    num_cart_items,
-    setNumCartItems,
+    // num_cart_items,
+    // setNumCartItems,
     cart_btn_ref,
     cart_icon_target_ref,
     cart_count_ref,

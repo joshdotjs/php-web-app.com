@@ -18,8 +18,8 @@ export default function Header() {
   // --------------------------------------------
 
   const {
-    num_cart_items,
-    setNumCartItems,
+    // num_cart_items,
+    // setNumCartItems,
     cart_btn_ref,
     cart_icon_target_ref,
     cart_count_ref,
@@ -93,8 +93,8 @@ export default function Header() {
 
           <BagSVG />
 
-          <div ref={cart_count_ref} id="cart-count">
-            <div style={{ color: 'white' }} >{num_cart_items}</div>
+          <div ref={cart_count_ref} id="cart-count" style={{ opacity: 0 }}>
+            <span style={{ color: 'white' }} ></span>
           </div>
           
         </div>

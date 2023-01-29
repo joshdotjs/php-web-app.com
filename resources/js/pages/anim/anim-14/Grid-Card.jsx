@@ -133,7 +133,7 @@ export default function Card ({ item, addToCartAnim, idx }) {
 
           <p className="price" style={{ color: black, }}>${display(price)}  {is_price_different && <span style={{ color: light, textDecoration: 'line-through' }}>${display(price_compare)}</span>}</p>
 
-          {is_price_different && <p className="discount" style={{ color: green, fontWeight: '500' }}>{percent_diff}% off</p>}
+          <p className="discount" style={{ color: green, fontWeight: '500', visibility: is_price_different ? '' : 'hidden' }}>{percent_diff}% off</p>
 
         </div>
 

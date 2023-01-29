@@ -7,6 +7,7 @@ import { CustomEase } from "gsap/CustomEase";
 import { CustomWiggle } from "gsap/CustomWiggle";
 
 import CartContext from '@/context/cart-ctx';
+import { updateNumCartItems } from '@/context/cart-ctx/cart-fn';
 
 import Grid from './Grid';
 import Filter from './Filter';
@@ -34,7 +35,7 @@ export default function App({ products }) {
   const refs = useRef([]);
 
   const {
-    setNumCartItems,
+    // setNumCartItems,
     cart_btn_ref,
     cart_icon_target_ref,
     cart_count_ref,
@@ -54,9 +55,6 @@ export default function App({ products }) {
   
       const cartBtn = cart_btn_ref.current;
       const cartCount = cart_count_ref.current;
-
-
-      // TODO: Update the cart count UI here (imperatively)
   
       gsap.timeline()
         .fromTo(cartBtn, { yPercent: 0, rotation: 0 },
@@ -110,7 +108,6 @@ export default function App({ products }) {
       const grid_height = grid_items.offsetHeight;
       grid_items.style.height = `${grid_height}px`;
 
-
       // Don't fade out variant images
       //  -remove all events on element via clone hack
       //  -gets rid of tl.reverse() in onMouseLeave event
@@ -132,14 +129,15 @@ export default function App({ products }) {
   
       // apply FLIP:
       Flip.from(state, {
-        duration: 0.8, // 0.5
+        duration: 0.8,
         ease: "back.in(0.8)",
         scale: true,
         absolute: true,
         onComplete: () => {
           
           cartBtnAnimation();
-          setNumCartItems(prev => prev + 1);
+          // setNumCartItems(prev => prev + 1);
+          updateNumCartItems();
   
           // Collapse hole in grid:
           remove(idx);

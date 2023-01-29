@@ -1,5 +1,8 @@
 // <Grid>
 ul#grid-items { // Grid.jsx
+  position: relative;
+  // z-index: 0;
+  
   $break: 960px;
 
   display: grid;

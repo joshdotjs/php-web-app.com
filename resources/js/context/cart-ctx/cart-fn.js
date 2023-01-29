@@ -69,7 +69,23 @@ const removeFromCartLS = (variant_id) => {
 
 // ==============================================
 
+const updateNumCartItems = () => {
+
+  const cart_count = document.querySelector('header#navbar #cart-count');
+  cart_count.style.opacity = 1;
+
+  const cart = getCartLS();
+  const cart_count_span = cart_count.querySelector('span');
+  console.log('cart: ', cart);
+  cart_count_span.textContent = cart.length;
+
+};
+
+// ==============================================
+
 export { 
   getCartLS,
-  addToCartLS, removeFromCartLS
+  addToCartLS, 
+  removeFromCartLS,
+  updateNumCartItems
  };

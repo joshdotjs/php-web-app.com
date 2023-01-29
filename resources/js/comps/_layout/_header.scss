@@ -1,7 +1,5 @@
 // <Header>
-header#navbar { 
-  position: fixed;
-  // top: 40px;
+header#navbar { position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -107,7 +105,7 @@ header#navbar {
         height: 20px;
         width: 20px;
 
-        div { 
+        span { 
           height: 100%;
           width: 100%;
           // background: rgba(0, 0, 0, 0.5);

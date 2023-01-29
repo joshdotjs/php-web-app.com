@@ -262,7 +262,10 @@ export default function Cart() {
   // --------------------------------------------
   
   return (
-    <div className="text-center" ref={container_ref}
+    <aside 
+      id="cart" 
+      ref={container_ref}
+      className="text-center" 
       style={{ position: 'fixed',
         top: 0,
         right: 0,
@@ -343,7 +346,7 @@ export default function Cart() {
 
       {/* - - - - - - - - - - - - - - - - - - */}
 
-    </div>
+    </aside>
   );
 
   // --------------------------------------------
