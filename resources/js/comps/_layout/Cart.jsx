@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import uuid from 'react-uuid';
 import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
@@ -21,7 +22,8 @@ let openCart;
 export default function Cart() {
 
   // --------------------------------------------
-
+  
+  const portal_root = document.querySelector('#portal-cart');
   
   // --------------------------------------------
 
@@ -282,7 +284,7 @@ export default function Cart() {
 
   // --------------------------------------------
   
-  return (
+  return createPortal(
     <aside 
       id="cart" 
       ref={container_ref}
@@ -365,7 +367,8 @@ export default function Cart() {
 
       {/* - - - - - - - - - - - - - - - - - - */}
 
-    </aside>
+    </aside>,
+    portal_root
   );
 
   // --------------------------------------------
