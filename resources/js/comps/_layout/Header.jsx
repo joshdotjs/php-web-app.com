@@ -25,7 +25,6 @@ export default function Header() {
     cart_count_ref,
   } = useContext(CartContext);
   
-
   // --------------------------------------------
 
   return (

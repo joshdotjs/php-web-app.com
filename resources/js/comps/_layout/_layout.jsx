@@ -24,10 +24,10 @@ export default function Layout({ children, name, restrict }) {
     const blur_overlay = page.querySelector('#blur-overlay');
     console.log('blur_overlay: ', blur_overlay);
 
-    const duration = 1;
+    const duration = 0.5;
     gsap.to(page, { opacity: 1, scale: 1, duration });
 
-    gsap.to(blur_overlay, { opacity: 0, duration });
+    gsap.to(blur_overlay, { opacity: 0, duration, onComplete: () => blur_overlay.remove() });
 
   }, []);
 
@@ -38,13 +38,16 @@ export default function Layout({ children, name, restrict }) {
     <AuthContextProvider { ...{ restrict } }>
       <CartContextProvider>
 
-        <Header />
+        
 
         <Cart />
 
         <Notifications />
 
-        <main id="page" className={name} ref={ref} style={{ opacity: 0, position: 'relative', transform: 'scale(1.015)', background: 'black' }}>
+        <main id="page" className={name} ref={ref} style={{ opacity: 0, position: 'relative', transform: 'scale(1.01)', background: 'black' }}>
+
+          <Header />
+
           {children}
 
           <div id="blur-overlay" style={{ 
@@ -52,6 +55,7 @@ export default function Layout({ children, name, restrict }) {
             // background: 'rgba(0, 0, 0, 0.5)', 
             backdropFilter: 'blur(10px) saturate(180%)',
             // '-webkit-backdrop-filter': 'blur(10px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(10px) saturate(180%)',
             // backgroundColor: 'rgba(17, 25, 40, 0.75)',
             // border: '1px solid rgba(255, 255, 255, 0.125)',
             // color: 'white',
