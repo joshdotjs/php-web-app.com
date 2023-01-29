@@ -17,12 +17,13 @@ export default function Button({ children, onClick, disabled=false, classes, wid
         ${disabled ? 'opacity-50' : ''}
         ${classes}
         text-sm md:text-md
+        p-2 md:p-3
       `}
       
       style={{
         background: 'black',
         color: 'white',
-        padding: '0.75rem',
+        // padding: '0.75rem',
         width: '100%',
         borderRadius: '100vmax',
         fontWeight: '500',

@@ -117,7 +117,7 @@ export default function Card ({ item, addToCartAnim, idx }) {
 
         <div // btn-container
           className={`btn-container
-            w-[65%] sm:w-[45%] 
+            w-[55%] sm:w-[35%] 
           `} 
           style={{
             position: 'absolute',
