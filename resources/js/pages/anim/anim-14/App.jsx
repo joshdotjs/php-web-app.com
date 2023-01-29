@@ -35,7 +35,6 @@ export default function App({ products }) {
   const refs = useRef([]);
 
   const {
-    // setNumCartItems,
     cart_btn_ref,
     cart_icon_target_ref,
     cart_count_ref,
@@ -167,21 +166,11 @@ export default function App({ products }) {
   // --------------------------------------------
 
 
-  // Below is port from the react-gsap-flip demo (Cart.js) for grid collapse after items has been added to cart.
-
-  // -Generalize to use state:
-
-  const createColor = (category) => ({'shoes': 'red', 'shirts': 'blue', 'pants': 'green'}[category]);
-  const createRow = (category) => ({ id: uuid(), status: "entered", location: 'grid' });
-
   // STEP 1: Set up layout in state with grid items initialized
   const [layout, setLayout] = useState(() => ({
-    items: products.map(({id, title, body, price, category, product, variants}) => {
-      // return {  product_id: id, title, sub_title: product.sub_title, body, price, price_compare: product.price_compare, category, variants, ...createRow(category) };
-      return { product, variants, ...createRow(category) };
+    items: products.map(({product, variants}) => {
+      return { product, variants, id: uuid(), status: "entered", location: 'grid'  };
     }),
-      // init(num_rows, null).map(() => createRow()) // create an array of lenth num_rows filled with null, then map over that array replacing each element with a row defined by createRow().
-      // .reverse(),
     state: undefined
     }
   ));
