@@ -156,11 +156,11 @@ export default function Card ({ item, addToCartAnim, idx }) {
             // opacity: 1,
           }}
         >
-          <Ellipsis color={light} fontSize='1.1rem' fontWeight='500'>{title}</Ellipsis>
+          <Ellipsis color='black' fontSize='1.2rem' fontWeight='500'>{title}</Ellipsis>
           <Ellipsis color={light} fontSize='1rem' fontWeight='400'>{sub_title}</Ellipsis>
           <p className="num-colors" style={{ color: light, }}>6 Colors</p>
 
-          <p className="price" style={{ color: black, }}>${display(price)}  {is_price_different && <span style={{ color: light, textDecoration: 'line-through' }}>${display(price_compare)}</span>}</p>
+          <p className="price mt-1" style={{ color: black, }}>${display(price)}  {is_price_different && <span style={{ color: light, textDecoration: 'line-through' }}>${display(price_compare)}</span>}</p>
 
           <p className="discount" style={{ color: green, fontWeight: '500', visibility: is_price_different ? '' : 'hidden' }}>{percent_diff}% off</p>
 
@@ -172,8 +172,8 @@ export default function Card ({ item, addToCartAnim, idx }) {
           style={{ 
             opacity: 0,
             // display: 'flex',
-            gap: '5px',
-            padding: '5px',
+            gap: '7px',
+            padding: '7px 0',
             // background: 'lightgreen',
             background: 'white',
             position: 'absolute',

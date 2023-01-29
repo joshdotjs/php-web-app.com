@@ -5,7 +5,6 @@ import Layout from '@/comps/_layout/_layout';
 
 import MainApp from './App';
 
-import './_.scss';
 
 // ==============================================
 

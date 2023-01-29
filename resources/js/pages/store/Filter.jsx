@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './_filter.scss';
+
 // ==============================================
 
 export default function Filter({ filter, applyFilter }) {
