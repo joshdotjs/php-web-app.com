@@ -20,8 +20,6 @@ export default function Header() {
   // --------------------------------------------
 
   const {
-    // num_cart_items,
-    // setNumCartItems,
     cart_btn_ref,
     cart_icon_target_ref,
     cart_count_ref,

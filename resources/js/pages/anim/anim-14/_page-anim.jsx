@@ -17,6 +17,7 @@ if(main_root){
   window.API_URL         = main_root.dataset.apiUrl;
   window.API_URL_LARAVEL = main_root.dataset.apiUrlLaravel;
   const products_SSR  = JSON.parse(main_root.dataset.products); // encodes variants
+  main_root.removeAttribute('data-products');
 
   createRoot(main_root).render(
     <Layout>

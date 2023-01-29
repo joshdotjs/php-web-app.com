@@ -49,8 +49,4 @@ const CartContextProvider = ({ children }) => {
 // ==============================================
 
 export default CartContext;
-export { CartContextProvider, 
-  // getCartLS,
-  // addToCartLS, 
-  // removeFromCartLS
-};
+export { CartContextProvider };
