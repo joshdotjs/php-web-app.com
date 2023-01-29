@@ -50,12 +50,14 @@ const disableClickCallback = (e) => {
 // ==============================================
 
 const disableClick = () => {
+  document.querySelector('body').style.pointerEvents = 'none'; // disable even hover events
   document.addEventListener('click', disableClickCallback, true);
 }
 
 // ==============================================
 
 const enableClick = () => {
+    document.querySelector('body').style.pointerEvents = 'auto';
   document.removeEventListener('click', disableClickCallback, true);
 }
 
