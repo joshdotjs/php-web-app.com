@@ -8,7 +8,7 @@ import Button from '@/comps/button/button';
 
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 import { authFetch } from '@/util/fetch';
-import { getCartLS, removeFromCartLS } from '@/context/cart-ctx/cart-fn';
+import { getCartLS, removeFromCartLS, updateNumCartItems } from '@/context/cart-ctx/cart-fn';
 
 gsap.registerPlugin(Flip);
 
@@ -88,6 +88,11 @@ export default function Cart() {
   // --------------------------------------------
 
   useEffect(() => {
+
+    // Initialize num items in cart synchronized with local-state:
+    updateNumCartItems();
+
+    // Callback from 'add-cart' event:
     const addItem = () => { 
 
       // open cart:

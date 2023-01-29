@@ -60,6 +60,7 @@ const removeFromCartLS = (variant_id) => {
 
   const new_cart = prev_cart.filter(line => line.variant.id !== variant_id);
   setCartLS(new_cart);
+  updateNumCartItems();
   // fireEvent('cart-remove');
 
   // if (new_cart.length < 1) {
