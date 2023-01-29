@@ -11,27 +11,10 @@ import '@/pages/admin/__products.jsx';
 import '@/pages/admin/orders/__orders.jsx';
 import '@/pages/admin/orders/[id].jsx';
 
-// Store:
-import '@/pages/store-old/__store.jsx';
-import '@/pages/store-old/product/__product.jsx';
-
 // Auth:
 import '@/pages/auth/login/__login.jsx';
 
-// Dev - Filtering / Cart:
-// import '@/pages/anim/anim-1/_page-anim.jsx';
-// import '@/pages/anim/anim-2/_page-anim.jsx';
-// import '@/pages/anim/anim-3/_page-anim.jsx';
-// import '@/pages/anim/anim-4/_page-anim.jsx';
-// import '@/pages/anim/anim-5/_page-anim.jsx';
-// import '@/pages/anim/anim-6/_page-anim.jsx';
-// import '@/pages/anim/anim-7/_page-anim.jsx';
-// import '@/pages/anim/anim-8/_page-anim.jsx';
-// import '@/pages/anim/anim-9-WORKING/_page-anim.jsx';
-// import '@/pages/anim/anim-10-WORKING-checkout/_page-anim.jsx';
-// import '@/pages/anim/anim-11-WORKING-variant-images/_page-anim.jsx';
-// import '@/pages/anim/anim-12-WORKING-fixed-grid/_page-anim.jsx';
-// import '@/pages/anim/anim-13-WORKING-fixed-filtering/_page-anim.jsx';
+// Store:
 import '@/pages/store/_page-anim.jsx';
 
 // Dev - Anim 1D:

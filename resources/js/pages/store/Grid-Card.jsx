@@ -139,10 +139,10 @@ export default function Card ({ item, addToCartAnim, idx }) {
 
         <div 
           ref={reveal_ref} 
-          className="back radio-container"
+          className="back radio-container  hidden  sm:flex"
           style={{ 
             opacity: 0,
-            display: 'flex',
+            // display: 'flex',
             gap: '5px',
             padding: '5px',
             // background: 'lightgreen',

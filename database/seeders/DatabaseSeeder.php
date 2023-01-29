@@ -330,7 +330,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 2,
-        'img'        => '/img/clothes/men/Repel-Miler-1.webp',
+        'img'        => '/img/clothes/men/Repel-Miler-3.webp',
         'size'       => 'sm',
         'color'      => 'red',
         'qty'        => 1,
