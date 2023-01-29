@@ -62,7 +62,7 @@ function Page({ orders }) {
 
 const root = document.querySelector('#react-root--admin-orders-page');
 if(root){
-  window.API_URL = root.dataset.apiUrl;
+  window.API_URL_NODE = root.dataset.apiUrl;
   window.API_URL_LARAVEL = root.dataset.apiUrlLaravel;
   const orders_SSR = JSON.parse(root.dataset.orders);
   createRoot(root).render(

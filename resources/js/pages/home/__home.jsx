@@ -9,7 +9,7 @@ import './.scss';
 
 const root = document.querySelector('#react-root--home-page');
 if(root){
-  window.API_URL = root.dataset.apiUrl;
+  window.API_URL_NODE = root.dataset.apiUrl;
   createRoot(root).render(
     <Layout name="home">
       <Page />

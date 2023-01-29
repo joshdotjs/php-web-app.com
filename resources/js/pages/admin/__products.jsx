@@ -34,7 +34,7 @@ function Page() {
 
 const root = document.querySelector('#react-root--admin-products-page');
 if(root){
-  window.API_URL         = root.dataset.apiUrl;
+  window.API_URL_NODE         = root.dataset.apiUrl;
   window.API_URL_LARAVEL = root.dataset.apiUrlLaravel;
   createRoot(root).render(
     <Layout name="admin--products" restrict="admin">

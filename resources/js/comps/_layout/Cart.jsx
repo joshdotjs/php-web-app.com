@@ -33,7 +33,7 @@ export default function Cart() {
 
     const submitOrderToNode = () => {
       // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/checkout/stripe-checkout-node`;
-      const url = `${window.API_URL}/api/checkout/stripe-checkout-laravel`;
+      const url = `${window.API_URL_NODE}/api/checkout/stripe-checkout-laravel`;
 
       const cart = getCartLS();
       

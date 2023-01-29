@@ -4,11 +4,15 @@
 
   {{-- react --}}
   <div 
-  id="root-main--anim-orders"
-  data-orders="{{$orders}}"
-  data-api-url="{{$API_URL}}"
-  data-api-url-laravel="{{$API_URL_LARAVEL}}"
+    id="root-main--anim-orders"
+    data-orders="{{$orders}}"
+    data-api-url="{{$API_URL_NODE}}"
+    data-api-url-laravel="{{$API_URL_LARAVEL}}"
   ></div>
+
+  <div id="portal-cart"></div>
+  <div id="portal-navdrawer"></div>
+  <div id="portal-modal"></div>
   {{-- react --}}
  
   {{-- =============================================== --}}

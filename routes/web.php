@@ -22,21 +22,21 @@ use  Illuminate\Support\Arr;
 
 Route::get('/', function () {
   return view('home', [
-    'API_URL' => env('API_URL'), // Cart: Checkout
+    'API_URL_NODE' => env('API_URL_NODE'), // Cart: Checkout
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 })->name('login'); // middlewaure('auth') will redirect here if user not logged in
 
 Route::get('/about', function () {
   return view('home-about', [
-    'API_URL' => env('API_URL'), // Cart: Checkout
+    'API_URL_NODE' => env('API_URL_NODE'), // Cart: Checkout
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
 
 Route::get('/about/contact', function () {
   return view('home-contact', [
-    'API_URL' => env('API_URL'), // Cart: Checkout
+    'API_URL_NODE' => env('API_URL_NODE'), // Cart: Checkout
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
@@ -45,14 +45,14 @@ Route::get('/about/contact', function () {
 
 Route::get('/admin', function () {
   return view('admin', [
-    'API_URL' => env('API_URL'), // Cart: Checkout
+    'API_URL_NODE' => env('API_URL_NODE'), // Cart: Checkout
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
 
 Route::get('/admin/products', function () {
   return view('admin-products', [
-    'API_URL'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
+    'API_URL_NODE'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
@@ -64,14 +64,14 @@ Route::get('/admin/orders', function () {
 
   return view('admin-orders', [
     'orders'          => $orders,
-    'API_URL'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
+    'API_URL_NODE'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
 
 Route::get('/admin/orders/{id}', function ($id) {
   return view('admin-order-details', [
-    'API_URL'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
+    'API_URL_NODE'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
     'id'              => $id,
   ]);
@@ -101,9 +101,9 @@ Route::get('/store', function () {
   };
   $variants = DB::table('variants')->get();
 
-  return view('anim', [
+  return view('store', [
     'products' => json_encode($arr), 
-    'API_URL' => env('API_URL'), // Cart: Checkout
+    'API_URL_NODE' => env('API_URL_NODE'), // Cart: Checkout
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
@@ -117,7 +117,7 @@ Route::get('/anim-orders', function () {
 
   return view('anim-orders', [
     'orders'          => $orders,
-    'API_URL'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
+    'API_URL_NODE'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
@@ -126,14 +126,14 @@ Route::get('/anim-orders', function () {
 
 Route::get('/auth/register', function () {
   return view('auth-register', [
-    'API_URL' => env('API_URL'), // Cart: Checkout
+    'API_URL_NODE' => env('API_URL_NODE'), // Cart: Checkout
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
 
 Route::get('/auth/login', function () {
   return view('auth-login', [
-    'API_URL'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
+    'API_URL_NODE'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
@@ -144,7 +144,7 @@ Route::get('/auth/login', function () {
 //   $products = DB::table('products')->get();
 //   return view('store', [
 //     'products' => $products, 
-//     'API_URL' => env('API_URL'), // Cart: Checkout
+//     'API_URL_NODE' => env('API_URL_NODE'), // Cart: Checkout
 //     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
 //   ]);
 // });
@@ -158,7 +158,7 @@ Route::get('/store/product/{id}',  function($id) {
   return view('store-product', [
     'product'  => $product,
     'variants' => $variants,
-    'API_URL'  => env('API_URL'),
+    'API_URL_NODE'  => env('API_URL_NODE'),
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });

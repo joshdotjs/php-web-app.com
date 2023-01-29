@@ -169,7 +169,7 @@ class OrderController extends Controller
       'email' => $user->email, 
       'user'   => $user,
       'orders' => $orders, 
-      'API_URL' => env('API_URL'), // Cart: Checkout
+      'API_URL_NODE' => env('API_URL_NODE'), // Cart: Checkout
     ]);
   }
 
