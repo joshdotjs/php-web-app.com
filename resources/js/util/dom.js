@@ -57,7 +57,7 @@ const disableClick = () => {
 // ==============================================
 
 const enableClick = () => {
-    document.querySelector('body').style.pointerEvents = 'auto';
+  document.querySelector('body').style.pointerEvents = 'auto';
   document.removeEventListener('click', disableClickCallback, true);
 }
 

@@ -54,6 +54,9 @@ export default function App({ products }) {
   
       const cartBtn = cart_btn_ref.current;
       const cartCount = cart_count_ref.current;
+
+
+      // TODO: Update the cart count UI here (imperatively)
   
       gsap.timeline()
         .fromTo(cartBtn, { yPercent: 0, rotation: 0 },
@@ -101,27 +104,33 @@ export default function App({ products }) {
       item.style.height = `${height}px`;
       item.style.width  = `${width}px`;
 
-      // -Follow same procedure for the grid container:
+      // Follow same procedure for the grid container:
       const grid_items = document.querySelector('#grid-items');
       console.log('grid items: ', grid_items);
       const grid_height = grid_items.offsetHeight;
       grid_items.style.height = `${grid_height}px`;
 
+
+      // Don't fade out variant images
+      //  -remove all events on element via clone hack
+      //  -gets rid of tl.reverse() in onMouseLeave event
+      const variants_reveal = item.querySelector('.back.radio-container');
+      const old_element = variants_reveal;
+      const new_element = variants_reveal.cloneNode(true);
+      old_element.parentNode.replaceChild(new_element, old_element);
+
+
+      // take snapshot of state before DOM change:
       const state = Flip.getState(item);
-      // debugger;
     
-      cart_icon_target_ref.current.appendChild(item);
-      
-      // dynamically set size
-      // console.log('setting height: ', card_size.height);
-      // item.style.height = card_size.height;
-      // item.style.width  = card_size.width;
-      // console.log('item: ', item);
+      // Make DOM change:
+      cart_icon_target_ref.current.appendChild(item); // move .cart-child
     
-      // disable double click and set position for in-cart
+      // disable double click and set position for in-cart:
       item.style.pointerEvents = 'none';
       item.style.position = 'absolute';
   
+      // apply FLIP:
       Flip.from(state, {
         duration: 0.8, // 0.5
         ease: "back.in(0.8)",

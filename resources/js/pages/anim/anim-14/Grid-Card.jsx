@@ -50,7 +50,7 @@ export default function Card ({ item, addToCartAnim, idx }) {
   };
 
   const exit = () => {
-    tl_ref.current.reverse();
+    tl_ref.current?.reverse();
   }
 
   // --------------------------------------------
