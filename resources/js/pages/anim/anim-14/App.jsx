@@ -165,11 +165,10 @@ export default function App({ products }) {
   // --------------------------------------------
   // --------------------------------------------
 
-
   // STEP 1: Set up layout in state with grid items initialized
   const [layout, setLayout] = useState(() => ({
     items: products.map(({product, variants}) => {
-      return { product, variants, id: uuid(), status: "entered", location: 'grid'  };
+      return { product, variants, id: uuid(), status: "entered", location: 'grid' };
     }),
     state: undefined
     }
