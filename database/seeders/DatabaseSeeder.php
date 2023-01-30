@@ -39,17 +39,17 @@ class DatabaseSeeder extends Seeder
       
       // ========================================
       
-      DB::table('products')->insert([
-        'title'         => 'Pegasus 39',
-        'sub_title'     => "Men's Road Running Shoes",
-        'body'          => "Let the Nike Pegasus 39 help you ascend to new heights. More lightweight up top than the Pegasus 38 and ideal to wear in any season, it has a supportive sensation to help keep your feet contained, while underfoot cushioning and double Zoom Air units (1 more than the Peg 38) give you an extra pop to your step. Your trusted workhorse with wings is back. Time to fly.",
+      DB::table('products')->insert([ // 1 -> 8
+        'title'         => 'Vaporfly 2',
+        'sub_title'     => "Women's Road Racing Shoes",
+        'body'          => "Continue the next evolution of speed with a racing shoe made to you help chase new goals and records. It helps improve comfort and breathability with a redesigned upper. From a 10K to a marathon, this model, like the previous version, has the responsive cushioning and secure support to push you towards your personal best.",
         'category'      => 'shoes',
-        'gender'        => 'men',
-        'price'         => 10497,
-        'price_compare' => 13900,
+        'gender'        => 'women',
+        'price'         => 21297,
+        'price_compare' => 25000,
         'created_at'    => date("Y-m-d H:i:s")
       ]);
-      
+     
       DB::table('products')->insert([ // 6 -> 2
         'title'         => 'Repel Miler',
         'sub_title'     => "Men's Running Jacket",
@@ -116,25 +116,26 @@ class DatabaseSeeder extends Seeder
         'created_at'    => date("Y-m-d H:i:s")
       ]);
 
-      // DB::table('products')->insert([ // 5
-      //   'title'         => 'Pegasus 38',
-      //   'sub_title'     => "",
-      //   'body'          => "",
-      //   'category'      => 'shoes',
-      //   'price'         => 0,
-      //   'price_compare' => 0,
-      //   'created_at'    => date("Y-m-d H:i:s")
-      // ]);
+      DB::table('products')->insert([ // 8 -> 1
+        'title'         => 'Pegasus 39',
+        'sub_title'     => "Men's Road Running Shoes",
+        'body'          => "Let the Nike Pegasus 39 help you ascend to new heights. More lightweight up top than the Pegasus 38 and ideal to wear in any season, it has a supportive sensation to help keep your feet contained, while underfoot cushioning and double Zoom Air units (1 more than the Peg 38) give you an extra pop to your step. Your trusted workhorse with wings is back. Time to fly.",
+        'category'      => 'shoes',
+        'gender'        => 'men',
+        'price'         => 10497,
+        'price_compare' => 13900,
+        'created_at'    => date("Y-m-d H:i:s")
+      ]);
 
       // ========================================
 
       // - - - - - - - - - - - - - - - - - - - - 
 
-      // Variants for product 1: 
+      // Variants for product 8: 
 
       DB::table('variants')->insert([
-        'product_id' => 1,
-        'img'        => '/img/products/shoes/pegasus-white.webp',
+        'product_id' => 8,
+        'img'        => '/img/products/shoes/men/pegasus-white.webp',
         'size'       => 'sm',
         'color'      => 'blue',
         'qty'        => 1,
@@ -142,8 +143,8 @@ class DatabaseSeeder extends Seeder
       ]);
         
       DB::table('variants')->insert([
-        'product_id' => 1,
-        'img'        => '/img/products/shoes/pegasus-pink.webp',
+        'product_id' => 8,
+        'img'        => '/img/products/shoes/men/pegasus-pink.webp',
         'size'       => 'sm',
         'color'      => 'red',
         'qty'        => 1,
@@ -151,8 +152,8 @@ class DatabaseSeeder extends Seeder
       ]);
 
       DB::table('variants')->insert([
-        'product_id' => 1,
-        'img'        => '/img/products/shoes/pegasus-purple.webp',
+        'product_id' => 8,
+        'img'        => '/img/products/shoes/men/pegasus-purple.webp',
         'size'       => 'lg',
         'color'      => 'blue',
         'qty'        => 1,
@@ -160,8 +161,8 @@ class DatabaseSeeder extends Seeder
       ]);
       
       DB::table('variants')->insert([
-        'product_id' => 1,
-        'img'        => '/img/products/shoes/pegasus-green.webp',
+        'product_id' => 8,
+        'img'        => '/img/products/shoes/men/pegasus-green.webp',
         'size'       => 'lg',
         'color'      => 'red',
         'qty'        => 1,
@@ -174,7 +175,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 6,
-        'img'        => '/img/products/shoes/invincible-2-pink.webp',
+        'img'        => '/img/products/shoes/men/invincible-2-pink.webp',
         'size'       => 'lg',
         'color'      => 'red',
         'qty'        => 1,
@@ -183,7 +184,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 6,
-        'img'        => '/img/products/shoes/invincible-2-grey.webp',
+        'img'        => '/img/products/shoes/men/invincible-2-grey.webp',
         'size'       => 'sm',
         'color'      => 'red',
         'qty'        => 1,
@@ -192,7 +193,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 6,
-        'img'        => '/img/products/shoes/invincible-2-orange.webp',
+        'img'        => '/img/products/shoes/men/invincible-2-orange.webp',
         'size'       => 'lg',
         'color'      => 'blue',
         'qty'        => 1,
@@ -201,7 +202,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 6,
-        'img'        => '/img/products/shoes/invincible-2-black.webp',
+        'img'        => '/img/products/shoes/men/invincible-2-black.webp',
         'size'       => 'sm',
         'color'      => 'blue',
         'qty'        => 1,
@@ -214,7 +215,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 3,
-        'img'        => '/img/products/shoes/Flex-Experience-Run-11-grey-1.webp',
+        'img'        => '/img/products/shoes/men/Flex-Experience-Run-11-grey-1.webp',
         'size'       => 'lg',
         'color'      => 'red',
         'qty'        => 1,
@@ -223,7 +224,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 3,
-        'img'        => '/img/products/shoes/Flex-Experience-Run-11-grey-2.webp',
+        'img'        => '/img/products/shoes/men/Flex-Experience-Run-11-grey-2.webp',
         'size'       => 'sm',
         'color'      => 'red',
         'qty'        => 1,
@@ -232,7 +233,7 @@ class DatabaseSeeder extends Seeder
       
       DB::table('variants')->insert([
         'product_id' => 3,
-        'img'        => '/img/products/shoes/Flex-Experience-Run-11-black.webp',
+        'img'        => '/img/products/shoes/men/Flex-Experience-Run-11-black.webp',
         'size'       => 'sm',
         'color'      => 'red',
         'qty'        => 1,
@@ -241,7 +242,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 3,
-        'img'        => '/img/products/shoes/Flex-Experience-Run-11-blue.webp',
+        'img'        => '/img/products/shoes/men/Flex-Experience-Run-11-blue.webp',
         'size'       => 'sm',
         'color'      => 'red',
         'qty'        => 1,
@@ -254,7 +255,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 7,
-        'img'        => '/img/products/shoes/Zegama-1.webp',
+        'img'        => '/img/products/shoes/men/Zegama-1.webp',
         'size'       => 'lg',
         'color'      => 'red',
         'qty'        => 1,
@@ -263,7 +264,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 7,
-        'img'        => '/img/products/shoes/Zegama-2.webp',
+        'img'        => '/img/products/shoes/men/Zegama-2.webp',
         'size'       => 'sm',
         'color'      => 'red',
         'qty'        => 1,
@@ -276,7 +277,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 5,
-        'img'        => '/img/products/shoes/Pegasus-38-1.webp',
+        'img'        => '/img/products/shoes/men/Pegasus-38-1.webp',
         'size'       => 'lg',
         'color'      => 'red',
         'qty'        => 1,
@@ -285,7 +286,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 5,
-        'img'        => '/img/products/shoes/Pegasus-38-2.webp',
+        'img'        => '/img/products/shoes/men/Pegasus-38-2.webp',
         'size'       => 'sm',
         'color'      => 'red',
         'qty'        => 1,
@@ -294,7 +295,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 5,
-        'img'        => '/img/products/shoes/Pegasus-38-3.webp',
+        'img'        => '/img/products/shoes/men/Pegasus-38-3.webp',
         'size'       => 'sm',
         'color'      => 'red',
         'qty'        => 1,
@@ -303,7 +304,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 5,
-        'img'        => '/img/products/shoes/Pegasus-38-4.webp',
+        'img'        => '/img/products/shoes/men/Pegasus-38-4.webp',
         'size'       => 'sm',
         'color'      => 'red',
         'qty'        => 1,
@@ -316,7 +317,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 2,
-        'img'        => '/img/clothes/men/Repel-Miler-1.webp',
+        'img'        => '/img/products/clothes/men/Repel-Miler-1.webp',
         'size'       => 'lg',
         'color'      => 'red',
         'qty'        => 1,
@@ -325,7 +326,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 2,
-        'img'        => '/img/clothes/men/Repel-Miler-2.webp',
+        'img'        => '/img/products/clothes/men/Repel-Miler-2.webp',
         'size'       => 'sm',
         'color'      => 'red',
         'qty'        => 1,
@@ -334,7 +335,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 2,
-        'img'        => '/img/clothes/men/Repel-Miler-3.webp',
+        'img'        => '/img/products/clothes/men/Repel-Miler-3.webp',
         'size'       => 'sm',
         'color'      => 'red',
         'qty'        => 1,
@@ -347,7 +348,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 4,
-        'img'        => '/img/accessories/Faux-Fur-Blanket-1.webp',
+        'img'        => '/img/products/accessories/unisex/Faux-Fur-Blanket-1.webp',
         'size'       => 'lg',
         'color'      => 'red',
         'qty'        => 1,
@@ -356,7 +357,7 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 4,
-        'img'        => '/img/accessories/Faux-Fur-Blanket-2.webp',
+        'img'        => '/img/products/accessories/unisex/Faux-Fur-Blanket-2.webp',
         'size'       => 'sm',
         'color'      => 'red',
         'qty'        => 1,
@@ -365,7 +366,47 @@ class DatabaseSeeder extends Seeder
 
       DB::table('variants')->insert([
         'product_id' => 4,
-        'img'        => '/img/accessories/Faux-Fur-Blanket-3.webp',
+        'img'        => '/img/products/accessories/unisex/Faux-Fur-Blanket-3.webp',
+        'size'       => 'sm',
+        'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      // - - - - - - - - - - - - - - - - - - - - 
+
+      // Variants for product 1: 
+
+      DB::table('variants')->insert([
+        'product_id' => 1,
+        'img'        => 'img/products/shoes/women/vaporfly-2-1.avif',
+        'size'       => 'lg',
+        'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('variants')->insert([
+        'product_id' => 1,
+        'img'        => 'img/products/shoes/women/vaporfly-2-2.jpeg',
+        'size'       => 'sm',
+        'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('variants')->insert([
+        'product_id' => 1,
+        'img'        => 'img/products/shoes/women/vaporfly-2-3.jpeg',
+        'size'       => 'sm',
+        'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      DB::table('variants')->insert([
+        'product_id' => 1,
+        'img'        => 'img/products/shoes/women/vaporfly-2-4.jpeg',
         'size'       => 'sm',
         'color'      => 'red',
         'qty'        => 1,

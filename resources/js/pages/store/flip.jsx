@@ -313,7 +313,7 @@ export default function FLIP({ products }) {
   const categories = ['shoes', 'clothes', 'accessories'];
   const [category_filter, setCategoryFilter] = useState(new Set(categories));
 
-  const genders = ['men', 'woman', 'unisex'];
+  const genders = ['men', 'women', 'unisex'];
   const [gender_filter, setGenderFilter] = useState(new Set(genders));
 
   const prices = ['25-50', '50-100', '100-150', '150-200', '200+'];
