@@ -364,7 +364,7 @@ export default function Cart() {
           disabled={layout.items.length === 0}
           onClick={() => { 
             layout.items.map(item => remove(item));
-            setTimeout(closeCart, 300);
+            setTimeout(closeCart, 200);
           }}
           classes="mb-4"
         >

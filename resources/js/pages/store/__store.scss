@@ -1,24 +1,19 @@
 #page.store {
-  
+ 
   #grid-container {
     $break: 960px;
     $grey: #E5E5E5;
     
     display: grid;
     grid-template-areas: 'A B';
-
-    width: 100vw;
-    height: 100vh;
     
     @media (max-width: #{$break}) {
       grid-template-columns: auto;
+      #grid-right { width: 100vw; }
     }
     @media (min-width: #{$break}) {
       grid-template-columns: 200px 1fr;
     }
-
-
-
 
     #grid-left  {
       grid-area: A;
@@ -34,9 +29,6 @@
     }
     #grid-right {
       grid-area: B;
-      width: 100%;
-      height: 100%;
-
 
       ul#grid-items { 
         position: relative;
