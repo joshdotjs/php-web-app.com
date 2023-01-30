@@ -27,7 +27,8 @@ export default function Grid({
               style={{ 
                 display: item.status === 'exiting' ? 'none' : 'grid',
 
-                outline: 'solid red 10px'
+                outline: 'solid red 10px',
+                minWidth: '200px'
               }}
             >
               <div 

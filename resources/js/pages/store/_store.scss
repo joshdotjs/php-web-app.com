@@ -1,16 +1,28 @@
 #page.store {
+  
   #grid-container {
+    $break: 960px;
     
     display: grid;
     grid-template-areas: 'A B';
-    grid-template-columns: 1fr 1fr;
+    
+    @media (max-width: #{$break}) {
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: #{$break}) {
+      grid-template-columns: 200px 1fr;
+    }
+
 
 
 
     #grid-left  {
       grid-area: A;
       background: lightcoral;
-     }
+      @media (max-width: #{$break}) {
+        display: none;
+      }
+    }
     #grid-right {
       grid-area: B;
       background: blue;
@@ -22,10 +34,10 @@
         position: relative;
         // z-index: 0;
         
-        $break: 960px;
       
         display: grid;
-        justify-items: stretch;
+        // justify-items: stretch;
+        // align-items: stretch;
 
         gap: 1rem;
         padding: 1rem;
