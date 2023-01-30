@@ -17,7 +17,6 @@ import { fireEvent } from '@/util/events';
 import { disableClick, enableClick } from '@/util/dom';
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 
-
 gsap.registerPlugin(
   Flip, 
   CustomEase, 
@@ -431,25 +430,23 @@ export default function Page({ products }) {
 
         <h5>Active filters: { getNumActiveFilters() }</h5>
 
-        <ChevronAnim />
+        <ChevronAnim>
+          <Checkboxes type="category" options={categories} set={category_filter} applyFilter={applyFilter}>
+          </Checkboxes>
+        </ChevronAnim>
         
-        <hr />
+        {/* <hr /> */}
 
-        <Checkboxes type="category" options={categories} set={category_filter} applyFilter={applyFilter}>
-          Category
-        </Checkboxes>
+        <ChevronAnim>
+          <Checkboxes type="gender" options={genders} set={gender_filter} applyFilter={applyFilter}>
+          </Checkboxes>
+        </ChevronAnim>
 
-        <hr />
+        {/* <hr /> */}
 
-        <Checkboxes type="gender" options={genders} set={gender_filter} applyFilter={applyFilter}>
-          Gender
-        </Checkboxes>
-
-        <hr />
-
-        <Checkboxes type="price" options={prices} set={price_filter} applyFilter={applyFilter}>
+        {/* <Checkboxes type="price" options={prices} set={price_filter} applyFilter={applyFilter}>
           Shop by Price
-        </Checkboxes>
+        </Checkboxes> */}
 
       </div>
 
@@ -464,6 +461,8 @@ export default function Page({ products }) {
 
     </div>
   );
+
+  // --------------------------------------------
 }
 
 // ==============================================

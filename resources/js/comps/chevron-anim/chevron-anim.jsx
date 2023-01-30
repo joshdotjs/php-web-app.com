@@ -1,9 +1,9 @@
-import React, { useState, useRef, useLayoutEffect } from 'react';
+import React, { useState, useRef, useLayoutEffect, useEffect } from 'react';
 import { gsap } from 'gsap';
 
 import './chevron-anim.scss';
 
-export default function ChevronAnim() {
+export default function ChevronAnim({children}) {
 
   // --------------------------------------------
   
@@ -36,13 +36,23 @@ export default function ChevronAnim() {
 
   // --------------------------------------------
 
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     handler();
+  //   }, 1e3);
+  // }, []);
+
+  // --------------------------------------------
+
   return (
     <div 
       ref={ref}
-      className="chevron-anim"
-      onClick={handler}
+      className="chevron-anim"      
     >
-      <div className="chevron-anim__title">
+      <div 
+        className="chevron-anim__title"
+        onClick={handler}
+      >
         <h5>Category</h5>
         <svg 
           className={`chevron-anim__title__arrow ${is_up ? up : ''}`}
@@ -53,6 +63,7 @@ export default function ChevronAnim() {
       </div>
 
       <div className="square" ref={square}>
+        {children}
       </div>
 
     </div>
