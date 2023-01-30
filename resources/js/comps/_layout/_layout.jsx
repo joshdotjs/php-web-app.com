@@ -44,7 +44,7 @@ export default function Layout({ children, name, restrict }) {
     //   },
     //   // "<="
     // );
-    tl.to(page, { opacity: 1, scale: 1, duration: 1.2 }, '<=');
+    tl.to(page, { opacity: 1, scale: 1, duration: 0.5, delay }, '<=');
     // gsap.to(header, { opacity: 1, duration: 1 });
 
   }, []);
@@ -62,7 +62,7 @@ export default function Layout({ children, name, restrict }) {
 
         <Header { ...{ header_ref } } />
 
-        <main id="page" className={name} ref={page_ref} style={{ opacity: 0, transform: 'scale(1.02)', background: 'black' }}>
+        <main id="page" className={name} ref={page_ref} style={{ opacity: 0, transform: 'scale(1.015)', background: 'black' }}>
           {children}
         </main> 
 

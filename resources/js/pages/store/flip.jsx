@@ -313,6 +313,9 @@ export default function FLIP({ products }) {
   const categories = ['shoes', 'clothes', 'accessories'];
   const [filter, setFilter] = useState(new Set(categories));
 
+  const genders = ['male', 'female', 'unisex'];
+  const [gender_filter, setGenderFilter] = useState(genders);
+
   // --------------------------------------------
 
   const applyFilter = (category) => {
@@ -378,14 +381,15 @@ export default function FLIP({ products }) {
 
       <div id="grid-left">
 
-        <Checkboxes 
-          options={categories}
-          // set={selected_sizes}
-          set={filter}
-          // setSet={setSelectedSizes}
-          // setSet={setFilter}
-          applyFilter={applyFilter}
-        />
+        <Checkboxes options={categories} set={filter} applyFilter={applyFilter}>
+          Category
+        </Checkboxes>
+
+        
+        <Checkboxes options={genders} set={gender_filter} applyFilter={applyFilter}>
+          Gender
+        </Checkboxes>
+
       </div>
 
       <div id="grid-right">

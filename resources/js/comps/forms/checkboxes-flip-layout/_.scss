@@ -4,8 +4,14 @@
 
   background: lightblue;
 
-  > :not(:last-child) {
-    // * {color: white; }
-    margin-bottom: 1em;
+  .title {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+ .checkbox-container:not(:last-child) {
+    margin-bottom: 0.35em;
+    // background: orange;
   }
 }

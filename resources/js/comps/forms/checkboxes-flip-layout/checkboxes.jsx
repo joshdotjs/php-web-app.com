@@ -5,7 +5,7 @@ import Checkbox from "./checkbox/checkbox";
 
 // ==============================================
 
-export default function Checkboxes({ options, set, setSet, applyFilter }) {
+export default function Checkboxes({ options, set, setSet, applyFilter, children }) {
   
   // --------------------------------------------
 
@@ -25,6 +25,9 @@ export default function Checkboxes({ options, set, setSet, applyFilter }) {
   
   return (
     <div className="checkboxes-container">
+      
+      <h5 className="title">{children}</h5>
+
       { options.map((option, idx) => {
 
         const key = `check-${option}`;
