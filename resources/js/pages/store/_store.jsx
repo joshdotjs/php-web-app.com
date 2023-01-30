@@ -304,20 +304,11 @@ export default function Page({ products }) {
 
   // --------------------------------------------
 
-  // const [filter, setFilter] = useState(new Set(['shoes', 'clothes', 'accessories']));
-
-  // --------------------------------------------
-
   // const sizes = ['sm', 'lg'];
   // const [selected_sizes, setSelectedSizes] = useState(new Set());
   const categories = ['shoes', 'clothes', 'accessories'];
-  const [category_filter, setCategoryFilter] = useState(new Set(categories));
-
   const genders = ['men', 'women', 'unisex'];
-  const [gender_filter, setGenderFilter] = useState(new Set(genders));
-
   const prices = ['25-50', '50-100', '100-150', '150-200', '200+'];
-  const [price_filter, setPriceFilter] = useState(new Set(prices));
 
   // const filter = {
   //   category: {
@@ -338,6 +329,7 @@ export default function Page({ products }) {
     category: new Set(categories),  // option 1
     gender:   new Set(genders),     // option 2
     price:    new Set(prices),      // option 3
+    getNum(type) { return this[type].size; },
   });
 
   useEffect(() => {
@@ -428,21 +420,21 @@ export default function Page({ products }) {
 
       <div id="grid-left">
 
-        <h5>Active filters: { getNumActiveFilters() }</h5>
+        {/* <h5>Active filters: { getNumActiveFilters() }</h5> */}
 
-        <ChevronAnim>
-          <Checkboxes type="category" options={categories} set={category_filter} applyFilter={applyFilter}>
+        <ChevronAnim title="Category" num={filter.getNum('category')}>
+          <Checkboxes type="category" options={categories} set={filter['categories']} applyFilter={applyFilter}>
           </Checkboxes>
         </ChevronAnim>
         
-        {/* <hr /> */}
+        <hr />
 
-        <ChevronAnim>
-          <Checkboxes type="gender" options={genders} set={gender_filter} applyFilter={applyFilter}>
+        <ChevronAnim title="Gender" num={filter.getNum('gender')}>
+          <Checkboxes type="gender" options={genders} set={filter['gender']} applyFilter={applyFilter}>
           </Checkboxes>
         </ChevronAnim>
 
-        {/* <hr /> */}
+        <hr />
 
         {/* <Checkboxes type="price" options={prices} set={price_filter} applyFilter={applyFilter}>
           Shop by Price

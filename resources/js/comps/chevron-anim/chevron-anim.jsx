@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 
 import './chevron-anim.scss';
 
-export default function ChevronAnim({children}) {
+export default function ChevronAnim({children, title, num}) {
 
   // --------------------------------------------
   
@@ -53,7 +53,7 @@ export default function ChevronAnim({children}) {
         className="chevron-anim__title"
         onClick={handler}
       >
-        <h5>Category</h5>
+        <h5>{title} {' '} ({num})</h5>
         <svg 
           className={`chevron-anim__title__arrow ${is_up ? up : ''}`}
           xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
