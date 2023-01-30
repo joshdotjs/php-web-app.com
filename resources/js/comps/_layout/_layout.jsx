@@ -30,16 +30,21 @@ export default function Layout({ children, name, restrict }) {
 
     const delay = 0.125;
     const tl = gsap.timeline();
-    tl.to(page, { opacity: 1, scale: 1, duration: 1.2, delay });
-    tl.to(blur_overlay, { 
-      opacity: 0, 
-      duration: 0.5, 
-      delay, 
-      onComplete: () => blur_overlay.remove() 
-    }, 
-    '<='
-    // '-=0.25'
-    );
+
+    // tl.to(page, { 
+    //     opacity: 1, 
+    //     duration: 0.25,
+    //     delay,
+    //   }, 
+    // );
+    // tl.to(blur_overlay, { 
+    //     opacity: 0, 
+    //     duration: 0.75, 
+    //     onComplete: () => blur_overlay.remove() 
+    //   },
+    //   // "<="
+    // );
+    tl.to(page, { opacity: 1, scale: 1, duration: 1.2 }, '<=');
     // gsap.to(header, { opacity: 1, duration: 1 });
 
   }, []);
@@ -61,7 +66,7 @@ export default function Layout({ children, name, restrict }) {
           {children}
         </main> 
 
-        <div 
+        {/* <div 
           id="blur-overlay" 
           ref={blur_ref}
           style={{ 
@@ -70,7 +75,7 @@ export default function Layout({ children, name, restrict }) {
             // backdropFilter: 'blur(10px) saturate(180%)',
             // '-webkit-backdrop-filter': 'blur(10px) saturate(180%)',
             WebkitBackdropFilter: 'blur(10px) saturate(180%)',
-            backgroundColor: 'rgba(17, 25, 40, 0.75)',
+            // backgroundColor: 'rgba(17, 25, 40, 0.75)',
             position: 'fixed', 
             height: '100vh',
             width: '100vw',
@@ -78,7 +83,7 @@ export default function Layout({ children, name, restrict }) {
             left: 0,
             zIndex: 10,
           }}
-        ></div>
+        ></div> */}
       
       </CartContextProvider>
     </AuthContextProvider>
