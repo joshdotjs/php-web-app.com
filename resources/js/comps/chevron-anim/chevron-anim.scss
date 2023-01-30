@@ -1,19 +1,19 @@
 .chevron-anim {
-  padding: 0.25rem;
+  padding: 5px;
   background: pink;
 
 
-    &__title {
+  &__title {
 
-      background: red;
-      width: 100%;
+    background: red;
+    height: 30px;
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
 
-      perspective: 800px;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    perspective: 800px;
 
     &__arrow {
       transform: rotate3d(1, 0, 0, 0deg);
@@ -30,4 +30,9 @@
       }
     }
   }
-  
+
+  .square {
+    border: solid black 1px;
+    height: 100px;
+  }
+}

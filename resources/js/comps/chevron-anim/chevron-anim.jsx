@@ -15,18 +15,7 @@ export default function ChevronAnim() {
   
   // --------------------------------------------
 
-  const up = 'chevron-anim__arrow-up';
-
-  // --------------------------------------------
-
-  const [height, setHeight] = useState();
-
-  useLayoutEffect(() => {
-
-    const container_height = ref.current.offsetHeight;
-    const square_height = square.current.offsetHeight;
-    setHeight(container_height + square_height);
-  }, []);
+  const up = 'chevron-anim__title__arrow-up';
 
   // --------------------------------------------
 
@@ -36,7 +25,8 @@ export default function ChevronAnim() {
       if (is_up) {
         if (tl.current)
           tl.current.revert();
-        tl.current = gsap.to(ref.current, { height: 'auto' });
+        // tl.current = gsap.to(ref.current, { height: 'auto' });
+        tl.current = gsap.to(ref.current, { height: '40px' });
       } else {
         tl.current?.reverse();
       }
@@ -47,29 +37,24 @@ export default function ChevronAnim() {
   // --------------------------------------------
 
   return (
-
     <div 
       ref={ref}
       className="chevron-anim"
       onClick={handler}
-      style={{
-        height: `${height}px`,
-      }}
     >
       <div className="chevron-anim__title">
         <h5>Category</h5>
         <svg 
-          className={`chevron-anim__arrow ${is_up ? up : ''}`}
+          className={`chevron-anim__title__arrow ${is_up ? up : ''}`}
           xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
           >
           <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
         </svg>
       </div>
 
-      <div ref={square} style={{ height: '100px', border: 'solid black 1px', width: '100%', position: 'absolute' }}>
-
+      <div className="square" ref={square}>
       </div>
-    </div>
 
+    </div>
   );
 }
