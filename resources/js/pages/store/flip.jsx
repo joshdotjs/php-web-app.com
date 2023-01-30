@@ -9,9 +9,7 @@ import { CustomWiggle } from "gsap/CustomWiggle";
 import CartContext from '@/context/cart-ctx';
 import { updateNumCartItems } from '@/context/cart-ctx/cart-fn';
 
-import Grid from './Grid';
-import Filter from './Filter';
-// import Checkboxes from '@/comps/forms/checkboxes/checkboxes';
+import Grid from './grid';
 import Checkboxes from '@/comps/forms/checkboxes-flip-layout/checkboxes';
 
 import { fireEvent } from '@/util/events';
@@ -31,7 +29,7 @@ CustomWiggle.create("cartButtonWiggle", { wiggles: 8, type: "easeOut" });
 
 // ==============================================
 
-export default function App({ products }) {
+export default function FLIP({ products }) {
 
   // --------------------------------------------
 
@@ -376,11 +374,10 @@ export default function App({ products }) {
   // --------------------------------------------
 
   return (
-    <div id="app-main" ref={container_ref}>
+    <div id="grid-container" ref={container_ref} >
 
-      {/* <Filter filter={filter} setFilter={setFilter} applyFilter={applyFilter} /> */}
-      
-      <div id="playground" style={{ height: '300px', width: '100vw', background: 'white', display: 'grid', placeItems: 'center' }}>
+      <div id="grid-left">
+
         <Checkboxes 
           options={categories}
           // set={selected_sizes}
@@ -391,12 +388,14 @@ export default function App({ products }) {
         />
       </div>
 
-      <Grid { ...{
-          refs,
-          layout,
-          addToCartAnim,
-        } }
-      />
+      <div id="grid-right">
+        <Grid { ...{
+            refs,
+            layout,
+            addToCartAnim,
+          } }
+        />
+      </div>
 
     </div>
   );

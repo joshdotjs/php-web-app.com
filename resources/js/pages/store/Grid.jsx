@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState, useLayoutEffect, useEffect } from 'react';
 
-import Card from './Grid-Card';
+import Card from './card';
+
 
 // ==============================================
 
@@ -25,6 +26,8 @@ export default function Grid({
               className="box"
               style={{ 
                 display: item.status === 'exiting' ? 'none' : 'grid',
+
+                outline: 'solid red 10px'
               }}
             >
               <div 

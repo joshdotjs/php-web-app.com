@@ -8,11 +8,6 @@ import { addToCartLS } from '@/context/cart-ctx/cart-fn';
 // import RadioButtons from '@/comps/inputs/radio-buttons/radio-buttons-variants';
 import Button from '@/comps/button/button';
 
-// import { addToCartLS } from '@/context/cart-fn';
-
-// Import this here because the moving of the .box-child's means that their styles should not be nested
-import './_grid.scss'; 
-
 // ==============================================
 
 const Ellipsis = ({ children, name, classes, color, fontSize, fontWeight }) => {
