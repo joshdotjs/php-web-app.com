@@ -23,7 +23,6 @@ header#navbar {
 aside#navdrawer {
   position: fixed;
   z-index: 9; /* blur-overlay: 10 */
-  border: solid red 20px;
 }
 
 aside#cart {

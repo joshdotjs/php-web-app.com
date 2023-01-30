@@ -2,6 +2,7 @@
   
   #grid-container {
     $break: 960px;
+    $grey: #E5E5E5;
     
     display: grid;
     grid-template-areas: 'A B';
@@ -18,14 +19,18 @@
 
     #grid-left  {
       grid-area: A;
-      background: lightcoral;
       @media (max-width: #{$break}) {
         display: none;
+      }
+
+      hr { 
+        border:  solid $grey 1px; 
+        width: 90%;
+        transform: translateX(5%)
       }
     }
     #grid-right {
       grid-area: B;
-      background: blue;
       width: 100%;
       height: 100%;
 
@@ -34,19 +39,17 @@
         position: relative;
         // z-index: 0;
         
-      
         display: grid;
         // justify-items: stretch;
         // align-items: stretch;
 
         gap: 1rem;
         padding: 1rem;
-        background: gray; //white;//gray;
+        background: white;//gray;
         grid-auto-rows: min-content;
         //--- gridAutoFlow: 'dense',
         max-width: 1200px;
         margin: 0 auto;
-        margin-top: 200px;
       
         @media (max-width: #{$break}) {
           grid-template-columns: repeat(2, 1fr);

@@ -5,7 +5,7 @@ import Checkbox from "./checkbox/checkbox";
 
 // ==============================================
 
-export default function Checkboxes({ options, set, setSet, applyFilter, children }) {
+export default function Checkboxes({ type, options, set, applyFilter, children }) {
   
   // --------------------------------------------
 
@@ -34,7 +34,7 @@ export default function Checkboxes({ options, set, setSet, applyFilter, children
 
         return (
           <Fragment key={key}>
-            <Checkbox id={key} setSet={setSet} option={option} applyFilter={applyFilter}/>
+            <Checkbox id={key} { ...{ type, option, applyFilter } } />
           </Fragment>
         );
       }) }

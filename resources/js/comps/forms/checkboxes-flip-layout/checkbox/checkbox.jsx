@@ -4,7 +4,7 @@ import './_.scss';
 
 // ==============================================
 
-export default function Checkbox({ id, setSet, option, applyFilter }) {
+export default function Checkbox({ id, type, option, applyFilter }) {
 
   // --------------------------------------------
 
@@ -36,9 +36,10 @@ export default function Checkbox({ id, setSet, option, applyFilter }) {
   // --------------------------------------------
 
   const onChange = (event) => {
-    const { checked, type, name, value } = event.target;
+    // const { checked, type, name, value } = event.target;
+    const { checked } = event.target;
     setState(checked); // local state for 'controlled-input'
-    applyFilter(option);
+    applyFilter({ type, option });
   };
 
   // --------------------------------------------

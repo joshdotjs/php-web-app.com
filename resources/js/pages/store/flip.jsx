@@ -311,67 +311,78 @@ export default function FLIP({ products }) {
   // const sizes = ['sm', 'lg'];
   // const [selected_sizes, setSelectedSizes] = useState(new Set());
   const categories = ['shoes', 'clothes', 'accessories'];
-  const [filter, setFilter] = useState(new Set(categories));
+  const [category_filter, setCategoryFilter] = useState(new Set(categories));
 
   const genders = ['male', 'female', 'unisex'];
   const [gender_filter, setGenderFilter] = useState(genders);
 
+  const prices = ['25-50', '50-100', '100-150', '150-200', '200+'];
+  const [price_filter, setPriceFilter] = useState(prices);
+
   // --------------------------------------------
 
-  const applyFilter = (category) => {
-    setFilter((prev) => {
+  const applyFilter = ({ type, option }) => {
 
-      // - - - - - - - - - - - - - - - - - - - - 
+    // -type: 'category' | 'gender' | 'price'
+    // -option: 'shoes' (type: 'category')
 
-      console.log('prev_filter: ', prev);
-
-      // -Keep height of grid constant through FLIP animation:
-      const grid_items = document.querySelector('#grid-items');
-      console.log('grid items: ', grid_items);
-      const grid_height = grid_items.offsetHeight;
-      grid_items.style.height = `${grid_height}px`;
-
-      // - - - - - - - - - - - - - - - - - - - - 
-
-
-
-      // - - - - - - - - - - - - - - - - - - - - 
-
-      // Clone to avoid mutation
-      const clone_prev_filters = new Set([...prev])
-      if (prev.has(category))  clone_prev_filters.delete(category)
-      if (!prev.has(category)) clone_prev_filters.add(category);
-
-      // - - - - - - - - - - - - - - - - - - - - 
-
-      setLayout((prev_layout) => { 
-
-        const prev_items = prev_layout.items;
-
-        
+    if (type === 'category') {
+      setCategoryFilter((prev) => {
   
-        const new_items = prev_items.map(prev_item => {
-
-          const product_category = prev_item.product.category;
-
-          if (clone_prev_filters.has( product_category))  return { ...prev_item, status: 'entered' }
-          if (!clone_prev_filters.has(product_category))  return { ...prev_item, status: 'exiting' };
-        })
+        // - - - - - - - - - - - - - - - - - - - - 
   
-        const new_layout = {
-          items: new_items,
-          state: Flip.getState(q('.box')),
-        };
+        console.log('prev_filter: ', prev);
   
-        return new_layout;
+        // -Keep height of grid constant through FLIP animation:
+        const grid_items = document.querySelector('#grid-items');
+        console.log('grid items: ', grid_items);
+        const grid_height = grid_items.offsetHeight;
+        grid_items.style.height = `${grid_height}px`;
+  
+        // - - - - - - - - - - - - - - - - - - - - 
+  
+  
+  
+        // - - - - - - - - - - - - - - - - - - - - 
+  
+        // Clone to avoid mutation
+        const clone_prev_filters = new Set([...prev])
+        if (prev.has(option))  clone_prev_filters.delete(option)
+        if (!prev.has(option)) clone_prev_filters.add(option);
+  
+        // - - - - - - - - - - - - - - - - - - - - 
+  
+        setLayout((prev_layout) => { 
+  
+          const prev_items = prev_layout.items;
+  
+          
+    
+          const new_items = prev_items.map(prev_item => {
+  
+            const product_category = prev_item.product.category;
+  
+            if (clone_prev_filters.has( product_category))  return { ...prev_item, status: 'entered' }
+            if (!clone_prev_filters.has(product_category))  return { ...prev_item, status: 'exiting' };
+          })
+    
+          const new_layout = {
+            items: new_items,
+            state: Flip.getState(q('.box')),
+          };
+    
+          return new_layout;
+        });
+  
+        // - - - - - - - - - - - - - - - - - - - - 
+  
+        return clone_prev_filters;
+  
+        // - - - - - - - - - - - - - - - - - - - - 
       });
-
-      // - - - - - - - - - - - - - - - - - - - - 
-
-      return clone_prev_filters;
-
-      // - - - - - - - - - - - - - - - - - - - - 
-    });
+    } else {
+      alert('TODO: Handle other filter types!!!');
+    }
   };
 
   // --------------------------------------------
@@ -381,13 +392,20 @@ export default function FLIP({ products }) {
 
       <div id="grid-left">
 
-        <Checkboxes options={categories} set={filter} applyFilter={applyFilter}>
+        <Checkboxes type="category" options={categories} set={category_filter} applyFilter={applyFilter}>
           Category
         </Checkboxes>
 
-        
-        <Checkboxes options={genders} set={gender_filter} applyFilter={applyFilter}>
+        <hr />
+
+        <Checkboxes type="gender" options={genders} set={gender_filter} applyFilter={applyFilter}>
           Gender
+        </Checkboxes>
+
+        <hr />
+
+        <Checkboxes type="price" options={prices} set={price_filter} applyFilter={applyFilter}>
+          Shop by Price
         </Checkboxes>
 
       </div>

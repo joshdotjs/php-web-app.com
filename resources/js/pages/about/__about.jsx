@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import Layout from '@/comps/_layout/_layout';
-import Checkboxes from '@/comps/forms/checkboxes/checkboxes';
 
 // ==============================================
 
@@ -25,14 +24,6 @@ function Page() {
     <Layout name="about">
       
       <h1>About Page</h1>
-
-      <div id="playground" style={{ height: '300px', width: '100vw', background: 'white', display: 'grid', placeItems: 'center' }}>
-        <Checkboxes 
-          options={sizes}
-          set={selected_sizes}
-          setSet={setSelectedSizes}
-        />
-      </div>
 
     </Layout>
   );
