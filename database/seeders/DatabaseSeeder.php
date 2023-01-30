@@ -44,6 +44,7 @@ class DatabaseSeeder extends Seeder
         'sub_title'     => "Men's Road Running Shoes",
         'body'          => "Let the Nike Pegasus 39 help you ascend to new heights. More lightweight up top than the Pegasus 38 and ideal to wear in any season, it has a supportive sensation to help keep your feet contained, while underfoot cushioning and double Zoom Air units (1 more than the Peg 38) give you an extra pop to your step. Your trusted workhorse with wings is back. Time to fly.",
         'category'      => 'shoes',
+        'gender'        => 'men',
         'price'         => 10497,
         'price_compare' => 13900,
         'created_at'    => date("Y-m-d H:i:s")
@@ -54,29 +55,29 @@ class DatabaseSeeder extends Seeder
         'sub_title'     => "Men's Running Jacket",
         'body'          => "An essential piece to your running game gets an update on the Nike Repel Miler Jacket. It's built to take on wet weather with a water-repellent design and a hood. The packable design features a look steeped in Nike's heritage. This product is made with 100% recycled polyester fibers.",
         'category'      => 'clothes',
+        'gender'        => 'men',
         'price'         => 9000,
         'price_compare' => 9000,
         'created_at'    => date("Y-m-d H:i:s")
       ]);
-
-
 
       DB::table('products')->insert([
         'title'         => 'Flex Experience Run 11 Next Nature',
         'sub_title'     => "Men's Road Running Shoes",
         'body'          => "Comfortably zen, just like every run should be. With the Nike Flex Experience Run 11 Next Nature, we created a lightweight, clean design that feels as good as it looks. The shoes are supportive in all the right ways with movement so natural, you'll swear you've been wearing them for years.",
         'category'      => 'shoes',
+        'gender'        => 'men',
         'price'         => 4197,
         'price_compare' => 7000,
         'created_at'    => date("Y-m-d H:i:s")
       ]);
-
       
       DB::table('products')->insert([ // 7 -> 4
         'title'         => 'Nike Sportswear',
         'sub_title'     => "Faux Fur Blanket",
         'body'          => "Celebrate the seasonal shift of weather by bundling up in this blanket. Made of the coziest faux fur fleece, this statement piece does double-duty as oversized layering piece or softest spot on your couch.",
         'category'      => 'accessories',
+        'gender'        => 'unisex',
         'price'         => 17097,
         'price_compare' => 20000,
         'created_at'    => date("Y-m-d H:i:s")
@@ -87,6 +88,7 @@ class DatabaseSeeder extends Seeder
         'sub_title'     => "Men's Running Shoes",
         'body'          => "Your workhorse with wings returns. The Nike Air Zoom Pegasus 38 (NFL New Orleans Saints) puts a spring in your step while showing love for your team. Breathable mesh in the upper combines the comfort and durability you want with a wider fit at the toes.",
         'category'      => 'shoes',
+        'gender'        => 'men',
         'price'         => 6500,
         'price_compare' => 13000,
         'created_at'    => date("Y-m-d H:i:s")
@@ -97,6 +99,7 @@ class DatabaseSeeder extends Seeder
         'sub_title'     => "Men's Road Running Shoes",
         'body'          => "The Nike Invincible 2 has the same supersoft feel that lets you feel the potential when your foot hits the pavement. We created the shoe with plenty of snappy responsiveness and incredible support to help keep you feeling secure and competitive. It's 1 of our most tested shoes, still designed for you to stay on the track and away from the sidelines.",
         'category'      => 'shoes',
+        'gender'        => 'men',
         'price'         => 10497,
         'price_compare' => 18000,
         'created_at'    => date("Y-m-d H:i:s")
@@ -107,6 +110,7 @@ class DatabaseSeeder extends Seeder
         'sub_title'     => "Men's Trail Running Shoes",
         'body'          => "Navigate the up and downs of uncompromising terrain with the Nike Zegama. Developed with great grip and stability, it has you covered so you can keep climbing and reach greater personal heights when the going gets grimy and gritty. Whether it's a challenging, rocky landscape going uphill or a steep, slick decline down a treacherous trail, feel confident when you decide to off-road it.",
         'category'      => 'shoes',
+        'gender'        => 'men',
         'price_compare' => 16000,
         'price'         => 11197,
         'created_at'    => date("Y-m-d H:i:s")

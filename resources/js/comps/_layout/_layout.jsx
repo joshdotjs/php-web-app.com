@@ -62,7 +62,7 @@ export default function Layout({ children, name, restrict }) {
 
         <Header { ...{ header_ref } } />
 
-        <main id="page" className={name} ref={page_ref} style={{ opacity: 0, transform: 'scale(1.015)', background: 'black' }}>
+        <main id="page" className={name} ref={page_ref} style={{ opacity: 0, transform: 'scale(1.015)', transformOrigin: 'center', background: 'black' }}>
           {children}
         </main> 
 

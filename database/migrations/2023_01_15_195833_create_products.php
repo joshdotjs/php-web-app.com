@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('sub_title');
             $table->longText('body');
             $table->string('category');
+            $table->string('gender');
             $table->integer('price');
             $table->integer('price_compare');
         });
