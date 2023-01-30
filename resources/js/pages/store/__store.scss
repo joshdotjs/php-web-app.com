@@ -69,3 +69,18 @@
     }
   }
 }
+
+
+svg {
+  background: lightgreen;
+
+  .chevron {
+    transform: rotate3d(1, 0, 0, 0deg);
+    transform-origin: center;
+    transition: transform 1s ease;
+    
+  }
+  .up {
+    transform: rotate3d(1, 0, 0, 180deg);
+  }
+}

@@ -341,10 +341,16 @@ export default function Page({ products }) {
   });
 
   useEffect(() => {
-
     console.log('filter: ', filter);
-
   }, [filter]);
+
+  const getNumActiveFilters = () => {
+    let count = 0;
+    for (let key in filter) {
+      count += filter[key].size; 
+    }
+    return count;
+  }
 
   // --------------------------------------------
 
@@ -359,49 +365,24 @@ export default function Page({ products }) {
     const grid_height = grid_items.offsetHeight;
     grid_items.style.height = `${grid_height}px`;
 
-    //              OLD: -step 1: deteermine type: { 'category' | 'gender' | 'price' }
-    // -step 2: invoke corresponding state update function (e.g. 'setCategoryFilter()')
-    // -step 3: add or remove 'option' from the filter state (e.g. 'category_filter')
-    // -step 4: using locally updated filter state, loop over current 'layout.items' and for each row 
-    //          set property status: 'entering' | 'exiting' based on if current filter set (e.g. category_filter) 
-    //          contains this rows corresponding property { 'category' | 'gender' | 'price }
-    // -step 5: update layout state using updated 'layout.items' from step 4 and take snapshot of FLIP state.
-    //          Updating the state performs the DOM change.
-    //          Updating state also triggers the useLayoutEffect() callback which performs the FLIP animation.
-
-
     // - - - - - - - - - - - - - - - - - - - - - 
 
-    // -step 2:
-    // setCategoryFilter((prev) => {
     setFilter((prev) => { 
 
-      // console.log('prev_filter: ', prev);
-      // debugger;
-
-      // -step 3:
-      // const clone_prev_filters = new Set([...prev])
-      // if (prev.has(option))  clone_prev_filters.delete(option)
-      // if (!prev.has(option)) clone_prev_filters.add(option);
-      const set = structuredClone(prev[type]); //new Set([...prev['category']])
+      const set = structuredClone(prev[type]);
       if ( set.has(option))
         set.delete(option);
       else 
         set.add(option);
       
-      
-      const  new_filter = { ...prev, [type]: set };
+      const new_filter = { ...prev, [type]: set };
 
       // -the callback passed into setFilter() is run asynchronously.
       // -We need the value of new_filter immediately inside setLayout()'s callback.
       // -Hence, just plop setLayout() right here.
       setLayout((prev_layout) => { 
   
-        const prev_items = prev_layout.items;
-        // console.clear();
-        // console.log('prev_items: ', prev_items);
-        // debugger;
-  
+        const prev_items = prev_layout.items;  
         
         // -step 4:
         const new_items = prev_items.map(prev_item => {
@@ -417,23 +398,13 @@ export default function Page({ products }) {
           const price_set    = new_filter['price'];
           
           //  -Filter on intersection of all filters 
-          if (
-              category_set.has(category) 
-            && 
-              gender_set.has(gender) 
-            // && 
-            //   price_set.has(price) 
-          ) {
+          if (category_set.has(category) && gender_set.has(gender) /*&& price_set.has(price) */ ) {
             return { ...prev_item, status: 'entered' };
           }
           else { 
             return { ...prev_item, status: 'exiting' };
           }
-  
         });
-        // console.clear();
-        // console.log('new_items: ', new_items);
-        // debugger;
   
         const new_layout = {
           items: new_items,
@@ -446,21 +417,40 @@ export default function Page({ products }) {
       return new_filter;
     });
 
-    
-    
-    // - - - - - - - - - - - - - - - - - - - - - 
-
-
     // - - - - - - - - - - - - - - - - - - - - - 
 
   };
 
+  // --------------------------------------------
+  
+  const [is_up, setIsUp] = useState(false);
+  
   // --------------------------------------------
 
   return (
     <div id="grid-container" ref={container_ref} >
 
       <div id="grid-left">
+
+        <h5>Active filters: { getNumActiveFilters() }</h5>
+
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"
+          style={{
+            perspective: '800px'
+          }}
+          onClick={() => setIsUp(prev => !prev)}
+          >
+          <path 
+            fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+            // style={{
+            //   transform: 'rotate3d(1, 0, 0, 45deg)',
+            // }}
+            className={`chevron ${is_up ? 'up' : 'down'}`}
+          />
+        </svg>
+
+        <hr />
 
         <Checkboxes type="category" options={categories} set={category_filter} applyFilter={applyFilter}>
           Category
