@@ -1,21 +1,31 @@
-.chevron-anim-container {
-  outline: solid lightgreen 1px;
+.chevron-anim {
   padding: 0.25rem;
-  height: 30px;
-  width: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: pink;
 
-  perspective: 800px;
 
-  
-    .chevron-anim {
+    &__title {
+
+      background: red;
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      perspective: 800px;
+    }
+
+    &__arrow {
       transform: rotate3d(1, 0, 0, 0deg);
       transform-origin: center;
-      transition: transform 1s ease;
+      transition: transform 0.5s ease;
+
+      // background: red;
+      height: 1.1rem;
+      // display: flex;
+      // align-items: center;
       
-      &__up {
+      &-up {
         transform: rotate3d(1, 0, 0, 180deg);
       }
     }

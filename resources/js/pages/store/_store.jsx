@@ -432,7 +432,7 @@ export default function Page({ products }) {
         <h5>Active filters: { getNumActiveFilters() }</h5>
 
         <ChevronAnim />
-
+        
         <hr />
 
         <Checkboxes type="category" options={categories} set={category_filter} applyFilter={applyFilter}>
