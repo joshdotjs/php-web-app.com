@@ -374,8 +374,11 @@ export default function Page({ products }) {
 
     // -step 2:
     // setCategoryFilter((prev) => {
-    let updated_filter;
     setFilter((prev) => { 
+
+      // console.log('prev_filter: ', prev);
+      // debugger;
+
       // -step 3:
       // const clone_prev_filters = new Set([...prev])
       // if (prev.has(option))  clone_prev_filters.delete(option)
@@ -385,47 +388,68 @@ export default function Page({ products }) {
         set.delete(option);
       else 
         set.add(option);
-      updated_filter = { ...prev, [type]: set };
-      return updated_filter;
+      
+      
+      const  new_filter = { ...prev, [type]: set };
+
+      // -the callback passed into setFilter() is run asynchronously.
+      // -We need the value of new_filter immediately inside setLayout()'s callback.
+      // -Hence, just plop setLayout() right here.
+      setLayout((prev_layout) => { 
+  
+        const prev_items = prev_layout.items;
+        // console.clear();
+        // console.log('prev_items: ', prev_items);
+        // debugger;
+  
+        
+        // -step 4:
+        const new_items = prev_items.map(prev_item => {
+  
+          const { product } = prev_item;
+  
+          const category = product['category'];
+          const gender   = product['gender'];
+          const price    = product['price']; 
+  
+          const category_set = new_filter['category'];
+          const gender_set   = new_filter['gender'];
+          const price_set    = new_filter['price'];
+          
+          //  -Filter on intersection of all filters 
+          if (
+              category_set.has(category) 
+            && 
+              gender_set.has(gender) 
+            // && 
+            //   price_set.has(price) 
+          ) {
+            return { ...prev_item, status: 'entered' };
+          }
+          else { 
+            return { ...prev_item, status: 'exiting' };
+          }
+  
+        });
+        // console.clear();
+        // console.log('new_items: ', new_items);
+        // debugger;
+  
+        const new_layout = {
+          items: new_items,
+          state: Flip.getState(q('.box')),
+        };
+  
+        return new_layout;
+      });
+
+      return new_filter;
     });
 
+    
+    
     // - - - - - - - - - - - - - - - - - - - - - 
 
-    // setLayout((prev_layout) => { 
-
-    //   const prev_items = prev_layout.items;
-
-      
-    //   // -step 4:
-    //   const new_items = prev_items.map(prev_item => {
-
-    //     const product_category = prev_item.product['category'];
-    //     const product_gender = prev_item.product['gender'];
-
-        
-        
-    //     //  -Filter on intersection of all filters 
-
-    //     if (clone_prev_filters.has(product_category) && gender_filter.has(product_gender) ) {
-
-
-          
-
-    //       return { ...prev_item, status: 'entered' };
-    //     }
-    //     else { 
-    //       return { ...prev_item, status: 'exiting' };
-    //     }
-
-    //   })
-
-    //   const new_layout = {
-    //     items: new_items,
-    //     state: Flip.getState(q('.box')),
-    //   };
-
-    //   return new_layout;
-    // });
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
