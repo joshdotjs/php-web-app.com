@@ -84,9 +84,16 @@ const updateNumCartItems = () => {
 
 // ==============================================
 
+const clearCartLS = () => {
+  setCartLS([]);
+};
+
+// ==============================================
+
 export { 
   getCartLS,
   addToCartLS, 
   removeFromCartLS,
-  updateNumCartItems
+  updateNumCartItems,
+  clearCartLS,
  };

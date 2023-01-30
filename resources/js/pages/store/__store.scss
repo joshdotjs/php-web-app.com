@@ -6,9 +6,12 @@
     
     display: grid;
     grid-template-areas: 'A B';
+
+    width: 100vw;
+    height: 100vh;
     
     @media (max-width: #{$break}) {
-      grid-template-columns: 1fr;
+      grid-template-columns: auto;
     }
     @media (min-width: #{$break}) {
       grid-template-columns: 200px 1fr;

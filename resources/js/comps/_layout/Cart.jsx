@@ -9,7 +9,7 @@ import Button from '@/comps/button/button';
 
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 import { authFetch } from '@/util/fetch';
-import { getCartLS, removeFromCartLS, updateNumCartItems } from '@/context/cart-ctx/cart-fn';
+import { getCartLS, removeFromCartLS, updateNumCartItems, clearCartLS } from '@/context/cart-ctx/cart-fn';
 
 gsap.registerPlugin(Flip);
 
@@ -98,6 +98,11 @@ export default function Cart() {
     console.log('openCart()');
 
     const container = container_ref.current;
+
+    lr(tl_ref.current);
+    if (tl_ref.current) // if cart is still open then reset timeline before opening. Fixes bug where timeline is overwritten with no animation if cart is already open and added to. Cart should always be closed when adding new item, but just in case this ensures the cart is closable if added to when already open if app is in some unforseen state.
+      tl_ref.current.revert();
+
     tl_ref.current = gsap.to(container, { 
       x: 0,
       duration: 0.3,
@@ -357,10 +362,22 @@ export default function Cart() {
       >
         <Button
           disabled={layout.items.length === 0}
+          onClick={() => { 
+            layout.items.map(item => remove(item));
+            setTimeout(closeCart, 300);
+          }}
+          classes="mb-4"
+        >
+          Clear
+        </Button>
+
+
+        <Button
+          disabled={layout.items.length === 0}
           onClick={() => {
             submit();
           }}
-          >
+        >
           Checkout
         </Button>
       </div>

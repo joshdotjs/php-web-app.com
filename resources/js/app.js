@@ -15,7 +15,7 @@ import '@/pages/admin/orders/[id].jsx';
 import '@/pages/auth/login/__login.jsx';
 
 // Store:
-import '@/pages/store/_store.jsx';
+import '@/pages/store/__store.jsx';
 
 // Dev - Anim 1D:
 // import '@/pages/anim-orders/anim-orders-1/_page-anim-orders';
