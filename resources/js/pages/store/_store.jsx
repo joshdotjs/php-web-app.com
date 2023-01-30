@@ -319,6 +319,33 @@ export default function Page({ products }) {
   const prices = ['25-50', '50-100', '100-150', '150-200', '200+'];
   const [price_filter, setPriceFilter] = useState(new Set(prices));
 
+  // const filter = {
+  //   category: {
+  //     state: category_filter,
+  //     setState: setCategoryFilter,
+  //   },
+  //   gender: {
+  //     state: gender_filter,
+  //     setState: setGenderFilter,
+  //   },
+  //   price: {
+  //     state: price_filter,
+  //     setState: setPriceFilter
+  //   },
+  // };
+
+  const [filter, setFilter] = useState({
+    category: new Set(categories),  // option 1
+    gender:   new Set(genders),     // option 2
+    price:    new Set(prices),      // option 3
+  });
+
+  useEffect(() => {
+
+    console.log('filter: ', filter);
+
+  }, [filter]);
+
   // --------------------------------------------
 
   const applyFilter = ({ type, option }) => {
@@ -326,8 +353,13 @@ export default function Page({ products }) {
     // -type: 'category' | 'gender' | 'price'
     // -option: 'shoes' (type: 'category')
 
+    // -Keep height of grid constant through FLIP animation:
+    const grid_items = document.querySelector('#grid-items');
+    console.log('grid items: ', grid_items);
+    const grid_height = grid_items.offsetHeight;
+    grid_items.style.height = `${grid_height}px`;
 
-    // -step 1: deteermine type: { 'category' | 'gender' | 'price' }
+    //              OLD: -step 1: deteermine type: { 'category' | 'gender' | 'price' }
     // -step 2: invoke corresponding state update function (e.g. 'setCategoryFilter()')
     // -step 3: add or remove 'option' from the filter state (e.g. 'category_filter')
     // -step 4: using locally updated filter state, loop over current 'layout.items' and for each row 
@@ -337,96 +369,66 @@ export default function Page({ products }) {
     //          Updating the state performs the DOM change.
     //          Updating state also triggers the useLayoutEffect() callback which performs the FLIP animation.
 
-    // -step 1:
-    if (type === 'category') {
 
-      // -step 2:
-      setCategoryFilter((prev) => {
-  
-        // - - - - - - - - - - - - - - - - - - - - 
-  
-        console.log('prev_filter: ', prev);
-  
-        // -Keep height of grid constant through FLIP animation:
-        const grid_items = document.querySelector('#grid-items');
-        console.log('grid items: ', grid_items);
-        const grid_height = grid_items.offsetHeight;
-        grid_items.style.height = `${grid_height}px`;
-  
-        // - - - - - - - - - - - - - - - - - - - - 
-  
-        // -step 3:
-        const clone_prev_filters = new Set([...prev])
-        if (prev.has(option))  clone_prev_filters.delete(option)
-        if (!prev.has(option)) clone_prev_filters.add(option);
-  
-        // - - - - - - - - - - - - - - - - - - - - 
-  
-        setLayout((prev_layout) => { 
-  
-          const prev_items = prev_layout.items;
-  
+    // - - - - - - - - - - - - - - - - - - - - - 
+
+    // -step 2:
+    // setCategoryFilter((prev) => {
+    let updated_filter;
+    setFilter((prev) => { 
+      // -step 3:
+      // const clone_prev_filters = new Set([...prev])
+      // if (prev.has(option))  clone_prev_filters.delete(option)
+      // if (!prev.has(option)) clone_prev_filters.add(option);
+      const set = structuredClone(prev[type]); //new Set([...prev['category']])
+      if ( set.has(option))
+        set.delete(option);
+      else 
+        set.add(option);
+      updated_filter = { ...prev, [type]: set };
+      return updated_filter;
+    });
+
+    // - - - - - - - - - - - - - - - - - - - - - 
+
+    // setLayout((prev_layout) => { 
+
+    //   const prev_items = prev_layout.items;
+
+      
+    //   // -step 4:
+    //   const new_items = prev_items.map(prev_item => {
+
+    //     const product_category = prev_item.product['category'];
+    //     const product_gender = prev_item.product['gender'];
+
+        
+        
+    //     //  -Filter on intersection of all filters 
+
+    //     if (clone_prev_filters.has(product_category) && gender_filter.has(product_gender) ) {
+
+
           
-          // -step 4:
-          const new_items = prev_items.map(prev_item => {
-  
-            const product_category = prev_item.product['category'];
-            const product_gender = prev_item.product['gender'];
 
-            
-            
-            //  -Filter on intersection of all filters 
+    //       return { ...prev_item, status: 'entered' };
+    //     }
+    //     else { 
+    //       return { ...prev_item, status: 'exiting' };
+    //     }
 
-            if (clone_prev_filters.has(product_category) && gender_filter.has(product_gender) ) {
+    //   })
 
+    //   const new_layout = {
+    //     items: new_items,
+    //     state: Flip.getState(q('.box')),
+    //   };
 
-              
+    //   return new_layout;
+    // });
 
-              return { ...prev_item, status: 'entered' };
-            }
-            else { 
-              return { ...prev_item, status: 'exiting' };
-            }
+    // - - - - - - - - - - - - - - - - - - - - - 
 
-          })
-    
-          const new_layout = {
-            items: new_items,
-            state: Flip.getState(q('.box')),
-          };
-    
-          return new_layout;
-        });
-  
-        // - - - - - - - - - - - - - - - - - - - - 
-  
-        return clone_prev_filters;
-  
-        // - - - - - - - - - - - - - - - - - - - - 
-      });
-    } 
-    else if (type === 'gender') {
-
-      setGenderFilter((prev) => {
-    
-        // - - - - - - - - - - - - - - - - - - - - 
-  
-        // Clone to avoid mutation
-        const clone_prev_filters = new Set([...prev])
-        if (prev.has(option))  clone_prev_filters.delete(option)
-        if (!prev.has(option)) clone_prev_filters.add(option);
-    
-        // - - - - - - - - - - - - - - - - - - - - 
-  
-        return clone_prev_filters;
-  
-        // - - - - - - - - - - - - - - - - - - - - 
-      });
-
-    } 
-    else {
-      alert('TODO: Handle other filter types!!!');
-    }
   };
 
   // --------------------------------------------
