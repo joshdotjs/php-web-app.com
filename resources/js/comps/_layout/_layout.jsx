@@ -32,8 +32,7 @@ export default function Layout({ children, name, restrict }) {
     const tl = gsap.timeline();
     tl.to(page, { opacity: 1, scale: 1, duration: 1.2, delay });
     tl.to(blur_overlay, { 
-      backdropFilter: 'blur(0px)', 
-      // opacity: 0, 
+      opacity: 0, 
       duration: 0.5, 
       delay, 
       onComplete: () => blur_overlay.remove() 
@@ -71,7 +70,7 @@ export default function Layout({ children, name, restrict }) {
             // backdropFilter: 'blur(10px) saturate(180%)',
             // '-webkit-backdrop-filter': 'blur(10px) saturate(180%)',
             WebkitBackdropFilter: 'blur(10px) saturate(180%)',
-            // backgroundColor: 'rgba(17, 25, 40, 0.75)',
+            backgroundColor: 'rgba(17, 25, 40, 0.75)',
             position: 'fixed', 
             height: '100vh',
             width: '100vw',
