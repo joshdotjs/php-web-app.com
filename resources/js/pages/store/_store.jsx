@@ -326,7 +326,21 @@ export default function Page({ products }) {
     // -type: 'category' | 'gender' | 'price'
     // -option: 'shoes' (type: 'category')
 
+
+    // -step 1: deteermine type: { 'category' | 'gender' | 'price' }
+    // -step 2: invoke corresponding state update function (e.g. 'setCategoryFilter()')
+    // -step 3: add or remove 'option' from the filter state (e.g. 'category_filter')
+    // -step 4: using locally updated filter state, loop over current 'layout.items' and for each row 
+    //          set property status: 'entering' | 'exiting' based on if current filter set (e.g. category_filter) 
+    //          contains this rows corresponding property { 'category' | 'gender' | 'price }
+    // -step 5: update layout state using updated 'layout.items' from step 4 and take snapshot of FLIP state.
+    //          Updating the state performs the DOM change.
+    //          Updating state also triggers the useLayoutEffect() callback which performs the FLIP animation.
+
+    // -step 1:
     if (type === 'category') {
+
+      // -step 2:
       setCategoryFilter((prev) => {
   
         // - - - - - - - - - - - - - - - - - - - - 
@@ -341,11 +355,7 @@ export default function Page({ products }) {
   
         // - - - - - - - - - - - - - - - - - - - - 
   
-  
-  
-        // - - - - - - - - - - - - - - - - - - - - 
-  
-        // Clone to avoid mutation
+        // -step 3:
         const clone_prev_filters = new Set([...prev])
         if (prev.has(option))  clone_prev_filters.delete(option)
         if (!prev.has(option)) clone_prev_filters.add(option);
@@ -357,13 +367,27 @@ export default function Page({ products }) {
           const prev_items = prev_layout.items;
   
           
-    
+          // -step 4:
           const new_items = prev_items.map(prev_item => {
   
             const product_category = prev_item.product['category'];
-  
-            if (clone_prev_filters.has( product_category))  return { ...prev_item, status: 'entered' }
-            if (!clone_prev_filters.has(product_category))  return { ...prev_item, status: 'exiting' };
+            const product_gender = prev_item.product['gender'];
+
+            
+            
+            //  -Filter on intersection of all filters 
+
+            if (clone_prev_filters.has(product_category) && gender_filter.has(product_gender) ) {
+
+
+              
+
+              return { ...prev_item, status: 'entered' };
+            }
+            else { 
+              return { ...prev_item, status: 'exiting' };
+            }
+
           })
     
           const new_layout = {
@@ -380,55 +404,18 @@ export default function Page({ products }) {
   
         // - - - - - - - - - - - - - - - - - - - - 
       });
-    } else if (type === 'gender') {
+    } 
+    else if (type === 'gender') {
 
       setGenderFilter((prev) => {
-  
-        // - - - - - - - - - - - - - - - - - - - - 
-  
-        console.log('prev_filter: ', prev);
-  
-        // -Keep height of grid constant through FLIP animation:
-        const grid_items = document.querySelector('#grid-items');
-        console.log('grid items: ', grid_items);
-        const grid_height = grid_items.offsetHeight;
-        grid_items.style.height = `${grid_height}px`;
-  
-        // - - - - - - - - - - - - - - - - - - - - 
-  
-  
-  
+    
         // - - - - - - - - - - - - - - - - - - - - 
   
         // Clone to avoid mutation
         const clone_prev_filters = new Set([...prev])
         if (prev.has(option))  clone_prev_filters.delete(option)
         if (!prev.has(option)) clone_prev_filters.add(option);
-  
-        // - - - - - - - - - - - - - - - - - - - - 
-  
-        setLayout((prev_layout) => { 
-  
-          const prev_items = prev_layout.items;
-  
-          
     
-          const new_items = prev_items.map(prev_item => {
-  
-            const product_category = prev_item.product['gender'];
-  
-            if (clone_prev_filters.has( product_category))  return { ...prev_item, status: 'entered' }
-            if (!clone_prev_filters.has(product_category))  return { ...prev_item, status: 'exiting' };
-          })
-    
-          const new_layout = {
-            items: new_items,
-            state: Flip.getState(q('.box')),
-          };
-    
-          return new_layout;
-        });
-  
         // - - - - - - - - - - - - - - - - - - - - 
   
         return clone_prev_filters;
@@ -436,7 +423,8 @@ export default function Page({ products }) {
         // - - - - - - - - - - - - - - - - - - - - 
       });
 
-    } else {
+    } 
+    else {
       alert('TODO: Handle other filter types!!!');
     }
   };
