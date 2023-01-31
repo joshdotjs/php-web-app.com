@@ -330,7 +330,11 @@ export default function Page({ products }) {
     gender:   new Set(genders),     // options 2
     price:    new Set(prices),      // options 3
     getNum(type) { return this[type].size; },
-    in_initial_state: true,
+    in_init_state: {
+      category: true, // TODO: Change to: this.category.size === categories.length (is Set this.category same size as the full array categories)
+      gender:   true,
+      price:    true
+    },
     //  -start wil all-selected => don't display any checkmarks
     //  -when changed from true to false, we reset all sets
     // reset() { setFilter((prev) => ({ ...prev, category: new Set([]), gender: new Set([]), price: new Set([]) }));  },
@@ -369,10 +373,27 @@ export default function Page({ products }) {
 
     setFilter((prev) => { 
 
+      
+      console.log('prev.in_initial_state:', prev.in_initial_state);
+
       let new_filter;
-      if (prev.in_init_state) {
+      if (prev.in_init_state[type]) {
         // -uncheck all and only check first selection:
-        new_filter = { ...prev, [type]: new Set([option]) };
+        new_filter = { 
+          ...prev, 
+          [type]: new Set([option]), 
+          in_init_state: { ...prev.in_init_state, [type]: false },
+        };
+
+        // new_filter = { 
+        //   ...prev, 
+        //   category: new Set([]), 
+        //   gender: new Set([]), 
+        //   price: new Set([]),
+        //   in_init_state: false 
+        // };
+        // new_filter[type].add(option);
+
       } else {
         let set = structuredClone(prev[type]);
         if ( set.has(option))
