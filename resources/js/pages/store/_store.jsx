@@ -325,11 +325,19 @@ export default function Page({ products }) {
   //   },
   // };
 
-  const [filter, setFilter] = useState({
-    category: new Set(categories),  // option 1
-    gender:   new Set(genders),     // option 2
-    price:    new Set(prices),      // option 3
+  const [filter, setFilter] = useState({ // type => key, option => value
+    category: new Set(categories),  // options 1
+    gender:   new Set(genders),     // options 2
+    price:    new Set(prices),      // options 3
     getNum(type) { return this[type].size; },
+    in_initial_state: true,
+    //  -start wil all-selected => don't display any checkmarks
+    //  -when changed from true to false, we reset all sets
+    // reset() { setFilter((prev) => ({ ...prev, category: new Set([]), gender: new Set([]), price: new Set([]) }));  },
+    initialClick(type, option) { 
+      this.reset();
+      setFilter((prev) => ({ ...prev, [type]: new Set([option]) }));
+     },
   });
 
   useEffect(() => {
@@ -361,13 +369,18 @@ export default function Page({ products }) {
 
     setFilter((prev) => { 
 
-      const set = structuredClone(prev[type]);
-      if ( set.has(option))
-        set.delete(option);
-      else 
-        set.add(option);
-      
-      const new_filter = { ...prev, [type]: set };
+      let new_filter;
+      if (prev.in_init_state) {
+        // -uncheck all and only check first selection:
+        new_filter = { ...prev, [type]: new Set([option]) };
+      } else {
+        let set = structuredClone(prev[type]);
+        if ( set.has(option))
+          set.delete(option);
+        else 
+          set.add(option);
+        new_filter = { ...prev, [type]: set };
+      }
 
       // -the callback passed into setFilter() is run asynchronously.
       // -We need the value of new_filter immediately inside setLayout()'s callback.
@@ -433,6 +446,10 @@ export default function Page({ products }) {
           <Checkboxes type="gender" options={genders} set={filter['gender']} applyFilter={applyFilter}>
           </Checkboxes>
         </ChevronAnim>
+
+        <hr />
+
+        <button onClick={() => filter.reset()}>Reset</button>
 
         <hr />
 

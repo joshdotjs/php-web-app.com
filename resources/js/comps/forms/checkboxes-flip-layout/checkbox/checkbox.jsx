@@ -31,7 +31,7 @@ export default function Checkbox({ id, type, option, applyFilter }) {
 
   // --------------------------------------------
 
-  const [state, setState] = useState(true);
+  const [state, setState] = useState(false);
 
   // --------------------------------------------
 
