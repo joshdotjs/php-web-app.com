@@ -7,7 +7,7 @@ export default function ChevronAnim({children, title, num}) {
 
   // --------------------------------------------
   
-  const [is_up, setIsUp] = useState(false);
+  const [is_up, setIsUp] = useState(true);
 
   const ref = useRef(null);
   const tl = useRef();

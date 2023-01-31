@@ -373,7 +373,6 @@ export default function Page({ products }) {
 
     setFilter((prev) => { 
       
-      console.log('prev.in_initial_state:', prev.in_initial_state);
 
       let new_filter;
       if (prev.in_init_state[type]) {
@@ -392,6 +391,7 @@ export default function Page({ products }) {
           set.add(option);
 
         // all unchecked in group => check all in group!
+        // -there is no instance where you would want to unselect all (e.g. shoes from no-genders)
         if( set.size === 0 ) {
           if (type === 'category') {
             set = new Set(categories);
@@ -459,7 +459,7 @@ export default function Page({ products }) {
         {/* <h5>Active filters: { getNumActiveFilters() }</h5> */}
 
         <ChevronAnim title="Category" num={filter.in_init_state['category'] ? 0 : filter.getNum('category')}>
-          <Checkboxes type="category" options={categories} set={filter['categories']} applyFilter={applyFilter} in_init_state={filter.in_init_state['category']}>
+          <Checkboxes type="category" options={categories} set={filter['category']} applyFilter={applyFilter} in_init_state={filter.in_init_state['category']}>
           </Checkboxes>
         </ChevronAnim>
         
