@@ -1,4 +1,6 @@
 #page.store {
+
+  
  
   #grid-container {
     $break: 960px;
@@ -21,10 +23,12 @@
         display: none;
       }
 
+      // background: white;
+
       hr { 
         border:  solid $grey 1px; 
-        width: 90%;
-        transform: translateX(5%)
+        width: 95%;
+        transform: translateX(2.5%)
       }
     }
     #grid-right {
