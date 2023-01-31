@@ -1,10 +1,9 @@
 #page.store {
-
   
- 
   #grid-container {
     $break: 960px;
     $grey: #E5E5E5;
+    $ml: 0.6rem;
     
     display: grid;
     grid-template-areas: 'A B';
@@ -54,6 +53,36 @@
         grid-template-rows: 50px;
         #filter-button-row {
           grid-column: 1 / -1;
+
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          #show-filters-button {
+            // background: lightgreen;
+            // outline: solid lightgreen 2px;
+            display: inline-flex;
+            align-items: center;
+            height: 100%;
+            cursor: pointer;
+
+            svg { margin-left: $ml; }
+          }
+
+          #sort-by-dropdown {
+            cursor: pointer;
+
+            // background: yellow;
+            h5 { 
+              display: inline; 
+            }
+            svg { 
+              display: inline;
+              margin-left: $ml;
+              height: 100%;
+              // outline: solid 1px white;
+            }
+          }
         }
       
         @media (max-width: #{$break}) {

@@ -10,8 +10,7 @@ import CartContext from '@/context/cart-ctx';
 import { updateNumCartItems } from '@/context/cart-ctx/cart-fn';
 
 import Grid from './grid';
-import Checkboxes from '@/comps/forms/checkboxes-flip-layout/checkboxes';
-import ChevronAnim from '@/comps/chevron-anim/chevron-anim';
+import Filters from './filters/filters';
 
 import { fireEvent } from '@/util/events';
 import { disableClick, enableClick } from '@/util/dom';
@@ -455,41 +454,11 @@ export default function Page({ products }) {
     <div id="grid-container" ref={container_ref} >
 
       <div id="grid-left">
-
-        {/* <h5>Active filters: { getNumActiveFilters() }</h5> */}
-
-        <ChevronAnim title="Category" num={filter.in_init_state['category'] ? 0 : filter.getNum('category')}>
-          <Checkboxes type="category" options={categories} set={filter['category']} applyFilter={applyFilter} in_init_state={filter.in_init_state['category']}>
-          </Checkboxes>
-        </ChevronAnim>
-        
-        <hr />
-
-        <ChevronAnim title="Gender" num={filter.in_init_state['gender'] ? 0 : filter.getNum('gender')}>
-          <Checkboxes type="gender" options={genders} set={filter['gender']} applyFilter={applyFilter} in_init_state={filter.in_init_state['gender']} >
-          </Checkboxes>
-        </ChevronAnim>
-
-        <hr />
-
-        <button onClick={() => filter.reset()}>Reset</button>
-
-        <hr />
-
-        {/* <Checkboxes type="price" options={prices} set={price_filter} applyFilter={applyFilter}>
-          Shop by Price
-        </Checkboxes> */}
-
+        <Filters { ...{ filter,  applyFilter, categories, genders, prices } } />
       </div>
 
       <div id="grid-right">
-
-        <Grid { ...{
-            refs,
-            layout,
-            addToCartAnim,
-          } }
-        />
+        <Grid { ...{ refs, layout, addToCartAnim } } />
       </div>
 
     </div>

@@ -4,12 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --text-color-primary: #111111;
+}
+
 * { 
   box-sizing: border-box;
+  color: var(--text-color-primary);
 }
 
 body {
-  background: black;
   margin: 0;
   /* font-family: 'Poppins', sans-serif; */
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
