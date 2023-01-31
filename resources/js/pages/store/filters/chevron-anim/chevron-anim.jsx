@@ -71,7 +71,7 @@ export default function ChevronAnim({children, title, num, set}) {
         <ChevronDownSVG classes={`chevron-anim__title__arrow ${is_up ? up : ''}`} />
       </div>
 
-      <div className="square" ref={square}>
+      <div ref={square}>
         {children}
       </div>
 
