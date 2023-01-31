@@ -34,12 +34,12 @@
       //   100% 100%    /* lower-left */
       // );
       transition: 
-        background-color 0.5s ease
+        background-color 0.1s ease
         // clip-path 0.3s ease-in-out
       ;
     }
 
-    &:hover::before { background: limegreen; }
+    &:hover::before { background: gray; }
   }
 
 
@@ -48,7 +48,7 @@
     opacity: 0; // need to leave in DOM for tab'ing, etc.
     position: absolute;
 
-    &:hover + label::before { background: limegreen; }
+    &:hover + label::before { background: gray; }
 
     &:focus + label::before {
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
