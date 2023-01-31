@@ -450,15 +450,21 @@ export default function Page({ products }) {
 
   // --------------------------------------------
 
+  const [show_filters, setShowFilters] = useState(true);
+  const filters_container_ref = useRef(null);
+  const grid_container_ref = useRef(null);
+
+  // --------------------------------------------
+
   return (
     <div id="grid-container" ref={container_ref} >
 
-      <div id="grid-left">
-        <Filters { ...{ filter,  applyFilter, categories, genders, prices } } />
+      <div id="grid-left" ref={filters_container_ref}>
+        <Filters { ...{ filter,  applyFilter, categories, genders, prices,  } } />
       </div>
 
-      <div id="grid-right">
-        <Grid { ...{ refs, layout, addToCartAnim } } />
+      <div id="grid-right" ref={grid_container_ref}>
+        <Grid { ...{ refs, layout, addToCartAnim, setShowFilters, filters_container_ref, grid_container_ref, container_ref } } />
       </div>
 
     </div>
