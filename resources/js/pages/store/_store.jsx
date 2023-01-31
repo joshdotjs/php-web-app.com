@@ -372,7 +372,6 @@ export default function Page({ products }) {
     // - - - - - - - - - - - - - - - - - - - - - 
 
     setFilter((prev) => { 
-
       
       console.log('prev.in_initial_state:', prev.in_initial_state);
 
@@ -456,14 +455,14 @@ export default function Page({ products }) {
 
         {/* <h5>Active filters: { getNumActiveFilters() }</h5> */}
 
-        <ChevronAnim title="Category" num={filter.getNum('category')}>
+        <ChevronAnim title="Category" num={filter.in_init_state['category'] ? 0 : filter.getNum('category')}>
           <Checkboxes type="category" options={categories} set={filter['categories']} applyFilter={applyFilter}>
           </Checkboxes>
         </ChevronAnim>
         
         <hr />
 
-        <ChevronAnim title="Gender" num={filter.getNum('gender')}>
+        <ChevronAnim title="Gender" num={filter.in_init_state['gender'] ? 0 : filter.getNum('gender')}>
           <Checkboxes type="gender" options={genders} set={filter['gender']} applyFilter={applyFilter}>
           </Checkboxes>
         </ChevronAnim>

@@ -4,7 +4,7 @@ import './_.scss';
 
 // ==============================================
 
-export default function Checkbox({ id, type, option, applyFilter }) {
+export default function Checkbox({ id, type, option, set, applyFilter }) {
 
   // --------------------------------------------
 
@@ -49,6 +49,7 @@ export default function Checkbox({ id, type, option, applyFilter }) {
   }, [state]);
 
   // --------------------------------------------
+  
 
   return (
     <div className="checkbox-container">
