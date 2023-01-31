@@ -4,9 +4,7 @@ import './_.scss';
 
 // ==============================================
 
-export default function Checkbox({ id, type, option, applyFilter, checked }) {
-
-  // --------------------------------------------
+export default function Checkbox({ id, type, option, applyFilter, onChange, checked }) {
 
   // --------------------------------------------
 
