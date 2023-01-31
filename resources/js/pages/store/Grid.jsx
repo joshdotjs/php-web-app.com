@@ -24,35 +24,54 @@ export default function Grid({
 
   // --------------------------------------------
 
-  const openFilters = () => {
+  const disableCardFLIP = () => {
+    const boxes = grid_container_ref.current.querySelectorAll('.box');
+    boxes.forEach((box) => {
+      box.classList.remove('box');
+      box.classList.add('__box__');
+    })
+  };
+  const enableCardFLIP = () => {
+    const boxes = grid_container_ref.current.querySelectorAll('.__box__');
+    boxes.forEach((box) => {
+      box.classList.add('box');
+      box.classList.remove('__box__');
+    })
+  };
 
+  // --------------------------------------------
+
+  const openFilters = () => {
 
     if (filters_tl_ref.current) 
      filters_tl_ref.current.revert();
      
     const tl = gsap.timeline();
 
+    const container = container_ref.current;
+    const grid_container = grid_container_ref.current;
+    console.log('grid_container: ', grid_container);
+
+    // Disable FLIP animation during the 'show filters' animation
+    disableCardFLIP();
+
     const filters_container = filters_container_ref.current;
-    // // filters_tl_ref.current = gsap.to(filters_container, { x: '-100px' });
-    filters_tl_ref.current = tl.to(filters_container, { 
+    // filters_tl_ref.current = tl.to(filters_container, { 
+      filters_tl_ref.current = tl.to(filters_container, { 
       x: '-100%', 
       opacity: 0,
       width: 0,
+      duration: 0.3,
+      // onStart:    () => disableCardFLIP(),
+      onComplete:        () => enableCardFLIP(),
+      onReverseComplete: () => enableCardFLIP(),
      });
-
-
-    // const grid_container = grid_container_ref.current;
-    // filters_tl_ref.current = gsap.to(grid_container, { x: '-100px', width: '100%' });
-    // filters_tl_ref.current = tl.to(grid_container, { x: '-100px' });
-
-    // const container = container_ref.current;
-    // gsap.to(container, { 'grid-template-columns': '0px 1fr' });
-    // filters_tl_ref.current = tl.to(container, { 'grid-template-columns': '0px 1fr' }, '<=');
   };
 
   // --------------------------------------------
 
   const closeFilters = () => {
+    disableCardFLIP();
     filters_tl_ref.current?.reverse();
   }; 
 
@@ -101,6 +120,7 @@ export default function Grid({
 
         {layout.items.map((item, idx) => {
           return (
+            item.status !== 'exiting' &&
             <li // item
               key={item.product.id}
               id={`box-${item.product.id}`} 

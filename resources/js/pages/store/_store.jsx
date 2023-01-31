@@ -257,6 +257,10 @@ export default function Page({ products }) {
 
   // --------------------------------------------
 
+  const timeline_ref = useRef(null);
+
+  // --------------------------------------------
+
   useLayoutEffect(() => {
     if (!layout.state) return;
 
@@ -268,12 +272,13 @@ export default function Page({ products }) {
     ctx.add(() => {
       
       // Flip.from returns a timeline
-      const timeline = Flip.from(layout.state, {
+      // const timeline = Flip.from(layout.state, {
+      timeline_ref.current = Flip.from(layout.state, {
         absolute: true, 
         ease: "power1.inOut",
         targets: q(".box"),
         scale: true,
-        simple: true,
+        // simple: true,
         onEnter: elements => {
           return gsap.fromTo(elements, { 
             opacity: 0,
@@ -286,17 +291,21 @@ export default function Page({ products }) {
             duration
           });
         },
+        // absoluteOnLeave: true,
         onLeave: elements => {
           return gsap.to(elements, { 
             opacity: 0, 
             scale: 0,
-            duration
+            duration,
+            onComplete: () => {
+              lg('onLeave() - onComplete()');
+            },
           });
         },
         duration,
       });
 
-      timeline.add(() => removeItems(moved));
+      timeline_ref.current.add(() => removeItems(moved));
     });
 
   }, [ctx, layout, q]);
