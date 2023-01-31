@@ -4,7 +4,7 @@ import './_.scss';
 
 // ==============================================
 
-export default function Checkbox({ id, type, option, set, applyFilter }) {
+export default function Checkbox({ id, type, option, onChange, checked }) {
 
   // --------------------------------------------
 
@@ -31,22 +31,22 @@ export default function Checkbox({ id, type, option, set, applyFilter }) {
 
   // --------------------------------------------
 
-  const [state, setState] = useState(false);
+  // const [state, setState] = useState(false);
 
   // --------------------------------------------
 
-  const onChange = (event) => {
-    // const { checked, type, name, value } = event.target;
-    const { checked } = event.target;
-    setState(checked); // local state for 'controlled-input'
-    applyFilter({ type, option });
-  };
+  // const onChange = (event) => {
+  //   // // const { checked, type, name, value } = event.target;
+  //   // const { checked } = event.target;
+  //   // setState(checked); // local state for 'controlled-input'
+  //   applyFilter({ type, option });
+  // };
 
   // --------------------------------------------
 
   useEffect(() => {
-    console.log('id: ', id, '\tstate: ', state);
-  }, [state]);
+    console.log('id: ', id, '\checked: ', checked);
+  }, [checked]);
 
   // --------------------------------------------
   
@@ -56,9 +56,9 @@ export default function Checkbox({ id, type, option, set, applyFilter }) {
       <input 
         type="checkbox" 
         id={id} 
-        name={id} 
-        checked={state} // controlled-input
-        onChange={onChange} 
+        name={option} 
+        checked={checked} // controlled-input
+        onChange={onChange(option)} 
       />
       <label htmlFor={id}>{ option }</label>
     </div>

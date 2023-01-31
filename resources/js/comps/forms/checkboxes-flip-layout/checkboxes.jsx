@@ -22,6 +22,26 @@ export default function Checkboxes({ type, options, set, applyFilter }) {
   }, [set]);
 
   // --------------------------------------------
+
+  const [state, setState] = useState(options.map(option => false));
+
+  // --------------------------------------------
+
+  const onChange = (option) => (event) => {
+
+    const { checked, name } = event.target;
+    const index = options.indexOf(name);
+
+    // const { checked, type, name, value } = event.target;
+    setState((prev) => {
+      const clone = structuredClone(prev);
+      clone[index] = checked;
+      return clone;
+    }); // local state for 'controlled-input'
+    applyFilter({ type, option });
+  }
+
+  // --------------------------------------------
   
   return (
     <div className="checkboxes-container">
@@ -31,7 +51,7 @@ export default function Checkboxes({ type, options, set, applyFilter }) {
 
         return (
           <Fragment key={key}>
-            <Checkbox id={key} { ...{ type, option, applyFilter } } />
+            <Checkbox id={key} checked={state[idx]} { ...{ type, option, onChange } } />
           </Fragment>
         );
       }) }
