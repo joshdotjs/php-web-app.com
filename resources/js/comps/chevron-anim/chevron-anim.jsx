@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 
 import './chevron-anim.scss';
 
-export default function ChevronAnim({children, title, num}) {
+export default function ChevronAnim({children, title, num, set}) {
 
   // --------------------------------------------
   
@@ -19,18 +19,28 @@ export default function ChevronAnim({children, title, num}) {
 
   // --------------------------------------------
 
+  const open = () => {
+    if (tl.current)
+      tl.current.revert();
+    tl.current = gsap.to(ref.current, { height: '40px' });
+  };
+
+  // --------------------------------------------
+
+  const close = () => {
+    tl.current?.reverse();
+  };
+
+  // --------------------------------------------
+
   const handler = () => {
-    setIsUp(prev => {
-      const new_state = !prev;
+    setIsUp((is_up) => {
       if (is_up) {
-        if (tl.current)
-          tl.current.revert();
-        // tl.current = gsap.to(ref.current, { height: 'auto' });
-        tl.current = gsap.to(ref.current, { height: '40px' });
+        open();
       } else {
-        tl.current?.reverse();
+        close();
       }
-      return new_state;
+      return !is_up;
     });
   };
 
