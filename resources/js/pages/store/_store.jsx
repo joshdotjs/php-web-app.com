@@ -275,6 +275,9 @@ export default function Page({ products }) {
         scale: true,
         simple: true,
         onEnter: elements => {
+
+          lr('onEnter');
+
           return gsap.fromTo(elements, { 
             opacity: 0,
             scale: 0,
@@ -287,10 +290,37 @@ export default function Page({ products }) {
           });
         },
         onLeave: elements => {
-          return gsap.to(elements, { 
+
+          lg('onLeave');
+
+          const tween = gsap.to(elements, { 
             opacity: 0, 
             scale: 0,
-            duration
+            duration,
+            // onComplete() {
+            //   lb('onLeave()');
+
+            //   // setLayout((prev_layout) => {
+
+            //   //   // -Step 1: Set status to 'exiting' to 'exited'
+            //   //   // -Step 2: Conditionally render (via &&) only if status !== exited
+            //   //   //  --This way the items are not rendered, but when we change
+            //   //   //    the filter values the values of status changes only
+            //   //   //    and the animation should work the same.
+            //   //   // --The reason I did this was because the hide-filters
+            //   //   //   animation triggers this onLeave() callback for some reason
+            //   //   //   and teh elements that have status: 'exiting' go through
+            //   //   //   the transition.
+
+            //   //   const mapped = prev_layout.items.map((item) => {
+            //   //     if (item.status === 'exiting') return { ...item, status: 'exited' };
+            //   //     else                           return item;
+            //   //   });
+
+            //   //   return { ...prev_layout, items: mapped }
+            //   // });
+
+            // },
           });
         },
         duration,
