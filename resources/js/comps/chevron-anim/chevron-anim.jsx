@@ -3,11 +3,11 @@ import { gsap } from 'gsap';
 
 import './chevron-anim.scss';
 
-export default function ChevronAnim({children, title, num, set}) {
+export default function ChevronAnim({children, title, num}) {
 
   // --------------------------------------------
   
-  const [is_up, setIsUp] = useState(true);
+  const [is_up, setIsUp] = useState(false);
 
   const ref = useRef(null);
   const tl = useRef();
@@ -23,6 +23,7 @@ export default function ChevronAnim({children, title, num, set}) {
     if (tl.current)
       tl.current.revert();
     tl.current = gsap.to(ref.current, { height: '40px' });
+
   };
 
   // --------------------------------------------

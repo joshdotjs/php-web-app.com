@@ -331,7 +331,7 @@ export default function Page({ products }) {
     price:    new Set(prices),      // options 3
     getNum(type) { return this[type].size; },
     in_init_state: {
-      category: true, // TODO: Change to: this.category.size === categories.length (is Set this.category same size as the full array categories)
+      category: true, // this.category.size === categories.length (is Set this.category same size as the full array categories)
       gender:   true,
       price:    true
     },
@@ -384,21 +384,24 @@ export default function Page({ products }) {
           in_init_state: { ...prev.in_init_state, [type]: false },
         };
 
-        // new_filter = { 
-        //   ...prev, 
-        //   category: new Set([]), 
-        //   gender: new Set([]), 
-        //   price: new Set([]),
-        //   in_init_state: false 
-        // };
-        // new_filter[type].add(option);
-
-      } else {
+      } else { // general (not first check and not uncheck all in group)
         let set = structuredClone(prev[type]);
         if ( set.has(option))
           set.delete(option);
         else 
           set.add(option);
+
+        // all unchecked in group => check all in group!
+        if( set.size === 0 ) {
+          if (type === 'category') {
+            set = new Set(categories);
+          } else if (type === 'gender') {
+            set = new Set(genders); 
+          } else if (type === 'price') {
+            set = new Set(prices); 
+          }
+        }
+
         new_filter = { ...prev, [type]: set };
       }
 

@@ -32,6 +32,6 @@
 
   .square {
     border: solid black 1px;
-    // height: 100px;
+    // height: 0px; // start collapsed (uncollapse to height: auto)
   }
 }
