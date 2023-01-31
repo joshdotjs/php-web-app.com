@@ -5,7 +5,7 @@ import Checkbox from "./checkbox/checkbox";
 
 // ==============================================
 
-export default function Checkboxes({ type, options, set, applyFilter }) {
+export default function Checkboxes({ type, options, set, applyFilter, in_init_state }) {
   
   // --------------------------------------------
 
@@ -23,21 +23,21 @@ export default function Checkboxes({ type, options, set, applyFilter }) {
 
   // --------------------------------------------
 
-  const [state, setState] = useState(options.map(option => false));
+  // const [state, setState] = useState(options.map(option => false));
 
   // --------------------------------------------
 
   const onChange = (option) => (event) => {
 
-    const { checked, name } = event.target;
-    const index = options.indexOf(name);
+    // const { checked, name } = event.target;
+    // const index = options.indexOf(name);
 
-    // const { checked, type, name, value } = event.target;
-    setState((prev) => {
-      const clone = structuredClone(prev);
-      clone[index] = checked;
-      return clone;
-    }); // local state for 'controlled-input'
+    // // const { checked, type, name, value } = event.target;
+    // setState((prev) => {
+    //   const clone = structuredClone(prev);
+    //   clone[index] = checked;
+    //   return clone;
+    // }); // local state for 'controlled-input'
     applyFilter({ type, option });
   }
 
@@ -51,7 +51,8 @@ export default function Checkboxes({ type, options, set, applyFilter }) {
 
         return (
           <Fragment key={key}>
-            <Checkbox id={key} checked={state[idx]} { ...{ type, option, onChange } } />
+            {/* <Checkbox id={key} checked={state[idx]} { ...{ type, option, onChange } } /> */}
+            <Checkbox id={key} checked={!in_init_state && set?.has(option)} { ...{ type, option, onChange, applyFilter } } />
           </Fragment>
         );
       }) }

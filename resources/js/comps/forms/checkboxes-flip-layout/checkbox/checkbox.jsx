@@ -4,7 +4,7 @@ import './_.scss';
 
 // ==============================================
 
-export default function Checkbox({ id, type, option, onChange, checked }) {
+export default function Checkbox({ id, type, option, applyFilter, onChange, checked }) {
 
   // --------------------------------------------
 
@@ -58,7 +58,8 @@ export default function Checkbox({ id, type, option, onChange, checked }) {
         id={id} 
         name={option} 
         checked={checked} // controlled-input
-        onChange={onChange(option)} 
+        // onChange={onChange(option)} 
+        onChange={() => applyFilter({ type, option })} 
       />
       <label htmlFor={id}>{ option }</label>
     </div>
