@@ -57,7 +57,7 @@
         margin: 0 auto;
         
         // top row is the filter buttons
-        grid-template-rows: 50px;
+        grid-template-rows: 150px;
         #filter-button-row {
           grid-column: 1 / -1;
 
@@ -76,20 +76,72 @@
             svg { margin-left: $ml; }
           }
 
-          #sort-by-dropdown {
-            cursor: pointer;
 
-            // background: yellow;
-            h5 { 
-              display: inline; 
+          // **************************
+          // **************************
+          // **************************
+          // **************************
+
+          .dropdown { position: relative;
+            z-index: 11;
+
+            &__button {
+              padding: 1rem;
+              outline: solid black 1px;
+
+              cursor: pointer;
+              // background: yellow;
+              h5 { 
+                display: inline; 
+              }
+              svg { 
+                display: inline;
+                margin-left: $ml;
+                height: 100%;
+                // outline: solid 1px white;
+              }  
             }
-            svg { 
-              display: inline;
-              margin-left: $ml;
-              height: 100%;
-              // outline: solid 1px white;
+
+            &__menu { position: absolute;
+              left: 0;
+              // top: calc(100% + 0.25rem);
+              top: calc(100% + 0.25rem);
+
+              width: 100%;
+              
+              background: #F1F1F1;
+              padding: 0.75rem;
+              border-radius: 0.75rem;
+              box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+              opacity: 0;
+              transform: translateY(-10px);
+              --anim: 150ms ease-in-out;
+              transition: 
+                opacity var(--anim),
+                transform var(--anim),
+              ;
+              pointer-events: none;
+
+              
+              .dropdown-option {
+                cursor: pointer;
+              }
             }
+
+            .dropdown__button:focus + .dropdown__menu {
+              opacity: 1;
+              transform: translateY(0px);
+              pointer-events: auto;
+            }
+
+
           }
+
+          // **************************
+          // **************************
+          // **************************
+          // **************************
+
         }
       
         @media (max-width: #{$break}) {
@@ -103,7 +155,7 @@
       
         li.box { 
           // position: relative; 
-          outline: dashed hsl(33, 100%, 50%, 0.1) 1px;
+          outline: dashed hsl(33, 100%, 50%, 1) 1px;
           // aspect-ratio: 1;
       
           // -status: 'entered'  =>  div#app-main  >  ul#grid-items  >  li.box
