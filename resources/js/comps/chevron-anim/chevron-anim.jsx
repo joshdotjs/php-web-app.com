@@ -3,14 +3,14 @@ import { gsap } from 'gsap';
 
 import './chevron-anim.scss';
 
-export default function ChevronAnim({children, title, num}) {
+export default function ChevronAnim({children, title, num, filter, idx}) {
 
   // --------------------------------------------
   
   const [is_up, setIsUp] = useState(true);
 
   const ref = useRef(null);
-  const tl = useRef();
+  // const tl = useRef();
   const square = useRef(null);
   
   // --------------------------------------------
@@ -20,16 +20,18 @@ export default function ChevronAnim({children, title, num}) {
   // --------------------------------------------
 
   const open = () => {
-    if (tl.current)
-      tl.current.revert();
-    tl.current = gsap.to(ref.current, { height: '40px', duration: 0.3 });
+    if (filter.tl_refs.current[idx])
+      filter.tl_refs.current[idx].revert();
 
+    const el = ref.current;
+    filter.tl_refs.current[idx] = gsap.to(el, { height: '40px', duration: 0.3 });
   };
 
   // --------------------------------------------
 
   const close = () => {
-    tl.current?.reverse();
+    // tl.current?.reverse();
+    filter.tl_refs.current[idx]?.reverse();
   };
 
   // --------------------------------------------
@@ -57,6 +59,7 @@ export default function ChevronAnim({children, title, num}) {
 
   return (
     <div 
+      // ref={el => filter.refs.current[idx] = el}
       ref={ref}
       className="chevron-anim"      
     >

@@ -49,6 +49,12 @@
         //--- gridAutoFlow: 'dense',
         max-width: 1200px;
         margin: 0 auto;
+        
+        // top row is the filter buttons
+        grid-template-rows: 50px;
+        #filter-button-row {
+          grid-column: 1 / -1;
+        }
       
         @media (max-width: #{$break}) {
           grid-template-columns: repeat(2, 1fr);

@@ -15,13 +15,9 @@ export default function Checkboxes({ type, options, set, applyFilter, in_init_st
 
   // --------------------------------------------
 
-  
-
-  // const options = ['sm', 'lg'];
-  // const [set, setSet]   = useState(new Set());
-  useEffect(() => {
-    console.log('set: ', set, '\toptions: ', options);
-  }, [set]);
+  // useEffect(() => {
+  //   console.log('set: ', set, '\toptions: ', options);
+  // }, [set]);
 
   // --------------------------------------------
   

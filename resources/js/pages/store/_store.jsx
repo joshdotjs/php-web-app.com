@@ -341,7 +341,8 @@ export default function Page({ products }) {
     initialClick(type, option) { 
       this.reset();
       setFilter((prev) => ({ ...prev, [type]: new Set([option]) }));
-     },
+    },
+    tl_refs: useRef([]),
   });
 
   useEffect(() => {
@@ -458,14 +459,14 @@ export default function Page({ products }) {
 
         {/* <h5>Active filters: { getNumActiveFilters() }</h5> */}
 
-        <ChevronAnim title="Category" num={filter.in_init_state['category'] ? 0 : filter.getNum('category')}>
+        <ChevronAnim title="Category" num={filter.in_init_state['category'] ? 0 : filter.getNum('category')} filter={filter} idx={0}>
           <Checkboxes type="category" options={categories} set={filter['category']} applyFilter={applyFilter} in_init_state={filter.in_init_state['category']}>
           </Checkboxes>
         </ChevronAnim>
         
         <hr />
 
-        <ChevronAnim title="Gender" num={filter.in_init_state['gender'] ? 0 : filter.getNum('gender')}>
+        <ChevronAnim title="Gender" num={filter.in_init_state['gender'] ? 0 : filter.getNum('gender')} filter={filter} idx={1}>
           <Checkboxes type="gender" options={genders} set={filter['gender']} applyFilter={applyFilter} in_init_state={filter.in_init_state['gender']} >
           </Checkboxes>
         </ChevronAnim>
@@ -483,6 +484,7 @@ export default function Page({ products }) {
       </div>
 
       <div id="grid-right">
+
         <Grid { ...{
             refs,
             layout,
