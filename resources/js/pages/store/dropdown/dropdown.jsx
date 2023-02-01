@@ -171,10 +171,10 @@ export default function Dropdown({
         <div 
           className="py-1" role="none" onClick={e => e.stopPropagation()}
         >
-          { sort_options_arr.map(({ title, sub_title, type }, idx) => (
+          { sort_options_arr.map(({ title, sub_title, direction }, idx) => (
             <button 
               key={`${title}-${idx}`}
-              onClick={() => chooseSort({ title, sub_title, type }, idx)}
+              onClick={() => chooseSort({ title, sub_title, direction }, idx)}
               style={{ width: '200px' }}
               className="text-left font-medium text-gray-900 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0"
             >

@@ -465,6 +465,14 @@ export default function Page({ products }) {
 
   // --------------------------------------------
 
+  const [sort_type, setSortType] = useState({ title: '',  sub_title: '', direction: '', }); // e.g. { title: 'Price',  sub_title: 'High-Low', type: 'DESC'  }
+
+  // --------------------------------------------
+
+  const applySort = ({ title, direction  }) => {}
+
+  // --------------------------------------------
+
   return (
     <div id="grid-container" ref={container_ref} >
 
@@ -473,7 +481,14 @@ export default function Page({ products }) {
       </div>
 
       <div id="grid-right" ref={grid_container_ref}>
-        <Grid { ...{ refs, layout, addToCartAnim, setShowFilters, filters_container_ref, grid_container_ref, container_ref } } />
+        <Grid { ...{ 
+          refs, 
+          layout, 
+          addToCartAnim, 
+          setShowFilters, 
+          filters_container_ref, grid_container_ref, container_ref,
+          sort_type, setSortType
+        } } />
       </div>
 
     </div>
