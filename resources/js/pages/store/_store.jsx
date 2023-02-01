@@ -238,19 +238,105 @@ export default function Page({ products }) {
   // STEP 7: removeItems extracts the rows from layout.items that have location: 'cart' (as opposed to location: 'grid') - it does NOT remove filtered grid items.
   //  --Called at end of useLayoutEffect()
 
-  const removeItems = useCallback((moved_items) => {
+  const removeItems = useCallback((items_to_remove) => {
       
-    if (!moved_items.length) return;
+    if (!items_to_remove.length) return;
     
+
+    // -this callback cannot be async => 
     setLayout((prev) => {{
 
-      const non_moved_items = prev.items.filter((item) => {
-        return !moved_items.includes(item);
+      const non_removed_items = prev.items.filter((item) => {
+        return !items_to_remove.includes(item);
       });
+
+
+      // HERE
+      // HERE
+      // HERE
+      // HERE
+      // HERE
+      //  -Take the non_removed_items and compare it agains the items returned from the backend endpoint.
+      //  -Take the union of the two arrays by appending onto the end of the array.
+      //    --The reason we need to do this is because for the new items that are retrieved from the backend there
+      //      be some that are already on the screen.
+      //  -Test by just applending a set of dummy data onto the array.
+
+      console.log('items_to_remove: ', items_to_remove);
+      console.log('non_removed_items: ', non_removed_items);
+
+
+
+
+      const new_item = {
+        "product": {
+            "id": 2,
+            "created_at": "2023-01-30 04:44:34",
+            "updated_at": null,
+            "title": "Repel Miler",
+            "sub_title": "Men's Running Jacket",
+            "body": "An essential piece to your running game gets an update on the Nike Repel Miler Jacket. It's built to take on wet weather with a water-repellent design and a hood. The packable design features a look steeped in Nike's heritage. This product is made with 100% recycled polyester fibers.",
+            "category": "clothes",
+            "gender": "men",
+            "price": 9000,
+            "price_compare": 9000
+        },
+        "variants": [
+            {
+                "id": 19,
+                "created_at": "2023-01-30 04:44:34",
+                "updated_at": null,
+                "img": "/img/products/clothes/men/Repel-Miler-1.webp",
+                "size": "lg",
+                "color": "red",
+                "qty": 1,
+                "product_id": 2
+            },
+            {
+                "id": 20,
+                "created_at": "2023-01-30 04:44:34",
+                "updated_at": null,
+                "img": "/img/products/clothes/men/Repel-Miler-2.webp",
+                "size": "sm",
+                "color": "red",
+                "qty": 1,
+                "product_id": 2
+            },
+            {
+                "id": 21,
+                "created_at": "2023-01-30 04:44:34",
+                "updated_at": null,
+                "img": "/img/products/clothes/men/Repel-Miler-3.webp",
+                "size": "sm",
+                "color": "red",
+                "qty": 1,
+                "product_id": 2
+            }
+        ],
+        "id": "07011fbd-00db-422f-f962-f5dffda94d9a",
+        // "status": "exiting",
+        "status": "entered",
+        "location": "grid"
+    };
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
 
       return {
         state: Flip.getState(q(".box")),
-        items: non_moved_items,
+        items: [ ...non_removed_items, new_item],
       };
     }});
   }, [q]);
@@ -268,7 +354,8 @@ export default function Page({ products }) {
     const duration = 0.5;
 
     // get the items that are exiting in this batch
-    const moved = layout.items.filter(item => item.location === "cart");
+    // const moved = layout.items.filter(item => item.location === "cart");
+    const moved = layout.items.filter(item => item.status === "exiting");
     ctx.add(() => {
       
       // Flip.from returns a timeline
@@ -458,6 +545,100 @@ export default function Page({ products }) {
   };
 
   // --------------------------------------------
+  // --------------------------------------------
+
+  const applyFilter2 = ({ type, option }) => {
+
+    // -type: 'category' | 'gender' | 'price'
+    // -option: 'shoes' (type: 'category')
+
+    // -Keep height of grid constant through FLIP animation:
+    const grid_items = document.querySelector('#grid-items');
+    console.log('grid items: ', grid_items);
+    const grid_height = grid_items.offsetHeight;
+    grid_items.style.height = `${grid_height}px`;
+
+    // - - - - - - - - - - - - - - - - - - - - - 
+
+    setFilter((prev) => { 
+      
+
+      let new_filter;
+      if (prev.in_init_state[type]) {
+        // -uncheck all and only check first selection:
+        new_filter = { 
+          ...prev, 
+          [type]: new Set([option]), 
+          in_init_state: { ...prev.in_init_state, [type]: false },
+        };
+
+      } else { // general (not first check and not uncheck all in group)
+        let set = structuredClone(prev[type]);
+        if ( set.has(option))
+          set.delete(option);
+        else 
+          set.add(option);
+
+        // all unchecked in group => check all in group!
+        // -there is no instance where you would want to unselect all (e.g. shoes from no-genders)
+        if( set.size === 0 ) {
+          if (type === 'category') {
+            set = new Set(categories);
+          } else if (type === 'gender') {
+            set = new Set(genders); 
+          } else if (type === 'price') {
+            set = new Set(prices); 
+          }
+        }
+
+        new_filter = { ...prev, [type]: set };
+      }
+
+      // -the callback passed into setFilter() is run asynchronously.
+      // -We need the value of new_filter immediately inside setLayout()'s callback.
+      // -Hence, just plop setLayout() right here.
+      setLayout((prev_layout) => { 
+  
+        const prev_items = prev_layout.items;  
+        
+        // -step 4:
+        const new_items = prev_items.map(prev_item => {
+  
+          const { product } = prev_item;
+  
+          const category = product['category'];
+          const gender   = product['gender'];
+          const price    = product['price']; 
+  
+          const category_set = new_filter['category'];
+          const gender_set   = new_filter['gender'];
+          const price_set    = new_filter['price'];
+          
+          //  -Filter on intersection of all filters 
+          if (category_set.has(category) && gender_set.has(gender) /*&& price_set.has(price) */ ) {
+            return { ...prev_item, status: 'entered' };
+          }
+          else { 
+            return { ...prev_item, status: 'exiting' };
+          }
+        });
+  
+        const new_layout = {
+          items: new_items,
+          state: Flip.getState(q('.box')),
+        };
+  
+        return new_layout;
+      });
+
+      return new_filter;
+    });
+
+    // - - - - - - - - - - - - - - - - - - - - - 
+
+  };
+
+  // --------------------------------------------
 
   const [show_filters, setShowFilters] = useState(true);
   const filters_container_ref = useRef(null);
@@ -469,7 +650,56 @@ export default function Page({ products }) {
 
   // --------------------------------------------
 
-  const applySort = ({ title, direction  }) => {}
+  const applySort = ({ title, sub_title, direction  }) => {
+    //
+    // { title: string, sub_title: string, direction: string }
+    //    -title:       'Price' | 'Name'
+    //    -sub_title:   'low-high' | 'high-low' | 'A-Z' | 'Z-A'
+    //    -dierction:   'ASC' | 'DESC'
+
+    console.log('applySort()');
+
+    setSortType({ title, sub_title, direction });
+
+    // Step 1: Ensure grid items heigh is explicitly set to hard coded values
+
+
+
+    // Step 2: Update layout state by sorting the currently status: 'entered' items.
+
+
+
+    // UPDATE - Filter / Sort updates data from backend
+    //  -This is required because we cannot realistically load
+    //    in all the products on page load - too many products.
+    //  -We need to initially load in a subset of the products
+    //   and then when the user applies a filter, we need to
+    //   do two things:
+    //    --1. hit backend to get products from DB with filter applied.
+    //    --2. when updated products come back to frontend we need to
+    //         compare the previous set of products with the new set of products
+    //         and modify layout.items by:
+    //      ---2.a: Removing items that are not in new set.
+    //      ---2.b: Add items that are not in old set.
+    //  -Sorting also requires the same logic because if you sort then 
+    //   it is likely that some of the products that will be on first page
+    //   where not even retrieved from initial page load.
+    //
+    // NOTES:
+    //  -FLIP makes this different from standard React flow of 
+    //   just replacing the previous products state with whatever
+    //   comes from backend because:
+    //    --We need to follow the setLayoutEffect() flow by keeping the 
+    //      previous items in the layout.items array
+    //      so that they can animate from their previous place to another.
+    //  -If you were to just replace all of them, then the FLIP animation
+    //   will just animate all of them out and the animate all the new ones in.
+    //  -But the objective here is to convey to the user that the ones that are 
+    //   still on the screen have only moved place.
+
+
+
+  };
 
   // --------------------------------------------
 
@@ -477,7 +707,7 @@ export default function Page({ products }) {
     <div id="grid-container" ref={container_ref} >
 
       <div id="grid-left" ref={filters_container_ref}>
-        <Filters { ...{ filter,  applyFilter, categories, genders, prices,  } } />
+        <Filters { ...{ filter,  categories, genders, prices,  } } applyFilter={applyFilter2} />
       </div>
 
       <div id="grid-right" ref={grid_container_ref}>
@@ -487,7 +717,7 @@ export default function Page({ products }) {
           addToCartAnim, 
           setShowFilters, 
           filters_container_ref, grid_container_ref, container_ref,
-          sort_type, setSortType
+          sort_type, applySort
         } } />
       </div>
 

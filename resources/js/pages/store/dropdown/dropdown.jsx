@@ -16,12 +16,15 @@ const sort_options_arr = [
 export default function Dropdown({
   // updateProducts, 
   sort_type,
-  setSortType
+  applySort
 }) {
 
   // --------------------------------------------
 
-  const chooseSort = (sort_type, idx) => {
+  const chooseSort = (sort_obj, idx) => {
+    //
+    // sort_obj:  { title: string, sub_title: string, direction: string }
+    //
 
     disableClick(); // chooseSort() is run along with hideSortDropdown() => enableClick() run on completion of animation
 
@@ -50,8 +53,8 @@ export default function Dropdown({
       },
     });
 
-    // update sort state: 
-    setSortType(sort_type);
+    // update sort state and update layout.items state which triggers FLIP animation in useLayoutEffect(): 
+    applySort(sort_obj);
 
     // updateProducts({ sort_type });
   };

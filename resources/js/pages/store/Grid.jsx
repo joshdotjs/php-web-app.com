@@ -11,15 +11,9 @@ export default function Grid({
   refs,
   layout,
   addToCartAnim,
-
-  show_filters,
-  setShowFilters,
-  filters_container_ref,
-  grid_container_ref,
-  container_ref,
-
-  sort_type,
-  setSortType,
+  show_filters, setShowFilters,
+  filters_container_ref, grid_container_ref, container_ref,
+  sort_type, applySort,
 }) {
 
   // --------------------------------------------
@@ -120,7 +114,7 @@ export default function Grid({
             </svg>
           </div>
 
-          <Dropdown { ...{ sort_type, setSortType } } />
+          <Dropdown { ...{ sort_type, applySort } } />
         
         </div>
 
