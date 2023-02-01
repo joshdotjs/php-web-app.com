@@ -162,7 +162,7 @@ export default function Cart() {
   const [layout, setLayout] = useState(() => {
 
     const cart = getCartLS();
-    console.log('cart: ', cart);
+    // console.log('cart: ', cart);
 
     let init_items = [];
     if (cart?.length > 0)
