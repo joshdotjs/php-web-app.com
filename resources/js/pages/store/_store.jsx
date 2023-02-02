@@ -167,10 +167,12 @@ export default function Page({ products }) {
   // --------------------------------------------
   // --------------------------------------------
 
+  const product2layoutItem = ({ product, variants }) => ({ product, variants, id: uuid(), status: "entered", location: 'grid' });
+
   // STEP 1: Set up layout in state with grid items initialized
   const [layout, setLayout] = useState(() => ({
     items: products.map(({product, variants}) => {
-      return { product, variants, id: uuid(), status: "entered", location: 'grid' };
+      return product2layoutItem({ product, variants });
     }),
     state: undefined
     }
@@ -268,8 +270,9 @@ export default function Page({ products }) {
     const duration = 0.5;
 
     // get the items that are exiting in this batch
-    const moved = layout.items.filter(item => item.location === "cart");
-    // const moved = layout.items.filter(item => item.status === "exiting");
+    // const moved = layout.items.filter(item => item.location === "cart");
+    const moved = layout.items.filter(item => item.status === "exiting");
+
     ctx.add(() => {
       
       // Flip.from returns a timeline
@@ -544,47 +547,39 @@ export default function Page({ products }) {
     
     console.clear();
     const filtered_items_from_backend = await getProducts();
-   
     
-    // HERE
-    // HERE
-    // HERE
-    // HERE
-    // HERE
+   
     //  -Take the non_removed_items and compare it agains the items returned from the backend endpoint.
     //  -Take the union of the two arrays by appending onto the end of the array.
-    //    --The reason we need to do this is because for the new items that are retrieved from the backend there
-    //      be some that are already on the screen.
-    //  -Test by just applending a set of dummy data onto the array.
+    //    --The reason we need to do this is because for the new items that are retrieved from 
+    //      the backend there may be some that are already on the screen.
 
-    // -compare status_updated_items with filtered_items_from_backend
-    // -any items in filtered_items_from_backend that are not in status_updated_items then add them
-    
+    // -O(n^2) comparison, but these two arrays will always be small (~10 elements in each array  =>  ~100 itterations)
+    let filtered_items_from_backend_not_currently_in_UI = [];
+    filtered_items_from_backend.forEach((item_from_backend) => {
 
-    // -O(n^2) comparison, but these two arrays will always be small (much less than 100 => < 10k itterations, more like 20 elements in each array => 400 itterations...)
+      let is_item_in_UI = false;
+      status_updated_items.forEach((status_updated_item) => {
+        if ( status_updated_item.product.id === item_from_backend.product.id )
+          is_item_in_UI = true;
+      });
 
-    // let filtered_items_from_backend_not_currently_in_UI = [];
-    // filtered_items_from_backend.forEach((item_from_backend) => {
+      if (!is_item_in_UI) {
+        filtered_items_from_backend_not_currently_in_UI.push(item_from_backend);
+      }
+    });
 
+    // console.log('filtered items (from backend): ', filtered_items_from_backend);
+    // console.log('status_updated_items: ', status_updated_items);
+    // console.log('filtered_items_from_backend_not_currently_in_UI: ', filtered_items_from_backend_not_currently_in_UI);
 
-    //   let is_item_in_UI = false;
-    //   status_updated_items.forEach((status_updated_item) => {
-
-
-    //     if ( status_updated_item.id )
-    //       is_item_in_UI = true;
-    //   })
-
-    // });
-
-
-    console.log('filtered items (from backend): ', filtered_items_from_backend);
-    console.log('status_updated_items: ', status_updated_items);
+    const new_items_from_backend = filtered_items_from_backend_not_currently_in_UI.map(({product, variants}) => product2layoutItem({ product, variants }));
+    console.log('new_items_from_backend: ', new_items_from_backend);
     
     // - - - - - - - - - - - - - - - - - - - - - 
 
     const new_layout = {
-      items: status_updated_items, // items with status property updated
+      items: [ ...status_updated_items, ...new_items_from_backend], // items with status property updated
       state: Flip.getState(q('.box')),
     };
     setLayout(new_layout);
