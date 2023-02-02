@@ -434,26 +434,27 @@ export default function Page({ products, num_total_products }) {
 
     // - - - - - - - - - - - - - - - - - - - - - 
     
-    const getProducts = async () => {
-      // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products`;
-      const url = `${API_URL_LARAVEL}/api/filter-products`;
-      const body = {
-        categories: set2arr(new_filter?.category), 
-        gender: set2arr(new_filter?.gender),
-      };
+    // const getProducts = async () => {
+    //   // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products`;
+    //   const url = `${API_URL_LARAVEL}/api/filter-products`;
+    //   const body = {
+    //     categories: set2arr(new_filter?.category), 
+    //     gender: set2arr(new_filter?.gender),
+    //     page_num,
+    //   };
       
-      // const [products, error] = await fetchGET2({ url });
-      const [products, error] = await fetchPOST2({ url, body });
-      if (error) {
-        debugger;
-        alert(error);
-      } else {
-        return products;
-      }
-    };
+    //   // const [products, error] = await fetchGET2({ url });
+    //   const [products, error] = await fetchPOST2({ url, body });
+    //   if (error) {
+    //     debugger;
+    //     alert(error);
+    //   } else {
+    //     return products;
+    //   }
+    // };
     
     console.clear();
-    const filtered_items_from_backend = await getProducts();
+    const filtered_items_from_backend = await getProducts({ filter: new_filter, page_num });
     
    
     //  -Take the non_removed_items and compare it agains the items returned from the backend endpoint.
@@ -487,8 +488,6 @@ export default function Page({ products, num_total_products }) {
 
     // -We only want 6 items per page
     const num_empty_cells = 6 - status_updated_items.filter(({status}) => status !== 'exiting').length;
-    // -TODO: 
-    //  --
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
@@ -571,6 +570,63 @@ export default function Page({ products, num_total_products }) {
 
   // --------------------------------------------
 
+  const [page_num, setPageNum] = useState(0); // 0 ... N-1
+
+  const getProducts = async ({ filter, page_num }) => {
+    // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products`;
+    const url = `${API_URL_LARAVEL}/api/filter-products`;
+    const body = {
+      categories: set2arr(filter?.category), 
+      gender: set2arr(filter?.gender),
+      page_num,
+    };
+    
+    // const [products, error] = await fetchGET2({ url });
+    const [products, error] = await fetchPOST2({ url, body });
+    if (error) {
+      debugger;
+      alert(error);
+    } else {
+      return products;
+    }
+  };
+  
+  const updatePageNum = async (new_page_num) => {
+
+    // - - - - - - - - - - - - - - - - - - - - - 
+
+    // -Keep height of grid constant through FLIP animation:
+    const grid_items = document.querySelector('#grid-items');
+    console.log('grid items: ', grid_items);
+    const grid_height = grid_items.offsetHeight;
+    grid_items.style.height = `${grid_height}px`;
+
+    // - - - - - - - - - - - - - - - - - - - - - 
+
+    const filtered_items_from_backend = await getProducts({ filter, page_num: new_page_num });
+
+    // - - - - - - - - - - - - - - - - - - - - - 
+
+    const new_items_from_backend = filtered_items_from_backend.map(({product, variants}) => product2layoutItem({ product, variants }));
+
+    // - - - - - - - - - - - - - - - - - - - - - 
+
+    const new_layout = {
+      items: new_items_from_backend,
+      state: Flip.getState(q('.box')),
+    };
+    setLayout(new_layout);
+
+    // - - - - - - - - - - - - - - - - - - - - - 
+
+    setPageNum(new_page_num);
+
+    // - - - - - - - - - - - - - - - - - - - - - 
+
+  };
+
+  // --------------------------------------------
+
   return (
     <div id="grid-container" ref={container_ref} >
 
@@ -586,7 +642,7 @@ export default function Page({ products, num_total_products }) {
           setShowFilters, 
           filters_container_ref, grid_container_ref, container_ref,
           sort_type, applySort,
-          num_total_products
+          num_total_products, page_num, updatePageNum
         } } />
       </div>
 

@@ -22,6 +22,8 @@ class ProductController extends Controller
 
   public function filterProducts(Request $req) {
 
+    $page_num = $req['page_num'];
+
     // SELECT * FROM ourlaravelapp.products
     // WHERE category IN ("shoes", "clothes");
     // $products = DB::table('products')
@@ -30,7 +32,7 @@ class ProductController extends Controller
     $products = DB::table('products')
       ->whereIn('category', $req['categories'])
       ->whereIn('gender', $req['gender'])
-      ->skip(0)
+      ->skip($page_num * 6)
       ->take(6)
       ->get();
 
