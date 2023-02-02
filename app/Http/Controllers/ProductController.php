@@ -29,7 +29,9 @@ class ProductController extends Controller
     //   ->get();
     $products = DB::table('products')
       ->whereIn('category', $req['categories'])
-      ->whereIn('gender', $req['gender'])     
+      ->whereIn('gender', $req['gender'])
+      ->skip(0)
+      ->take(6)
       ->get();
 
     // -Each row stores product data with an array storing the variants for that rows products

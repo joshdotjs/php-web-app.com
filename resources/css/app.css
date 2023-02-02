@@ -6,6 +6,7 @@
 
 :root {
   --text-color-primary: #111111;
+  --navbar-height: 120px;
 }
 
 * { 
@@ -19,26 +20,18 @@ body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-header#navbar {
-  position: relative;
-  z-index: 9; /* blur-overlay: 10 */
+header#navbar {  position: relative;  z-index: 9; /* blur-overlay: 10 */
 }
 
-aside#navdrawer {
-  position: fixed;
-  z-index: 9; /* blur-overlay: 10 */
+aside#navdrawer {  position: fixed;  z-index: 9; /* blur-overlay: 10 */
 }
 
-aside#cart {
-  position: relative;
-  z-index: 9; /* blur-overlay: 10 */
+aside#cart {  position: relative;  z-index: 9; /* blur-overlay: 10 */
 }
 
 #root-main {
   overflow: hidden;
 }
-#root-main > main#page {
-  position: relative;
-  z-index: 0;
-  padding: 120px 0;
+#root-main > main#page {  position: relative;  z-index: 0;
+  padding: var(--navbar-height) 0;
 }

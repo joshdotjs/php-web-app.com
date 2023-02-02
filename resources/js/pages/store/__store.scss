@@ -17,6 +17,8 @@
     //   grid-template-columns: 200px 1fr;
     // }
 
+    // ==========================================
+
     #grid-left  {
       // grid-area: A;
       @media (max-width: #{$break}) {
@@ -31,20 +33,58 @@
         transform: translateX(2.5%)
       }
     }
+
+    // ==========================================
+
     #grid-right {
       // grid-area: B;
 
       border: dashed red 5px;
       width: 100%;
+      height: calc(100vh - var(--navbar-height));
 
+      display: grid;
+      grid-template-rows: 150px 1fr 150px;
+
+      // ----------------------------------------
+
+      // top row is the filter buttons
+      #filter-button-row {
+        grid-column: 1 / -1;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        #show-filters-button {
+          // background: lightgreen;
+          // outline: solid lightgreen 2px;
+          display: inline-flex;
+          align-items: center;
+          height: 100%;
+          cursor: pointer;
+
+          svg { margin-left: $ml; }
+        }
+      }
+    
+      
+      // ----------------------------------------
+      
       ul#grid-items { 
         border: solid black 1px;
         width: 100%;
-
+        
         position: relative;
         // z-index: 0;
         
         display: grid;
+        @media (max-width: #{$break}) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        @media (min-width: #{$break}) {
+          grid-template-columns: repeat(3, 1fr);
+        }
         // justify-items: stretch;
         // align-items: stretch;
 
@@ -56,36 +96,7 @@
         max-width: 1200px;
         margin: 0 auto;
         
-        // top row is the filter buttons
-        grid-template-rows: 150px;
-        #filter-button-row {
-          grid-column: 1 / -1;
-
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-
-          #show-filters-button {
-            // background: lightgreen;
-            // outline: solid lightgreen 2px;
-            display: inline-flex;
-            align-items: center;
-            height: 100%;
-            cursor: pointer;
-
-            svg { margin-left: $ml; }
-          }
-        }
-      
-        @media (max-width: #{$break}) {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        @media (min-width: #{$break}) {
-          grid-template-columns: repeat(3, 1fr);
-        }
-        
-      
-      
+            
         li.box { 
           // position: relative; 
           outline: dashed hsl(33, 100%, 50%, 1) 1px;
@@ -96,7 +107,20 @@
           div.box-child {}
         }
       } // </ Grid>   #grid-items 
+      
+      // ----------------------------------------
+      
+      #pagination {
+        // outline: solid darkorchid 5px;
+        grid-column: 1 / -1;
+        height: 150px;
+      }
+
+      // ----------------------------------------
 
     }
+
+    // ==========================================
+    
   }
 }

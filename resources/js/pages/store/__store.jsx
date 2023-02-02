@@ -12,14 +12,18 @@ import './__store.scss';
 const main_root = document.querySelector('#root-main');
 if(main_root){
 
-  window.API_URL_NODE         = main_root.dataset.apiUrlNode;
-  window.API_URL_LARAVEL = main_root.dataset.apiUrlLaravel;
-  const products_SSR  = JSON.parse(main_root.dataset.products); // encodes variants
+  window.API_URL_NODE      = main_root.dataset.apiUrlNode;
+  window.API_URL_LARAVEL   = main_root.dataset.apiUrlLaravel;
+  const products_SSR       = JSON.parse(main_root.dataset.products); // encodes variants
+  const num_total_products = main_root.dataset.numTotalProducts;
   main_root.removeAttribute('data-products');
 
   createRoot(main_root).render(
     <Layout name="store">
-      <Page products={products_SSR} />
+      <Page 
+        products={products_SSR} 
+        {...{num_total_products}} 
+      />
     </Layout>
   );
 }

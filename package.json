@@ -20,6 +20,7 @@
     },
     "dependencies": {
         "@emotion/react": "^11.10.5",
+        "@heroicons/react": "^2.0.14",
         "@mantine/core": "^5.10.2",
         "@mantine/dates": "^5.10.2",
         "@mantine/hooks": "^5.10.2",

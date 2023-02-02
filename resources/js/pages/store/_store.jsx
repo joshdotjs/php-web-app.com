@@ -30,7 +30,7 @@ CustomWiggle.create("cartButtonWiggle", { wiggles: 8, type: "easeOut" });
 
 // ==============================================
 
-export default function Page({ products }) {
+export default function Page({ products, num_total_products }) {
 
   // --------------------------------------------
 
@@ -362,101 +362,7 @@ export default function Page({ products }) {
 
   // --------------------------------------------
 
-  const applyFilter = ({ type, option }) => {
-
-    // -type: 'category' | 'gender' | 'price'
-    // -option: 'shoes' (type: 'category')
-
-    // -Keep height of grid constant through FLIP animation:
-    const grid_items = document.querySelector('#grid-items');
-    console.log('grid items: ', grid_items);
-    const grid_height = grid_items.offsetHeight;
-    grid_items.style.height = `${grid_height}px`;
-
-    // - - - - - - - - - - - - - - - - - - - - - 
-
-    setFilter((prev) => { 
-      
-
-      let new_filter;
-      if (prev.in_init_state[type]) {
-        // -uncheck all and only check first selection:
-        new_filter = { 
-          ...prev, 
-          [type]: new Set([option]), 
-          in_init_state: { ...prev.in_init_state, [type]: false },
-        };
-
-      } else { // general (not first check and not uncheck all in group)
-        let set = structuredClone(prev[type]);
-        if ( set.has(option))
-          set.delete(option);
-        else 
-          set.add(option);
-
-        // all unchecked in group => check all in group!
-        // -there is no instance where you would want to unselect all (e.g. shoes from no-genders)
-        if( set.size === 0 ) {
-          if (type === 'category') {
-            set = new Set(categories);
-          } else if (type === 'gender') {
-            set = new Set(genders); 
-          } else if (type === 'price') {
-            set = new Set(prices); 
-          }
-        }
-
-        new_filter = { ...prev, [type]: set };
-      }
-
-      // -the callback passed into setFilter() is run asynchronously.
-      // -We need the value of new_filter immediately inside setLayout()'s callback.
-      // -Hence, just plop setLayout() right here.
-      setLayout((prev_layout) => { 
-  
-        const prev_items = prev_layout.items;  
-        
-        // -step 4:
-        const new_items = prev_items.map(prev_item => {
-  
-          const { product } = prev_item;
-  
-          const category = product['category'];
-          const gender   = product['gender'];
-          const price    = product['price']; 
-  
-          const category_set = new_filter['category'];
-          const gender_set   = new_filter['gender'];
-          const price_set    = new_filter['price'];
-          
-          //  -Filter on intersection of all filters 
-          if (category_set.has(category) && gender_set.has(gender) /*&& price_set.has(price) */ ) {
-            return { ...prev_item, status: 'entered' };
-          }
-          else { 
-            return { ...prev_item, status: 'exiting' };
-          }
-        });
-  
-        const new_layout = {
-          items: new_items,
-          state: Flip.getState(q('.box')),
-        };
-  
-        return new_layout;
-      });
-
-      return new_filter;
-    });
-
-    // - - - - - - - - - - - - - - - - - - - - - 
-
-  };
-
-  // --------------------------------------------
-  // --------------------------------------------
-
-  const applyFilter2 = async ({ type, option }) => {
+  const applyFilter = async ({ type, option }) => {
 
     // -type: 'category' | 'gender' | 'price'
     // -option: 'shoes' (type: 'category')
@@ -579,8 +485,15 @@ export default function Page({ products }) {
     
     // - - - - - - - - - - - - - - - - - - - - - 
 
+    // -We only want 6 items per page
+    const num_empty_cells = 6 - status_updated_items.filter(({status}) => status !== 'exiting').length;
+    // -TODO: 
+    //  --
+
+    // - - - - - - - - - - - - - - - - - - - - - 
+
     const new_layout = {
-      items: [ ...status_updated_items, ...new_items_from_backend], // items with status property updated
+      items: [ ...status_updated_items, ...new_items_from_backend.slice(0, num_empty_cells)], // items with status property updated
       state: Flip.getState(q('.box')),
     };
     setLayout(new_layout);
@@ -662,7 +575,7 @@ export default function Page({ products }) {
     <div id="grid-container" ref={container_ref} >
 
       <div id="grid-left" ref={filters_container_ref}>
-        <Filters { ...{ filter,  categories, genders, prices,  } } applyFilter={applyFilter2} />
+        <Filters { ...{ filter,  categories, genders, prices, applyFilter } } />
       </div>
 
       <div id="grid-right" ref={grid_container_ref}>
@@ -672,7 +585,8 @@ export default function Page({ products }) {
           addToCartAnim, 
           setShowFilters, 
           filters_container_ref, grid_container_ref, container_ref,
-          sort_type, applySort
+          sort_type, applySort,
+          num_total_products
         } } />
       </div>
 
