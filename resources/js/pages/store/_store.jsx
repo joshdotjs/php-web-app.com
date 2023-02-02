@@ -316,13 +316,16 @@ export default function Page({ products, num_total_products }) {
 
   // --------------------------------------------
 
-  const getProducts = async ({ filter, page_num }) => {
+  const getProducts = async ({ filter, page_num, sort_type }) => {
     // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products`;
     const url = `${API_URL_LARAVEL}/api/filter-products`;
+    const sort_col = {'Name':  'title', 'Price': 'price'}[sort_type.title];
     const body = {
       categories: set2arr(filter?.category), 
-      gender: set2arr(filter?.gender),
+      genders: set2arr(filter?.gender),
       page_num,
+      sort_direction: sort_type.direction,
+      sort_col,
     };
   
     const [products, error] = await fetchPOST2({ url, body });
@@ -436,7 +439,7 @@ export default function Page({ products, num_total_products }) {
     // - - - - - - - - - - - - - - - - - - - - - 
 
     console.clear();
-    const filtered_items_from_backend = await getProducts({ filter: new_filter, page_num });
+    const filtered_items_from_backend = await getProducts({ filter: new_filter, page_num, sort_type });
     
    
     //  -Take the non_removed_items and compare it agains the items returned from the backend endpoint.
@@ -495,58 +498,58 @@ export default function Page({ products, num_total_products }) {
   
   // --------------------------------------------
 
-  const [sort_type, setSortType] = useState({ title: '',  sub_title: '', direction: '', }); // e.g. { title: 'Price',  sub_title: 'High-Low', type: 'DESC'  }
+  const [sort_type, setSortType] = useState({ 
+    title: 'Name',  
+    sub_title: 'A-Z', 
+    direction: 'DESC', 
+  }); // e.g. { title: 'Price',  sub_title: 'High-Low', type: 'DESC'  }
 
   // --------------------------------------------
 
-  const applySort = ({ title, sub_title, direction  }) => {
+  const applySort = async ({ title, sub_title, direction  }) => {
     //
     // { title: string, sub_title: string, direction: string }
     //    -title:       'Price' | 'Name'
     //    -sub_title:   'low-high' | 'high-low' | 'A-Z' | 'Z-A'
     //    -dierction:   'ASC' | 'DESC'
 
-    console.log('applySort()');
+    // - - - - - - - - - - - - - - - - - - - - - 
+    
+    lg('applySort()');
 
-    setSortType({ title, sub_title, direction });
+    // - - - - - - - - - - - - - - - - - - - - - 
 
-    // Step 1: Ensure grid items heigh is explicitly set to hard coded values
+    // -Keep height of grid constant through FLIP animation:
+    const grid_items = document.querySelector('#grid-items');
+    console.log('grid items: ', grid_items);
+    const grid_height = grid_items.offsetHeight;
+    grid_items.style.height = `${grid_height}px`;
 
+    // - - - - - - - - - - - - - - - - - - - - - 
 
+    const new_sort_type = { title, sub_title, direction };
 
-    // Step 2: Update layout state by sorting the currently status: 'entered' items.
+    // - - - - - - - - - - - - - - - - - - - - - 
 
+    const filtered_items_from_backend = await getProducts({ filter, page_num, sort_type: new_sort_type });
 
+    // - - - - - - - - - - - - - - - - - - - - - 
 
-    // UPDATE - Filter / Sort updates data from backend
-    //  -This is required because we cannot realistically load
-    //    in all the products on page load - too many products.
-    //  -We need to initially load in a subset of the products
-    //   and then when the user applies a filter, we need to
-    //   do two things:
-    //    --1. hit backend to get products from DB with filter applied.
-    //    --2. when updated products come back to frontend we need to
-    //         compare the previous set of products with the new set of products
-    //         and modify layout.items by:
-    //      ---2.a: Removing items that are not in new set.
-    //      ---2.b: Add items that are not in old set.
-    //  -Sorting also requires the same logic because if you sort then 
-    //   it is likely that some of the products that will be on first page
-    //   where not even retrieved from initial page load.
-    //
-    // NOTES:
-    //  -FLIP makes this different from standard React flow of 
-    //   just replacing the previous products state with whatever
-    //   comes from backend because:
-    //    --We need to follow the setLayoutEffect() flow by keeping the 
-    //      previous items in the layout.items array
-    //      so that they can animate from their previous place to another.
-    //  -If you were to just replace all of them, then the FLIP animation
-    //   will just animate all of them out and the animate all the new ones in.
-    //  -But the objective here is to convey to the user that the ones that are 
-    //   still on the screen have only moved place.
+    const new_items_from_backend = filtered_items_from_backend.map(({product, variants}) => product2layoutItem({ product, variants }));
 
+    // - - - - - - - - - - - - - - - - - - - - - 
 
+    const new_layout = {
+      items: new_items_from_backend,
+      state: Flip.getState(q('.box')),
+    };
+    setLayout(new_layout);
+
+    // - - - - - - - - - - - - - - - - - - - - - 
+    
+    setSortType(new_sort_type);
+
+    // - - - - - - - - - - - - - - - - - - - - - 
 
   };
 
@@ -566,7 +569,7 @@ export default function Page({ products, num_total_products }) {
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
-    const filtered_items_from_backend = await getProducts({ filter, page_num: new_page_num });
+    const filtered_items_from_backend = await getProducts({ filter, page_num: new_page_num, sort_type });
 
     // - - - - - - - - - - - - - - - - - - - - - 
 

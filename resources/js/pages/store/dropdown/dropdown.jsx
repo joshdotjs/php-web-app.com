@@ -5,10 +5,10 @@ import { disableClick, enableClick } from '../../../util/dom';
 // ==============================================
 
 const sort_options_arr = [
-  { title: 'Price',  sub_title: 'High-Low', type: 'DESC'  },
-  { title: 'Price',  sub_title: 'Low-High', type: 'ASC' },
-  { title: 'Name',   sub_title: 'A-Z',      type: 'ASC'  },
-  { title: 'Name',   sub_title: 'Z-A',      type: 'DESC' },
+  { title: 'Price',  sub_title: 'High-Low', direction: 'DESC'  },
+  { title: 'Price',  sub_title: 'Low-High', direction: 'ASC' },
+  { title: 'Name',   sub_title: 'A-Z',      direction: 'ASC'  },
+  { title: 'Name',   sub_title: 'Z-A',      direction: 'DESC' },
 ];
 
 // ==============================================
@@ -21,7 +21,7 @@ export default function Dropdown({
 
   // --------------------------------------------
 
-  const chooseSort = (sort_obj, idx) => {
+  const chooseSort = ({ title, sub_title, direction }, idx) => {
     //
     // sort_obj:  { title: string, sub_title: string, direction: string }
     //
@@ -54,7 +54,7 @@ export default function Dropdown({
     });
 
     // update sort state and update layout.items state which triggers FLIP animation in useLayoutEffect(): 
-    applySort(sort_obj);
+    applySort({ title, sub_title, direction });
 
     // updateProducts({ sort_type });
   };

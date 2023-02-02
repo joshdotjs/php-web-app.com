@@ -22,7 +22,11 @@ class ProductController extends Controller
 
   public function filterProducts(Request $req) {
 
-    $page_num = $req['page_num'];
+    $page_num       = $req['page_num'];
+    $sort_col       = $req['sort_col'];
+    $sort_direction = $req['sort_direction'];
+    $categories     = $req['categories'];
+    $genders        = $req['genders'];
 
     // SELECT * FROM ourlaravelapp.products
     // WHERE category IN ("shoes", "clothes");
@@ -30,10 +34,11 @@ class ProductController extends Controller
     //   ->whereIn('category', ['accessories', 'clothes'])
     //   ->get();
     $products = DB::table('products')
-      ->whereIn('category', $req['categories'])
-      ->whereIn('gender', $req['gender'])
+      ->whereIn('category', $categories)
+      ->whereIn('gender', $genders)
       ->skip($page_num * 6)
       ->take(6)
+      ->orderBy($sort_col, $sort_direction)
       ->get();
 
     // -Each row stores product data with an array storing the variants for that rows products
