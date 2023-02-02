@@ -69,7 +69,7 @@ const root = document.querySelector('#react-root--auth-register-page');
 if(root){
 
   window.API_URL_NODE         = root.dataset.apiUrlNode;
-  window.API_URL_LARAVEL = root.dataset.apiUrlNodeLaravel;
+  window.API_URL_LARAVEL = root.dataset.apiUrlLaravel;
 
   createRoot(root).render(
     <CartContextProvider>

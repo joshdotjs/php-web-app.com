@@ -144,7 +144,7 @@ function Page({ id }) {
 const root = document.querySelector('#react-root--admin-order-details-page');
 if(root){
   window.API_URL_NODE         = root.dataset.apiUrlNode;
-  window.API_URL_LARAVEL = root.dataset.apiUrlNodeLaravel;
+  window.API_URL_LARAVEL = root.dataset.apiUrlLaravel;
   const id = root.dataset.id;
   createRoot(root).render(
     <Layout name="admin--order-details" restrict="admin">

@@ -12,7 +12,7 @@ const root = document.querySelector('#root-main--anim-orders');
 if(root) {
 
   window.API_URL_NODE         = root.dataset.apiUrlNode;
-  window.API_URL_LARAVEL = root.dataset.apiUrlNodeLaravel;
+  window.API_URL_LARAVEL = root.dataset.apiUrlLaravel;
   const orders_SSR = JSON.parse(root.dataset.orders);
 
   createRoot(root).render(

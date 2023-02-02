@@ -20,6 +20,48 @@ class ProductController extends Controller
 
   // ------------------------------------------
 
+  public function filterProducts(Request $req) {
+
+    function doImplode ($arr) {
+      $imploded = "'" . implode ( "', '", $arr ) . "'";
+      return  $imploded;
+    }
+
+    // $categories = $req['categories'];
+    // $imploded_categories = doImplode($categories);
+
+    // SELECT * FROM ourlaravelapp.products
+    // WHERE category IN ("shoes", "clothes");
+    // $products = DB::table('products')
+    //   ->whereIn('category', ['accessories', 'clothes'])
+    //   ->get();
+    $products = DB::table('products')
+      ->whereIn('category', $req['categories'])
+      ->get();
+
+    // -Each row stores product data with an array storing the variants for that rows products
+    $arr = [];
+    foreach($products as $product) {
+      $product_id = $product->id;
+      $variants = DB::table('variants')
+        ->where('product_id', '=', $product_id)
+        ->get(); 
+      array_push($arr, [
+        'product'  => $product,
+        'id'       => $product->id,
+        'title'    => $product->title,
+        'body'     => $product->body,
+        'price'    => $product->price,
+        'category' => $product->category,
+        'variants' => $variants
+      ]);
+    };
+
+    return $arr;
+  }
+
+  // ------------------------------------------
+
   public function createProduct(Request $req) {
 
     $user = $req->user();

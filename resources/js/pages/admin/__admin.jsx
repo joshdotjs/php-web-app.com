@@ -41,7 +41,7 @@ export default function Page() {
 const root = document.querySelector('#react-root--admin-page');
 if(root){
   window.API_URL_NODE         = root.dataset.apiUrlNode;
-  window.API_URL_LARAVEL = root.dataset.apiUrlNodeLaravel;
+  window.API_URL_LARAVEL = root.dataset.apiUrlLaravel;
   createRoot(root).render(
     <Layout name="admin" restrict="admin">
       <Page />

@@ -85,8 +85,10 @@ const fetchPOST2 = async ({url, body={}, method='POST', response_type='json', to
 
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
-  // myHeaders.append("Authorization", token); // NEXT
-  myHeaders.append("Authorization", `Bearer ${token}`); // LARAVEL
+  if (token) {
+    // myHeaders.append("Authorization", token); // NEXT
+    myHeaders.append("Authorization", `Bearer ${token}`); // LARAVEL
+  }
 
   const options = {
     method,
@@ -95,8 +97,6 @@ const fetchPOST2 = async ({url, body={}, method='POST', response_type='json', to
     // redirect: 'follow'
   };
 
-  console.log('options: ', options);
-  
   try {
 
     const resp = await fetch(url, options);

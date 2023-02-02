@@ -9,7 +9,7 @@ import Page from './_login';
 const root = document.querySelector('#react-root--auth-login-page');
 if(root){
   window.API_URL_NODE         = root.dataset.apiUrlNode;
-  window.API_URL_LARAVEL = root.dataset.apiUrlNodeLaravel;
+  window.API_URL_LARAVEL = root.dataset.apiUrlLaravel;
   createRoot(root).render(
     <Layout>
       <Page />

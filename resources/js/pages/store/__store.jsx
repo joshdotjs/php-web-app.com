@@ -13,7 +13,7 @@ const main_root = document.querySelector('#root-main');
 if(main_root){
 
   window.API_URL_NODE         = main_root.dataset.apiUrlNode;
-  window.API_URL_LARAVEL = main_root.dataset.apiUrlNodeLaravel;
+  window.API_URL_LARAVEL = main_root.dataset.apiUrlLaravel;
   const products_SSR  = JSON.parse(main_root.dataset.products); // encodes variants
   main_root.removeAttribute('data-products');
 

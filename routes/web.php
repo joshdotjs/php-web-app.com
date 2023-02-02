@@ -99,7 +99,7 @@ Route::get('/store', function () {
       'variants' => $variants
     ]);
   };
-  $variants = DB::table('variants')->get();
+  // $variants = DB::table('variants')->get();
 
   return view('store', [
     'products' => json_encode($arr), 

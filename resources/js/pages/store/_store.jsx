@@ -15,6 +15,8 @@ import Filters from './filters/filters';
 import { fireEvent } from '@/util/events';
 import { disableClick, enableClick } from '@/util/dom';
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
+import { fetchGET2, fetchPOST2 } from '@/util/fetch';
+import { set2arr } from '@/util/transform';
 
 gsap.registerPlugin(
   Flip, 
@@ -238,9 +240,31 @@ export default function Page({ products }) {
   // STEP 7: removeItems extracts the rows from layout.items that have location: 'cart' (as opposed to location: 'grid') - it does NOT remove filtered grid items.
   //  --Called at end of useLayoutEffect()
 
-  const removeItems = useCallback((items_to_remove) => {
+  const removeItems = useCallback(async (items_to_remove) => {
       
     if (!items_to_remove.length) return;
+
+
+    const getProducts = async () => {
+      // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products`;
+      const url = `${API_URL_LARAVEL}/api/filter-products`;
+      const body = {
+        categories: set2arr(filter.category), 
+      };
+
+      // const [products, error] = await fetchGET2({ url });
+      const [products, error] = await fetchPOST2({ url, body });
+      if (error) {
+        debugger;
+        alert(error);
+      } else {
+        return products;
+      }
+    };
+
+    const filtered_items = await getProducts();
+    
+
     
 
     // -this callback cannot be async => 
@@ -249,7 +273,6 @@ export default function Page({ products }) {
       const non_removed_items = prev.items.filter((item) => {
         return !items_to_remove.includes(item);
       });
-
 
       // HERE
       // HERE
@@ -264,66 +287,7 @@ export default function Page({ products }) {
 
       console.log('items_to_remove: ', items_to_remove);
       console.log('non_removed_items: ', non_removed_items);
-
-
-
-
-      const new_item = {
-        "product": {
-            "id": 2,
-            "created_at": "2023-01-30 04:44:34",
-            "updated_at": null,
-            "title": "Repel Miler",
-            "sub_title": "Men's Running Jacket",
-            "body": "An essential piece to your running game gets an update on the Nike Repel Miler Jacket. It's built to take on wet weather with a water-repellent design and a hood. The packable design features a look steeped in Nike's heritage. This product is made with 100% recycled polyester fibers.",
-            "category": "clothes",
-            "gender": "men",
-            "price": 9000,
-            "price_compare": 9000
-        },
-        "variants": [
-            {
-                "id": 19,
-                "created_at": "2023-01-30 04:44:34",
-                "updated_at": null,
-                "img": "/img/products/clothes/men/Repel-Miler-1.webp",
-                "size": "lg",
-                "color": "red",
-                "qty": 1,
-                "product_id": 2
-            },
-            {
-                "id": 20,
-                "created_at": "2023-01-30 04:44:34",
-                "updated_at": null,
-                "img": "/img/products/clothes/men/Repel-Miler-2.webp",
-                "size": "sm",
-                "color": "red",
-                "qty": 1,
-                "product_id": 2
-            },
-            {
-                "id": 21,
-                "created_at": "2023-01-30 04:44:34",
-                "updated_at": null,
-                "img": "/img/products/clothes/men/Repel-Miler-3.webp",
-                "size": "sm",
-                "color": "red",
-                "qty": 1,
-                "product_id": 2
-            }
-        ],
-        "id": "07011fbd-00db-422f-f962-f5dffda94d9a",
-        // "status": "exiting",
-        "status": "entered",
-        "location": "grid"
-    };
-
-
-    
-
-
-
+      console.log('filtered items (from backend): ', filtered_items);
 
 
 
@@ -336,7 +300,7 @@ export default function Page({ products }) {
 
       return {
         state: Flip.getState(q(".box")),
-        items: [ ...non_removed_items, new_item],
+        items: [ ...non_removed_items, ...filtered_items],
       };
     }});
   }, [q]);
