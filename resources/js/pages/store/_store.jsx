@@ -533,6 +533,7 @@ export default function Page({ products }) {
       const url = `${API_URL_LARAVEL}/api/filter-products`;
       const body = {
         categories: set2arr(new_filter?.category), 
+        gender: set2arr(new_filter?.gender),
       };
       
       // const [products, error] = await fetchGET2({ url });
