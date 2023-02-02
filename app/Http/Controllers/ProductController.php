@@ -22,9 +22,6 @@ class ProductController extends Controller
 
   public function filterProducts(Request $req) {
 
-    $categories = $req['categories'];
-
-
     // SELECT * FROM ourlaravelapp.products
     // WHERE category IN ("shoes", "clothes");
     // $products = DB::table('products')
@@ -32,6 +29,7 @@ class ProductController extends Controller
     //   ->get();
     $products = DB::table('products')
       ->whereIn('category', $req['categories'])
+      ->whereIn('gender', $req['gender'])     
       ->get();
 
     // -Each row stores product data with an array storing the variants for that rows products
