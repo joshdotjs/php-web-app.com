@@ -316,26 +316,31 @@ export default function Page({ products, num_total_products }) {
 
   // --------------------------------------------
 
+  const getProducts = async ({ filter, page_num }) => {
+    // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products`;
+    const url = `${API_URL_LARAVEL}/api/filter-products`;
+    const body = {
+      categories: set2arr(filter?.category), 
+      gender: set2arr(filter?.gender),
+      page_num,
+    };
+  
+    const [products, error] = await fetchPOST2({ url, body });
+    if (error) {
+      debugger;
+      alert(error);
+    } else {
+      return products;
+    }
+  };
+
+  // --------------------------------------------
+
   // const sizes = ['sm', 'lg'];
   // const [selected_sizes, setSelectedSizes] = useState(new Set());
   const categories = ['shoes', 'clothes', 'accessories'];
   const genders = ['men', 'women', 'unisex'];
   const prices = ['25-50', '50-100', '100-150', '150-200', '200+'];
-
-  // const filter = {
-  //   category: {
-  //     state: category_filter,
-  //     setState: setCategoryFilter,
-  //   },
-  //   gender: {
-  //     state: gender_filter,
-  //     setState: setGenderFilter,
-  //   },
-  //   price: {
-  //     state: price_filter,
-  //     setState: setPriceFilter
-  //   },
-  // };
 
   const [filter, setFilter] = useState({ // type => key, option => value
     category: new Set(categories),  // options 1
@@ -355,10 +360,6 @@ export default function Page({ products, num_total_products }) {
       setFilter((prev) => ({ ...prev, [type]: new Set([option]) }));
     },
   });
-
-  // useEffect(() => {
-  //   console.log('filter: ', filter);
-  // }, [filter]);
 
   // --------------------------------------------
 
@@ -433,26 +434,7 @@ export default function Page({ products, num_total_products }) {
     });
 
     // - - - - - - - - - - - - - - - - - - - - - 
-    
-    // const getProducts = async () => {
-    //   // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products`;
-    //   const url = `${API_URL_LARAVEL}/api/filter-products`;
-    //   const body = {
-    //     categories: set2arr(new_filter?.category), 
-    //     gender: set2arr(new_filter?.gender),
-    //     page_num,
-    //   };
-      
-    //   // const [products, error] = await fetchGET2({ url });
-    //   const [products, error] = await fetchPOST2({ url, body });
-    //   if (error) {
-    //     debugger;
-    //     alert(error);
-    //   } else {
-    //     return products;
-    //   }
-    // };
-    
+
     console.clear();
     const filtered_items_from_backend = await getProducts({ filter: new_filter, page_num });
     
@@ -571,25 +553,6 @@ export default function Page({ products, num_total_products }) {
   // --------------------------------------------
 
   const [page_num, setPageNum] = useState(0); // 0 ... N-1
-
-  const getProducts = async ({ filter, page_num }) => {
-    // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products`;
-    const url = `${API_URL_LARAVEL}/api/filter-products`;
-    const body = {
-      categories: set2arr(filter?.category), 
-      gender: set2arr(filter?.gender),
-      page_num,
-    };
-    
-    // const [products, error] = await fetchGET2({ url });
-    const [products, error] = await fetchPOST2({ url, body });
-    if (error) {
-      debugger;
-      alert(error);
-    } else {
-      return products;
-    }
-  };
   
   const updatePageNum = async (new_page_num) => {
 
