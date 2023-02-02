@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 
 // ==============================================
@@ -29,12 +29,19 @@ const Link = ({ page_num, updatePageNum, children }) => {
 
 // ==============================================
 
-export default function Pagination({ num_total_products, page_num, updatePageNum }) {
+export default function Pagination({ num_products, page_num, updatePageNum }) {
 
   // --------------------------------------------
 
-  console.log('page_num: ', page_num);
+  const products_per_page = 6;
+  const num_pages = Math.ceil(num_products / products_per_page)
 
+  // --------------------------------------------
+
+  let arr = [];
+  for (let i = 0; i <= num_pages; ++i) {
+    arr.push(<Fragment key={`pagination-link-${i}`}><Link {...{page_num, updatePageNum}}>{i + 1}</Link></Fragment>);
+  }
 
   // --------------------------------------------
 
@@ -60,7 +67,7 @@ export default function Pagination({ num_total_products, page_num, updatePageNum
         <div>
           <p className="text-sm text-gray-700">
             Showing <span className="font-medium">1</span> to <span className="font-medium">6</span> of{' '}
-            <span className="font-medium">{num_total_products}</span> results
+            <span className="font-medium">{num_products}</span> results
           </p>
         </div>
         <div>
@@ -74,16 +81,21 @@ export default function Pagination({ num_total_products, page_num, updatePageNum
             </a>
             {/* Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
            
-            <Link {...{page_num, updatePageNum}}>1</Link>
-            <Link {...{page_num, updatePageNum}}>2</Link>
+            {arr}
+            
 
+            {arr.length > 1 &&
+              <>
+                <span className="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">
+                  ...
+                </span>
 
-            <span className="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">
-              ...
-            </span>
+                <Link {...{page_num, updatePageNum}}>{num_pages + 1}</Link>
+              </>
+            }
 
-            <Link {...{page_num, updatePageNum}}>9</Link>
-            <Link {...{page_num, updatePageNum}}>10</Link>
+            
+
             <a
               // href="#"
               className="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"

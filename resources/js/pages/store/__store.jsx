@@ -14,15 +14,16 @@ if(main_root){
 
   window.API_URL_NODE      = main_root.dataset.apiUrlNode;
   window.API_URL_LARAVEL   = main_root.dataset.apiUrlLaravel;
+  window.PRODUCTS_PER_PAGE = 6;
   const products_SSR       = JSON.parse(main_root.dataset.products); // encodes variants
-  const num_total_products = main_root.dataset.numTotalProducts;
+  // const num_total_products = main_root.dataset.numTotalProducts;
   main_root.removeAttribute('data-products');
 
   createRoot(main_root).render(
     <Layout name="store">
       <Page 
         products={products_SSR} 
-        {...{num_total_products}} 
+        // {...{num_total_products}} 
       />
     </Layout>
   );
