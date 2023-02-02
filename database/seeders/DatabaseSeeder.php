@@ -127,6 +127,18 @@ class DatabaseSeeder extends Seeder
         'created_at'    => date("Y-m-d H:i:s")
       ]);
 
+      
+      DB::table('products')->insert([ // 9
+        'title'         => 'Vaporfly 2',
+        'sub_title'     => "Men's Road Racing Shoes",
+        'body'          => "Continue the next evolution of speed with racing shoes designed to help you chase new goals and records. The Nike Vaporfly 2 builds on a model loved by racers everywhere with a redesigned upper that aims to improve comfort and breathability. From a 10K to a marathon, this version maintains the responsive cushioning and secure support of the original to help push you toward your personal best.",
+        'category'      => 'shoes',
+        'gender'        => 'men',
+        'price'         => 26000,
+        'price_compare' => 26000,
+        'created_at'    => date("Y-m-d H:i:s")
+      ]);
+
       // ========================================
 
       // - - - - - - - - - - - - - - - - - - - - 
@@ -409,6 +421,43 @@ class DatabaseSeeder extends Seeder
         'img'        => 'img/products/shoes/women/vaporfly-2-4.jpeg',
         'size'       => 'sm',
         'color'      => 'red',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+
+      // - - - - - - - - - - - - - - - - - - - - 
+
+      // Variants for product 9: 
+
+      DB::table('variants')->insert([
+        'product_id' => 9,
+        'img'        => 'img/products/shoes/men/Vaporfly-2-1.webp',
+        'size'       => 'lg',
+        'color'      => 'blue',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+      DB::table('variants')->insert([
+        'product_id' => 9,
+        'img'        => 'img/products/shoes/men/Vaporfly-2-2.webp',
+        'size'       => 'lg',
+        'color'      => 'green',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+      DB::table('variants')->insert([
+        'product_id' => 9,
+        'img'        => 'img/products/shoes/men/Vaporfly-2-3.webp',
+        'size'       => 'lg',
+        'color'      => 'white',
+        'qty'        => 1,
+        'created_at' => date("Y-m-d H:i:s")
+      ]);
+      DB::table('variants')->insert([
+        'product_id' => 9,
+        'img'        => 'img/products/shoes/men/Vaporfly-2-4.jpeg',
+        'size'       => 'lg',
+        'color'      => 'grey',
         'qty'        => 1,
         'created_at' => date("Y-m-d H:i:s")
       ]);

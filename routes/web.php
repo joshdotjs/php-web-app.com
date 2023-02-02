@@ -96,11 +96,8 @@ Route::get('/store', function () {
   };
   // $variants = DB::table('variants')->get();
 
-  $num_total_products = DB::table('products')->count();
-
   return view('store', [
     'products'           => json_encode($arr), 
-    'num_total_products' => $num_total_products,
     'API_URL_NODE'       => env('API_URL_NODE'), // Cart: Checkout
     'API_URL_LARAVEL'    => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
