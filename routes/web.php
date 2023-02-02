@@ -71,7 +71,7 @@ Route::get('/admin/orders', function () {
 
 Route::get('/admin/orders/{id}', function ($id) {
   return view('admin-order-details', [
-    'API_URL_NODE'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
+    'API_URL_NODE'    => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
     'id'              => $id,
   ]);
@@ -91,11 +91,6 @@ Route::get('/store', function () {
       ->get(); 
     array_push($arr, [
       'product'  => $product,
-      'id'       => $product->id,
-      'title'    => $product->title,
-      'body'     => $product->body,
-      'price'    => $product->price,
-      'category' => $product->category,
       'variants' => $variants
     ]);
   };

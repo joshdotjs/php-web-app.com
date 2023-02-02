@@ -56,7 +56,7 @@ const removeFromCartLS = (variant_id) => {
   // lg('removeFromCart()');
 
   const prev_cart = getCartLS();
-  console.log('prev_cart: ', prev_cart);
+  // console.log('prev_cart: ', prev_cart);
 
   const new_cart = prev_cart.filter(line => line.variant.id !== variant_id);
   setCartLS(new_cart);
@@ -77,7 +77,7 @@ const updateNumCartItems = () => {
 
   const cart = getCartLS();
   const cart_count_span = cart_count.querySelector('span');
-  console.log('cart: ', cart);
+  // console.log('cart: ', cart);
   cart_count_span.textContent = cart?.length;
 
 };

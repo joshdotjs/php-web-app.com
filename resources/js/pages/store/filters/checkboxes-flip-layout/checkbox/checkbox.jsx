@@ -8,9 +8,9 @@ export default function Checkbox({ id, type, option, applyFilter, onChange, chec
 
   // --------------------------------------------
 
-  useEffect(() => {
-    console.log('id: ', id, '\checked: ', checked);
-  }, [checked]);
+  // useEffect(() => {
+  //   console.log('id: ', id, '\checked: ', checked);
+  // }, [checked]);
 
   // --------------------------------------------
   

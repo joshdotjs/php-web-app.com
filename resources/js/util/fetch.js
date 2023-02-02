@@ -79,9 +79,9 @@ const fetchPOST = async ({url, body={}, method='POST'}) => {
 
 const fetchPOST2 = async ({url, body={}, method='POST', response_type='json', token}) => {
 
-  console.log('url: ', url);
-  console.log('method: ', method);
-  console.log('body: ', body);
+  // console.log('url: ', url);
+  // console.log('method: ', method);
+  // console.log('body: ', body);
 
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -112,7 +112,7 @@ const fetchPOST2 = async ({url, body={}, method='POST', response_type='json', to
     } 
     else if (response_type === 'json') {
       data = await resp.json();
-      console.log('data: ', data);
+      // console.log('data: ', data);
     }
     else { 
       console.log('invalid response type: ');

@@ -208,9 +208,6 @@ export default function Page({ products }) {
 
   const remove = (row_idx) => { 
 
-    // set the item as exiting which will add a CSS class for display: none;
-    // item.status = "exiting"; // JOSH: This mutates the state!!!!
-    
     setLayout((prev_layout) => { // Update state without mutation:
 
       const { items: prev_items } = prev_layout;
@@ -240,32 +237,9 @@ export default function Page({ products }) {
   // STEP 7: removeItems extracts the rows from layout.items that have location: 'cart' (as opposed to location: 'grid') - it does NOT remove filtered grid items.
   //  --Called at end of useLayoutEffect()
 
-  const removeItems = useCallback(async (items_to_remove) => {
+  const removeItems = useCallback((items_to_remove) => {
       
     if (!items_to_remove.length) return;
-
-
-    const getProducts = async () => {
-      // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products`;
-      const url = `${API_URL_LARAVEL}/api/filter-products`;
-      const body = {
-        categories: set2arr(filter.category), 
-      };
-
-      // const [products, error] = await fetchGET2({ url });
-      const [products, error] = await fetchPOST2({ url, body });
-      if (error) {
-        debugger;
-        alert(error);
-      } else {
-        return products;
-      }
-    };
-
-    const filtered_items = await getProducts();
-    
-
-    
 
     // -this callback cannot be async => 
     setLayout((prev) => {{
@@ -274,33 +248,9 @@ export default function Page({ products }) {
         return !items_to_remove.includes(item);
       });
 
-      // HERE
-      // HERE
-      // HERE
-      // HERE
-      // HERE
-      //  -Take the non_removed_items and compare it agains the items returned from the backend endpoint.
-      //  -Take the union of the two arrays by appending onto the end of the array.
-      //    --The reason we need to do this is because for the new items that are retrieved from the backend there
-      //      be some that are already on the screen.
-      //  -Test by just applending a set of dummy data onto the array.
-
-      console.log('items_to_remove: ', items_to_remove);
-      console.log('non_removed_items: ', non_removed_items);
-      console.log('filtered items (from backend): ', filtered_items);
-
-
-
-
-
-
-
-
-
-
       return {
         state: Flip.getState(q(".box")),
-        items: [ ...non_removed_items, ...filtered_items],
+        items: non_removed_items,
       };
     }});
   }, [q]);
@@ -318,8 +268,8 @@ export default function Page({ products }) {
     const duration = 0.5;
 
     // get the items that are exiting in this batch
-    // const moved = layout.items.filter(item => item.location === "cart");
-    const moved = layout.items.filter(item => item.status === "exiting");
+    const moved = layout.items.filter(item => item.location === "cart");
+    // const moved = layout.items.filter(item => item.status === "exiting");
     ctx.add(() => {
       
       // Flip.from returns a timeline
@@ -403,17 +353,9 @@ export default function Page({ products }) {
     },
   });
 
-  useEffect(() => {
-    console.log('filter: ', filter);
-  }, [filter]);
-
-  const getNumActiveFilters = () => {
-    let count = 0;
-    for (let key in filter) {
-      count += filter[key].size; 
-    }
-    return count;
-  }
+  // useEffect(() => {
+  //   console.log('filter: ', filter);
+  // }, [filter]);
 
   // --------------------------------------------
 
@@ -511,7 +453,7 @@ export default function Page({ products }) {
   // --------------------------------------------
   // --------------------------------------------
 
-  const applyFilter2 = ({ type, option }) => {
+  const applyFilter2 = async ({ type, option }) => {
 
     // -type: 'category' | 'gender' | 'price'
     // -option: 'shoes' (type: 'category')
@@ -524,90 +466,143 @@ export default function Page({ products }) {
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
-    setFilter((prev) => { 
-      
+    let new_filter;
+    if (filter.in_init_state[type]) {
+      // -uncheck all and only check first selection:
+      new_filter = { 
+        ...filter, 
+        [type]: new Set([option]), 
+        in_init_state: { ...filter.in_init_state, [type]: false },
+      };
 
-      let new_filter;
-      if (prev.in_init_state[type]) {
-        // -uncheck all and only check first selection:
-        new_filter = { 
-          ...prev, 
-          [type]: new Set([option]), 
-          in_init_state: { ...prev.in_init_state, [type]: false },
-        };
+    } else { // general (not first check and not uncheck all in group)
+      let set = structuredClone(filter[type]);
+      if ( set.has(option))
+        set.delete(option);
+      else 
+        set.add(option);
 
-      } else { // general (not first check and not uncheck all in group)
-        let set = structuredClone(prev[type]);
-        if ( set.has(option))
-          set.delete(option);
-        else 
-          set.add(option);
-
-        // all unchecked in group => check all in group!
-        // -there is no instance where you would want to unselect all (e.g. shoes from no-genders)
-        if( set.size === 0 ) {
-          if (type === 'category') {
-            set = new Set(categories);
-          } else if (type === 'gender') {
-            set = new Set(genders); 
-          } else if (type === 'price') {
-            set = new Set(prices); 
-          }
+      // all unchecked in group => check all in group!
+      // -there is no instance where you would want to unselect all (e.g. shoes from no-genders)
+      if( set.size === 0 ) {
+        if (type === 'category') {
+          set = new Set(categories);
+        } else if (type === 'gender') {
+          set = new Set(genders); 
+        } else if (type === 'price') {
+          set = new Set(prices); 
         }
-
-        new_filter = { ...prev, [type]: set };
       }
 
-      // -the callback passed into setFilter() is run asynchronously.
-      // -We need the value of new_filter immediately inside setLayout()'s callback.
-      // -Hence, just plop setLayout() right here.
-      setLayout((prev_layout) => { 
-  
-        const prev_items = prev_layout.items;  
-        
-        // -step 4:
-        const new_items = prev_items.map(prev_item => {
-  
-          const { product } = prev_item;
-  
-          const category = product['category'];
-          const gender   = product['gender'];
-          const price    = product['price']; 
-  
-          const category_set = new_filter['category'];
-          const gender_set   = new_filter['gender'];
-          const price_set    = new_filter['price'];
-          
-          //  -Filter on intersection of all filters 
-          if (category_set.has(category) && gender_set.has(gender) /*&& price_set.has(price) */ ) {
-            return { ...prev_item, status: 'entered' };
-          }
-          else { 
-            return { ...prev_item, status: 'exiting' };
-          }
-        });
-  
-        const new_layout = {
-          items: new_items,
-          state: Flip.getState(q('.box')),
-        };
-  
-        return new_layout;
-      });
+      new_filter = { ...filter, [type]: set };
+    }
 
-      return new_filter;
+    // - - - - - - - - - - - - - - - - - - - - - 
+
+    const prev_items = layout.items;
+    
+    // -step 4:
+    const status_updated_items = prev_items.map(prev_item => {
+
+      const { product } = prev_item;
+
+      const category = product['category'];
+      const gender   = product['gender'];
+      const price    = product['price']; 
+
+      const category_set = new_filter['category'];
+      const gender_set   = new_filter['gender'];
+      const price_set    = new_filter['price'];
+      
+      //  -Filter on intersection of all filters 
+      if (category_set.has(category) && gender_set.has(gender) /*&& price_set.has(price) */ ) {
+        return { ...prev_item, status: 'entered' };
+      }
+      else { 
+        return { ...prev_item, status: 'exiting' };
+      }
     });
+
+    // - - - - - - - - - - - - - - - - - - - - - 
+    
+    const getProducts = async () => {
+      // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products`;
+      const url = `${API_URL_LARAVEL}/api/filter-products`;
+      const body = {
+        categories: set2arr(new_filter?.category), 
+      };
+      
+      // const [products, error] = await fetchGET2({ url });
+      const [products, error] = await fetchPOST2({ url, body });
+      if (error) {
+        debugger;
+        alert(error);
+      } else {
+        return products;
+      }
+    };
+    
+    console.clear();
+    const filtered_items_from_backend = await getProducts();
+   
+    
+    // HERE
+    // HERE
+    // HERE
+    // HERE
+    // HERE
+    //  -Take the non_removed_items and compare it agains the items returned from the backend endpoint.
+    //  -Take the union of the two arrays by appending onto the end of the array.
+    //    --The reason we need to do this is because for the new items that are retrieved from the backend there
+    //      be some that are already on the screen.
+    //  -Test by just applending a set of dummy data onto the array.
+
+    // -compare status_updated_items with filtered_items_from_backend
+    // -any items in filtered_items_from_backend that are not in status_updated_items then add them
+    
+
+    // -O(n^2) comparison, but these two arrays will always be small (much less than 100 => < 10k itterations, more like 20 elements in each array => 400 itterations...)
+
+    // let filtered_items_from_backend_not_currently_in_UI = [];
+    // filtered_items_from_backend.forEach((item_from_backend) => {
+
+
+    //   let is_item_in_UI = false;
+    //   status_updated_items.forEach((status_updated_item) => {
+
+
+    //     if ( status_updated_item.id )
+    //       is_item_in_UI = true;
+    //   })
+
+    // });
+
+
+    console.log('filtered items (from backend): ', filtered_items_from_backend);
+    console.log('status_updated_items: ', status_updated_items);
+    
+    // - - - - - - - - - - - - - - - - - - - - - 
+
+    const new_layout = {
+      items: status_updated_items, // items with status property updated
+      state: Flip.getState(q('.box')),
+    };
+    setLayout(new_layout);
+    
+    // - - - - - - - - - - - - - - - - - - - - - 
+
+    setFilter(new_filter);
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
   };
-
+  
   // --------------------------------------------
-
+  
   const [show_filters, setShowFilters] = useState(true);
   const filters_container_ref = useRef(null);
   const grid_container_ref = useRef(null);
-
+  
   // --------------------------------------------
 
   const [sort_type, setSortType] = useState({ title: '',  sub_title: '', direction: '', }); // e.g. { title: 'Price',  sub_title: 'High-Low', type: 'DESC'  }

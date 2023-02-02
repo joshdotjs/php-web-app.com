@@ -22,13 +22,8 @@ class ProductController extends Controller
 
   public function filterProducts(Request $req) {
 
-    function doImplode ($arr) {
-      $imploded = "'" . implode ( "', '", $arr ) . "'";
-      return  $imploded;
-    }
+    $categories = $req['categories'];
 
-    // $categories = $req['categories'];
-    // $imploded_categories = doImplode($categories);
 
     // SELECT * FROM ourlaravelapp.products
     // WHERE category IN ("shoes", "clothes");
@@ -48,12 +43,7 @@ class ProductController extends Controller
         ->get(); 
       array_push($arr, [
         'product'  => $product,
-        'id'       => $product->id,
-        'title'    => $product->title,
-        'body'     => $product->body,
-        'price'    => $product->price,
-        'category' => $product->category,
-        'variants' => $variants
+        'variants' => $variants,
       ]);
     };
 

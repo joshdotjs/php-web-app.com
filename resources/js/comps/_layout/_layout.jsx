@@ -25,8 +25,8 @@ export default function Layout({ children, name, restrict }) {
     const page = page_ref.current;
     const blur_overlay = blur_ref.current;
     const header = header_ref.current;
-    console.log('blur_overlay: ', blur_overlay);
-    console.log('header: ', header);
+    // console.log('blur_overlay: ', blur_overlay);
+    // console.log('header: ', header);
 
     const delay = 0.125;
     const tl = gsap.timeline();
