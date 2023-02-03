@@ -71,42 +71,54 @@ export default function Pagination({ num_products, page_num, updatePageNum }) {
     console.log('page_num: ', page_num)
 
     if (page_num < 3) { // case-A
-      arr.push(<Fragment key={`pagination-link-${0 + 1}`}><Link {...{page_num, updatePageNum}}>{0 + 1}</Link></Fragment>);
-      arr.push(<Fragment key={`pagination-link-${1 + 1}`}><Link {...{page_num, updatePageNum}}>{1 + 1}</Link></Fragment>);
-      arr.push(<Fragment key={`pagination-link-${2 + 1}`}><Link {...{page_num, updatePageNum}}>{2 + 1}</Link></Fragment>);
-      arr.push(<Fragment key={`pagination-link-${3 + 1}`}><Link {...{page_num, updatePageNum}}>{3 + 1}</Link></Fragment>);       
+      arr.push(<Fragment key={`pagination-link-${0}`}><Link {...{page_num, updatePageNum}}>{0 + 1}</Link></Fragment>);
+      arr.push(<Fragment key={`pagination-link-${1}`}><Link {...{page_num, updatePageNum}}>{1 + 1}</Link></Fragment>);
+      arr.push(<Fragment key={`pagination-link-${2}`}><Link {...{page_num, updatePageNum}}>{2 + 1}</Link></Fragment>);
+      arr.push(<Fragment key={`pagination-link-${3}`}><Link {...{page_num, updatePageNum}}>{3 + 1}</Link></Fragment>);       
       arr.push(
-        <Fragment key={`pagination-link-${3 + 1}`}>
+        <Fragment key={`pagination-link-${4}`}>
           <span className="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">
             ...
           </span>
         </Fragment>
       );
-      arr.push(<Fragment key={`pagination-link-${num_pages}`}><Link {...{page_num, updatePageNum}}>{num_pages}</Link></Fragment>);
+      arr.push(<Fragment key={`pagination-link-${5}`}><Link {...{page_num, updatePageNum}}>{num_pages}</Link></Fragment>);
 
-    } else if (page_num <= num_pages - 2) { // case-B
+    } else if (page_num < num_pages - 3) { // case-B
 
-      arr.push(<Fragment key={`pagination-link-${0 + 1}`}><Link {...{page_num, updatePageNum}}>{0 + 1}</Link></Fragment>);
+      arr.push(<Fragment key={`pagination-link-${0}`}><Link {...{page_num, updatePageNum}}>{0 + 1}</Link></Fragment>);
       arr.push(
-        <Fragment key={`pagination-link-${1 + 1}`}>
+        <Fragment key={`pagination-link-${1}`}>
           <span className="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">
             ...
           </span>
         </Fragment>
       );
-      arr.push(<Fragment key={`pagination-link-${(page_num-1) + 1}`}><Link {...{page_num, updatePageNum}}>{(page_num-1) + 1}</Link></Fragment>);
-      arr.push(<Fragment key={`pagination-link-${(page_num)   + 1}`}><Link {...{page_num, updatePageNum}}>{(page_num)   + 1}</Link></Fragment>);
-      arr.push(<Fragment key={`pagination-link-${(page_num+1) + 1}`}><Link {...{page_num, updatePageNum}}>{(page_num+1) + 1}</Link></Fragment>);
+      arr.push(<Fragment key={`pagination-link-${2}`}><Link {...{page_num, updatePageNum}}>{(page_num-1) + 1}</Link></Fragment>);
+      arr.push(<Fragment key={`pagination-link-${3}`}><Link {...{page_num, updatePageNum}}>{(page_num)   + 1}</Link></Fragment>);
+      arr.push(<Fragment key={`pagination-link-${4}`}><Link {...{page_num, updatePageNum}}>{(page_num+1) + 1}</Link></Fragment>);
       arr.push(
-        <Fragment key={`pagination-link-${num_pages-1}`}>
+        <Fragment key={`pagination-link-${5}`}>
           <span className="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">
             ...
           </span>
         </Fragment>
       );
-      arr.push(<Fragment key={`pagination-link-${num_pages}`}><Link {...{page_num, updatePageNum}}>{num_pages}</Link></Fragment>);
+      arr.push(<Fragment key={`pagination-link-${6}`}><Link {...{page_num, updatePageNum}}>{num_pages}</Link></Fragment>);
 
     } else { // case-C
+      arr.push(<Fragment key={`pagination-link-${0}`}><Link {...{page_num, updatePageNum}}>{0 + 1}</Link></Fragment>);
+      arr.push(
+        <Fragment key={`pagination-link-${1}`}>
+          <span className="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">
+            ...
+          </span>
+        </Fragment>
+      );
+      arr.push(<Fragment key={`pagination-link-${2}`}><Link {...{page_num, updatePageNum}}>{num_pages - 3}</Link></Fragment>);
+      arr.push(<Fragment key={`pagination-link-${3}`}><Link {...{page_num, updatePageNum}}>{num_pages - 2}</Link></Fragment>);
+      arr.push(<Fragment key={`pagination-link-${4}`}><Link {...{page_num, updatePageNum}}>{num_pages - 1}</Link></Fragment>);       
+      arr.push(<Fragment key={`pagination-link-${5}`}><Link {...{page_num, updatePageNum}}>{num_pages    }</Link></Fragment>);
     }
   }
 
