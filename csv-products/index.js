@@ -18,6 +18,7 @@ fs.createReadStream('data-2.csv')
 
     const first_row = results[0];
     const cols = Object.keys(first_row);
+    console.log('cols: ', cols);
 
     // 0:   title
     // 1:   sub_title

@@ -20,7 +20,8 @@ return new class extends Migration
         $table->string('size');
         $table->string('color');
         $table->integer('qty');
-        $table->foreignId('product_id')->constrained()->onDelete('cascade');
+        // $table->foreignId('product_id')->constrained()->onDelete('cascade');
+        $table->foreignId('product_id');
         // -constrained stops you from creating a row if this foreign key does not exist.
         // -if user with user_id creates x blog posts, and user with user_id is deleted then the users' created blog posts are also deleted.
       });

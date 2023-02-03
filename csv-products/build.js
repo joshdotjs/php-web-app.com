@@ -5,16 +5,20 @@ const fs = require('fs');
 
 const build = ({ products, cols }) => {
 
+  console.log('cols: ', cols);
+  console.log('cols[0]: ', cols);
+
   const head_open = `<?php
 
-namespace Database\Seeders;
-
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-
-function seedProducts() {
+  namespace Database\\Seeders;
+  
+  // use Illuminate\Database\\Console\\Seeds\\WithoutModelEvents;
+  use Illuminate\\Database\\Seeder;
+  use Illuminate\\Support\\Facades\\DB;
+  use Illuminate\\Support\\Facades\\Hash;
+  
+  
+  function seedProducts() {
 `;
   
   const head_close = `
@@ -25,25 +29,25 @@ function seedProducts() {
   const variant_rows = [];
   for (let i = 0; i < products.length; ++i ) {
     product_rows.push(`  DB::table('products')->insert([
-    '${cols[0]}'  =>  "${products[i].product[cols[0]]}",     
-    '${cols[1]}'  =>  "${products[i].product[cols[1]]}",     
-    '${cols[2]}'  =>  "${products[i].product[cols[2]]}",     
-    '${cols[3]}'  =>  "${products[i].product[cols[3]]}",     
-    '${cols[4]}'  =>  "${products[i].product[cols[4]]}",     
-    '${cols[5]}'  =>   ${products[i].product[cols[5]] * 100},
-    '${cols[6]}'  =>   ${products[i].product[cols[6]] * 100},
-    'created_at'  =>  date("Y-m-d H:i:s")
+    'title'         =>  "${products[i].product['title']}",     
+    'sub_title'     =>  "${products[i].product['sub_title']}",     
+    'body'          =>  "${products[i].product['body']}",     
+    'category'      =>  "${products[i].product['category']}",     
+    'gender'        =>  "${products[i].product['gender']}",     
+    'price'         =>   ${products[i].product['price'] * 100},
+    'price_compare' =>   ${products[i].product['price_compare'] * 100},
+    'created_at'    =>  date("Y-m-d H:i:s")
   ]);`);
 
 
     for (let j = 0; j < products[i].variants.length; ++j) {
       variant_rows.push(`  DB::table('variants')->insert([
-    'product_id'   =>  ${i},
-    '${cols[7]}'   =>  "${products[i].variants[j][cols[7]]}",     
-    '${cols[8]}'   =>  "${products[i].variants[j][cols[8]]}",     
-    '${cols[9]}'   =>  "${products[i].variants[j][cols[9]]}",     
-    '${cols[10]}'  =>  "${products[i].variants[j][cols[10]]}",     
-    'created_at'   =>  date("Y-m-d H:i:s")
+    'product_id'  =>  ${i + 1},
+    'qty'         =>  "${products[i].variants[j]['qty']}",     
+    'size'        =>  "${products[i].variants[j]['size']}",     
+    'color'       =>  "${products[i].variants[j]['color']}",     
+    'img'         =>  "${products[i].variants[j]['img']}",     
+    'created_at'  =>  date("Y-m-d H:i:s")
   ]);`);
   
     }
