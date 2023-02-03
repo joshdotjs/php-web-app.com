@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require("path");
 // const HTMLParser = require('node-html-parser');
 
 // ==============================================
@@ -69,13 +70,17 @@ ${head_close}
 `;
 
   console.blue('Writing .php...');
-  fs.writeFileSync('./dist/seedProducts.php', output, err => {
+  const write_path = path.join(__dirname, "dist");
+  if (!fs.existsSync(write_path))
+    fs.mkdirSync(write_path);
+
+  fs.writeFileSync(`${write_path}/seedProducts.php`, output, err => {
     if (err)  console.err(err);
     else      console.log('file written successfully!')
   });
 
-  console.yellow('Copying file:\t/csv-products/dist  ->  /database/seeders');
-  fs.copyFile('./dist/seedProducts.php', '../database/seeders/seedProducts.php', () => {
+  console.yellow('Copying file:\t/csv/dist  ->  /database/seeders');
+  fs.copyFile(`${write_path}/seedProducts.php`, `${write_path}/../../database/seeders/seedProducts.php`, () => {
     console.green('File copied successfully.');
   });
 };

@@ -1,19 +1,25 @@
 const csv = require('csv-parser');
 const fs = require('fs');
+const path = require("path");
 require('./console');
 const build = require('./build');
 
 // ==============================================
 
+const read_path = path.join(__dirname);
+
 console.magenta('building...');
+
 
 // ==============================================
 
 const results = [];
-fs.createReadStream('data.csv')
+fs.createReadStream(`${read_path}/data.csv`)
   .pipe(csv())
   .on('data', (data) => results.push(data))
   .on('end', () => {
+
+    // console.log('results: ', results);
 
     const first_row = results[0];
     const cols = Object.keys(first_row);

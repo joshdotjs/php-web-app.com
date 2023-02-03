@@ -224,6 +224,36 @@
     'price_compare' =>   6200,
     'created_at'    =>  date("Y-m-d H:i:s")
   ]);
+  DB::table('products')->insert([
+    'title'         =>  "ACG Oregon Series",     
+    'sub_title'     =>  "Men's Cargo Pants",     
+    'body'          =>  "Tapping into the iconic ACG Oregon Series from 2002, these cargo pants follow the original design lines for that authentic, trail-ready look and feel. They're made with durable woven fabric, and a reinforced seat to help them withstand your most rugged adventures. Multi-purpose cargo pockets give you secure space to store your hiking essentials and the integrated belt helps you find a comfy fit for the long haul.",     
+    'category'      =>  "clothes",     
+    'gender'        =>  "men",     
+    'price'         =>   20500,
+    'price_compare' =>   20500,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Therma-FIT",     
+    'sub_title'     =>  "Men's Pullover Hoodie",     
+    'body'          =>  "Bring the heat to your cold weather workout. In the Therma-FIT Pullover, supersoft fleece keeps the comfort levels high while you take your exercise routine to the next level. A relaxed feel means you can stretch and bench without anything holding you back.",     
+    'category'      =>  "clothes",     
+    'gender'        =>  "men",     
+    'price'         =>   6500,
+    'price_compare' =>   6500,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Dri-FIT DNA",     
+    'sub_title'     =>  "Men's Basketball Shorts",     
+    'body'          =>  "Take care of the future like you take care of the ball in the Nike Dri-FIT DNA Shorts. Made from at least 75% recycled polyester, they offer light, breathable fabric that's tailored for the game.",     
+    'category'      =>  "clothes",     
+    'gender'        =>  "men",     
+    'price'         =>   5000,
+    'price_compare' =>   5000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
 
   // ==============================================
 
@@ -790,11 +820,67 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  21,
+    'product_id'  =>  22,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "green",     
+    'img'         =>  "/img/products/clothes/men/cargo-pants-green.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  23,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "",     
+    'img'         =>  "/img/products/clothes/men/themal-fit-hoodie-purple.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  23,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "",     
-    'img'         =>  "",     
+    'img'         =>  "/img/products/clothes/men/themal-fit-hoodie-red.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  23,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "",     
+    'img'         =>  "/img/products/clothes/men/themal-fit-hoodie-blue.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  23,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "",     
+    'img'         =>  "/img/products/clothes/men/themal-fit-hoodie-grey.jpeg",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  24,
+    'qty'         =>  1,
+    'size'        =>  "",     
+    'color'       =>  "",     
+    'img'         =>  "/img/products/clothes/men/Dri-FIT-DNA-shorts-blue.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  24,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "",     
+    'img'         =>  "/img/products/clothes/men/Dri-FIT-DNA-shorts-grey.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  24,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "",     
+    'img'         =>  "/img/products/clothes/men/Dri-FIT-DNA-shorts-red.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
 

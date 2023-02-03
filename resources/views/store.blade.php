@@ -6,6 +6,7 @@
   <div 
     id="root-main"
     data-products="{{$products}}"
+    data-num-products="{{$num_products}}"
     data-api-url-node="{{$API_URL_NODE}}"
     data-api-url-laravel="{{$API_URL_LARAVEL}}"
   ></div>

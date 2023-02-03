@@ -30,7 +30,7 @@ CustomWiggle.create("cartButtonWiggle", { wiggles: 8, type: "easeOut" });
 
 // ==============================================
 
-export default function Page({ products }) {
+export default function Page({ products, num_products }) {
 
   // --------------------------------------------
 
@@ -608,7 +608,8 @@ export default function Page({ products }) {
           setShowFilters, 
           filters_container_ref, grid_container_ref, container_ref,
           sort_type, applySort,
-          page_num, updatePageNum
+          page_num, updatePageNum, 
+          num_products
         } } />
       </div>
 

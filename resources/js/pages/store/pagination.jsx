@@ -39,9 +39,44 @@ export default function Pagination({ num_products, page_num, updatePageNum }) {
   // --------------------------------------------
 
   let arr = [];
-  for (let i = 0; i <= num_pages; ++i) {
-    arr.push(<Fragment key={`pagination-link-${i}`}><Link {...{page_num, updatePageNum}}>{i + 1}</Link></Fragment>);
+
+  // Case 1: Less than 7 pages    (num_pages:   1,2,3,4)    display: 1,2,3,4,5,6
+  // Case 2: >=6 pages            (num_pages:   5,6,...)    display: 1,2,3,...,7    page_num: 1,2       case-A
+  //                                                                 2,3,4,...,7    page_num: 3         case-B
+  //                                                                 3,4,5,...,7    page_num: 4
+  //                                                                 1,...,5,6,7    page_num: 5,6,7     case-C
+
+  if (num_pages < 7) { // case 1
+    for (let i = 0; i < num_pages; ++i) {
+      arr.push(<Fragment key={`pagination-link-${i + 1}`}><Link {...{page_num, updatePageNum}}>{i + 1}</Link></Fragment>);
+    }
+  } else if (num_pages >= 7) { // case 2
+
+    if (page_num === 1 || page_num === 2) { // case-A
+      arr.push(<Fragment key={`pagination-link-${0 + 1}`}><Link {...{page_num, updatePageNum}}>{0 + 1}</Link></Fragment>);
+      arr.push(<Fragment key={`pagination-link-${1 + 1}`}><Link {...{page_num, updatePageNum}}>{1 + 1}</Link></Fragment>);
+      arr.push(<Fragment key={`pagination-link-${2 + 1}`}><Link {...{page_num, updatePageNum}}>{2 + 1}</Link></Fragment>);
+      
+      arr.push(
+        <Fragment key={`pagination-link-${3 + 1}`}>
+          <span className="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">
+            ...
+          </span>
+        </Fragment>
+      );
+              
+      arr.push(<Fragment key={`pagination-link-${4 + 1}`}><Link {...{page_num, updatePageNum}}>{num_pages}</Link></Fragment>);
+
+    } else if (page_num <= num_pages - 3) { // case-B
+    } else { // case-C
+    }
+    
+
+
+
+
   }
+
 
   // --------------------------------------------
 
@@ -66,7 +101,7 @@ export default function Pagination({ num_products, page_num, updatePageNum }) {
       <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
         <div>
           <p className="text-sm text-gray-700">
-            Showing <span className="font-medium">1</span> to <span className="font-medium">6</span> of{' '}
+            Showing <span className="font-medium">{1 + (page_num * products_per_page)}</span> to <span className="font-medium">{Math.min(products_per_page + (page_num * 6), num_products)}</span> of{' '}
             <span className="font-medium">{num_products}</span> results
           </p>
         </div>
@@ -83,16 +118,6 @@ export default function Pagination({ num_products, page_num, updatePageNum }) {
            
             {arr}
             
-
-            {arr.length > 1 &&
-              <>
-                <span className="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">
-                  ...
-                </span>
-
-                <Link {...{page_num, updatePageNum}}>{num_pages + 1}</Link>
-              </>
-            }
 
             
 

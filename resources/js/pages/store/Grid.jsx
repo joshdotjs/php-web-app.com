@@ -14,7 +14,8 @@ export default function Grid({
   show_filters, setShowFilters,
   filters_container_ref, grid_container_ref, container_ref,
   sort_type, applySort,
-  page_num, updatePageNum
+  page_num, updatePageNum,
+  num_products
 }) {
 
   // --------------------------------------------
@@ -150,8 +151,8 @@ export default function Grid({
       {/* - - - - - - - - - - - - - - - - - - */}
 
       <Pagination 
-        {...{ page_num, updatePageNum }}
-        num_products={layout.items.length}
+        {...{ page_num, updatePageNum, num_products }}
+        // num_products={layout.items.length}
       />
 
       {/* - - - - - - - - - - - - - - - - - - */}
