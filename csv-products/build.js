@@ -17,7 +17,6 @@ const build = ({ products, cols }) => {
   use Illuminate\\Support\\Facades\\DB;
   use Illuminate\\Support\\Facades\\Hash;
   
-  
   function seedProducts() {
 `;
   
@@ -43,7 +42,7 @@ const build = ({ products, cols }) => {
     for (let j = 0; j < products[i].variants.length; ++j) {
       variant_rows.push(`  DB::table('variants')->insert([
     'product_id'  =>  ${i + 1},
-    'qty'         =>  "${products[i].variants[j]['qty']}",     
+    'qty'         =>  ${Number(products[i].variants[j]['qty'])},
     'size'        =>  "${products[i].variants[j]['size']}",     
     'color'       =>  "${products[i].variants[j]['color']}",     
     'img'         =>  "${products[i].variants[j]['img']}",     
