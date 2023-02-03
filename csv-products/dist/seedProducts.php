@@ -164,6 +164,66 @@
     'price_compare' =>   19000,
     'created_at'    =>  date("Y-m-d H:i:s")
   ]);
+  DB::table('products')->insert([
+    'title'         =>  "Dri-FIT Element",     
+    'sub_title'     =>  "Women's Running Crew",     
+    'body'          =>  "The Nike Dri-FIT Element Crew returns with an updated design. An all-new sleeve features a window that lets you easily check your watch. This product is made with at least 75% recycled polyester fibers.",     
+    'category'      =>  "clothes",     
+    'gender'        =>  "women",     
+    'price'         =>   6000,
+    'price_compare' =>   6000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Nike Swoosh",     
+    'sub_title'     =>  "Women's Sports Bra",     
+    'body'          =>  "With wide, comfy straps in a classic racerback design, the Nike Swoosh Sports Bra feels snug and secure while you move. Smooth, lightweight fabric wicks sweat to keep you dry, comfortable and focused. For every rep, step and jump—know that you’re supported.",     
+    'category'      =>  "clothes",     
+    'gender'        =>  "women",     
+    'price'         =>   3500,
+    'price_compare' =>   3500,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Sportswear Phoenix Fleece",     
+    'sub_title'     =>  "Women's High-Waisted Wide-Leg Sweatpants",     
+    'body'          =>  "Rise up and transform your fleece wardrobe with strong cozy vibes. The extra-long, wide leg and hem vents of these Phoenix Fleece pants let you show off your favorite shoes while taller ribbing at the waist and an exaggerated drawcord ensure your look is anything but basic.",     
+    'category'      =>  "clothes",     
+    'gender'        =>  "women",     
+    'price'         =>   7000,
+    'price_compare' =>   7000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Dri-FIT One",     
+    'sub_title'     =>  "Women's Mid-Rise Printed Shorts",     
+    'body'          =>  "These shorts are the ones that are down for everything you do—from long walks to HIIT to running errands. Their silky-smooth, ultrasoft woven fabric is balanced with sweat-wicking tech so you have ultimate comfort while feeling dry as you work out. The snug inner layer helps prevent chaffing so you can push yourself with uncompromising coverage.",     
+    'category'      =>  "clothes",     
+    'gender'        =>  "women",     
+    'price'         =>   5200,
+    'price_compare' =>   5200,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Nike Sportswear",     
+    'sub_title'     =>  "Women's T-Shirt",     
+    'body'          =>  "Deciding on what to wear has never been easier with this roomy tee. Whether you're wearing it alone or tucked under your favorite jacket, this soft cotton basic is sure to become an everyday favorite.",     
+    'category'      =>  "clothes",     
+    'gender'        =>  "women",     
+    'price'         =>   3000,
+    'price_compare' =>   3000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Dri-FIT Slam",     
+    'sub_title'     =>  "Women's Tennis Tank",     
+    'body'          =>  "Crafted with our most innovative materials, this fitted tank pairs lightweight knit coverage with the breathability of mesh. The result is a statement-making top that will keep you cool and comfortable so you can play your best.",     
+    'category'      =>  "clothes",     
+    'gender'        =>  "women",     
+    'price'         =>   4697,
+    'price_compare' =>   6200,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
 
   // ==============================================
 
@@ -602,7 +662,135 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  15,
+    'product_id'  =>  16,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "yellow",     
+    'img'         =>  "/img/products/clothes/women/Dri-FIT-Element-yellow.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  16,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "grey",     
+    'img'         =>  "/img/products/clothes/women/Dri-FIT-Element-grey.jpeg",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  16,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/clothes/women/Dri-FIT-Element-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  16,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/clothes/women/Dri-FIT-Element-black-2.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  17,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "yellow",     
+    'img'         =>  "/img/products/clothes/women/Nike-Swoosh-yellow.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  17,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "green",     
+    'img'         =>  "/img/products/clothes/women/Nike-Swoosh-green.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  17,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "pink",     
+    'img'         =>  "/img/products/clothes/women/Nike-Swoosh-pink.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  18,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "brown",     
+    'img'         =>  "/img/products/clothes/women/Sportswear-Phoenix-Fleece-brown.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  18,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "red",     
+    'img'         =>  "/img/products/clothes/women/Sportswear-Phoenix-Fleece-red.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  19,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "blue",     
+    'img'         =>  "/img/products/clothes/women/Dri-FIT-One-blue.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  19,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "pink",     
+    'img'         =>  "/img/products/clothes/women/Dri-FIT-One-pink.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  20,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "pink",     
+    'img'         =>  "/img/products/clothes/women/Nike-Sportswear-pink.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  20,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "white",     
+    'img'         =>  "/img/products/clothes/women/Nike-Sportswear-white.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  21,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "white",     
+    'img'         =>  "/img/products/clothes/women/Dri-FIT-Slam-white.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  21,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "blue",     
+    'img'         =>  "/img/products/clothes/women/Dri-FIT-Slam-blue.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  21,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "pink",     
+    'img'         =>  "/img/products/clothes/women/Dri-FIT-Slam-pink.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  21,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "",     

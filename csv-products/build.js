@@ -5,9 +5,6 @@ const fs = require('fs');
 
 const build = ({ products, cols }) => {
 
-  console.log('cols: ', cols);
-  console.log('cols[0]: ', cols);
-
   const head_open = `<?php
 
   namespace Database\\Seeders;
@@ -52,9 +49,6 @@ const build = ({ products, cols }) => {
     }
   }
 
-
-
-
   const output = `${head_open}
 
   // ==============================================
@@ -74,15 +68,13 @@ ${variant_rows.join('\r\n')}
 ${head_close}
 `;
 
-
-
   console.blue('Writing .php...');
   fs.writeFileSync('./dist/seedProducts.php', output, err => {
     if (err)  console.err(err);
     else      console.log('file written successfully!')
   });
 
-  console.blue('Copying static files:\t/src/static  ->  /dist');
+  console.yellow('Copying file:\t/csv-products/dist  ->  /database/seeders');
   fs.copyFile('./dist/seedProducts.php', '../database/seeders/seedProducts.php', () => {
     console.green('File copied successfully.');
   });

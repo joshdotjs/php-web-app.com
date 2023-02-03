@@ -10,15 +10,13 @@ console.magenta('building...');
 // ==============================================
 
 const results = [];
-fs.createReadStream('data-2.csv')
+fs.createReadStream('data.csv')
   .pipe(csv())
   .on('data', (data) => results.push(data))
   .on('end', () => {
-    console.log(results[0]);
 
     const first_row = results[0];
     const cols = Object.keys(first_row);
-    console.log('cols: ', cols);
 
     // 0:   title
     // 1:   sub_title
@@ -32,13 +30,11 @@ fs.createReadStream('data-2.csv')
     // 9:   color
     // 10:  img
 
-
     const title = cols[0]; 
 
     const products = [];
     let count = -1;
     results.forEach((result, idx) => {
-      console.log('result: ', result);
 
       if (result[title]) { // New product
         count++;
@@ -71,8 +67,6 @@ fs.createReadStream('data-2.csv')
         });
       }
     });
-
-    console.log('products: ', products);
 
     build({ products, cols });
   });
