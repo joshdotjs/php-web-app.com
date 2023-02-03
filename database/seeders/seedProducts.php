@@ -344,6 +344,166 @@
     'price_compare' =>   3200,
     'created_at'    =>  date("Y-m-d H:i:s")
   ]);
+  DB::table('products')->insert([
+    'title'         =>  "Invincible 3",     
+    'sub_title'     =>  "Women's Road Running Shoes",     
+    'body'          =>  "With maximum cushioning to support every mile, the Invincible 3 gives you our highest level of comfort underfoot to help you stay on your feet today, tomorrow and beyond. Designed to help keep you on the run, it’s super springy and bouncy, so that you can propel down your preferred path and come back for your next run feeling ready and reinvigorated.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "women",     
+    'price'         =>   18000,
+    'price_compare' =>   18000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Vomero 16",     
+    'sub_title'     =>  "Women's Road Running Shoes",     
+    'body'          =>  "The Vomero 16 adds responsive ZoomX foam cushioning, bringing an energetic pop to your stride that’s perfect for high mileage on the road. It’s super lightweight, with plenty of stretch and ventilation through the upper. Looking for the right amount of support? We’ve got you covered with an adjustable midfoot band and a stable clip at the heel.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "women",     
+    'price'         =>   16000,
+    'price_compare' =>   16000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Downshifter 12",     
+    'sub_title'     =>  "Women's Road Running Shoes",     
+    'body'          =>  "Take those first steps on you running journey in the Nike Downshifter 12. It's got a supportive fit and a stable ride, with a lightweight feel that easily transitions from your workout to hanging out. This one continues our sustainability journey with a design made from at least 20% recycled content by weight. Your trek begins. Lace up and hit the road.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "women",     
+    'price'         =>   7000,
+    'price_compare' =>   7000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Renew Ride 3",     
+    'sub_title'     =>  "Women's Road Running Shoes",     
+    'body'          =>  "When everyday runs are on the menu, the Nike Renew Ride 3 Premium comes through with a smooth and soft ride. It has a secure fit and cozy feel, geared for those looking to find their running potential, while a subtle wink at the tongue reminds you to find the fun on your route. It's so comfortable, you'll want to keep wearing it throughout your day.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "women",     
+    'price'         =>   5697,
+    'price_compare' =>   8000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Zoom Fly 5",     
+    'sub_title'     =>  "Men's Running Shoes",     
+    'body'          =>  "Bridge the gap between your weekend training run and race day with a durable design that feels just as at home on the starting line as it does on your regular route. ZoomX foam and a carbon-fiber plate help the Nike Zoom Fly 5 offer comfort and reliability alongside a responsive propulsive sensation that’ll help you feel fast and fresh. That kind of versatility is uncommon in the running arena. But who said you can’t have it all?",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "men",     
+    'price'         =>   17000,
+    'price_compare' =>   17000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Revolution 5",     
+    'sub_title'     =>  "Men's Road Running Shoes",     
+    'body'          =>  "When the road beckons, answer the call in a lightweight pair that’ll keep you moving mile after mile. Soft foam cushions your stride, and a reinforced heel delivers a smooth, stable ride. Crafted with knit material for breathable support, while a minimalist design fits in just about anywhere your day takes you.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "men ",     
+    'price'         =>   4497,
+    'price_compare' =>   6500,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Terra 7",     
+    'sub_title'     =>  "Men's Trail Running Shoes",     
+    'body'          =>  "Run the trail in a super responsive running shoe. Fast and lightweight, it delivers a breathable and secure feel as you race over rocky paths. Updated traction lugs provide stability for your downhill miles.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "men",     
+    'price'         =>   9797,
+    'price_compare' =>   14000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Infinity React 3 Premium",     
+    'sub_title'     =>  "Men's Road Running Shoes",     
+    'body'          =>  "With soft and supportive cushioning, built to help keep you on the run, the Infinity React 3 is here to help get you moving Regardless of whether your pace is snail-like or lickety-split, it helps keep you on the go. Expressive, playful graphics remind you fun can be found in every stride, even when those heavy miles won’t run themselves. So go ahead, put 1 foot in front of the other, we’ve got you.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "men",     
+    'price'         =>   17000,
+    'price_compare' =>   17000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Nike Winflo 9 Premium",     
+    'sub_title'     =>  "Men's Road Running Shoes",     
+    'body'          =>  "Featuring a balanced ride to help kickstart your run, the Winflo 9 is here to help get you moving. Regardless of whether your pace is snail-like or lickety-split, this special version will help keep you on the go. Nike Air and soft, springy foam work with expressive, playful graphics to remind you fun can be found in every stride, even when those heavy miles won’t run themselves. So go ahead, put 1 foot in front of the other. We’ve got you.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "men",     
+    'price'         =>   11000,
+    'price_compare' =>   11000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "React Infinity 3",     
+    'sub_title'     =>  "Men's Road Running Shoes",     
+    'body'          =>  "Still 1 of our most tested shoes, the Nike React Infinity 3 has soft and supportive cushioning. Its soft, stable feel with a smooth ride will carry you through routes, long and short. A breathable upper is made to feel contained, yet flexible. We even added more cushioning around the heel and ankle for a supportive sensation. Keep running, we've got you.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "men",     
+    'price'         =>   16000,
+    'price_compare' =>   16000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Wildhorse 7",     
+    'sub_title'     =>  "Men's Trail Running Shoes",     
+    'body'          =>  "Take on those tough and extreme trail runs with the rugged build of the Nike Wildhorse 7. Confidently take on rocky terrain with high-abrasion rubber on the outsole that adds durable traction. The upper delivers durable ventilation with support where you need it. Foam midsole cushioning gives a neutral feel and provides responsiveness on every mile.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "men",     
+    'price'         =>   8997,
+    'price_compare' =>   13000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "React Miler 3",     
+    'sub_title'     =>  "Men's Road Running Shoes",     
+    'body'          =>  "Cushioned and comfortable, just like every run should feel. The Nike React Miler 3 gives you a soft and smooth ride as your feet hit the pavement. We added stability at the heel for a secure sensation, while durable traction helps keep you going on runs long and short.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "men",     
+    'price'         =>   7197,
+    'price_compare' =>   12000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Air Zoom Rival Fly 3",     
+    'sub_title'     =>  "Men's Road Racing Shoes",     
+    'body'          =>  "Are you ready to ramp up the speed and go the distance? Built for training and racing, the Nike Air Zoom Rival Fly 3 features soft foam and durable abrasion-resistant rubber to help you conquer even the rockiest of roads. Plus, Nike Zoom Air provides a snappy feel as you push toward the finish line.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "men",     
+    'price'         =>   10000,
+    'price_compare' =>   10000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Vomero 16",     
+    'sub_title'     =>  "Men's Road Running Shoes",     
+    'body'          =>  "The Vomero 16 adds responsive ZoomX foam cushioning, bringing an energetic pop to your stride that’s perfect for high mileage on the road. It’s super lightweight, with plenty of stretch and ventilation through the upper. Looking for the right amount of support? We’ve got you covered with an adjustable midfoot band and a stable clip at the heel.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "men",     
+    'price'         =>   15000,
+    'price_compare' =>   15000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Air Max 90",     
+    'sub_title'     =>  "Women's Shoes",     
+    'body'          =>  "Lace up and feel the legacy. Produced at the intersection of art, music and culture, this champion running shoe helped define the ‘90s. Worn by presidents, revolutionized through collabs and celebrated through rare colorways, its striking visuals and exposed Nike Air keep it alive and well.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "women",     
+    'price'         =>   13000,
+    'price_compare' =>   13000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Air Max 270",     
+    'sub_title'     =>  "Women's Shoes",     
+    'body'          =>  "Put a bounce in your step with the Nike Air Max 270. An extra-large Max Air unit wraps around the heel to cushion your every step, leaving you feeling like you’re walking on Air. The stretchy inner sleeve provides a sock-like fit for comfort that lasts. Pops of fresh colors sprinkled throughout add bright style to your day.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "women",     
+    'price'         =>   16000,
+    'price_compare' =>   16000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
 
   // ==============================================
 
@@ -497,8 +657,8 @@
     'product_id'  =>  6,
     'qty'         =>  0,
     'size'        =>  "",     
-    'color'       =>  "pink",     
-    'img'         =>  "/img/products/shoes/men/invincible-2-pink.webp",     
+    'color'       =>  "orange",     
+    'img'         =>  "/img/products/shoes/men/invincible-2-orange.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
@@ -513,8 +673,8 @@
     'product_id'  =>  6,
     'qty'         =>  0,
     'size'        =>  "",     
-    'color'       =>  "orange",     
-    'img'         =>  "/img/products/shoes/men/invincible-2-orange.webp",     
+    'color'       =>  "pink",     
+    'img'         =>  "/img/products/shoes/men/invincible-2-pink.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
@@ -1163,6 +1323,286 @@
     'size'        =>  "",     
     'color'       =>  "white",     
     'img'         =>  "/img/products/accessories/unisex/Sportswear-Essentials-Bag-white.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  34,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "pink",     
+    'img'         =>  "/img/products/shoes/women/Invincible-3-pink.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  34,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "grey",     
+    'img'         =>  "/img/products/shoes/women/Invincible-3-grey.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  34,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/shoes/women/Invincible-3-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  34,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/shoes/women/Invincible-3-black-2.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  35,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "pink",     
+    'img'         =>  "/img/products/shoes/women/Vomero-16-pink.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  35,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/shoes/women/Vomero-16-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  36,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "pink",     
+    'img'         =>  "/img/products/shoes/women/Downshifter-12-pink.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  36,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "white",     
+    'img'         =>  "/img/products/shoes/women/Downshifter-12-white.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  37,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "white",     
+    'img'         =>  "/img/products/shoes/women/Renew-Ride-3-white.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  37,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "pink",     
+    'img'         =>  "/img/products/shoes/women/Renew-Ride-3-pink.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  37,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "green",     
+    'img'         =>  "/img/products/shoes/women/Renew-Ride-3-green.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  38,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "green",     
+    'img'         =>  "/img/products/shoes/men/Zoom-Fly-5-green.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  38,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/shoes/men/Zoom-Fly-5-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  39,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "grey",     
+    'img'         =>  "/img/products/shoes/men/Nike-Revolution-5-grey.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  40,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "orange",     
+    'img'         =>  "/img/products/shoes/men/Terra-7-orange.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  41,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "brown",     
+    'img'         =>  "/img/products/shoes/men/Infinity-React-3-Premium.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  42,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "white",     
+    'img'         =>  "/img/products/shoes/men/Nike-Winflo-9-Premium.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  43,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "brown",     
+    'img'         =>  "/img/products/shoes/men/React-Infinity-3-brown.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  43,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "grey",     
+    'img'         =>  "/img/products/shoes/men/React-Infinity-3-grey.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  43,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/shoes/men/React-Infinity-3-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  44,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "grey",     
+    'img'         =>  "/img/products/shoes/men/Wildhorse-7-grey.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  44,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/shoes/men/Wildhorse-7-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  45,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "green",     
+    'img'         =>  "/img/products/shoes/men/React-Miler-3-green.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  45,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/shoes/men/React-Miler-3-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  46,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "green",     
+    'img'         =>  "/img/products/shoes/men/Air-Zoom-Rival-Fly-3-green.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  46,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "blue",     
+    'img'         =>  "/img/products/shoes/men/Air-Zoom-Rival-Fly-3-blue.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  46,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/shoes/men/Air-Zoom-Rival-Fly-3-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  47,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "grey",     
+    'img'         =>  "/img/products/shoes/men/Vomero-16-grey.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  47,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "blue",     
+    'img'         =>  "/img/products/shoes/men/Vomero-16-blue.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  48,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "white",     
+    'img'         =>  "/img/products/shoes/women/Air-Max-90-white.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  48,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "pink",     
+    'img'         =>  "/img/products/shoes/women/Air-Max-90-pink.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  49,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "white",     
+    'img'         =>  "/img/products/shoes/women/Nike-Air-Max-270-white.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  49,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "white",     
+    'img'         =>  "/img/products/shoes/women/Nike-Air-Max-270-white-2.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  49,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "white",     
+    'img'         =>  "/img/products/shoes/women/Nike-Air-Max-270-white-3.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  49,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "purple",     
+    'img'         =>  "/img/products/shoes/women/Nike-Air-Max-270-purple.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
 

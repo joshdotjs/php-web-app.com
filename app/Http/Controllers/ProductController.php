@@ -41,6 +41,11 @@ class ProductController extends Controller
       ->orderBy($sort_col, $sort_direction)
       ->get();
 
+    $num_products = DB::table('products')
+      ->whereIn('category', $categories)
+      ->whereIn('gender', $genders)
+      ->count();
+
     // -Each row stores product data with an array storing the variants for that rows products
     $arr = [];
     foreach($products as $product) {
@@ -54,7 +59,12 @@ class ProductController extends Controller
       ]);
     };
 
-    return $arr;
+    // return $arr;
+    return response([ 
+      'message'      => 'success', 
+      'products'     => $arr,
+      'num_products' => $num_products, 
+     ], 201);
   }
 
   // ------------------------------------------

@@ -40,11 +40,19 @@ export default function Pagination({ num_products, page_num, updatePageNum }) {
 
   let arr = [];
 
-  // Case 1: Less than 7 pages    (num_pages:   1,2,3,4)    display: 1,2,3,4,5,6
-  // Case 2: >=6 pages            (num_pages:   5,6,...)    display: 1,2,3,...,7    page_num: 1,2       case-A
+  // Case 1: Less than 7 pages    display: 1,2,3,4,5,6
+  // Case 2: >=7 pages            display: 1,2,3,...,7    page_num: 1,2       case-A
   //                                                                 2,3,4,...,7    page_num: 3         case-B
   //                                                                 3,4,5,...,7    page_num: 4
   //                                                                 1,...,5,6,7    page_num: 5,6,7     case-C
+
+
+  // Case 2: >=6 pages            display: 
+  //                                       1,2,3,4,    ...,9    page_num: 1,2,3         case-A                   page_num === 1 | 2 | 3
+  //                                       1,...,3,4,5,...,9    page_num: 4             case-B                   3 < page_num < num_pages-2
+  //                                       1,...,4,5,6,...,9    page_num: 5
+  //                                       1,...,5,6,7,...,9    page_num: 6
+  //                                       1,...,    6,7,8,9    page_num: 7,8,9         case-C                   page_num === num_pages-2 | num_pages-1 | num_pages
 
   if (num_pages < 7) { // case 1
     for (let i = 0; i < num_pages; ++i) {
@@ -52,7 +60,7 @@ export default function Pagination({ num_products, page_num, updatePageNum }) {
     }
   } else if (num_pages >= 7) { // case 2
 
-    if (page_num === 1 || page_num === 2) { // case-A
+    // if (page_num === 1 || page_num === 2) { // case-A
       arr.push(<Fragment key={`pagination-link-${0 + 1}`}><Link {...{page_num, updatePageNum}}>{0 + 1}</Link></Fragment>);
       arr.push(<Fragment key={`pagination-link-${1 + 1}`}><Link {...{page_num, updatePageNum}}>{1 + 1}</Link></Fragment>);
       arr.push(<Fragment key={`pagination-link-${2 + 1}`}><Link {...{page_num, updatePageNum}}>{2 + 1}</Link></Fragment>);
@@ -67,17 +75,9 @@ export default function Pagination({ num_products, page_num, updatePageNum }) {
               
       arr.push(<Fragment key={`pagination-link-${4 + 1}`}><Link {...{page_num, updatePageNum}}>{num_pages}</Link></Fragment>);
 
-    } else if (page_num <= num_pages - 3) { // case-B
-
-
-
-
-
-
-
-      
-    } else { // case-C
-    }
+    // } else if (page_num <= num_pages - 3) { // case-B
+    // } else { // case-C
+    // }
     
 
 

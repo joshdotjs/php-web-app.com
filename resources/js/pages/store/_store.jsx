@@ -30,7 +30,7 @@ CustomWiggle.create("cartButtonWiggle", { wiggles: 8, type: "easeOut" });
 
 // ==============================================
 
-export default function Page({ products, num_products }) {
+export default function Page({ products_SSR, num_products_SSR }) {
 
   // --------------------------------------------
 
@@ -171,7 +171,7 @@ export default function Page({ products, num_products }) {
 
   // STEP 1: Set up layout in state with grid items initialized
   const [layout, setLayout] = useState(() => ({
-    items: products.map(({product, variants}) => {
+    items: products_SSR.map(({product, variants}) => {
       return product2layoutItem({ product, variants });
     }),
     state: undefined
@@ -328,12 +328,14 @@ export default function Page({ products, num_products }) {
       sort_col,
     };
   
-    const [products, error] = await fetchPOST2({ url, body });
+    const [data, error] = await fetchPOST2({ url, body });
     if (error) {
       debugger;
       alert(error);
     } else {
-      return products;
+
+      const { products, num_products } = data;
+      return { products, num_products };
     }
   };
 
@@ -439,9 +441,11 @@ export default function Page({ products, num_products }) {
     // - - - - - - - - - - - - - - - - - - - - - 
 
     console.clear();
-    const filtered_items_from_backend = await getProducts({ filter: new_filter, page_num, sort_type });
-    
-   
+    const { products: filtered_items_from_backend, num_products } = await getProducts({ filter: new_filter, page_num, sort_type });
+    setNumProducts(num_products);
+       
+    // - - - - - - - - - - - - - - - - - - - - - 
+
     //  -Take the non_removed_items and compare it agains the items returned from the backend endpoint.
     //  -Take the union of the two arrays by appending onto the end of the array.
     //    --The reason we need to do this is because for the new items that are retrieved from 
@@ -531,7 +535,8 @@ export default function Page({ products, num_products }) {
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
-    const filtered_items_from_backend = await getProducts({ filter, page_num, sort_type: new_sort_type });
+    const { products: filtered_items_from_backend, num_products } = await getProducts({ filter, page_num, sort_type: new_sort_type });
+    setNumProducts(num_products);
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
@@ -556,6 +561,7 @@ export default function Page({ products, num_products }) {
   // --------------------------------------------
 
   const [page_num, setPageNum] = useState(0); // 0 ... N-1
+  const [num_products, setNumProducts] = useState(num_products_SSR);
   
   const updatePageNum = async (new_page_num) => {
 
@@ -569,7 +575,7 @@ export default function Page({ products, num_products }) {
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
-    const filtered_items_from_backend = await getProducts({ filter, page_num: new_page_num, sort_type });
+    const { products: filtered_items_from_backend, num_products } = await getProducts({ filter, page_num: new_page_num, sort_type });
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
@@ -586,6 +592,7 @@ export default function Page({ products, num_products }) {
     // - - - - - - - - - - - - - - - - - - - - - 
 
     setPageNum(new_page_num);
+    setNumProducts(num_products);
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
