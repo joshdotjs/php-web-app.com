@@ -104,6 +104,46 @@
     'price_compare' =>   26000,
     'created_at'    =>  date("Y-m-d H:i:s")
   ]);
+  DB::table('products')->insert([
+    'title'         =>  "Alphafly 2",     
+    'sub_title'     =>  "Men's Road Racing Shoes",     
+    'body'          =>  "Once you take a few strides in the Nike Alphafly 2, you’ll never look at your favorite pair of old racing shoes the same. These rocket ships are made to help shave precious time off your personal records without surrendering the foundation you need to go the full distance. A thick, lightweight support system brings comfort and speed together so you can enjoy our greatest energy return yet while you chase your personal bests.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "men",     
+    'price'         =>   28500,
+    'price_compare' =>   28500,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Pegasus Trail 4",     
+    'sub_title'     =>  "Women's Trail Running Shoes",     
+    'body'          =>  "It's time to get outside. Running is your daily ritual, taking you from road to trail as you seek out new routes and goals. With a supportive, springy feel, these trail runners can take you there and back again. Underfoot traction helps keep you going over rocky terrain while still providing a smooth ride for the road. Your trusted workhorse with wings is back and ready for an off-road adventure.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "women",     
+    'price'         =>   14500,
+    'price_compare' =>   14500,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Infinity React 3",     
+    'sub_title'     =>  "Women's Road Running Shoes",     
+    'body'          =>  "Celebrate every mile with these festive road runners. With soft and supportive cushioning, the Nike Infinity React 3 is built to help keep you on the run. A wider forefoot and higher foam stacks help shield you from recurring attrition so you can make running a daily habit. The springy responsiveness surprises you too, adding an element of pure speed to 1 of our most tested shoes. Plus, colorful confetti-inspired graphic accents add fresh energy to your run.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "women",     
+    'price'         =>   16500,
+    'price_compare' =>   16500,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Structure 24",     
+    'sub_title'     =>  "Women's Road Running Shoes",     
+    'body'          =>  "The Nike Structure 24 has you ready to hit the road. We tested hundreds of runners to design the crash pad under your heel that creates a cushioned, smooth transition from heel to toe. Those insights also created an airy upper with breathability right where you need it.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "women",     
+    'price'         =>   11097,
+    'price_compare' =>   13000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
 
   // ==============================================
 
@@ -338,7 +378,7 @@
     'qty'         =>  1,
     'size'        =>  "null",     
     'color'       =>  "blue",     
-    'img'         =>  "img/products/shoes/men/Vaporfly-2-1.webp",     
+    'img'         =>  "/img/products/shoes/men/Vaporfly-2-1.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
@@ -346,7 +386,7 @@
     'qty'         =>  1,
     'size'        =>  "null",     
     'color'       =>  "green",     
-    'img'         =>  "img/products/shoes/men/Vaporfly-2-2.webp",     
+    'img'         =>  "/img/products/shoes/men/Vaporfly-2-2.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
@@ -354,7 +394,7 @@
     'qty'         =>  1,
     'size'        =>  "null",     
     'color'       =>  "white",     
-    'img'         =>  "img/products/shoes/men/Vaporfly-2-3.webp",     
+    'img'         =>  "/img/products/shoes/men/Vaporfly-2-3.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
@@ -362,11 +402,123 @@
     'qty'         =>  1,
     'size'        =>  "null",     
     'color'       =>  "grey",     
-    'img'         =>  "img/products/shoes/men/Vaporfly-2-4.jpeg",     
+    'img'         =>  "/img/products/shoes/men/Vaporfly-2-4.jpeg",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  9,
+    'product_id'  =>  10,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "green",     
+    'img'         =>  "/img/products/shoes/men/alphafly-2-green.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  10,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "orange",     
+    'img'         =>  "/img/products/shoes/men/alphafly-2-orange.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  11,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "pink",     
+    'img'         =>  "/img/products/shoes/women/Pegasus-Trail-4-pink.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  11,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "purple",     
+    'img'         =>  "/img/products/shoes/women/Pegasus-Trail-4-purple.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  11,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "red",     
+    'img'         =>  "/img/products/shoes/women/Pegasus-Trail-4-red.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  11,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "brown",     
+    'img'         =>  "/img/products/shoes/women/Pegasus-Trail-4-brown.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  12,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "purple",     
+    'img'         =>  "/img/products/shoes/women/Infinity-React-3-purple.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  12,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "pink",     
+    'img'         =>  "/img/products/shoes/women/Infinity-React-3-pink.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  12,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "grey",     
+    'img'         =>  "/img/products/shoes/women/Infinity-React-3-grey.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  12,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "white",     
+    'img'         =>  "/img/products/shoes/women/Infinity-React-3-white.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  13,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "white",     
+    'img'         =>  "/img/products/shoes/women/Structure-24-white.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  13,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "pink",     
+    'img'         =>  "/img/products/shoes/women/Structure-24-pink.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  13,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "pink",     
+    'img'         =>  "/img/products/shoes/women/Structure-24-pink-2.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  13,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/shoes/women/Structure-24-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  13,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "",     
