@@ -144,6 +144,26 @@
     'price_compare' =>   13000,
     'created_at'    =>  date("Y-m-d H:i:s")
   ]);
+  DB::table('products')->insert([
+    'title'         =>  "Zoom Fly 5",     
+    'sub_title'     =>  "Women's Road Running Shoes",     
+    'body'          =>  "Bridge the gap between your weekend training run and race day in a durable design that can be deployed not just at the starting line of your favorite race, but in the days and months after your conquest. It offers comfort and reliability but with a propulsive sensation that’ll help you feel fast and fresh. That kind of versatility is uncommon in the running arena. But who said you can’t have it all?",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "women",     
+    'price'         =>   13697,
+    'price_compare' =>   16000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "React Infinity 3 By You",     
+    'sub_title'     =>  "Custom Women's Road Running Shoes",     
+    'body'          =>  "Stay on your feet in a design that’s made to help keep you healthy while catering to your individualistic tastes in the Nike React Infinity Run 3 By You. You’re the creator with the final say, painting and picking from an extensive pallet of colors and exterior details that suite your distinctive style. Customize it to your liking and feel hopeful about endless possibilities when you hit the open road.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "women",     
+    'price'         =>   19000,
+    'price_compare' =>   19000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
 
   // ==============================================
 
@@ -518,7 +538,71 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  13,
+    'product_id'  =>  14,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "purple",     
+    'img'         =>  "/img/products/shoes/women/Zoom-Fly-5-purple.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  14,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "green",     
+    'img'         =>  "/img/products/shoes/women/Zoom-Fly-5-green.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  14,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "pink",     
+    'img'         =>  "/img/products/shoes/women/Zoom-Fly-5-pink.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  14,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/shoes/women/Zoom-Fly-5-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  15,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "white",     
+    'img'         =>  "/img/products/shoes/women/React-Infinity-3 By-You-white.jpeg",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  15,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "pink",     
+    'img'         =>  "/img/products/shoes/women/React-Infinity-3 By-You-pink.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  15,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "red",     
+    'img'         =>  "/img/products/shoes/women/React-Infinity-3 By-You-red.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  15,
+    'qty'         =>  1,
+    'size'        =>  "null",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/shoes/women/React-Infinity-3 By-You-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  15,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "",     
