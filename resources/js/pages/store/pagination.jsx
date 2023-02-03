@@ -165,12 +165,10 @@ export default function Pagination({ num_products, page_num, updatePageNum }) {
               <span className="sr-only">Previous</span>
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
             </a>
-            {/* Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
+
            
             {arr}
-            
 
-            
 
             <a
               // href="#"
