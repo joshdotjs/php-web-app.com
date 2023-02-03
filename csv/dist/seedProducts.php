@@ -254,6 +254,96 @@
     'price_compare' =>   5000,
     'created_at'    =>  date("Y-m-d H:i:s")
   ]);
+  DB::table('products')->insert([
+    'title'         =>  "Long Sleeve Essential",     
+    'sub_title'     =>  "Men's Long-Sleeve Shirt",     
+    'body'          =>  "The Nike Essential Swim Shirt offers sun protection to help guard against UV rays while you're training outdoors. Knit fabric gives this shirt natural stretch for a comfortable fit, while sweat-wicking technology helps to manage moisture.",     
+    'category'      =>  "clothes",     
+    'gender'        =>  "men",     
+    'price'         =>   4400,
+    'price_compare' =>   4400,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Sportswear Windrunner",     
+    'sub_title'     =>  "Men's Hooded Jacket",     
+    'body'          =>  "The Nike Sportswear Windrunner Jacket updates our first running windbreaker with lightweight fabric made from recycled materials. Design details pulled from the original version provide a heritage Nike look. This product is made with 100% recycled polyester fibers.",     
+    'category'      =>  "clothes",     
+    'gender'        =>  "men",     
+    'price'         =>   7597,
+    'price_compare' =>   10000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Nike Hat",     
+    'sub_title'     =>  "Adjustable Cap",     
+    'body'          =>  "Classic and comfortable, the Nike Sportswear Heritage 86 Cap features a 6-panel design made from cotton twill fabric and an adjustable closure for a snug, secure fit.",     
+    'category'      =>  "accessories",     
+    'gender'        =>  "unisex",     
+    'price'         =>   2400,
+    'price_compare' =>   2400,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Utility Speed Backpack",     
+    'sub_title'     =>  "Training Backpack (27L)",     
+    'body'          =>  "The Nike Utility Speed Backpack keeps your gear close, secure and organized when commuting to and from training sessions. Cushioned straps give you comfort on the go, and the pack opens flat for easy access to must-have items.",     
+    'category'      =>  "accessories",     
+    'gender'        =>  "men",     
+    'price'         =>   7700,
+    'price_compare' =>   7700,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "G-Flex Belt",     
+    'sub_title'     =>  "Golf Belt",     
+    'body'          =>  "The Tiger Woods Golf Belt offers a classic, clean-cut look for your day on the green. Nike Hole Reinforcer technology helps protect belt holes from wear and tear, while Nike Ultralight technology provides lightweight feel and full range of motion.",     
+    'category'      =>  "accessories",     
+    'gender'        =>  "unisex",     
+    'price'         =>   7500,
+    'price_compare' =>   7500,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Essential Horizon Glasses",     
+    'sub_title'     =>  "Blue Light Glasses",     
+    'body'          =>  "Sometimes it's hard to pull yourself away from the screen. The Nike Blue Light Collection features a premium lens coating that helps reduce blue light exposure for use at home, office, and gaming on your digital devices.",     
+    'category'      =>  "accessories",     
+    'gender'        =>  "women",     
+    'price'         =>   9900,
+    'price_compare' =>   9900,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Maverick Polarized Glasses",     
+    'sub_title'     =>  "Golf Sunglasses",     
+    'body'          =>  "A rebel on the outside, the Nike Maverick Sunglasses are pure performance on the inside. The lightweight frame features ventilation and temple arms that provide a soft, firm grip, ensuring you can wear these sunglasses for hours on the course, and off.",     
+    'category'      =>  "accessories",     
+    'gender'        =>  "unisex",     
+    'price'         =>   19900,
+    'price_compare' =>   19900,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Tennis Bag",     
+    'sub_title'     =>  "Stash Duffel Bag",     
+    'body'          =>  "Serena doesn't shy away from being bold and daring with her style, and neither do you. The Serena Williams Design Crew Stash Duffel is as fun as it is functional—a main compartment creates plenty of space for your gear from the court to the gym and everything else life throws your way. Need some space? The front zippered pocket provides secure small-item storage and turns inside out to store the bag easily when not in use.",     
+    'category'      =>  "accessories",     
+    'gender'        =>  "women",     
+    'price'         =>   4900,
+    'price_compare' =>   4900,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Sportswear Essentials Bag",     
+    'sub_title'     =>  "Crossbody Bag",     
+    'body'          =>  "The Nike Sportswear Essentials Crossbody Bag features 2 zippered pockets to let you keep the small stuff organized and easy to grab. The accessory pocket zipper pull offers quick access to smaller items, while an adjustable strap and buckle provide an easy on and off fit. This product is made with at least 50% recycled polyester fibers.",     
+    'category'      =>  "accessories",     
+    'gender'        =>  "unisex",     
+    'price'         =>   3200,
+    'price_compare' =>   3200,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
 
   // ==============================================
 
@@ -261,577 +351,577 @@
 
   DB::table('variants')->insert([
     'product_id'  =>  1,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "orange",     
     'img'         =>  "/img/products/shoes/women/vaporfly-2-1.avif",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  1,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "black",     
     'img'         =>  "/img/products/shoes/women/vaporfly-2-2.jpeg",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  1,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "pink",     
     'img'         =>  "/img/products/shoes/women/vaporfly-2-3.jpeg",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  1,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "yellow",     
     'img'         =>  "/img/products/shoes/women/vaporfly-2-4.jpeg",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  2,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "green",     
     'img'         =>  "/img/products/clothes/men/Repel-Miler-1.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  2,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "black",     
     'img'         =>  "/img/products/clothes/men/Repel-Miler-2.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  2,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "grey",     
     'img'         =>  "/img/products/clothes/men/Repel-Miler-3.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  3,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "grey",     
     'img'         =>  "/img/products/shoes/men/Flex-Experience-Run-11-grey-1.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  3,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "grey",     
     'img'         =>  "/img/products/shoes/men/Flex-Experience-Run-11-grey-2.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  3,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "black",     
     'img'         =>  "/img/products/shoes/men/Flex-Experience-Run-11-black.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  3,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "blue",     
     'img'         =>  "/img/products/shoes/men/Flex-Experience-Run-11-blue.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  4,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "white",     
     'img'         =>  "/img/products/accessories/unisex/Faux-Fur-Blanket-1.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  4,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "brown",     
     'img'         =>  "/img/products/accessories/unisex/Faux-Fur-Blanket-2.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  4,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "black",     
     'img'         =>  "/img/products/accessories/unisex/Faux-Fur-Blanket-3.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  5,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "grey",     
     'img'         =>  "/img/products/shoes/men/Pegasus-38-3.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  5,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "red",     
     'img'         =>  "/img/products/shoes/men/Pegasus-38-2.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  5,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "grey",     
     'img'         =>  "/img/products/shoes/men/Pegasus-38-1.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  5,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "black",     
     'img'         =>  "/img/products/shoes/men/Pegasus-38-4.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  6,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "pink",     
     'img'         =>  "/img/products/shoes/men/invincible-2-pink.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  6,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "grey",     
     'img'         =>  "/img/products/shoes/men/invincible-2-grey.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  6,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "orange",     
     'img'         =>  "/img/products/shoes/men/invincible-2-orange.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  6,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "black",     
     'img'         =>  "/img/products/shoes/men/invincible-2-black.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  7,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "blue",     
     'img'         =>  "/img/products/shoes/men/Zegama-1.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  7,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "green",     
     'img'         =>  "/img/products/shoes/men/Zegama-2.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  8,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "white",     
     'img'         =>  "/img/products/shoes/men/pegasus-39-white.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  8,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "green",     
     'img'         =>  "/img/products/shoes/men/pegasus-39-green.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  8,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "pink",     
     'img'         =>  "/img/products/shoes/men/pegasus-39-pink.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  8,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "purple",     
     'img'         =>  "/img/products/shoes/men/pegasus-39-purple.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  9,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "blue",     
     'img'         =>  "/img/products/shoes/men/Vaporfly-2-1.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  9,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "green",     
     'img'         =>  "/img/products/shoes/men/Vaporfly-2-2.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  9,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "white",     
     'img'         =>  "/img/products/shoes/men/Vaporfly-2-3.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  9,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "grey",     
     'img'         =>  "/img/products/shoes/men/Vaporfly-2-4.jpeg",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  10,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "green",     
     'img'         =>  "/img/products/shoes/men/alphafly-2-green.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  10,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "orange",     
     'img'         =>  "/img/products/shoes/men/alphafly-2-orange.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  11,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "pink",     
     'img'         =>  "/img/products/shoes/women/Pegasus-Trail-4-pink.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  11,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "purple",     
     'img'         =>  "/img/products/shoes/women/Pegasus-Trail-4-purple.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  11,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "red",     
     'img'         =>  "/img/products/shoes/women/Pegasus-Trail-4-red.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  11,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "brown",     
     'img'         =>  "/img/products/shoes/women/Pegasus-Trail-4-brown.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  12,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "purple",     
     'img'         =>  "/img/products/shoes/women/Infinity-React-3-purple.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  12,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "pink",     
     'img'         =>  "/img/products/shoes/women/Infinity-React-3-pink.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  12,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "grey",     
     'img'         =>  "/img/products/shoes/women/Infinity-React-3-grey.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  12,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "white",     
     'img'         =>  "/img/products/shoes/women/Infinity-React-3-white.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  13,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "white",     
     'img'         =>  "/img/products/shoes/women/Structure-24-white.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  13,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "pink",     
     'img'         =>  "/img/products/shoes/women/Structure-24-pink.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  13,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "pink",     
     'img'         =>  "/img/products/shoes/women/Structure-24-pink-2.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  13,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "black",     
     'img'         =>  "/img/products/shoes/women/Structure-24-black.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  14,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "purple",     
     'img'         =>  "/img/products/shoes/women/Zoom-Fly-5-purple.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  14,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "green",     
     'img'         =>  "/img/products/shoes/women/Zoom-Fly-5-green.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  14,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "pink",     
     'img'         =>  "/img/products/shoes/women/Zoom-Fly-5-pink.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  14,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "black",     
     'img'         =>  "/img/products/shoes/women/Zoom-Fly-5-black.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  15,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "white",     
     'img'         =>  "/img/products/shoes/women/React-Infinity-3 By-You-white.jpeg",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  15,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "pink",     
     'img'         =>  "/img/products/shoes/women/React-Infinity-3 By-You-pink.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  15,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "red",     
     'img'         =>  "/img/products/shoes/women/React-Infinity-3 By-You-red.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  15,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "black",     
     'img'         =>  "/img/products/shoes/women/React-Infinity-3 By-You-black.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  16,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "yellow",     
     'img'         =>  "/img/products/clothes/women/Dri-FIT-Element-yellow.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  16,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "grey",     
     'img'         =>  "/img/products/clothes/women/Dri-FIT-Element-grey.jpeg",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  16,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "black",     
     'img'         =>  "/img/products/clothes/women/Dri-FIT-Element-black.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  16,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "black",     
     'img'         =>  "/img/products/clothes/women/Dri-FIT-Element-black-2.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  17,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "yellow",     
     'img'         =>  "/img/products/clothes/women/Nike-Swoosh-yellow.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  17,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "green",     
     'img'         =>  "/img/products/clothes/women/Nike-Swoosh-green.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  17,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "pink",     
     'img'         =>  "/img/products/clothes/women/Nike-Swoosh-pink.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  18,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "brown",     
     'img'         =>  "/img/products/clothes/women/Sportswear-Phoenix-Fleece-brown.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  18,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "red",     
     'img'         =>  "/img/products/clothes/women/Sportswear-Phoenix-Fleece-red.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  19,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "blue",     
     'img'         =>  "/img/products/clothes/women/Dri-FIT-One-blue.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  19,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "pink",     
     'img'         =>  "/img/products/clothes/women/Dri-FIT-One-pink.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  20,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "pink",     
     'img'         =>  "/img/products/clothes/women/Nike-Sportswear-pink.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  20,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "white",     
     'img'         =>  "/img/products/clothes/women/Nike-Sportswear-white.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  21,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "white",     
     'img'         =>  "/img/products/clothes/women/Dri-FIT-Slam-white.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  21,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "blue",     
     'img'         =>  "/img/products/clothes/women/Dri-FIT-Slam-blue.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  21,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "pink",     
     'img'         =>  "/img/products/clothes/women/Dri-FIT-Slam-pink.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  22,
-    'qty'         =>  1,
-    'size'        =>  "null",     
+    'qty'         =>  0,
+    'size'        =>  "",     
     'color'       =>  "green",     
     'img'         =>  "/img/products/clothes/men/cargo-pants-green.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  23,
-    'qty'         =>  1,
-    'size'        =>  "null",     
-    'color'       =>  "",     
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "purple",     
     'img'         =>  "/img/products/clothes/men/themal-fit-hoodie-purple.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
@@ -839,7 +929,7 @@
     'product_id'  =>  23,
     'qty'         =>  0,
     'size'        =>  "",     
-    'color'       =>  "",     
+    'color'       =>  "red",     
     'img'         =>  "/img/products/clothes/men/themal-fit-hoodie-red.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
@@ -847,7 +937,7 @@
     'product_id'  =>  23,
     'qty'         =>  0,
     'size'        =>  "",     
-    'color'       =>  "",     
+    'color'       =>  "blue",     
     'img'         =>  "/img/products/clothes/men/themal-fit-hoodie-blue.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
@@ -855,15 +945,15 @@
     'product_id'  =>  23,
     'qty'         =>  0,
     'size'        =>  "",     
-    'color'       =>  "",     
+    'color'       =>  "grey",     
     'img'         =>  "/img/products/clothes/men/themal-fit-hoodie-grey.jpeg",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  24,
-    'qty'         =>  1,
+    'qty'         =>  0,
     'size'        =>  "",     
-    'color'       =>  "",     
+    'color'       =>  "blue",     
     'img'         =>  "/img/products/clothes/men/Dri-FIT-DNA-shorts-blue.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
@@ -871,7 +961,7 @@
     'product_id'  =>  24,
     'qty'         =>  0,
     'size'        =>  "",     
-    'color'       =>  "",     
+    'color'       =>  "grey",     
     'img'         =>  "/img/products/clothes/men/Dri-FIT-DNA-shorts-grey.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
@@ -879,8 +969,200 @@
     'product_id'  =>  24,
     'qty'         =>  0,
     'size'        =>  "",     
-    'color'       =>  "",     
+    'color'       =>  "red",     
     'img'         =>  "/img/products/clothes/men/Dri-FIT-DNA-shorts-red.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  25,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "grey",     
+    'img'         =>  "/img/products/clothes/men/long-sleeve-essential-grey.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  25,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "white",     
+    'img'         =>  "/img/products/clothes/men/long-sleeve-essential-white.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  25,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/clothes/men/long-sleeve-essential-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  26,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "green",     
+    'img'         =>  "/img/products/clothes/men/Sportswear-Windrunner-green.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  26,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/clothes/men/Sportswear-Windrunner-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  26,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "blue",     
+    'img'         =>  "/img/products/clothes/men/Sportswear-Windrunner-blue.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  26,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "red",     
+    'img'         =>  "/img/products/clothes/men/Sportswear-Windrunner-red.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  27,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "blue",     
+    'img'         =>  "/img/products/accessories/unisex/nike-hat-blue.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  27,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/accessories/unisex/nike-hat-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  27,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "brown",     
+    'img'         =>  "/img/products/accessories/unisex/nike-hat-brown.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  27,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "white",     
+    'img'         =>  "/img/products/accessories/unisex/nike-hat-white.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  28,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/accessories/men/backpack.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  29,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/accessories/unisex/belt-g-flex-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  29,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "white",     
+    'img'         =>  "/img/products/accessories/unisex/belt-g-flex-white.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  30,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "pink",     
+    'img'         =>  "/img/products/accessories/women/Essential-Horizon-pink.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  30,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "white",     
+    'img'         =>  "/img/products/accessories/women/Essential-Horizon-white.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  30,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/accessories/women/Essential-Horizon-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  31,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "blue",     
+    'img'         =>  "/img/products/accessories/unisex/Maverick-Polarized-Glasses-blue.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  31,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "red",     
+    'img'         =>  "/img/products/accessories/unisex/Maverick-Polarized-Glasses-red.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  31,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/accessories/unisex/Maverick-Polarized-Glasses-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  32,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "white",     
+    'img'         =>  "/img/products/accessories/unisex/tennis-bag-white.jpeg",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  33,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/accessories/unisex/Sportswear-Essentials-Bag-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  33,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "blue",     
+    'img'         =>  "/img/products/accessories/unisex/Sportswear-Essentials-Bag-blue.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  33,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "white",     
+    'img'         =>  "/img/products/accessories/unisex/Sportswear-Essentials-Bag-white.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
 

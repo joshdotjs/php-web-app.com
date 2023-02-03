@@ -68,6 +68,14 @@ export default function Pagination({ num_products, page_num, updatePageNum }) {
       arr.push(<Fragment key={`pagination-link-${4 + 1}`}><Link {...{page_num, updatePageNum}}>{num_pages}</Link></Fragment>);
 
     } else if (page_num <= num_pages - 3) { // case-B
+
+
+
+
+
+
+
+      
     } else { // case-C
     }
     
