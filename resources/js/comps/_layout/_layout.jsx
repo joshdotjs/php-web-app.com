@@ -15,7 +15,7 @@ export default function Layout({ children, name, restrict }) {
 
   // --------------------------------------------
 
-  const page_ref = useRef(null);
+  const layout_ref = useRef(null);
   const header_ref = useRef(null);
   const blur_ref = useRef(null);
 
@@ -24,7 +24,7 @@ export default function Layout({ children, name, restrict }) {
   useEffect(() => {
 
 
-    const page = page_ref.current;
+    const layout = layout_ref.current;
     const blur_overlay = blur_ref.current;
     const header = header_ref.current;
     // console.log('blur_overlay: ', blur_overlay);
@@ -33,7 +33,7 @@ export default function Layout({ children, name, restrict }) {
     const delay = 0.125;
     const tl = gsap.timeline();
 
-    // tl.to(page, { 
+    // tl.to(layout, { 
     //     opacity: 1, 
     //     duration: 0.25,
     //     delay,
@@ -46,7 +46,7 @@ export default function Layout({ children, name, restrict }) {
     //   },
     //   // "<="
     // );
-    tl.to(page, { opacity: 1, scale: 1, duration: 0.5, delay }, '<=');
+    tl.to(layout, { opacity: 1, scale: 1, duration: 0.5, delay }, '<=');
     // gsap.to(header, { opacity: 1, duration: 1 });
 
   }, []);
@@ -54,43 +54,50 @@ export default function Layout({ children, name, restrict }) {
   // --------------------------------------------
 
   return (
-
     <AuthContextProvider { ...{ restrict } }>
       <CartContextProvider>
+        <div 
+          id="layout" 
+          ref={layout_ref} 
+          style={{ opacity: 0, transform: 'scale(1.015)', transformOrigin: 'center' }}
+        >
 
-        <Cart />
+          <Cart />
 
-        {/* <Notifications /> */}
+          {/* <Notifications /> */}
 
-        <Header { ...{ header_ref } } />
+          <Header { ...{ header_ref } } />
 
-        <main id="page" className={`${name} gutter-container`} ref={page_ref} style={{ opacity: 0, transform: 'scale(1.015)', transformOrigin: 'center' }}>
-          {children}
-        </main> 
+          <main id="page" className={`${name}`}>
+            <div className="gutter">
+              {children}
+            </div>
+          </main> 
 
-        {/* <div 
-          id="blur-overlay" 
-          ref={blur_ref}
-          style={{ 
-            backdropFilter: 'blur(10px)', 
-            // background: 'rgba(0, 0, 0, 0.5)', 
-            // backdropFilter: 'blur(10px) saturate(180%)',
-            // '-webkit-backdrop-filter': 'blur(10px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(10px) saturate(180%)',
-            // backgroundColor: 'rgba(17, 25, 40, 0.75)',
-            position: 'fixed', 
-            height: '100vh',
-            width: '100vw',
-            top: 0,
-            left: 0,
-            zIndex: 10,
-          }}
-        ></div> */}
+          {/* <div 
+            id="blur-overlay" 
+            ref={blur_ref}
+            style={{ 
+              backdropFilter: 'blur(10px)', 
+              // background: 'rgba(0, 0, 0, 0.5)', 
+              // backdropFilter: 'blur(10px) saturate(180%)',
+              // '-webkit-backdrop-filter': 'blur(10px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(10px) saturate(180%)',
+              // backgroundColor: 'rgba(17, 25, 40, 0.75)',
+              position: 'fixed', 
+              height: '100vh',
+              width: '100vw',
+              top: 0,
+              left: 0,
+              zIndex: 10,
+            }}
+          ></div> */}
 
-        <footer>
-          <p>footer</p>
-        </footer>
-      
+          <footer>
+            <p>footer</p>
+          </footer>
+        
+        </div>
       </CartContextProvider>
     </AuthContextProvider>
   );

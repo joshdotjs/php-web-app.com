@@ -14,13 +14,9 @@ header#navbar { position: fixed;
   
   nav#top {
     background: darkorange;
-
-    .gutter-container {
+    .gutter {
       display: flex;
       justify-content: space-between;
-
-      width: 100%;
-      background: lightgreen;
 
       ul#nav-links {
         background: lightblue;
@@ -34,11 +30,12 @@ header#navbar { position: fixed;
         }
       }
     }
+    
   }
   
   nav#bottom {
     background: lightblue;
-    .gutter-container {
+    .gutter {
       display: flex;
       justify-content: space-between;
 
@@ -68,6 +65,11 @@ header#navbar { position: fixed;
         box-shadow: 0 1rem 2rem hsla(0 0% 0% / 0.2);
 
         cursor: pointer;
+
+        // svg {
+        //   max-width: 50px;
+        //   max-height: 50px;
+        // }
 
         // -status === 'entered' => child of li.box
         // -status === 'exiting' => child of #hidden-target

@@ -33,13 +33,11 @@ export default function Header({ header_ref }) {
       ref={header_ref}
       style={{ position: 'fixed' }}
     >
-      
-
 
       {/* ----------------------------------- */}
 
       <nav id="top">
-        <div className="gutter-container">
+        <div className="gutter">
           <div>
             <a href="/">Store Name</a>
           </div>
@@ -86,30 +84,29 @@ export default function Header({ header_ref }) {
       {/* ----------------------------------- */}
 
       <nav id="bottom">
-        <div className="gutter-container">
+        <div className="gutter">
 
-        <h2 id="logo">Logo</h2>
+          <h2 id="logo">Logo</h2>
 
-        <div 
-          id="cart-btn"
-          ref={cart_btn_ref}
-          onClick={() => {
-            console.log('clicked cart button');
-            openCart({});
-          }}
+          <div 
+            id="cart-btn"
+            ref={cart_btn_ref}
+            onClick={() => {
+              console.log('clicked cart button');
+              openCart({});
+            }}
           >
 
-          <div ref={cart_icon_target_ref} id="hidden-target"></div>
+            <div ref={cart_icon_target_ref} id="hidden-target"></div>
 
-          <BagSVG />
+            <BagSVG />
 
-          <div ref={cart_count_ref} id="cart-count" style={{ opacity: 0 }}>
-            <span style={{ color: 'white' }} ></span>
-          </div>
-          
+            <div ref={cart_count_ref} id="cart-count" style={{ opacity: 0 }}>
+              <span style={{ color: 'white' }} ></span>
+            </div>
+            
           </div>
         </div>
-
       </nav>
 
       {/* ----------------------------------- */}

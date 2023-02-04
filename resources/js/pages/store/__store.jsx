@@ -1,8 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 
 import Layout from '@/comps/_layout/_layout';
-
 import Page from './_store';
 
 import './__store.scss';

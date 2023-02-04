@@ -1,6 +1,6 @@
 #page.store {
   
-  #grid-container {
+  #grid-container { min-height: 100%;
     $break: 960px;
     $grey: #E5E5E5;
     $ml: 0.6rem;
@@ -9,6 +9,7 @@
     $bar-height: 100px;
     $pad-x: var(--gutter);
     
+
     display: flex;
     
     // max-width: $max-grid-width;
@@ -36,9 +37,9 @@
     
     // ==========================================
     
-    #grid-right {
+    #grid-right { min-height: 100%;
       outline: solid yellow 5px;
-      border: dashed red 1px;
+      // border: dashed red 1px;
       width: 100%;
       // height: calc(100vh - var(--navbar-height));
       // min-height: 100vh;  
@@ -48,8 +49,11 @@
       // TODO: Why doesn't height adjust to ul#grid-items???
       
       display: grid;
+      // grid-template-rows: $bar-height 1fr $bar-height;
       grid-template-rows: $bar-height 1fr $bar-height;
+      // WHY IS THE HEIGHT ON THE 1FR Not calculated based on the contents?!?!
       
+
       // ----------------------------------------
       // #filter-button-row,
       // ul#grid-items,
@@ -62,6 +66,7 @@
       #pagination {
         grid-column: 1 / -1;
         height: 100%;
+        background: rgba(255, 0, 0, 0.5);
       }
 
       // ----------------------------------------
@@ -74,7 +79,7 @@
         justify-content: space-between;
         align-items: center;
 
-        #show-filters-button {
+        #show-filters-button { 
           // background: lightgreen;
           // outline: solid lightgreen 2px;
           display: inline-flex;
@@ -89,8 +94,11 @@
       // ----------------------------------------
       
       ul#grid-items { 
-        border: solid black 1px;
+        border: dotted red 10px;
         width: 100%;
+
+        // height: 2000px;
+        
         
         position: relative;
         // z-index: 0;
@@ -113,7 +121,7 @@
             
         li.box { 
           // position: relative; 
-          outline: dashed hsl(33, 100%, 50%, 1) 1px;
+          outline: dashed hsl(33, 100%, 50%, 0.5) 2px;
           // aspect-ratio: 1;
       
           // -status: 'entered'  =>  div#app-main  >  ul#grid-items  >  li.box
