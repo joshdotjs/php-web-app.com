@@ -1,4 +1,55 @@
-main#page.about {
-  background: red;
+/* ========================================= */
 
+$desktop: 1000px;
+// $pad: 1rem;
+$pad: min(1vw, 1rem);
+
+@mixin my {
+  margin-top: $pad;
+  margin-bottom: $pad;
+}
+
+/* ========================================= */
+
+main#page.about { background: yellow;
+  #grid-container {
+    // outline: dashed yellow 5px;
+    display: grid;
+
+    @media (max-width: #{$desktop}) { grid-template-columns: 1fr; }
+    @media (min-width: #{$desktop}) { grid-template-columns: 260px 1fr; }
+
+    #grid-left  { 
+      background: rgba(255, 0, 255, 0.5);
+      @media (max-width: #{$desktop}) { display: none; }
+    }
+
+    #grid-right { 
+      background: green;
+      padding-left: 48px;
+      #filter-button-row {
+        @include my;
+        background: rgba(0, 255, 255, 0.5);
+      }
+      ul#grid-items {
+        display: grid;
+        gap: $pad;
+        @media (max-width: #{$desktop}) { grid-template-columns: repeat(2, 1fr); }
+        @media (min-width: #{$desktop}) { grid-template-columns: repeat(3, 1fr); }
+
+        li { 
+          border: solid black 1px; 
+
+          // Max Grid Width:  1570
+          // Max Image Width:  510
+          // Sidebar Width:    260 (constant)
+          // Width between sidebar and grid: 48 (constant)
+        }
+      }
+      #pagination {
+        @include my;
+        background: rgba(0, 255, 255, 0.5);
+      }
+    }
+  }
 }

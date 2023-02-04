@@ -3,13 +3,21 @@
 :root {
   --text-color-primary: #111111;
   --navbar-height: 120px;
-  --gutter-width: 3rem;
-  --max-width: 2000px;
+  --gutter-width: 5%;   // TODO: Responsive gutter width
+  --max-width: 1800px;
 
   --navbar-top-height: 40px;
   --navbar-bottom-height: 70px;
   --header-height: calc(var(--navbar-top-height) + var(--navbar-bottom-height));
+
+  // TODO: Responsive font-sizes
 }
+
+/* ========================================= */
+
+$desktop: 1000px;
+
+/* ========================================= */
 
 @mixin gutter-padding {
   padding-left:  var(--gutter-width);
