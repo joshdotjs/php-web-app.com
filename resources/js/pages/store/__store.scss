@@ -1,7 +1,19 @@
-#page.store {
+/* ========================================= */
+
+$desktop: 1000px;
+// $pad: 1rem;
+$pad: min(1vw, 1rem);
+
+@mixin my {
+  margin-top: $pad;
+  margin-bottom: $pad;
+}
+
+/* ========================================= */
+
+main#page.store {
   
-  #grid-container { min-height: 100%;
-    $break: 960px;
+  #grid-container {
     $grey: #E5E5E5;
     $ml: 0.6rem;
 
@@ -10,19 +22,16 @@
     $pad-x: var(--gutter);
     
 
-    display: flex;
-    
-    // max-width: $max-grid-width;
-    // margin: 0 auto;
+    display: grid;
+    @media (max-width: #{$desktop}) { grid-template-columns: 1fr; }
+    @media (min-width: #{$desktop}) { grid-template-columns: 260px 1fr; }
 
     // ==========================================
 
     #grid-left  {
       // background: lightcyan;
       // width: 100%;
-      @media (max-width: #{$break}) {
-        display: none;
-      }
+      @media (max-width: #{$desktop}) { display: none; }
 
       hr { 
         border:  solid $grey 1px; 
@@ -38,19 +47,16 @@
     // ==========================================
     
     #grid-right { 
-      // min-height: 100%;
-      outline: solid yellow 5px;
+      padding-left: 48px;
+      background: green;
+      // outline: solid yellow 5px;
       // border: dashed red 1px;
       width: 100%;
       // height: calc(100vh - var(--navbar-height));
       // min-height: 100vh;  
       // height: fit-content; 
 
-      display: grid;
-      // grid-template-rows: $bar-height 1fr $bar-height;
-      grid-template-rows: $bar-height 1fr $bar-height;
-      // WHY IS THE HEIGHT ON THE 1FR Not calculated based on the contents?!?!
-      
+
 
       // ----------------------------------------
       // #filter-button-row,
@@ -62,9 +68,8 @@
 
       #filter-button-row,
       #pagination {
-        grid-column: 1 / -1;
-        height: 100%;
-        background: rgba(255, 0, 0, 0.5);
+        @include my;
+        background: rgba(0, 255, 255, 0.5);
       }
 
       // ----------------------------------------
@@ -91,28 +96,12 @@
     
       // ----------------------------------------
       
-      ul#grid-items { 
-        border: dotted red 10px;
-        width: 100%;
-
-        // height: 2000px;
-        
-        
-        position: relative;
-        // z-index: 0;
-        
+      ul#grid-items {  position: relative; // z-index: 0;
         display: grid;
-        @media (max-width: #{$break}) {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        @media (min-width: #{$break}) {
-          grid-template-columns: repeat(3, 1fr);
-        }
-        // justify-items: stretch;
-        // align-items: stretch;
-
-        gap: 1rem;
-        // padding: 1rem;
+        gap: $pad;
+        @media (max-width: #{$desktop}) { grid-template-columns: repeat(2, 1fr); }
+        @media (min-width: #{$desktop}) { grid-template-columns: repeat(3, 1fr); }
+        
         background: white;//gray;
         grid-auto-rows: min-content;
         //--- gridAutoFlow: 'dense',
