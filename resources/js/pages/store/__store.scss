@@ -4,9 +4,11 @@
     $break: 960px;
     $grey: #E5E5E5;
     $ml: 0.6rem;
+
+    $max-grid-width: 1200px;
+    $bar-height: 100px;
+    $pad-x: 25px;
     
-    // display: grid;
-    // grid-template-areas: 'A B';
     display: flex;
     
     // @media (max-width: #{$break}) {
@@ -20,37 +22,58 @@
     // ==========================================
 
     #grid-left  {
-      // grid-area: A;
+      // background: lightcyan;
+      // width: 100%;
       @media (max-width: #{$break}) {
         display: none;
       }
 
-      // background: white;
-
       hr { 
         border:  solid $grey 1px; 
         width: 95%;
-        transform: translateX(2.5%)
+        transform: translateX(2.5%);
+        margin: 1rem 0;
       }
+
+      padding: 0 $pad-x;
+      padding-top: $bar-height;
     }
-
+    
     // ==========================================
-
+    
     #grid-right {
-      // grid-area: B;
-
-      border: dashed red 5px;
+      outline: solid yellow 5px;
+      border: dashed red 1px;
       width: 100%;
-      height: calc(100vh - var(--navbar-height));
-
+      // height: calc(100vh - var(--navbar-height));
+      min-height: 100vh;  
+      // height: fit-content; 
+      // TODO: Why doesn't height adjust to ul#grid-items???
+      // TODO: Why doesn't height adjust to ul#grid-items???
+      // TODO: Why doesn't height adjust to ul#grid-items???
+      
       display: grid;
-      grid-template-rows: 150px 1fr 150px;
+      grid-template-rows: $bar-height 1fr $bar-height;
+      
+      // ----------------------------------------
+      #filter-button-row,
+      ul#grid-items,
+      #pagination {
+        max-width: $max-grid-width;
+        margin: 0 auto;
+      }
+
+      #filter-button-row,
+      #pagination {
+        grid-column: 1 / -1;
+        height: 100%;
+      }
 
       // ----------------------------------------
 
       // top row is the filter buttons
       #filter-button-row {
-        grid-column: 1 / -1;
+        // background: #BADA55;
 
         display: flex;
         justify-content: space-between;
@@ -68,7 +91,6 @@
         }
       }
     
-      
       // ----------------------------------------
       
       ul#grid-items { 
@@ -93,9 +115,6 @@
         background: white;//gray;
         grid-auto-rows: min-content;
         //--- gridAutoFlow: 'dense',
-        max-width: 1200px;
-        margin: 0 auto;
-        
             
         li.box { 
           // position: relative; 
@@ -112,8 +131,6 @@
       
       #pagination {
         // outline: solid darkorchid 5px;
-        grid-column: 1 / -1;
-        height: 150px;
       }
 
       // ----------------------------------------

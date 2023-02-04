@@ -26,13 +26,6 @@ export default function Filters({
 
       <hr />
 
-      <button onClick={() => filter.reset()}>Reset</button>
-
-      <hr />
-
-      {/* <Checkboxes type="price" options={prices} set={price_filter} applyFilter={applyFilter}>
-        Shop by Price
-      </Checkboxes> */}
     </>
   );
 }

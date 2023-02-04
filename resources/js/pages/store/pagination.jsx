@@ -42,7 +42,6 @@ export default function Pagination({ num_products, page_num, updatePageNum }) {
 
   // Case 1: Less than 7 pages    display: 1,2,3,4,5,6
 
-
   // Case 2:   num_pages: 7        pagination             page_num 
   //                               1,2,3,4,    ...,7      1,2,3         case-A
   //                               1,...,3,4,5,...,7      4             case-B
