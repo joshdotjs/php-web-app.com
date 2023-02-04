@@ -5,19 +5,17 @@ header#navbar { position: fixed;
   width: 100vw;
    
   nav {
-    width: 100%;
-    // padding: 0.75rem var(--gutter);
-    $py: 0.75rem;
-    padding-top: $py;
-    padding-bottom: $py;
+    .gutter {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
   
   nav#top {
     background: darkorange;
     .gutter {
-      display: flex;
-      justify-content: space-between;
-
       ul#nav-links {
         background: lightblue;
       
@@ -36,15 +34,10 @@ header#navbar { position: fixed;
   nav#bottom {
     background: lightblue;
     .gutter {
-      display: flex;
-      justify-content: space-between;
 
-
-      #logo {
-        margin: 0;
-        display: flex;
-        align-items: center;
-      }
+      // #logo {
+      //   margin: 0;
+      // }
     
       #cart-btn {  position: relative;
         // position: absolute;

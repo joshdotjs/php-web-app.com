@@ -37,17 +37,15 @@
     
     // ==========================================
     
-    #grid-right { min-height: 100%;
+    #grid-right { 
+      // min-height: 100%;
       outline: solid yellow 5px;
       // border: dashed red 1px;
       width: 100%;
       // height: calc(100vh - var(--navbar-height));
       // min-height: 100vh;  
       // height: fit-content; 
-      // TODO: Why doesn't height adjust to ul#grid-items???
-      // TODO: Why doesn't height adjust to ul#grid-items???
-      // TODO: Why doesn't height adjust to ul#grid-items???
-      
+
       display: grid;
       // grid-template-rows: $bar-height 1fr $bar-height;
       grid-template-rows: $bar-height 1fr $bar-height;
