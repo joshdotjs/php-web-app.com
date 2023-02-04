@@ -47,7 +47,7 @@ main#page.store {
     // ==========================================
     
     #grid-right { 
-      padding-left: 48px;
+      @media (min-width: #{$desktop}) { padding-left: 48px; }
       background: green;
       // outline: solid yellow 5px;
       // border: dashed red 1px;
@@ -99,8 +99,14 @@ main#page.store {
       ul#grid-items {  position: relative; // z-index: 0;
         display: grid;
         gap: $pad;
-        @media (max-width: #{$desktop}) { grid-template-columns: repeat(2, 1fr); }
-        @media (min-width: #{$desktop}) { grid-template-columns: repeat(3, 1fr); }
+        @media (max-width: #{$desktop}) { 
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(3, 1fr);
+        }
+        @media (min-width: #{$desktop}) { 
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(2, 1fr);
+        }
         
         background: white;//gray;
         grid-auto-rows: min-content;

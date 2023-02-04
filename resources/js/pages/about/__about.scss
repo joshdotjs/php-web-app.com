@@ -26,7 +26,8 @@ main#page.about { background: yellow;
 
     #grid-right { 
       background: green;
-      padding-left: 48px;
+      @media (min-width: #{$desktop}) { padding-left: 48px; }
+      
       #filter-button-row {
         @include my;
         background: rgba(0, 255, 255, 0.5);

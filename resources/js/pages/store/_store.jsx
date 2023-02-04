@@ -287,7 +287,6 @@ export default function Page({ products_SSR, num_products_SSR }) {
           return gsap.fromTo(elements, { 
             opacity: 0,
             scale: 0,
-            duration
           }, { 
             opacity: 1,
             scale: 1,
@@ -572,6 +571,13 @@ export default function Page({ products_SSR, num_products_SSR }) {
     console.log('grid items: ', grid_items);
     const grid_height = grid_items.offsetHeight;
     grid_items.style.height = `${grid_height}px`;
+
+    // const boxes = grid_items.querySelectorAll('.box');
+    // const box_height = `${boxes[0].offsetHeight}px`;
+    // boxes.forEach((box) => {
+    //   box.style.height = box_height;
+    // });
+
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
