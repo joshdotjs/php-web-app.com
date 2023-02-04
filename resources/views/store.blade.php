@@ -5,6 +5,7 @@
   {{-- react --}}
   <div 
     id="root-main"
+    class="react-root"
     data-products="{{$products}}"
     data-num-products="{{$num_products}}"
     data-api-url-node="{{$API_URL_NODE}}"

@@ -5,19 +5,14 @@
     $grey: #E5E5E5;
     $ml: 0.6rem;
 
-    $max-grid-width: 1200px;
+    $max-grid-width: var(--max-width);
     $bar-height: 100px;
-    $pad-x: 25px;
+    $pad-x: var(--gutter);
     
     display: flex;
     
-    // @media (max-width: #{$break}) {
-    //   grid-template-columns: auto;
-    //   #grid-right { width: 100vw; }
-    // }
-    // @media (min-width: #{$break}) {
-    //   grid-template-columns: 200px 1fr;
-    // }
+    // max-width: $max-grid-width;
+    // margin: 0 auto;
 
     // ==========================================
 
@@ -35,7 +30,7 @@
         margin: 1rem 0;
       }
 
-      padding: 0 $pad-x;
+      // padding: 0 $pad-x;
       padding-top: $bar-height;
     }
     
@@ -46,7 +41,7 @@
       border: dashed red 1px;
       width: 100%;
       // height: calc(100vh - var(--navbar-height));
-      min-height: 100vh;  
+      // min-height: 100vh;  
       // height: fit-content; 
       // TODO: Why doesn't height adjust to ul#grid-items???
       // TODO: Why doesn't height adjust to ul#grid-items???
@@ -56,12 +51,12 @@
       grid-template-rows: $bar-height 1fr $bar-height;
       
       // ----------------------------------------
-      #filter-button-row,
-      ul#grid-items,
-      #pagination {
-        max-width: $max-grid-width;
-        margin: 0 auto;
-      }
+      // #filter-button-row,
+      // ul#grid-items,
+      // #pagination {
+      //   max-width: $max-grid-width;
+      //   margin: 0 auto;
+      // }
 
       #filter-button-row,
       #pagination {
@@ -111,7 +106,7 @@
         // align-items: stretch;
 
         gap: 1rem;
-        padding: 1rem;
+        // padding: 1rem;
         background: white;//gray;
         grid-auto-rows: min-content;
         //--- gridAutoFlow: 'dense',

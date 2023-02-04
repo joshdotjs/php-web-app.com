@@ -33,57 +33,60 @@ export default function Header({ header_ref }) {
       ref={header_ref}
       style={{ position: 'fixed' }}
     >
+      
+
 
       {/* ----------------------------------- */}
 
       <nav id="top">
+        <div className="gutter-container">
+          <div>
+            <a href="/">Store Name</a>
+          </div>
 
-        <div>
-          <a href="/">Store Name</a>
+
+          <ul id="nav-links">
+
+            <li className="nav-link">
+              <a href="/store">Store</a>
+            </li>
+
+            {
+              logged_in 
+              ? 
+              (
+                <>
+                  <li className="nav-link" onClick={logOut}>
+                    Log out
+                  </li>
+
+                  <li className="nav-link">
+                    <a href="/admin-dashboard">{user?.email}</a>
+                  </li>
+                </>
+              )
+              : 
+              (
+                <>
+                  <li className="nav-link">
+                    <a href="/auth/register">Register</a>
+                  </li>
+
+                  <li className="nav-link">
+                    <a href="/auth/login">Log in</a>
+                  </li>
+                </>
+              )
+            }
+
+          </ul>
         </div>
-
-
-        <ul id="nav-links">
-
-          <li className="nav-link">
-            <a href="/store">Store</a>
-          </li>
-
-          {
-            logged_in 
-            ? 
-            (
-              <>
-                <li className="nav-link" onClick={logOut}>
-                  Log out
-                </li>
-
-                <li className="nav-link">
-                  <a href="/admin-dashboard">{user?.email}</a>
-                </li>
-              </>
-            )
-            : 
-            (
-              <>
-                <li className="nav-link">
-                  <a href="/auth/register">Register</a>
-                </li>
-
-                <li className="nav-link">
-                  <a href="/auth/login">Log in</a>
-                </li>
-              </>
-            )
-          }
-
-        </ul>
-
       </nav>
 
       {/* ----------------------------------- */}
 
       <nav id="bottom">
+        <div className="gutter-container">
 
         <h2 id="logo">Logo</h2>
 
@@ -94,7 +97,7 @@ export default function Header({ header_ref }) {
             console.log('clicked cart button');
             openCart({});
           }}
-        >
+          >
 
           <div ref={cart_icon_target_ref} id="hidden-target"></div>
 
@@ -104,6 +107,7 @@ export default function Header({ header_ref }) {
             <span style={{ color: 'white' }} ></span>
           </div>
           
+          </div>
         </div>
 
       </nav>

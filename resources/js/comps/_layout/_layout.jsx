@@ -7,6 +7,8 @@ import Header from './Header';
 import Cart from './Cart';
 import Notifications from './notify/notify';
 
+import './_layout.scss';
+
 // ==============================================
 
 export default function Layout({ children, name, restrict }) {
@@ -62,7 +64,7 @@ export default function Layout({ children, name, restrict }) {
 
         <Header { ...{ header_ref } } />
 
-        <main id="page" className={name} ref={page_ref} style={{ opacity: 0, transform: 'scale(1.015)', transformOrigin: 'center' }}>
+        <main id="page" className={`${name} gutter-container`} ref={page_ref} style={{ opacity: 0, transform: 'scale(1.015)', transformOrigin: 'center' }}>
           {children}
         </main> 
 
@@ -84,6 +86,10 @@ export default function Layout({ children, name, restrict }) {
             zIndex: 10,
           }}
         ></div> */}
+
+        <footer>
+          <p>footer</p>
+        </footer>
       
       </CartContextProvider>
     </AuthContextProvider>
