@@ -112,10 +112,10 @@ export default function Grid({
 
       <div id="filter-button-row">
 
-        <div id="show-filters-button" onClick={openFiltersHandler}>
-          { show_filters && <h5>Hide Filters</h5> }
-          { !show_filters && <h5>Show Filters</h5> }
-          <svg aria-hidden="true" className="icon-filter-ds" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none">
+        <div id="show-filters-button" onClick={openFiltersHandler} className="flex items-center">
+          { show_filters && <h4>Hide Filters</h4> }
+          { !show_filters && <h4>Show Filters</h4> }
+          <svg aria-hidden="true" className="icon-filter-ds" focusable="false" viewBox="0 0 24 24" role="img" width="22px" height="22px" fill="none">
             <path stroke="currentColor" strokeWidth="1.5" d="M21 8.25H10m-5.25 0H3"></path>
             <path stroke="currentColor" strokeWidth="1.5" d="M7.5 6v0a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z" clipRule="evenodd"></path>
             <path stroke="currentColor" strokeWidth="1.5" d="M3 15.75h10.75m5 0H21"></path>

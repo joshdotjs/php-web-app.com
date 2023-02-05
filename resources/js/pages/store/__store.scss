@@ -28,6 +28,13 @@ main#page.store {
 
     // ==========================================
 
+    h4 {
+      font-size: 1rem;
+      &.light { color: #757575; }
+    }
+
+    // ==========================================
+
     #grid-left  {
       padding-top: calc(#{$bar-height} + 2 * #{$pad});
       @media (max-width: #{$desktop}) { display: none; }
