@@ -170,7 +170,7 @@ export default function Card ({ item, addToCartAnim, idx }) {
             gap: '10px',
             // padding: '0px 0',
             // background: 'lightgreen',
-            paddingBottom: '12px',
+            paddingBottom: '18px',
             background: 'white',
             position: 'absolute',
             top: 0,
