@@ -36,7 +36,8 @@ main#page.store {
 
       display: flex;
 
-      &-left { 
+      &-left {
+        width: 240px;
         .chevron-anim {
           overflow: hidden;
           &__title {
