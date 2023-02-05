@@ -101,7 +101,8 @@ export default function Card ({ item, addToCartAnim, idx }) {
       onMouseLeave={exit}
       style={{ 
         height: '100%',  
-        background: 'white'
+        background: 'white',
+        overflow: 'hidden'
       }}
     >
       <div 
@@ -160,7 +161,7 @@ export default function Card ({ item, addToCartAnim, idx }) {
 
         <div 
           ref={reveal_ref} 
-          className="back radio-container  hidden  sm:flex"
+          className="back radio-container  hidden  lg:flex"
           style={{ 
             opacity: 0,
             // display: 'flex',
@@ -172,6 +173,7 @@ export default function Card ({ item, addToCartAnim, idx }) {
             position: 'absolute',
             top: 0,
             width: '100%',
+            overflowY: 'scroll'
           }}
         >
           {

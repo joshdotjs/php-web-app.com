@@ -18,14 +18,14 @@ export default function Filters({
           </Checkboxes>
         </ChevronAnim>
 
-        <hr className="border-t border-gray-200 my-4"></hr>
+        <hr className="border-t border-gray-200 mt-2 mb-4"></hr>
 
         <ChevronAnim title="Gender" num={filter.in_init_state['gender'] ? 0 : filter.getNum('gender')}>
           <Checkboxes type="gender" options={genders} set={filter['gender']} applyFilter={applyFilter} in_init_state={filter.in_init_state['gender']} >
           </Checkboxes>
         </ChevronAnim>
 
-        <hr className="border-t border-gray-200 my-4"></hr>
+        <hr className="border-t border-gray-200 mt-2 mb-4"></hr>
       </div>
 
       <div id="grid-left-right"></div>  
