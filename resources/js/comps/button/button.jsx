@@ -2,7 +2,7 @@ import React from "react";
 
 // ==============================================
 
-export default function Button({ children, onClick, disabled=false, classes, width=null }) {
+export default function Button({ children, onClick, disabled=false, classes, width=null, translucent=false, bg_color='black', text_color='white' }) {
   return (
     <button
       type="button"
@@ -21,8 +21,12 @@ export default function Button({ children, onClick, disabled=false, classes, wid
       `}
       
       style={{
-        background: 'black',
-        color: 'white',
+        background: translucent ? 'rgba(0, 0, 0, 0.85)'  : bg_color,
+        backdropFilter: translucent ? 'blur(2px)' : '',
+        WebkitBackdropFilter: translucent ? 'blur(2px)' : '',
+        border: translucent ? '1px solid rgba( 255, 255, 255, 0.1)' : '',
+
+        color: text_color,
         // padding: '0.75rem',
         width: '100%',
         borderRadius: '100vmax',

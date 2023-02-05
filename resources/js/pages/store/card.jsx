@@ -124,17 +124,19 @@ export default function Card ({ item, addToCartAnim, idx }) {
             classes="mx-4"
             disabled={!chosen_variant_id}
             onClick={() => {
-            const { product, variants } = item;
-            const { id: product_id, title, body, price, category } = product;
-            const variant = variants.find((variant) => variant.id === chosen_variant_id);
-            const { id: variant_id, color, size, qty } = variant;
-            addToCartLS({ 
-              idx, 
-              product: { id: product_id, title, body, price, category }, 
-              variant: { id: variant_id, color, size, qty },
-            });
-            addToCartAnim(idx); // animation in <App />
-          }}>
+              const { product, variants } = item;
+              const { id: product_id, title, body, price, category } = product;
+              const variant = variants.find((variant) => variant.id === chosen_variant_id);
+              const { id: variant_id, color, size, qty } = variant;
+              addToCartLS({ 
+                idx, 
+                product: { id: product_id, title, body, price, category }, 
+                variant: { id: variant_id, color, size, qty },
+              });
+              addToCartAnim(idx); // animation in <App />
+            }}
+            translucent={true}
+          >
             Add to Bag
           </Button>
         </div>
