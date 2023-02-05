@@ -23,7 +23,7 @@ const Ellipsis = ({ children, name, classes, color, fontSize, fontWeight }) => {
       className={`
         ${name}
         ${classes}
-        w-[150px] xl:w-full
+        w-[150px] 2xl:w-full
       `}
       style={{ 
         color,
@@ -113,7 +113,7 @@ export default function Card ({ item, addToCartAnim, idx }) {
 
         <div // btn-container
           className={`btn-container
-            w-[55%] sm:w-[35%] 
+            w-[55%] sm:w-[35%] md:w-[55%] lg:w-[35%] 
           `} 
           style={{
             position: 'absolute',
