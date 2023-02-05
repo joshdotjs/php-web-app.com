@@ -147,7 +147,7 @@ export default function Pagination({ num_products, page_num, updatePageNum }) {
         </div>
 
         <a
-          href="#"
+          // href="#"
           onClick={() => page_num < num_pages && updatePageNum(page_num + 1)}
           className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer"
           style={page_num === num_pages-1 ? { opacity: 0.5, pointerEvents: 'none' } : {}}
