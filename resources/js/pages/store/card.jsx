@@ -112,9 +112,7 @@ export default function Card ({ item, addToCartAnim, idx }) {
 
 
         <div // btn-container
-          className={`btn-container
-            w-[55%] sm:w-[35%] md:w-[55%] lg:w-[35%] 
-          `} 
+          className="btn-container" 
           style={{
             position: 'absolute',
             // bottom: '1.25rem',
@@ -124,7 +122,7 @@ export default function Card ({ item, addToCartAnim, idx }) {
           }}
         >
           <Button 
-            classes=""
+            classes="mx-4"
             disabled={!chosen_variant_id}
             onClick={() => {
             const { product, variants } = item;
