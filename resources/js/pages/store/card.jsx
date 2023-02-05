@@ -112,14 +112,12 @@ export default function Card ({ item, addToCartAnim, idx }) {
 
 
         <div // btn-container
-          className="btn-container" 
-          style={{
-            position: 'absolute',
-            // bottom: '1.25rem',
-            bottom: '5%',
-            // right: '1.25rem',
-            right: '5%',
-          }}
+          className="
+            btn-container  
+            absolute
+            right-6 md:right-[10%]
+            bottom-3 md:bottom-[5%]
+          " 
         >
           <Button 
             classes="mx-4"
@@ -150,7 +148,7 @@ export default function Card ({ item, addToCartAnim, idx }) {
             // opacity: 1,
           }}
         >
-          <Ellipsis color='black' fontSize='1.2rem' fontWeight='500'>{title}</Ellipsis>
+          <Ellipsis color='black' fontSize='1.2rem' fontWeight='500' classes="mt-3 mb-1">{title}</Ellipsis>
           <Ellipsis color={light} fontSize='1rem' fontWeight='400'>{sub_title}</Ellipsis>
           <p className="num-colors" style={{ color: light, }}>6 Colors</p>
 
@@ -166,9 +164,10 @@ export default function Card ({ item, addToCartAnim, idx }) {
           style={{ 
             opacity: 0,
             // display: 'flex',
-            gap: '7px',
-            padding: '7px 0',
+            gap: '10px',
+            // padding: '0px 0',
             // background: 'lightgreen',
+            paddingBottom: '12px',
             background: 'white',
             position: 'absolute',
             top: 0,
@@ -195,7 +194,7 @@ export default function Card ({ item, addToCartAnim, idx }) {
                   }}
                   style={{
                     // outline: chosen_variant_id === id ? 'dashed limegreen 3px' : '',
-                    height: '60px'
+                    height: '65px'
                   }}
                 />
               );
