@@ -54,12 +54,16 @@ html {            height: 100%;
 body {
   margin: 0;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  header#navbar {  position: relative;  z-index: 9; /* blur-overlay: 10 */ }
-  aside#navdrawer {  position: fixed;  z-index: 9; /* blur-overlay: 10 */ }
-  aside#cart {  position: relative;  z-index: 9; /* blur-overlay: 10 */ }
-  .react-root > #layout > main#page {  position: relative;  z-index: 0; }
 
-  .react-root > #layout {
+
+  
+  .react-root > #layout { //position: relative;
+
+
+    header#navbar {  position: fixed;  z-index: 9; /* blur-overlay: 10 */ }
+    // aside#navdrawer {  position: fixed;  z-index: 9; /* blur-overlay: 10 */ }
+    // aside#cart {  position: relative;  z-index: 9; /* blur-overlay: 10 */ }
+    // .react-root > #layout > main#page {  position: relative;  z-index: 0; }
 
     header#navbar {
       nav { @include gutter-padding; .gutter { @include gutter-margin; } }

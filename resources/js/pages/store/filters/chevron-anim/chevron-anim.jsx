@@ -24,7 +24,7 @@ export default function ChevronAnim({children, title, num, set}) {
   const open = () => {
     if (tl.current)
       tl.current.revert();
-    tl.current = gsap.to(ref.current, { height: '40px' });
+    tl.current = gsap.to(ref.current, { height: '40px', duration: 0.3 });
   };
 
   // --------------------------------------------
