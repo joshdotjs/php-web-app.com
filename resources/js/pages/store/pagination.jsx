@@ -127,7 +127,8 @@ export default function Pagination({ num_products, page_num, updatePageNum }) {
   return (
     <div 
       id="pagination"
-      className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+      className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6"
+    >
       <div className="flex flex-1 justify-between sm:hidden">
         <a
           // href="#"
@@ -137,6 +138,14 @@ export default function Pagination({ num_products, page_num, updatePageNum }) {
         >
           Previous
         </a>
+
+        <div className="flex items-center">
+          <p className="text-sm text-gray-700">
+            <span className="font-medium">{1 + (page_num * products_per_page)}</span> — <span className="font-medium">{Math.min(products_per_page + (page_num * 6), num_products)}</span> of{' '}
+            <span className="font-medium">{num_products}</span> results
+          </p>
+        </div>
+
         <a
           href="#"
           onClick={() => page_num < num_pages && updatePageNum(page_num + 1)}

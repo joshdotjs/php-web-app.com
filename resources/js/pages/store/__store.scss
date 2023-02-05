@@ -18,78 +18,77 @@ main#page.store {
     $ml: 0.6rem;
 
     $max-grid-width: var(--max-width);
-    $bar-height: 100px;
+    $bar-height: 50px;
     $pad-x: var(--gutter);
     
 
     display: grid;
     @media (max-width: #{$desktop}) { grid-template-columns: 1fr; }
-    @media (min-width: #{$desktop}) { grid-template-columns: 260px 1fr; }
+    @media (min-width: #{$desktop}) { grid-template-columns: 220px 1fr; }
 
     // ==========================================
 
     #grid-left  {
-      // background: lightcyan;
-      // width: 100%;
+      padding-top: calc(#{$bar-height} + 2 * #{$pad});
       @media (max-width: #{$desktop}) { display: none; }
 
-      hr { 
-        border:  solid $grey 1px; 
-        width: 95%;
-        transform: translateX(2.5%);
-        margin: 1rem 0;
+      .chevron-anim {
+        overflow: hidden;
+        &__title {
+          cursor: pointer;
+          // background: red;
+          height: 30px;
+      
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+      
+          perspective: 800px;
+      
+          &__arrow {
+            transform: rotate3d(1, 0, 0, 0deg);
+            transform-origin: center;
+            transition: transform 0.5s ease;
+      
+            // background: red;
+            height: 1.1rem;
+            // display: flex;
+            // align-items: center;
+            
+            &-up {
+              transform: rotate3d(1, 0, 0, 180deg);
+            }
+          }
+        }
       }
 
       // padding: 0 $pad-x;
-      padding-top: $bar-height;
     }
     
     // ==========================================
     
     #grid-right { 
-      @media (min-width: #{$desktop}) { padding-left: 48px; }
-      background: green;
-      // outline: solid yellow 5px;
-      // border: dashed red 1px;
-      width: 100%;
-      // height: calc(100vh - var(--navbar-height));
-      // min-height: 100vh;  
-      // height: fit-content; 
-
-
-
-      // ----------------------------------------
-      // #filter-button-row,
-      // ul#grid-items,
-      // #pagination {
-      //   max-width: $max-grid-width;
-      //   margin: 0 auto;
-      // }
+      @media (min-width: #{$desktop}) { padding-left: 60px; }
+      // background: green;
 
       #filter-button-row,
       #pagination {
         @include my;
-        background: rgba(0, 255, 255, 0.5);
+        // background: rgba(0, 255, 255, 0.5);
       }
 
       // ----------------------------------------
 
       // top row is the filter buttons
       #filter-button-row {
-        // background: #BADA55;
-
+        height: $bar-height;
         display: flex;
         justify-content: space-between;
         align-items: center;
-
         #show-filters-button { 
           // background: lightgreen;
-          // outline: solid lightgreen 2px;
           display: inline-flex;
-          align-items: center;
-          height: 100%;
           cursor: pointer;
-
           svg { margin-left: $ml; }
         }
       }
@@ -114,7 +113,7 @@ main#page.store {
             
         li.box { 
           // position: relative; 
-          outline: dashed hsl(33, 100%, 50%, 0.5) 2px;
+          // outline: dashed hsl(33, 100%, 50%, 0.5) 2px;
           // aspect-ratio: 1;
       
           // -status: 'entered'  =>  div#app-main  >  ul#grid-items  >  li.box

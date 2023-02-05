@@ -10,22 +10,21 @@ export default function Filters({
 }) {
   return (
     <>
-      {/* <h5>Active filters: { getNumActiveFilters() }</h5> */}
+      <hr className="border-t border-gray-200 mb-4"></hr>
 
       <ChevronAnim title="Category" num={filter.in_init_state['category'] ? 0 : filter.getNum('category')}>
         <Checkboxes type="category" options={categories} set={filter['category']} applyFilter={applyFilter} in_init_state={filter.in_init_state['category']}>
         </Checkboxes>
       </ChevronAnim>
-      
-      <hr />
+
+      <hr className="border-t border-gray-200 my-4"></hr>
 
       <ChevronAnim title="Gender" num={filter.in_init_state['gender'] ? 0 : filter.getNum('gender')}>
         <Checkboxes type="gender" options={genders} set={filter['gender']} applyFilter={applyFilter} in_init_state={filter.in_init_state['gender']} >
         </Checkboxes>
       </ChevronAnim>
 
-      <hr />
-
+      <hr className="border-t border-gray-200 my-4"></hr>
     </>
   );
 }

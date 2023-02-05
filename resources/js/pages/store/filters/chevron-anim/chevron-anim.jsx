@@ -3,8 +3,6 @@ import { gsap } from 'gsap';
 
 import ChevronDownSVG from '@/comps/svg/chevron-down';
 
-import './chevron-anim.scss';
-
 // ==============================================
 
 export default function ChevronAnim({children, title, num, set}) {
@@ -61,7 +59,7 @@ export default function ChevronAnim({children, title, num, set}) {
   return (
     <div 
       ref={ref}
-      className="chevron-anim"      
+      className="chevron-anim"
     >
       <div 
         className="chevron-anim__title"
