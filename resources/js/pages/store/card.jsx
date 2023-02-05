@@ -162,8 +162,8 @@ export default function Card ({ item, addToCartAnim, idx }) {
         <div 
           ref={reveal_ref} 
           className="back radio-container  
+            hidden  lg:flex
           "
-          // hidden  lg:flex
           style={{ 
             opacity: 0,
             // display: 'flex',
