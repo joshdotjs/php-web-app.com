@@ -10,21 +10,25 @@ export default function Filters({
 }) {
   return (
     <>
-      <hr className="border-t border-gray-200 mb-4"></hr>
+      <div id="grid-left-left">
+        <hr className="border-t border-gray-200 mb-4"></hr>
 
-      <ChevronAnim title="Category" num={filter.in_init_state['category'] ? 0 : filter.getNum('category')}>
-        <Checkboxes type="category" options={categories} set={filter['category']} applyFilter={applyFilter} in_init_state={filter.in_init_state['category']}>
-        </Checkboxes>
-      </ChevronAnim>
+        <ChevronAnim title="Category" num={filter.in_init_state['category'] ? 0 : filter.getNum('category')}>
+          <Checkboxes type="category" options={categories} set={filter['category']} applyFilter={applyFilter} in_init_state={filter.in_init_state['category']}>
+          </Checkboxes>
+        </ChevronAnim>
 
-      <hr className="border-t border-gray-200 my-4"></hr>
+        <hr className="border-t border-gray-200 my-4"></hr>
 
-      <ChevronAnim title="Gender" num={filter.in_init_state['gender'] ? 0 : filter.getNum('gender')}>
-        <Checkboxes type="gender" options={genders} set={filter['gender']} applyFilter={applyFilter} in_init_state={filter.in_init_state['gender']} >
-        </Checkboxes>
-      </ChevronAnim>
+        <ChevronAnim title="Gender" num={filter.in_init_state['gender'] ? 0 : filter.getNum('gender')}>
+          <Checkboxes type="gender" options={genders} set={filter['gender']} applyFilter={applyFilter} in_init_state={filter.in_init_state['gender']} >
+          </Checkboxes>
+        </ChevronAnim>
 
-      <hr className="border-t border-gray-200 my-4"></hr>
+        <hr className="border-t border-gray-200 my-4"></hr>
+      </div>
+
+      <div id="grid-left-right"></div>  
     </>
   );
 }

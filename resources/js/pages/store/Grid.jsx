@@ -56,16 +56,23 @@ export default function Grid({
     disableCardFLIP();
 
     const filters_container = filters_container_ref.current;
-    // filters_tl_ref.current = tl.to(filters_container, { 
+
+    const duration = 0.3;
+
+      tl.to(filters_container, {
+        opacity: 0,
+        duration,
+      });
+
       filters_tl_ref.current = tl.to(filters_container, { 
-      x: '-100%', 
-      opacity: 0,
-      width: 0,
-      duration: 0.3,
-      // onStart:    () => disableCardFLIP(),
-      onComplete:        () => enableCardFLIP(),
-      onReverseComplete: () => enableCardFLIP(),
-     });
+        x: '-100%', 
+        width: 0,
+        duration,
+        onComplete:        () => enableCardFLIP(),
+        onReverseComplete: () => enableCardFLIP(),
+      },
+      '<='
+    );
   };
 
   // --------------------------------------------

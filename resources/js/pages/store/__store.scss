@@ -21,54 +21,62 @@ main#page.store {
     $bar-height: 50px;
     $pad-x: var(--gutter);
     
-
-    display: grid;
-    @media (max-width: #{$desktop}) { grid-template-columns: 1fr; }
-    @media (min-width: #{$desktop}) { grid-template-columns: 220px 1fr; }
+    display: flex;
+    // display: grid;
+    // @media (max-width: #{$desktop}) { grid-template-columns: 1fr; }
+    // @media (min-width: #{$desktop}) { grid-template-columns: 220px 1fr; }
 
     // ==========================================
 
     #grid-left  {
       padding-top: calc(#{$bar-height} + 2 * #{$pad});
       @media (max-width: #{$desktop}) { display: none; }
+      // @media (min-width: #{$desktop}) { padding-right: 60px; }
+      // background: lightgreen;
 
-      .chevron-anim {
-        overflow: hidden;
-        &__title {
-          cursor: pointer;
-          // background: red;
-          height: 30px;
-      
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-      
-          perspective: 800px;
-      
-          &__arrow {
-            transform: rotate3d(1, 0, 0, 0deg);
-            transform-origin: center;
-            transition: transform 0.5s ease;
-      
+      display: flex;
+
+      &-left { 
+        .chevron-anim {
+          overflow: hidden;
+          &__title {
+            cursor: pointer;
             // background: red;
-            height: 1.1rem;
-            // display: flex;
-            // align-items: center;
-            
-            &-up {
-              transform: rotate3d(1, 0, 0, 180deg);
+            height: 30px;
+        
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        
+            perspective: 800px;
+        
+            &__arrow {
+              transform: rotate3d(1, 0, 0, 0deg);
+              transform-origin: center;
+              transition: transform 0.5s ease;
+        
+              // background: red;
+              height: 1.1rem;
+              // display: flex;
+              // align-items: center;
+              
+              &-up {
+                transform: rotate3d(1, 0, 0, 180deg);
+              }
             }
           }
         }
       }
 
-      // padding: 0 $pad-x;
+      &-right { 
+        width: 60px;
+        height: 100%;
+      }
     }
     
     // ==========================================
     
     #grid-right { 
-      @media (min-width: #{$desktop}) { padding-left: 60px; }
       // background: green;
 
       #filter-button-row,
