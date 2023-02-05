@@ -161,7 +161,9 @@ export default function Card ({ item, addToCartAnim, idx }) {
 
         <div 
           ref={reveal_ref} 
-          className="back radio-container  hidden  lg:flex"
+          className="back radio-container  
+          "
+          // hidden  lg:flex
           style={{ 
             opacity: 0,
             // display: 'flex',
@@ -172,8 +174,8 @@ export default function Card ({ item, addToCartAnim, idx }) {
             background: 'white',
             position: 'absolute',
             top: 0,
-            width: '100%',
-            overflowY: 'scroll'
+            width: '100%',             
+            overflow: 'overlay',  /* page content underneath scrollbar: */
           }}
         >
           {
