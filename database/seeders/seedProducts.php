@@ -994,7 +994,7 @@
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "black",     
-    'img'         =>  "/img/products/shoes/women/Zoom-Fly-5-black.webp",     
+    'img'         =>  "/img/products/shoes/women/Zoom-Fly-5-black.jpeg",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
