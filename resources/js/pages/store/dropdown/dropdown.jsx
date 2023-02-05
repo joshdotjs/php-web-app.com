@@ -145,8 +145,8 @@ export default function Dropdown({
           aria-expanded="false" 
           aria-haspopup="true"
         >
-          <h4>Sort by{sort_type?.sub_title && ': '}</h4>
-          { sort_type?.title && <h4 className="light ml-2">{sort_type?.title} </h4> }
+          <h4 className="mr-2">Sort By{sort_type?.sub_title && ': '}</h4>
+          { sort_type?.title && <h4 className="light">{sort_type?.title} </h4> }
           { sort_type?.sub_title && <h4 className="light mx-2">{sort_type?.sub_title}</h4> }
           {/* <!-- Heroicon name: mini/chevron-down --> */}
           {/* <svg className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">

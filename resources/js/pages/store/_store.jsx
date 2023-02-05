@@ -318,12 +318,12 @@ export default function Page({ products_SSR, num_products_SSR }) {
   const getProducts = async ({ filter, page_num, sort_type }) => {
     // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products`;
     const url = `${API_URL_LARAVEL}/api/filter-products`;
-    const sort_col = {'Name':  'title', 'Price': 'price'}[sort_type.title];
+    const sort_col = {'Name':  'title', 'Price': 'price'}[sort_type ? sort_type.title : 'Name'];
     const body = {
       categories: set2arr(filter?.category), 
       genders: set2arr(filter?.gender),
       page_num,
-      sort_direction: sort_type.direction,
+      sort_direction: sort_type ? sort_type.direction : 'DESC',
       sort_col,
     };
   
@@ -501,11 +501,12 @@ export default function Page({ products_SSR, num_products_SSR }) {
   
   // --------------------------------------------
 
-  const [sort_type, setSortType] = useState({ 
-    title: 'Name',  
-    sub_title: 'A-Z', 
-    direction: 'DESC', 
-  }); // e.g. { title: 'Price',  sub_title: 'High-Low', type: 'DESC'  }
+  const [sort_type, setSortType] = useState(); // e.g. { title: 'Price',  sub_title: 'High-Low', type: 'DESC'  }
+  // const [sort_type, setSortType] = useState({ 
+  //   title: 'Name',  
+  //   sub_title: 'A-Z', 
+  //   direction: 'DESC', 
+  // }); // e.g. { title: 'Price',  sub_title: 'High-Low', type: 'DESC'  }
 
   // --------------------------------------------
 

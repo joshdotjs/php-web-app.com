@@ -55,13 +55,13 @@
     'created_at'    =>  date("Y-m-d H:i:s")
   ]);
   DB::table('products')->insert([
-    'title'         =>  "Pegasus 38",     
-    'sub_title'     =>  "Men's Running Shoes",     
-    'body'          =>  "Your workhorse with wings returns. The Nike Air Zoom Pegasus 38 (NFL New Orleans Saints) puts a spring in your step while showing love for your team. Breathable mesh in the upper combines the comfort and durability you want with a wider fit at the toes.",     
+    'title'         =>  "Air Zoom Rival Fly 3",     
+    'sub_title'     =>  "Men's Road Racing Shoes",     
+    'body'          =>  "Are you ready to ramp up the speed and go the distance? Built for training and racing, the Nike Air Zoom Rival Fly 3 features soft foam and durable abrasion-resistant rubber to help you conquer even the rockiest of roads. Plus, Nike Zoom Air provides a snappy feel as you push toward the finish line.",     
     'category'      =>  "shoes",     
     'gender'        =>  "men",     
-    'price'         =>   6500,
-    'price_compare' =>   13000,
+    'price'         =>   10000,
+    'price_compare' =>   10000,
     'created_at'    =>  date("Y-m-d H:i:s")
   ]);
   DB::table('products')->insert([
@@ -435,16 +435,6 @@
     'created_at'    =>  date("Y-m-d H:i:s")
   ]);
   DB::table('products')->insert([
-    'title'         =>  "Air Zoom Rival Fly 3",     
-    'sub_title'     =>  "Men's Road Racing Shoes",     
-    'body'          =>  "Are you ready to ramp up the speed and go the distance? Built for training and racing, the Nike Air Zoom Rival Fly 3 features soft foam and durable abrasion-resistant rubber to help you conquer even the rockiest of roads. Plus, Nike Zoom Air provides a snappy feel as you push toward the finish line.",     
-    'category'      =>  "shoes",     
-    'gender'        =>  "men",     
-    'price'         =>   10000,
-    'price_compare' =>   10000,
-    'created_at'    =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('products')->insert([
     'title'         =>  "Vomero 16",     
     'sub_title'     =>  "Men's Road Running Shoes",     
     'body'          =>  "The Vomero 16 adds responsive ZoomX foam cushioning, bringing an energetic pop to your stride that’s perfect for high mileage on the road. It’s super lightweight, with plenty of stretch and ventilation through the upper. Looking for the right amount of support? We’ve got you covered with an adjustable midfoot band and a stable clip at the heel.",     
@@ -502,6 +492,16 @@
     'gender'        =>  "men",     
     'price'         =>   4197,
     'price_compare' =>   7000,
+    'created_at'    =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('products')->insert([
+    'title'         =>  "Pegasus 38",     
+    'sub_title'     =>  "Men's Running Shoes",     
+    'body'          =>  "Your workhorse with wings returns. The Nike Air Zoom Pegasus 38 (NFL New Orleans Saints) puts a spring in your step while showing love for your team. Breathable mesh in the upper combines the comfort and durability you want with a wider fit at the toes.",     
+    'category'      =>  "shoes",     
+    'gender'        =>  "men",     
+    'price'         =>   6500,
+    'price_compare' =>   13000,
     'created_at'    =>  date("Y-m-d H:i:s")
   ]);
 
@@ -654,7 +654,31 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  4,
+    'product_id'  =>  5,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "green",     
+    'img'         =>  "/img/products/shoes/men/Air-Zoom-Rival-Fly-3-green.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  5,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "blue",     
+    'img'         =>  "/img/products/shoes/men/Air-Zoom-Rival-Fly-3-blue.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  5,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/shoes/men/Air-Zoom-Rival-Fly-3-black.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  5,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "",     
@@ -665,32 +689,40 @@
     'product_id'  =>  5,
     'qty'         =>  0,
     'size'        =>  "",     
-    'color'       =>  "grey",     
-    'img'         =>  "/img/products/shoes/men/Pegasus-38-3.webp",     
+    'color'       =>  "",     
+    'img'         =>  "",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  5,
     'qty'         =>  0,
     'size'        =>  "",     
-    'color'       =>  "red",     
-    'img'         =>  "/img/products/shoes/men/Pegasus-38-2.webp",     
+    'color'       =>  "",     
+    'img'         =>  "",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  5,
     'qty'         =>  0,
     'size'        =>  "",     
-    'color'       =>  "grey",     
-    'img'         =>  "/img/products/shoes/men/Pegasus-38-1.webp",     
+    'color'       =>  "",     
+    'img'         =>  "",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  5,
     'qty'         =>  0,
     'size'        =>  "",     
-    'color'       =>  "black",     
-    'img'         =>  "/img/products/shoes/men/Pegasus-38-4.webp",     
+    'color'       =>  "",     
+    'img'         =>  "",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  5,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "",     
+    'img'         =>  "",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
@@ -1574,31 +1606,31 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  43,
+    'product_id'  =>  42,
     'qty'         =>  0,
     'size'        =>  "",     
-    'color'       =>  "green",     
-    'img'         =>  "/img/products/shoes/men/Air-Zoom-Rival-Fly-3-green.webp",     
+    'color'       =>  "",     
+    'img'         =>  "",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  42,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "",     
+    'img'         =>  "",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  42,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "",     
+    'img'         =>  "",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
     'product_id'  =>  43,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "blue",     
-    'img'         =>  "/img/products/shoes/men/Air-Zoom-Rival-Fly-3-blue.webp",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  43,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "black",     
-    'img'         =>  "/img/products/shoes/men/Air-Zoom-Rival-Fly-3-black.webp",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  44,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "grey",     
@@ -1606,7 +1638,7 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  44,
+    'product_id'  =>  43,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "blue",     
@@ -1614,7 +1646,7 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  45,
+    'product_id'  =>  44,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "white",     
@@ -1622,7 +1654,7 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  45,
+    'product_id'  =>  44,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "pink",     
@@ -1630,7 +1662,7 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  46,
+    'product_id'  =>  45,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "white",     
@@ -1638,7 +1670,7 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  46,
+    'product_id'  =>  45,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "white",     
@@ -1646,7 +1678,7 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  46,
+    'product_id'  =>  45,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "white",     
@@ -1654,7 +1686,7 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  46,
+    'product_id'  =>  45,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "purple",     
@@ -1662,7 +1694,7 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  47,
+    'product_id'  =>  46,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "green",     
@@ -1670,7 +1702,7 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  47,
+    'product_id'  =>  46,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "black",     
@@ -1678,7 +1710,7 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  47,
+    'product_id'  =>  46,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "grey",     
@@ -1686,7 +1718,7 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  48,
+    'product_id'  =>  47,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "white",     
@@ -1694,7 +1726,7 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  48,
+    'product_id'  =>  47,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "brown",     
@@ -1702,7 +1734,7 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  48,
+    'product_id'  =>  47,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "black",     
@@ -1710,7 +1742,7 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  49,
+    'product_id'  =>  48,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "grey",     
@@ -1718,7 +1750,7 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  49,
+    'product_id'  =>  48,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "grey",     
@@ -1726,7 +1758,7 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  49,
+    'product_id'  =>  48,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "black",     
@@ -1734,11 +1766,51 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  49,
+    'product_id'  =>  48,
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "blue",     
     'img'         =>  "/img/products/shoes/men/Flex-Experience-Run-11-blue.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  48,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "",     
+    'img'         =>  "",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  49,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "grey",     
+    'img'         =>  "/img/products/shoes/men/Pegasus-38-3.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  49,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "red",     
+    'img'         =>  "/img/products/shoes/men/Pegasus-38-2.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  49,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "grey",     
+    'img'         =>  "/img/products/shoes/men/Pegasus-38-1.webp",     
+    'created_at'  =>  date("Y-m-d H:i:s")
+  ]);
+  DB::table('variants')->insert([
+    'product_id'  =>  49,
+    'qty'         =>  0,
+    'size'        =>  "",     
+    'color'       =>  "black",     
+    'img'         =>  "/img/products/shoes/men/Pegasus-38-4.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
 
