@@ -325,6 +325,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
       page_num,
       sort_direction: sort_type ? sort_type.direction : 'DESC',
       sort_col,
+      products_per_page: PRODUCTS_PER_PAGE,
     };
   
     const [data, error] = await fetchPOST2({ url, body });
@@ -333,7 +334,8 @@ export default function Page({ products_SSR, num_products_SSR }) {
       alert(error);
     } else {
 
-      const { products, num_products } = data;
+      const { products, num_products, page_num } = data;
+      setPageNum(page_num); // page_num possibly beyond the number of pages for updated filtered products => already handled on backend, just sync frontend pagination
       return { products, num_products };
     }
   };

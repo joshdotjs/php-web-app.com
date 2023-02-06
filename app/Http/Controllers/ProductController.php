@@ -22,11 +22,22 @@ class ProductController extends Controller
 
   public function filterProducts(Request $req) {
 
-    $page_num       = $req['page_num'];
-    $sort_col       = $req['sort_col'];
-    $sort_direction = $req['sort_direction'];
-    $categories     = $req['categories'];
-    $genders        = $req['genders'];
+    $page_num          = $req['page_num'];
+    $sort_col          = $req['sort_col'];
+    $sort_direction    = $req['sort_direction'];
+    $categories        = $req['categories'];
+    $genders           = $req['genders'];
+    $products_per_page = $req['products_per_page']; 
+
+    $num_products = DB::table('products')
+      ->whereIn('category', $categories)
+      ->whereIn('gender', $genders)
+      ->count();
+    if ($num_products / $products_per_page < $page_num) {
+      // -If currently on page-num beyond edge then just 
+      //  retreive
+      $page_num = 0;
+    }
 
     // SELECT * FROM ourlaravelapp.products
     // WHERE category IN ("shoes", "clothes");
@@ -41,10 +52,6 @@ class ProductController extends Controller
       ->orderBy($sort_col, $sort_direction)
       ->get();
 
-    $num_products = DB::table('products')
-      ->whereIn('category', $categories)
-      ->whereIn('gender', $genders)
-      ->count();
 
     // -Each row stores product data with an array storing the variants for that rows products
     $arr = [];
@@ -63,7 +70,8 @@ class ProductController extends Controller
     return response([ 
       'message'      => 'success', 
       'products'     => $arr,
-      'num_products' => $num_products, 
+      'num_products' => $num_products,
+      'page_num'     => $page_num,
      ], 201);
   }
 
