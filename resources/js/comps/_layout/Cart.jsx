@@ -345,12 +345,27 @@ export default function Cart() {
 
       {/* - - - - - - - - - - - - - - - - - - */}
 
-      <svg onClick={closeCart}
-        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
-        className="bi bi-x  cursor-pointer m-4" viewBox="0 0 16 16"
+      <div
+        className="ml-4 mr-6 pt-8 pb-4"
+        style={{ 
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          // background: 'lightgreen'
+        }}
       >
-        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-      </svg>
+
+        <h4>Shopping Cart</h4>
+
+        <svg onClick={closeCart}
+          xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" 
+          className="bi bi-x  cursor-pointer" viewBox="0 0 16 16"
+          // style={{ background: 'red' }}
+        >
+          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+        </svg>
+      </div>
+
       
       {/* - - - - - - - - - - - - - - - - - - */}
 
