@@ -366,10 +366,10 @@ export default function Cart() {
             id={key} 
             key={key}
             data-flip-id={key}
-            className="line-item
+            className={`line-item
               ml-4 mr-6 py-4
-              border-b after:grey-red-500
-            "
+              ${idx !== layout.items.length - 1 ? 'border-b border-gray-200' : ''}
+            `}
             style={{ 
               display: status === 'exiting' ? 'none' : 'flex',
               // padding: '1rem',
