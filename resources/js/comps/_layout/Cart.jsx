@@ -467,13 +467,14 @@ export default function Cart() {
       {/* - - - - - - - - - - - - - - - - - - */}
 
       <div 
-        id="cart-btn-container" 
+        id="cart-btn-container"
+        className="border-t border-gray-200"
         style={{ 
           position: 'absolute',
-          bottom: '2rem',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '50%'
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          padding: '2rem'
         }}
       >
         <Button
