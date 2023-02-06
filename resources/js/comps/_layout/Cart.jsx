@@ -586,6 +586,7 @@ export default function Cart() {
             paddingBottom: '2rem',
             paddingLeft: '1rem',
             paddingRight: '1.5rem',
+            background: 'white'
           }}
           >
 
