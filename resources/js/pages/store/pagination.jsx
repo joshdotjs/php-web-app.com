@@ -66,9 +66,6 @@ export default function Pagination({ num_products, page_num, updatePageNum }) {
     }
   } else { // case 2 (num_pages >= 7)
 
-    console.clear();
-    console.log('page_num: ', page_num)
-
     if (page_num < 3) { // case-A
       arr.push(<Fragment key={`pagination-link-${0}`}><Link {...{page_num, updatePageNum}}>{0 + 1}</Link></Fragment>);
       arr.push(<Fragment key={`pagination-link-${1}`}><Link {...{page_num, updatePageNum}}>{1 + 1}</Link></Fragment>);

@@ -158,7 +158,6 @@ export default function App({ orders }) {
         onChange={(new_date_range) => {
 
           if (new_date_range[1] !== null) { // prev === null => currently clicking second date range => update orders with new date range
-            console.clear();
             console.log('TODO: Apply filter!');
             updateOrders({ date_range: new_date_range });
           } 

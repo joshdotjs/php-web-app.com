@@ -439,7 +439,6 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
-    console.clear();
     const { products: filtered_items_from_backend, num_products } = await getProducts({ filter: new_filter, page_num, sort_type });
     setNumProducts(num_products);
        

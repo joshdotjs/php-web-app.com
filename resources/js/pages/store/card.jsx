@@ -127,11 +127,11 @@ export default function Card ({ item, addToCartAnim, idx }) {
               const { product, variants } = item;
               const { id: product_id, title, body, price, category } = product;
               const variant = variants.find((variant) => variant.id === chosen_variant_id);
-              const { id: variant_id, color, size, qty } = variant;
+              const { id: variant_id, img, color, size, qty } = variant;
               addToCartLS({ 
                 idx, 
-                product: { id: product_id, title, body, price, category }, 
-                variant: { id: variant_id, color, size, qty },
+                product: { id: product_id, title, sub_title, body, price, category }, 
+                variant: { id: variant_id, img, color, size, qty },
               });
               addToCartAnim(idx); // animation in <App />
             }}
