@@ -100,7 +100,7 @@ export default function MobileFilters() {
   // --------------------------------------------
   
   return createPortal(
-    <>
+    <div className="md:hidden">
       <div // Blur Overlay
         ref={overlay_ref}
         className="pointer-events-auto fixed inset-0"
@@ -165,7 +165,7 @@ export default function MobileFilters() {
         {/* - - - - - - - - - - - - - - - - - - */}
 
       </aside>
-    </>
+    </div>
     ,
     portal_root
   );
