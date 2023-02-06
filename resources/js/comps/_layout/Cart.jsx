@@ -33,7 +33,7 @@ const Ellipsis = ({ children, name, classes, color, fontSize, fontWeight }) => {
       className={`
         ${name}
         ${classes}
-        w-[145px]
+        w-[130px] md:w-[145px]
       `}
       style={{ 
         color,
@@ -386,6 +386,25 @@ export default function Cart() {
   };
 
   // --------------------------------------------
+
+  const [ line_items_window_height, setLineItemsWindowHeight ] = useState(0);
+
+  useLayoutEffect(() => {
+
+    const container = container_ref.current;
+
+    const cart_title = container.querySelector('#cart-title');
+    const cart_btn_container = container.querySelector('#cart-btn-container');
+
+    
+    const getHeight = (elem) => elem.offsetHeight;
+
+
+    setLineItemsWindowHeight(getHeight(cart_title) + getHeight(cart_btn_container));
+
+  }, []);
+
+  // --------------------------------------------
   
   return createPortal(
     <>
@@ -424,6 +443,7 @@ export default function Cart() {
         {/* - - - - - - - - - - - - - - - - - - */}
 
         <div
+          id="cart-title"
           className="ml-4 mr-6 pt-8 pb-4"
           style={{ 
             display: 'flex',
@@ -447,100 +467,110 @@ export default function Cart() {
         
         {/* - - - - - - - - - - - - - - - - - - */}
 
-        {layout.items.map((item, idx) => {
-          console.log('item: ', item);
-          
-          const {status, product: { title, sub_title, body, price, category }, variant: { id, img, color, size, qty }} = item;
-          
-          const key = `line-item-${id}`;
-          
-          return (
-            <div  
-            id={key} 
-            key={key}
-            data-flip-id={key}
-            className={`line-item
-            ml-4 mr-6 py-4
-            ${idx !== layout.items.length - 1 ? 'border-b border-gray-200' : ''}
-            `}
-            style={{ 
-              display: status === 'exiting' ? 'none' : 'flex',
-              // padding: '1rem',
-              // outline: 'dashed yellow 1px',
-            }}
-            >
-              <img 
-                className="rounded-md border border-gray-200"
-                src={img} 
-                style={{ 
-                  height: '75px', 
-                  // width: '75px' 
-                }} 
-                />
+        <div
+          id="cart-line-items-window"
+          style={{
+            // outline: 'solid black 20px',
+            maxHeight: `calc(100vh - ${line_items_window_height}px)`,
+            overflow: 'scroll'
+          }}
+        >
+          {layout.items.map((item, idx) => {
+            console.log('item: ', item);
+            
+            const {status, product: { title, sub_title, body, price, category }, variant: { id, img, color, size, qty }} = item;
+            
+            const key = `line-item-${id}`;
+            
+            return (
+              <div  
+              id={key} 
+              key={key}
+              data-flip-id={key}
+              className={`line-item
+              ml-4 mr-6 py-4
+              ${idx !== layout.items.length - 1 ? 'border-b border-gray-200' : ''}
+              `}
+              style={{ 
+                display: status === 'exiting' ? 'none' : 'flex',
+                // padding: '1rem',
+                // outline: 'dashed yellow 1px',
+              }}
+              >
+                <img 
+                  className="rounded-md border border-gray-200"
+                  src={img} 
+                  style={{ 
+                    height: '75px', 
+                    // width: '75px' 
+                  }} 
+                  />
 
-              <div
-                style={{
-                  // background: 'rgba(255, 0, 0, 0.2)',
-                  flexGrow: 1,
-                  // outline: 'dashed hotpink 2px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  marginLeft: '1rem'
-                }}
-                >
-                <div 
-                  // className="mb-1"
+                <div
                   style={{
+                    // background: 'rgba(255, 0, 0, 0.2)',
+                    flexGrow: 1,
+                    // outline: 'dashed hotpink 2px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    marginLeft: '1rem'
+                  }}
+                  >
+                  <div 
+                    // className="mb-1"
+                    style={{
+                      // background: 'yellow',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      // marginBottom: '0.1rem'
+                    }}>
+                    <Ellipsis color='black' fontSize='0.9rem' fontWeight='500' classes="text-left">{title}</Ellipsis>
+                    <p 
+                      className=""
+                      style={{
+                        // background: 'red',
+                        fontSize: '0.9rem'
+                      }}
+                      >
+                      ${price / 100}
+                    </p>
+                  </div>
+
+                  <Ellipsis color={light} fontSize='0.8rem' fontWeight='400' classes="mb-2">{sub_title}</Ellipsis>
+                    
+                  <div style={{
                     // background: 'yellow',
                     display: 'flex',
                     justifyContent: 'space-between',
-                    alignItems: 'center',
-                    // marginBottom: '0.1rem'
+                    // alignItems: 'center',
+                    // background: 'yellow',
+                    marginTop: 'auto'
                   }}>
-                  <Ellipsis color='black' fontSize='0.9rem' fontWeight='500' classes="text-left">{title}</Ellipsis>
-                  <p 
-                    className=""
-                    style={{
-                      // background: 'red',
-                      fontSize: '0.9rem'
-                    }}
-                    >
-                    ${price / 100}
-                  </p>
-                </div>
+                    
+                    {/* <Ellipsis color='black' fontSize='0.8rem' fontWeight='400' classes="mt-3 mb-1 text-left">Qty: {item.qty}</Ellipsis> */}
+                    <p style={{ fontSize: '0.8rem' }}>Qty: {item.qty}</p>
 
-                <Ellipsis color={light} fontSize='0.8rem' fontWeight='400' classes="mb-2">{sub_title}</Ellipsis>
+                    <svg 
+                      onClick={() => remove(item)}
+                      className="bi bi-trash  cursor-pointer" 
+                      xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+                      // fill="currentColor" 
+                      fill="black"
+                      viewBox="0 0 16 16"
+                      >
+                      <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                      <path fillRule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                    </svg>
+                  </div>
+
                   
-                <div style={{
-                  // background: 'yellow',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  // alignItems: 'center',
-                  // background: 'yellow',
-                  marginTop: 'auto'
-                }}>
-                  
-                  {/* <Ellipsis color='black' fontSize='0.8rem' fontWeight='400' classes="mt-3 mb-1 text-left">Qty: {item.qty}</Ellipsis> */}
-                  <p style={{ fontSize: '0.8rem' }}>Qty: {item.qty}</p>
+                </div>                          
+              </div>
+            );
+          })}
 
-                  <svg 
-                    onClick={() => remove(item)}
-                    className="bi bi-trash  cursor-pointer" 
-                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
-                    // fill="currentColor" 
-                    fill="black"
-                    viewBox="0 0 16 16"
-                    >
-                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                    <path fillRule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                  </svg>
-                </div>
-
-                
-              </div>                          
-            </div>
-          );
-        })}
+        </div>
 
         {/* - - - - - - - - - - - - - - - - - - */}
 
