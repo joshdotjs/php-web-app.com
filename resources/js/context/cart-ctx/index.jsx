@@ -25,6 +25,8 @@ const CartContextProvider = ({ children }) => {
   const cart_btn_ref = useRef(null); // cartBtn = cart.querySelector(".btn-cart");
   const cart_icon_target_ref = useRef(null); // cartItems = cart.querySelector(".items");
   const cart_count_ref = useRef(null); // cartCount = cart.querySelector(".count");
+  
+  const overlay_ref = useRef(null);
 
   // --------------------------------------------
 
@@ -35,6 +37,7 @@ const CartContextProvider = ({ children }) => {
     cart_icon_target_ref,
     cart_count_ref,
     // cart_open,
+    overlay_ref,
   };
 
 
