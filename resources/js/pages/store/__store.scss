@@ -36,12 +36,9 @@ main#page.store {
     // ==========================================
 
     #grid-left  {
-      padding-top: calc(#{$bar-height} + 2 * #{$pad});
-      @media (max-width: #{$desktop}) { display: none; }
-      // @media (min-width: #{$desktop}) { padding-right: 60px; }
-      // background: lightgreen;
-
       display: flex;
+      padding-top: calc(#{$bar-height} + 2 * #{$pad});
+      @media (max-width: #{$desktop}) { display: none; } // filter-mobile is handled inside component
 
       &-left {
         width: 240px;

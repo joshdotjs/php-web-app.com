@@ -4,8 +4,6 @@ import uuid from 'react-uuid';
 import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 
-import CartContext from '@/context/cart-ctx';
-
 import Button from '@/comps/button/button';
 
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
@@ -330,19 +328,7 @@ export default function Cart() {
 
   // --------------------------------------------
 
-  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
-  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
-  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
-  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
-  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
-  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
-  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
-  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
-  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
-  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
-  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
-
-  const { overlay_ref } = useContext(CartContext);
+  const overlay_ref = useRef(null);
 
   // --------------------------------------------
   

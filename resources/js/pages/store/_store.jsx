@@ -11,6 +11,7 @@ import { updateNumCartItems } from '@/context/cart-ctx/cart-fn';
 
 import Grid from './grid';
 import Filters from './filters/filters';
+import MobileFilters from './filters/filters-mobile';
 
 import { fireEvent } from '@/util/events';
 import { disableClick, enableClick } from '@/util/dom';
@@ -611,6 +612,8 @@ export default function Page({ products_SSR, num_products_SSR }) {
   return (
     <div id="grid-container" ref={container_ref} >
 
+
+      <MobileFilters { ...{ filter,  categories, genders, prices, applyFilter } } />
       <div id="grid-left" ref={filters_container_ref}>
         <Filters { ...{ filter,  categories, genders, prices, applyFilter } } />
       </div>

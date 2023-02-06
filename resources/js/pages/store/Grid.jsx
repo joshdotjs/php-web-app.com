@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import Card from './card';
 import Dropdown from './dropdown/dropdown';
 import Pagination from './pagination';
+import { openMobileFilters } from './filters/filters-mobile';
 
 // ==============================================
 
@@ -112,7 +113,10 @@ export default function Grid({
 
       <div id="filter-button-row">
 
-        <div id="show-filters-button" onClick={openFiltersHandler} className="flex items-center">
+        <div id="show-filters-button" onClick={() => {
+          openFiltersHandler();
+          openMobileFilters();
+        }} className="flex items-center">
           { show_filters && <h4>Hide Filters</h4> }
           { !show_filters && <h4>Show Filters</h4> }
           <svg aria-hidden="true" className="icon-filter-ds" focusable="false" viewBox="0 0 24 24" role="img" width="22px" height="22px" fill="none">
