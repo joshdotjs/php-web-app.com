@@ -5,7 +5,7 @@ import ChevronDownSVG from '@/comps/svg/chevron-down';
 
 // ==============================================
 
-export default function ChevronAnim({children, title, num, set}) {
+export default function ChevronAnim({children, title, num, set, classes}) {
 
   // --------------------------------------------
   
@@ -24,7 +24,13 @@ export default function ChevronAnim({children, title, num, set}) {
   const open = () => {
     if (tl.current)
       tl.current.revert();
-    tl.current = gsap.to(ref.current, { height: '40px', duration: 0.3 });
+
+    const duration = 0.3;
+
+    const timeline = gsap.timeline();
+    timeline.to(square.current, { opacity: 0, duration });
+    
+    tl.current = timeline.to(ref.current, { height: '40px', duration }, '<=');
   };
 
   // --------------------------------------------
@@ -59,17 +65,25 @@ export default function ChevronAnim({children, title, num, set}) {
   return (
     <div 
       ref={ref}
-      className="chevron-anim"
+      className={`chevron-anim
+        ${classes}
+      `}
     >
       <div 
         className="chevron-anim__title"
         onClick={handler}
+        // style={{ marginTop: '1.5rem' }}
       >
-        <h5>{title} {' '} {num > 0 ? `(${num})` : ''}</h5>
+        <h5 
+          // style={{ marginTop: '1rem' }}
+        >
+          {title} {' '} {num > 0 ? `(${num})` : ''}
+        </h5>
         <ChevronDownSVG classes={`chevron-anim__title__arrow ${is_up ? up : ''}`} />
       </div>
 
-      <div ref={square}>
+      <div ref={square}
+      >
         {children}
       </div>
 

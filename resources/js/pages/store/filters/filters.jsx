@@ -12,7 +12,7 @@ export default function Filters({
     <>
       <div id="grid-left-left">
 
-        <hr className="border-t border-gray-200 mb-4"></hr>
+        <hr className="border-t border-gray-200 mb-[1.13rem]"></hr>
 
         {/* TODO: Make heights bewteen the sections the same */}
         {/* TODO: Make heights bewteen the sections the same */}
@@ -31,7 +31,7 @@ export default function Filters({
           </Checkboxes>
         </ChevronAnim>
 
-        <hr className="border-t border-gray-200 mt-2 mb-4"></hr>
+        <hr className="border-t border-gray-200 mt-2 mb-[1.13rem]"></hr>
 
         <ChevronAnim title="Gender" num={filter.in_init_state['gender'] ? 0 : filter.getNum('gender')}>
           <Checkboxes type="gender" options={genders} set={filter['gender']} applyFilter={applyFilter} in_init_state={filter.in_init_state['gender']} >
@@ -41,7 +41,7 @@ export default function Filters({
         <hr className="border-t border-gray-200 mt-2 mb-4"></hr>
       </div>
 
-      {/* Hack 'padding' to work smoothly with the 'Close Filters' animation: */}
+      {/* Hack 'padding' to work smoothly with the 'Close Filters' animation */}
       <div id="grid-left-right"></div>  
     </>
   );
