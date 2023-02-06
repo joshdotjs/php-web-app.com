@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 import Card from './card';
 import Dropdown from './dropdown/dropdown';
 import Pagination from './pagination';
-import { openMobileFilters } from './filters/filters-mobile';
+import { openDrawer as openMobileFilters } from './filters/drawer';
 
 // ==============================================
 

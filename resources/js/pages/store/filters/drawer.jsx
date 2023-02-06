@@ -1,17 +1,21 @@
 import React, { Fragment, useCallback, useEffect, useLayoutEffect, useRef, useState, useContext } from 'react';
 import { createPortal } from 'react-dom';
-import uuid from 'react-uuid';
 import { gsap } from "gsap";
 
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 
 // ==============================================
 
-let openMobileFilters;
+let openDrawer;
 
 // ==============================================
 
-export default function MobileFilters() {
+export default function Drawer({ children, title, position }) {
+
+  // --------------------------------------------
+
+  // -<children /> needs to have either margin or padding of 1rem 
+  //  to match the padding in the title
 
   // --------------------------------------------
   
@@ -19,12 +23,9 @@ export default function MobileFilters() {
 
   // --------------------------------------------
 
-  openMobileFilters = () => {
+  openDrawer = () => {
 
-    openDrawerCart();
-
-    console.log('openCart()');
-    
+    showOverlay();   
     const container = container_ref?.current;
 
     lr(tl_ref.current);
@@ -40,8 +41,8 @@ export default function MobileFilters() {
 
   // --------------------------------------------
 
-  const closeCart = () => {
-    closeDrawerCart();
+  const closeDrawer = () => {
+    hideOverlay();
     tl_ref.current?.reverse();
   };
 
@@ -58,13 +59,9 @@ export default function MobileFilters() {
 
   // --------------------------------------------
   
-  const openDrawerCart = () => {
-    // setDrawerCartOpen(true);
-
-    console.log('openDrawerCart()');
-
-    const container = document.querySelector('#portal-cart');
-    container.style.zIndex = 100;
+  const showOverlay = () => {
+    // const container = document.querySelector('#portal-cart');
+    // container.style.zIndex = 100;
     // console.log('container: ',  container);
 
     lr('opening cart drawer');
@@ -81,7 +78,7 @@ export default function MobileFilters() {
 
   // --------------------------------------------
 
-  const closeDrawerCart = () => {
+  const hideOverlay = () => {
     // fireEvent('cart-close');
     // setDrawerCartOpen(false);
     const ref = overlay_ref.current;
@@ -98,6 +95,22 @@ export default function MobileFilters() {
   };
 
   // --------------------------------------------
+
+  let translate;
+  if (position === 'left') {
+    translate = {
+      left: 0,
+      transform: 'translate(-100%)'
+    };
+  }
+  else {
+    translate = {
+      right: 0,
+      transform: 'translate(100%)'
+    };
+  }
+
+  // --------------------------------------------
   
   return createPortal(
     <div className="md:hidden">
@@ -112,7 +125,7 @@ export default function MobileFilters() {
           WebkitBackdropFilter: 'blur(5px)',
 
         }}
-        onClick={() => closeCart()}
+        onClick={() => closeDrawer()}
       >  
       </div>
 
@@ -125,13 +138,12 @@ export default function MobileFilters() {
           z-100
         " 
         style={{ position: 'fixed',
-        top: 0,
-        right: 0,
-        background: 'white',
-        height: '100vh',
-        // width: '300px',
-        zIndex: 100,
-        transform: 'translate(100%)'
+          top: 0,
+          background: 'white',
+          height: '100vh',
+          // width: '300px',
+          zIndex: 100,
+          ...translate,
       }}
       >
 
@@ -148,9 +160,9 @@ export default function MobileFilters() {
           }}
         >
 
-          <h4>Filters</h4>
+          <h4>{title}</h4>
 
-          <svg onClick={closeCart}
+          <svg onClick={closeDrawer}
             xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" 
             className="bi bi-x  cursor-pointer" viewBox="0 0 16 16"
             // style={{ background: 'red' }}
@@ -159,8 +171,9 @@ export default function MobileFilters() {
           </svg>
         </div>
 
-        
+        {/* - - - - - - - - - - - - - - - - - - */}
 
+        {children}
 
         {/* - - - - - - - - - - - - - - - - - - */}
 
@@ -175,4 +188,4 @@ export default function MobileFilters() {
 
 // ==============================================
 
-export { openMobileFilters };
+export { openDrawer };

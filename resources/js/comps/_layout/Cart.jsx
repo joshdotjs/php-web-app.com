@@ -127,12 +127,9 @@ export default function Cart() {
 
   // --------------------------------------------
 
-  openCart = ({ onComplete=null }) => {
+  openCart = () => {
 
-    openDrawerCart();
-
-    console.log('openCart()');
-    
+    showOverlay();
     const container = container_ref?.current;
 
     lr(tl_ref.current);
@@ -142,7 +139,6 @@ export default function Cart() {
     tl_ref.current = gsap.to(container, { 
       x: 0,
       duration: 0.3,
-      onComplete,
      });
 
   };
@@ -150,7 +146,7 @@ export default function Cart() {
   // --------------------------------------------
 
   const closeCart = () => {
-    closeDrawerCart();
+    hideOverlay();
     tl_ref.current?.reverse();
   };
 
@@ -332,16 +328,7 @@ export default function Cart() {
 
   // --------------------------------------------
   
-  const openDrawerCart = () => {
-    // setDrawerCartOpen(true);
-
-    console.log('openDrawerCart()');
-
-    const container = document.querySelector('#portal-cart');
-    container.style.zIndex = 100;
-    // console.log('container: ',  container);
-
-    lr('opening cart drawer');
+  const showOverlay = () => {
     const ref = overlay_ref.current;
     ref.style.display = 'block';
     gsap.to(ref, { 
@@ -355,7 +342,7 @@ export default function Cart() {
 
   // --------------------------------------------
 
-  const closeDrawerCart = () => {
+  const hideOverlay = () => {
     // fireEvent('cart-close');
     // setDrawerCartOpen(false);
     const ref = overlay_ref.current;
@@ -366,8 +353,8 @@ export default function Cart() {
         ref.style.display = 'none';
         document.body.style.overflow = "overlay"; // custom scrollbar overlay
 
-        const container = document.querySelector('#portal-cart');
-        container.style.zIndex = -1;
+        // const container = document.querySelector('#portal-cart');
+        // container.style.zIndex = -1;
       }});
   };
 
