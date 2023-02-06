@@ -10,7 +10,7 @@ let openDrawer;
 
 // ==============================================
 
-export default function Drawer({ children, title, position }) {
+export default function Drawer({ children, title, position, classes }) {
 
   // --------------------------------------------
 
@@ -132,11 +132,10 @@ export default function Drawer({ children, title, position }) {
       <aside 
         id="cart" 
         ref={container_ref}
-        className="
-          w-[300px]
-          md:w-[350px]
+        className={`
           z-100
-        " 
+          ${classes}
+        `} 
         style={{ position: 'fixed',
           top: 0,
           background: 'white',

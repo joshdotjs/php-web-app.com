@@ -613,9 +613,9 @@ export default function Page({ products_SSR, num_products_SSR }) {
     <div id="grid-container" ref={container_ref} >
 
 
-      <Drawer title="Filters" position="left">
+      <Drawer title="Filters" position="left" classes="w-[200px]">
         <div style={{ height: '100%', width: '100%', padding: '0 1rem'}}>
-        <Filters { ...{ filter,  categories, genders, prices, applyFilter } } />
+          <Filters { ...{ filter,  categories, genders, prices, applyFilter } } />
         </div>
       </Drawer>
       <div id="grid-left" ref={filters_container_ref}>
