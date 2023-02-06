@@ -151,7 +151,10 @@ export default function Cart() {
 
   // --------------------------------------------
 
-  const closeCart = () => tl_ref.current?.reverse()
+  const closeCart = () => {
+    closeDrawerCart();
+    tl_ref.current?.reverse();
+  };
 
   // --------------------------------------------
 
@@ -327,6 +330,18 @@ export default function Cart() {
 
   // --------------------------------------------
 
+  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
+  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
+  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
+  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
+  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
+  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
+  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
+  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
+  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
+  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
+  // NOTE: BRINGING IN CONTEXT CAUSED BUT IN PAST
+
   const { overlay_ref } = useContext(CartContext);
 
   // --------------------------------------------
@@ -350,6 +365,24 @@ export default function Cart() {
         document.body.style.overflow = "hidden"; // don't scroll stuff underneath the modal
       },
     });
+  };
+
+  // --------------------------------------------
+
+  const closeDrawerCart = () => {
+    // fireEvent('cart-close');
+    // setDrawerCartOpen(false);
+    const ref = overlay_ref.current;
+    gsap.to(ref, { 
+      opacity: 0,
+       duration: 0.3, 
+       onComplete: () => {
+        ref.style.display = 'none';
+        document.body.style.overflow = "overlay"; // custom scrollbar overlay
+
+        const container = document.querySelector('#portal-cart');
+        container.style.zIndex = -1;
+      }});
   };
 
   // --------------------------------------------
