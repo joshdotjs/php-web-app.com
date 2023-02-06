@@ -474,9 +474,28 @@ export default function Cart() {
           bottom: 0,
           left: 0,
           width: '100%',
-          padding: '2rem'
+          paddingTop: '2rem',
+          paddingBottom: '2rem',
+          paddingLeft: '1rem',
+          paddingRight: '1.5rem',
         }}
       >
+
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            marginBottom: '0.125rem'
+          }}
+        >
+          <h4>Subtotal</h4>
+          <h4>${layout.items.reduce((accumulator, currentValue) => accumulator + currentValue.product.price, 0) / 100}</h4>
+        </div>
+
+        <div style={{ marginBottom: '2rem' }}>
+          <p style={{ fontSize: '0.8rem', color: light, fontWeight: '400'}}>Shipping and taxes calculated at checkout.</p>
+        </div>
+
         <Button
           disabled={layout.items.length === 0}
           onClick={() => { 
