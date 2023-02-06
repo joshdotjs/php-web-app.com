@@ -10,7 +10,7 @@ export default function Filters({
 }) {
   return (
     <>
-      <div id="grid-left-left">
+      <div id="grid-left-left" className="grid-left-left">
 
         <hr className="border-t border-gray-200 mb-[1.13rem]"></hr>
 
@@ -31,7 +31,7 @@ export default function Filters({
       </div>
 
       {/* Hack 'padding' to work smoothly with the 'Close Filters' animation */}
-      <div id="grid-left-right"></div>  
+      <div id="grid-left-right" className="hidden  md:block"></div>  
     </>
   );
 }

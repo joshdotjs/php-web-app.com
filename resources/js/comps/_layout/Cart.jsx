@@ -127,9 +127,12 @@ export default function Cart() {
 
   // --------------------------------------------
 
-  openCart = () => {
+  openCart = ({ onComplete=null }) => {
 
     showOverlay();
+
+    console.log('openCart()');
+    
     const container = container_ref?.current;
 
     lr(tl_ref.current);
@@ -139,6 +142,7 @@ export default function Cart() {
     tl_ref.current = gsap.to(container, { 
       x: 0,
       duration: 0.3,
+      onComplete, // used in adding item to cart
      });
 
   };
