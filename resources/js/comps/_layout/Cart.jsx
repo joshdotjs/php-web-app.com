@@ -590,7 +590,7 @@ export default function Cart() {
           </div>
 
           <div style={{ marginBottom: '2rem' }}>
-            <p style={{ fontSize: '0.8rem', color: light, fontWeight: '400'}}>Shipping and taxes calculated at checkout.</p>
+            <p style={{ fontSize: '0.8rem', color: light, fontWeight: '400'}}>Shipping and taxes calculated at checkout</p>
           </div>
 
           <Button
