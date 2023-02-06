@@ -339,7 +339,7 @@ export default function Cart() {
         height: '100vh',
         // width: '300px',
         zIndex: 100,
-        // transform: 'translate(100%)'
+        transform: 'translate(100%)'
       }}
     >
 
@@ -516,6 +516,20 @@ export default function Cart() {
         >
           Checkout
         </Button>
+
+
+
+        <div className="text-center">
+          <button 
+            type="button" 
+            className="font-medium text-indigo-600 hover:text-indigo-500 mt-8"
+            onClick={() => closeCart()}
+          >
+            Continue Shopping
+            <span aria-hidden="true"> &rarr;</span>
+          </button>
+        </div>
+
       </div>
 
       {/* - - - - - - - - - - - - - - - - - - */}

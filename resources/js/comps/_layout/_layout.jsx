@@ -60,7 +60,7 @@ export default function Layout({ children, name, restrict }) {
         <div 
           id="layout" 
           ref={layout_ref} 
-          style={{ opacity: 0, transform: 'scale(1.015)', transformOrigin: 'center' }}
+          style={{ opacity: 0, transform: 'scale(1)', transformOrigin: 'center' }}
         >
 
           <Cart />
