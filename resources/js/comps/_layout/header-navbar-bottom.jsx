@@ -11,6 +11,8 @@ import CartContext from '@/context/cart-ctx';
 import Cart, { openCart } from './cart';
 import NavDrawer, { openDrawer as openNavDrawer } from './header-drawer-nav';
 
+import logo from './logo.svg';
+
 // ==============================================
 
 export default function NavbarBottom() {
@@ -33,7 +35,11 @@ export default function NavbarBottom() {
     <nav id="bottom">
       <div className="gutter">
 
-        <h2 id="logo">Logo</h2>
+        <a 
+          // href="/"
+        >
+          <img class="h-8 w-auto" src={logo} alt="Logo" />
+        </a>
 
 
         <div // navlinks

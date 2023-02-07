@@ -27,7 +27,7 @@ export default function NavbarTop() {
     <nav id="top">
       <div className="gutter">
         <div>
-          <a href="/">Store Name</a>
+          <a href="/"></a>
         </div>
 
 
