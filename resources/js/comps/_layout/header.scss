@@ -4,6 +4,12 @@ header#navbar {
   left: 0;
   width: 100vw;
    
+
+  $dark: black;
+  $light: white;
+
+  
+
   nav {
     .gutter {
       height: 100%;
@@ -34,7 +40,7 @@ header#navbar {
   nav#bottom {
     backdrop-filter: blur(10px) saturate(180%);
     -webkit-backdrop-filter: blur(10px) saturate(180%);
-    background-Color: rgba(17, 25, 40, 0.75);
+    background-color: rgba(17, 25, 40, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.125);
     color: white;
     // margin-top: -1px; // offset upwards a little to hide the edge effect (it is very evident between the top and bottom), cover with the top navbar
@@ -65,8 +71,9 @@ header#navbar {
         height: 40px;
         width: 40px;
       
-        color: black;
-        background: white;
+        color: white; 
+        border: solid white 1px;
+
         padding: 0.65rem;
       
         border-radius: 0.25rem;
@@ -123,8 +130,23 @@ header#navbar {
         #cart-count { position: absolute;
           top: -17%;
           right: -17%;
-          background: black;
+          
+          // background: $dark;
+          // color: $light;
+
+          
+
+          // border: solid white 1px;
+
+
+          backdrop-filter: blur(2px) saturate(180%);
+          -webkit-backdrop-filter: blur(10px) saturate(180%);
+          background-color: rgba(17, 25, 40, 0.5);
+          border: 1px solid rgba(255, 255, 255, 0.125);
           color: white;
+
+
+
           border-radius: 50%;
           height: 20px;
           width: 20px;

@@ -16,7 +16,7 @@ export default function CartButton({cart_btn_ref, cart_count_ref, cart_icon_targ
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
         // width="16" height="16" 
-        // fill="currentColor" 
+        fill="currentColor" 
         className="bi bi-bag" 
         viewBox="0 0 16 16"
       >
@@ -24,7 +24,7 @@ export default function CartButton({cart_btn_ref, cart_count_ref, cart_icon_targ
       </svg>
 
       <div ref={cart_count_ref} id="cart-count" style={{ opacity: 0 }}>
-        <span style={{ color: 'white' }} ></span>
+        <span></span>
       </div>
       
     </button>
