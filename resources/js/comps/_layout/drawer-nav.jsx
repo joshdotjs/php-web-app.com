@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 
 import { transitionTextColor } from '@/util/transition';
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
+import { disableClick, enableClick } from '@/util/dom';
 
 // ==============================================
 
@@ -15,12 +16,14 @@ const DrawerContents = () => {
 
   // --------------------------------------------
 
-  const Card = ({ title, classes }) => (
+  const Card = ({ title, img, classes }) => (
     <div 
-      className={`${classes}`} 
-      // style={{ outline: 'solid black 1px' }}
+      className={`
+        cursor-pointer
+        ${classes}
+      `}
     >
-      <img src="/img/products/clothes/women/Dri-FIT-One-blue.webp" className="rounded-md overflow-hidden mb-4" />
+      <img src={img} className="rounded-md overflow-hidden mb-4" />
       <h5 className="text-sm font-medium text-gray-900">{title}</h5>
       <p className="text-sm text-gray-500">Shop now</p>
     </div>
@@ -30,6 +33,37 @@ const DrawerContents = () => {
 
   const [active_panel, setActivePanel] = useState(0);
 
+  const panel_refs = useRef([]);
+
+  // --------------------------------------------
+
+  const clickHandler = (idx) => {
+
+    disableClick();
+    setActivePanel(idx);
+
+    const duration = 0.3;
+
+    panel_refs.current.forEach((ref, i) => {
+      if (i !== idx) {
+        gsap.to(ref, { 
+          opacity: 0, 
+          onStart: () => ref.style.pointEvents = 'none',
+          duration,
+        });
+      }
+    });
+
+    const ref = panel_refs.current[idx];
+    gsap.to(ref, {
+      opacity: 1,
+      onStart: () => ref.style.display = 'grid',
+      onComplete: () => enableClick(),
+      duration,
+    });
+
+  };
+
   // --------------------------------------------
 
   return (
@@ -37,24 +71,11 @@ const DrawerContents = () => {
 
       <div className="flex justify-evenly border-b border-gray-200">
         <div 
-          onClick={() => setActivePanel(0)}
+          onClick={() => clickHandler(0)}
           className={
             `
-              pb-4 w-[130px] text-center border-b-2
+              pb-4 w-[100px] text-center border-b-2
               ${transitionTextColor(active_panel === 0, 'text-indigo-600 border-indigo-600', 'text-gray-900 border-transparent')}
-              cursor-pointer
-              text-base font-medium
-            `
-          }
-        >
-          Men
-        </div>
-        <div 
-          onClick={() => setActivePanel(1)}
-          className={
-            `
-              pb-4 w-[130px] text-center border-b-2
-              ${transitionTextColor(active_panel === 1, 'text-indigo-600 border-indigo-600', 'text-gray-900 border-transparent')}
               cursor-pointer
               text-base font-medium
             `
@@ -62,28 +83,85 @@ const DrawerContents = () => {
         >
           Women
         </div>
+        <div 
+          onClick={() => clickHandler(1)}
+          className={
+            `
+              pb-4 w-[100px] text-center border-b-2
+              ${transitionTextColor(active_panel === 1, 'text-indigo-600 border-indigo-600', 'text-gray-900 border-transparent')}
+              cursor-pointer
+              text-base font-medium
+            `
+          }
+        >
+          Men
+        </div>
       </div>
 
-      <div className="
+      <div className="relative
           px-4 py-6
-          grid grid-cols-2 gap-[1rem]
           border-b border-gray-200
         "
       >
-        <Card title='Shoes'  classes="mb-4" />
-        <Card title='Pants'  classes="mb-4" />
-        <Card title='Shirts'                  />
-        <Card title='Hats'                    />
+
+        {/* ------------------------------------------- */}
+
+        <div // HIDDEN (for height)
+          className="grid grid-cols-2 gap-[1rem]" 
+          // -use this one to set the height on the section 
+          //  since the others are removed from document flow
+          style={{ visibility: 'hidden' }} 
+        >
+          <Card title='Shoes'  classes="mb-4" img="/img/products/clothes/women/Dri-FIT-One-blue.webp"                />
+          <Card title='Pants'  classes="mb-4" img="/img/products/clothes/women/Nike-Sportswear-pink.webp"            />
+          <Card title='Shirts'                img="/img/products/clothes/women/Sportswear-Phoenix-Fleece-brown.webp" />
+          <Card title='Hats'                  img="/img/products/clothes/women/Nike-Swoosh-green.webp"               />
+        </div>
+
+        {/* ------------------------------------------- */}
+
+        <div 
+          ref={el => panel_refs.current[0] = el}
+          className="grid grid-cols-2 gap-[1rem]
+            mx-4
+            absolute  left-0  top-6
+          "
+          style={{ opacity: 1, display: 'grid'  }}
+        >
+          <Card title='Shoes'   classes="mb-4" img="/img/products/clothes/women/Dri-FIT-One-blue.webp"                />
+          <Card title='Clothes' classes="mb-4" img="/img/products/clothes/women/Nike-Sportswear-pink.webp"            />
+          <Card title='Pants'                  img="/img/products/clothes/women/Sportswear-Phoenix-Fleece-brown.webp" />
+          <Card title='Accessories'            img="/img/products/clothes/women/Nike-Swoosh-green.webp"               />
+        </div>
+
+        {/* ------------------------------------------- */}
+
+        <div 
+          ref={el => panel_refs.current[1] = el}
+          className="grid grid-cols-2 gap-[1rem]
+            mx-4
+            absolute  left-0  top-6
+          "
+          style={{ opacity: 0, display: 'none'  }}
+        >
+          <Card title='Shoes'   classes="mb-4" img="/img/products/shoes/men/Vaporfly-2-1.webp"                />
+          <Card title='Clothes' classes="mb-4" img="/img/products/clothes/men/Dri-FIT-DNA-shorts-blue.webp"           />
+          <Card title='Pants'                  img="/img/products/clothes/men/cargo-pants-green.webp"                 />
+          <Card title='Accessories'            img="/img/products/accessories/men/backpack.webp"       />
+        </div>
+
+        {/* ------------------------------------------- */}
+
       </div>
 
       <div className="px-4 py-6 border-b border-gray-200">
-        <h4 className="mb-6">About</h4>
-        <h4>Contact</h4>
+        <h4 className="mb-6 cursor-pointer">About</h4>
+        <h4 className="     cursor-pointer">Contact</h4>
       </div>
 
       <div className="px-4 py-6 border-b border-gray-200">
-        <h4 className="mb-6">Register</h4>
-        <h4>Sign in</h4>
+        <h4 className="mb-6 cursor-pointer">Register</h4>
+        <h4 className="     cursor-pointer">Sign in</h4>
       </div>
     </div>
   );
@@ -91,7 +169,7 @@ const DrawerContents = () => {
 
 // ==============================================
 
-export default function Drawer({ children, title, position, classes }) {
+export default function Drawer({ title, position, classes }) {
 
   // --------------------------------------------
 
@@ -106,6 +184,8 @@ export default function Drawer({ children, title, position, classes }) {
 
   openDrawer = () => {
 
+    console.log('openDrawer()');
+
     showOverlay();   
     const container = container_ref?.current;
 
@@ -116,7 +196,7 @@ export default function Drawer({ children, title, position, classes }) {
     tl_ref.current = gsap.to(container, { 
       x: 0,
       duration: 0.3,
-     });
+    });
 
   };
 
@@ -141,10 +221,6 @@ export default function Drawer({ children, title, position, classes }) {
   // --------------------------------------------
   
   const showOverlay = () => {
-    // const container = document.querySelector('#portal-cart');
-    // container.style.zIndex = 100;
-    // console.log('container: ',  container);
-
     lr('opening cart drawer');
     const ref = overlay_ref.current;
     ref.style.display = 'block';
@@ -199,8 +275,8 @@ export default function Drawer({ children, title, position, classes }) {
         ref={overlay_ref}
         className="pointer-events-auto fixed inset-0"
         style={{ 
-          // display: 'none',  // !!!!!!!!!! DEBUG !!!!!!!!!!!!!!!!!!!!!!
-          // opacity: 0,       // !!!!!!!!!! DEBUG !!!!!!!!!!!!!!!!!!!!!!
+          display: 'none',
+          opacity: 0,     
           background: 'rgba(0, 0, 0, 0.8)',
           backdropFilter: 'blur(5px)', // I think this is not animating the blur!  I think a single blur is computed and then the opacity on it is animated - which is efficient.  I think animating a blur causes a diffrent blur to be computed for each frame of the animation with each one slightly more blurred than the previous.
           WebkitBackdropFilter: 'blur(5px)',
@@ -221,10 +297,9 @@ export default function Drawer({ children, title, position, classes }) {
           background: 'white',
           height: '100vh',
           zIndex: 100,
-          border: 'solid black 10px',
           padding: 0,
-          margin: 0
-          // ...translate,  // !!!!!!!!!! DEBUG !!!!!!!!!!!!!!!!!!!!!!
+          margin: 0,
+          ...translate,
       }}
       >
 
@@ -274,4 +349,4 @@ export default function Drawer({ children, title, position, classes }) {
 
 // ==============================================
 
-export { openDrawer, closeDrawer };
+export { openDrawer, closeDrawer }; // NOTE: Need to pass these in as props like: () => openDrawer();

@@ -9,7 +9,7 @@ import AuthContext from '@/context/auth-ctx';
 import CartContext from '@/context/cart-ctx';
 
 import Cart, { openCart } from './Cart';
-import Drawer, { openDrawer, closeDrawer } from '@/comps/_layout/drawer-nav';
+import Drawer, { openDrawer, closeDrawer } from './drawer-nav';
 
 import { transitionTextColor } from '@/util/transition';
 
@@ -318,29 +318,7 @@ export default function Header({ header_ref }) {
     <>
       <Cart />
 
-      <Drawer title="" position="left" classes="w-[400px]" portal_id='#portal-nav-drawer'>
-        <div style={{ margin: '0', padding: '0', overflowY: 'scroll', background: 'darkorchid', height: '100%' }}>
-          {/* <NavDrawerContents /> */}
-
-          <div style={{ background: 'yellow', height: '100px', width: '100%'}}></div>
-
-
-          <div className="flex justify-evenly" style={{ background: 'red', width: '100%', margin: 0, padding: 0 }}>
-            <div className="bg-orange-300">Men</div>
-            <div className="bg-orange-300">Women</div>
-          </div>
-          <div className="grid grid-cols-2 gap-[1rem]">
-            <Card title='Shoes' />
-            <Card title='Pants' />
-            <Card title='Shirts' />
-            <Card title='Hats' />
-          </div>
-
-          <div>
-            <h4>About</h4>
-            <h4>Contact</h4>
-          </div>
-        </div>
+      <Drawer title="" position="left" classes="w-[300px]" portal_id='#portal-nav-drawer'>
       </Drawer>
 
       <header 
@@ -427,7 +405,7 @@ export default function Header({ header_ref }) {
                 
               </div>
 
-              <ButtonDrawer onClick={openDrawer}/>
+              <ButtonDrawer onClick={() => openDrawer()}/>
 
             </div>
 
