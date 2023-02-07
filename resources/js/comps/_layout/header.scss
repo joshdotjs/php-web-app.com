@@ -48,8 +48,8 @@ header#navbar {
     backdrop-filter: blur(10px) saturate(180%);
     -webkit-backdrop-filter: blur(10px) saturate(180%);
     background-color: rgba(17, 25, 40, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.125);
-    border-top: solid $dark-blue 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.125);
+    // border-top: solid $dark-blue 1px;
     color: white;
     // margin-top: -1px; // offset upwards a little to hide the edge effect (it is very evident between the top and bottom), cover with the top navbar
     // position: relative; 
