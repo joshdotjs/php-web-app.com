@@ -19,7 +19,7 @@ export default function Drawer({ children, title, position, classes }) {
 
   // --------------------------------------------
   
-  const portal_root = document.querySelector('#portal-mobile-filters-drawer');
+  const portal_root = document.querySelector('#portal-nav-drawer');
 
   // --------------------------------------------
 
@@ -112,7 +112,7 @@ export default function Drawer({ children, title, position, classes }) {
 
   // --------------------------------------------
   
-  return  portal_root ? createPortal(
+  return createPortal(
     <div className="md:hidden">
       <div // Blur Overlay
         ref={overlay_ref}
@@ -180,7 +180,7 @@ export default function Drawer({ children, title, position, classes }) {
     </div>
     ,
     portal_root
-  ) : null;
+  );
 
   // --------------------------------------------
 };

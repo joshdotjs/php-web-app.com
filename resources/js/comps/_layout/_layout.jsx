@@ -5,8 +5,6 @@ import { CartContextProvider } from "@/context/cart-ctx";
 
 
 import Header from './Header';
-import Cart from './Cart';
-import Notifications from './notify/notify';
 
 import './_layout.scss';
 
@@ -62,10 +60,6 @@ export default function Layout({ children, name, restrict }) {
           ref={layout_ref} 
           style={{ opacity: 0, transform: 'scale(1)', transformOrigin: 'center' }}
         >
-
-          <Cart />
-
-          {/* <Notifications /> */}
 
           <Header { ...{ header_ref } } />
 
