@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import { gsap } from 'gsap';
+// import { gsap } from 'gsap';
 
-import Notifications from './notify/notify';
-import HamburgerButton from './header-button-hamburger';
-import CartButton from './header-button-cart';
+// import Notifications from './notify/notify';
+// import HamburgerButton from './header-button-hamburger';
+// import CartButton from './header-button-cart';
 
 import AuthContext from '@/context/auth-ctx';
-import CartContext from '@/context/cart-ctx';
+// import CartContext from '@/context/cart-ctx';
 
 
-import NavbarBottom from './header-navbar-bottom';
-import Cart, { openCart } from './cart';
-import NavDrawer, { openDrawer as openNavDrawer } from './header-drawer-nav';
+// import NavbarBottom from './header-navbar-bottom';
+// import Cart, { openCart } from './cart';
+// import NavDrawer, { openDrawer as openNavDrawer } from './header-drawer-nav';
 
 // ==============================================
 
