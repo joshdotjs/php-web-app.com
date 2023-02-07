@@ -98,6 +98,16 @@ export default function Header() {
             <h2 id="logo">Logo</h2>
 
 
+            <div // navlinks
+              className="hidden md:flex"
+            >
+              <div className="mr-6">New & Featured</div>
+              <div className="mr-6">Men</div>
+              <div className="lg:mr-6">Women</div>
+              <div className="hidden lg:block ">Sale</div>
+            </div>
+
+
             <div // buttons container
               className="flex  justify-between  w-[100px]  md:w-fit"
             >
