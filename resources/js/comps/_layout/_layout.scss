@@ -35,13 +35,11 @@ $desktop: 1000px;
 /*        https://youtu.be/yc2olxLgKLk       */
 html {            height: 100%;
   body {          height: 100%;
-    .react-root { height: 100%;
-      #layout {   min-height: 100%;
-        display: flex;
-        flex-direction: column;
-        main#page { flex-grow: 1; }
-        footer{ justify-self: flex-end; }
-      }
+    .react-root { min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      main#page { flex-grow: 1; }       // method 2: portfolio layout uses method 1
+      footer{ justify-self: flex-end; } // method 2 (method-1: margin-top: auto)
     }
   }
 }
@@ -51,12 +49,13 @@ html {            height: 100%;
 
 html {  scroll-behavior: smooth;  }
 body {
+  opacity: 0;
   margin: 0;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 
 
   
-  .react-root > #layout { //position: relative;
+  .react-root { //position: relative;
 
 
     header#navbar {  position: fixed;  z-index: 9; /* blur-overlay: 10 */ }

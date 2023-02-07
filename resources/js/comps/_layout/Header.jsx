@@ -288,7 +288,7 @@ const NavDrawerContents = () => {
 
 // ==============================================
 
-export default function Header({ header_ref }) {
+export default function Header() {
 
   // --------------------------------------------
 
@@ -323,7 +323,6 @@ export default function Header({ header_ref }) {
 
       <header 
         id="navbar" 
-        ref={header_ref}
         style={{ position: 'fixed' }}
       >
 

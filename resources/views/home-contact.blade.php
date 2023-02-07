@@ -11,8 +11,9 @@
   ></div>
 
   <div id="portal-cart"></div>
-  <div id="portal-navdrawer"></div>
-  <div id="portal-modal"></div>
+  <div id="portal-nav-drawer"></div>
+  {{-- <div id="portal-modal"></div> --}}
+  <div id="portal-mobile-filters-drawer"></div>
   {{-- react --}}
   
   {{-- =============================================== --}}
