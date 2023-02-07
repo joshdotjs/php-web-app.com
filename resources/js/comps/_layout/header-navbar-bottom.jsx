@@ -8,18 +8,12 @@ import CartButton from './header-button-cart';
 import AuthContext from '@/context/auth-ctx';
 import CartContext from '@/context/cart-ctx';
 
-
-import NavbarBottom from './header-navbar-bottom';
-import NavbarTop from './header-navbar-top'; 
-
 import Cart, { openCart } from './cart';
 import NavDrawer, { openDrawer as openNavDrawer } from './header-drawer-nav';
 
-import './header.scss';
-
 // ==============================================
 
-export default function Header() {
+export default function NavbarBottom() {
 
   // --------------------------------------------
 
@@ -36,23 +30,34 @@ export default function Header() {
   // --------------------------------------------
   
   return (
-    <>
-      <Cart />
+    <nav id="bottom">
+      <div className="gutter">
 
-      <NavDrawer title="" position="left" classes="w-[300px]">
-      </NavDrawer>
+        <h2 id="logo">Logo</h2>
 
-      <header 
-        id="navbar" 
-        style={{ position: 'fixed' }}
-      >
 
-        <NavbarTop />
+        <div // navlinks
+          className="hidden md:flex"
+        >
+          <div className="mr-6">New & Featured</div>
+          <div className="mr-6">Men</div>
+          <div className="lg:mr-6">Women</div>
+          <div className="hidden lg:block ">Sale</div>
+        </div>
 
-        <NavbarBottom />
 
-      </header>
-    </>
+        <div // buttons container
+          className="flex  justify-between  w-[110px]  md:w-fit"
+        >
+
+          <CartButton onClick={() => openCart({})} {...{cart_btn_ref, cart_count_ref, cart_icon_target_ref}} />
+
+          <HamburgerButton onClick={() => openNavDrawer()}/>
+
+        </div>
+
+      </div>
+    </nav>
   );
 }
 

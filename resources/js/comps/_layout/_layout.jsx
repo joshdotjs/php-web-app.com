@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { AuthContextProvider } from "@/context/auth-ctx";
 import { CartContextProvider } from "@/context/cart-ctx";
 
-import Header from './Header';
+import Header from './header';
 
 import './_layout.scss';
 
