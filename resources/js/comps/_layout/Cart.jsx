@@ -391,7 +391,7 @@ export default function Cart() {
         style={{ 
           display: 'none', 
           opacity: 0,
-          background: 'rgba(0, 0, 0, 0.8)',
+          background: 'rgba(0, 0, 0, 0.5)',
           backdropFilter: 'blur(5px)', // I think this is not animating the blur!  I think a single blur is computed and then the opacity on it is animated - which is efficient.  I think animating a blur causes a diffrent blur to be computed for each frame of the animation with each one slightly more blurred than the previous.
           WebkitBackdropFilter: 'blur(5px)',
           zIndex: '99'
