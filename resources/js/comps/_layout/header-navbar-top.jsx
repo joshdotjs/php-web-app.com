@@ -26,10 +26,8 @@ export default function NavbarTop() {
   return (
     <nav id="top">
       <div className="gutter">
-        <div>
-          <a href="/"></a>
-        </div>
-
+        
+        <a href="/">React</a>
 
         <ul id="nav-links">
 

@@ -7,6 +7,7 @@ header#navbar {
 
   $dark: black;
   $light: white;
+  $dark-blue: #111926;
 
   
 
@@ -20,10 +21,16 @@ header#navbar {
   }
   
   nav#top {
-    background: darkorange;
+    background: $dark-blue;
+    color: white;
+
+    a {
+      margin: 0;
+      padding: 0;
+    }
+
     .gutter {
       ul#nav-links {
-        background: lightblue;
       
         li.nav-link {
           cursor: pointer;
