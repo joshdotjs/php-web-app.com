@@ -38,30 +38,24 @@ header#navbar {
       // #logo {
       //   margin: 0;
       // }
-
+      
       #cart-btn,
       #hamburger-btn {
-        // -Used with scale factor of the hidden-target for #cart-btn
-        height: 50px;
-        width: 50px;
+        // -Combine this with the scale factor of the hidden-target.
+        height: 40px;
+        width: 40px;
       
         color: black;
         background: white;
-        padding: 0.75rem;
+        padding: 0.65rem;
       
         border-radius: 0.25rem;
         box-shadow: 0 1rem 2rem hsla(0 0% 0% / 0.2);
 
         cursor: pointer;
       }
-    
+      
       #cart-btn {  position: relative;
-        // position: absolute;
-        // top: 50%;
-        // transform: translateY(-50%);
-        // right: $px;   
-        // outline: dashed white 10px;
-        
 
 
         // svg {
@@ -97,7 +91,9 @@ header#navbar {
           width: $target-size;
           transform: scale(0.1); // this transforms the height / width => the animated card will end up this height
           transform-origin: 20px 20px; // top left
-          
+
+          text-align: left; // text of card moving into cart inherits text-align center without this.
+
           // .box-child lives here during status: 'exiting'
           div.box-child {}
         }
@@ -105,8 +101,8 @@ header#navbar {
 
 
         #cart-count { position: absolute;
-          top: -5px;
-          right: -5px;
+          top: -17%;
+          right: -17%;
           background: black;
           color: white;
           border-radius: 50%;
@@ -119,7 +115,7 @@ header#navbar {
             // background: rgba(0, 0, 0, 0.5);
             display: grid;
             place-items: center;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
           }
 
         }
