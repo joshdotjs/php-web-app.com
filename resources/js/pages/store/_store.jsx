@@ -614,12 +614,14 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
 
       <Drawer title="Filters" position="left" classes="w-[200px]">
-        <div style={{ height: '100%', width: '100%', padding: '0 1rem'}}>
+        <div style={{ padding: '0 1rem', marginTop: '0.5rem'}}>
           <Filters { ...{ filter,  categories, genders, prices, applyFilter } } />
         </div>
       </Drawer>
       <div id="grid-left" ref={filters_container_ref}>
-        <Filters { ...{ filter,  categories, genders, prices, applyFilter } } />
+        <div style={{  width: '240px', marginRight: '60px' }}>
+          <Filters { ...{ filter,  categories, genders, prices, applyFilter } } />
+        </div>
       </div>
 
       <div id="grid-right" ref={grid_container_ref}>

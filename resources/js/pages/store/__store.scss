@@ -36,47 +36,9 @@ main#page.store {
     // ==========================================
 
     #grid-left  {
-      display: flex;
       padding-top: calc(#{$bar-height} + 2 * #{$pad});
       @media (max-width: #{$desktop}) { display: none; } // filter-mobile is handled inside component
-
-      &-left {
-        width: 240px;
-        .chevron-anim {
-          overflow: hidden;
-          &__title {
-            cursor: pointer;
-            // background: red;
-            height: 30px;
-        
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        
-            perspective: 800px;
-        
-            &__arrow {
-              transform: rotate3d(1, 0, 0, 0deg);
-              transform-origin: center;
-              transition: transform 0.5s ease;
-        
-              // background: red;
-              height: 1.1rem;
-              // display: flex;
-              // align-items: center;
-              
-              &-up {
-                transform: rotate3d(1, 0, 0, 180deg);
-              }
-            }
-          }
-        }
-      }
-
-      &-right { 
-        width: 60px;
-        height: 100%;
-      }
+      @media (min-width: #{$desktop}) { display: flex; } // filter-mobile is handled inside component
     }
     
     // ==========================================
@@ -148,40 +110,5 @@ main#page.store {
 
     // ==========================================
     
-  }
-}
-
-
-
-.grid-left-left {
-
-  .chevron-anim {
-    overflow: hidden;
-    &__title {
-      cursor: pointer;
-      // background: red;
-      height: 30px;
-  
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-  
-      perspective: 800px;
-  
-      &__arrow {
-        transform: rotate3d(1, 0, 0, 0deg);
-        transform-origin: center;
-        transition: transform 0.5s ease;
-  
-        // background: red;
-        height: 1.1rem;
-        // display: flex;
-        // align-items: center;
-        
-        &-up {
-          transform: rotate3d(1, 0, 0, 180deg);
-        }
-      }
-    }
   }
 }

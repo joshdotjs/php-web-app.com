@@ -145,15 +145,28 @@ export default function Dropdown({
           aria-expanded="false" 
           aria-haspopup="true"
         >
+
           <h4 className="mr-2">Sort By{sort_type?.sub_title && ': '}</h4>
-          { sort_type?.title && <h4 className="light">{sort_type?.title} </h4> }
-          { sort_type?.sub_title && <h4 className="light mx-2">{sort_type?.sub_title}</h4> }
-          {/* <!-- Heroicon name: mini/chevron-down --> */}
-          {/* <svg className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
-          </svg> */}
-          {/* <ChevronDownSVG classes={`chevron-anim__title__arrow ${is_up ? up : ''}`} /> */}
+          
+          { sort_type?.title && <h4 className="light  mr-2 sm:mr-0">{sort_type?.title}</h4> }
+          { sort_type?.sub_title && (
+
+            <>
+              <h4 className="light ml-[0.3275rem] mr-2  hidden sm:inline">{sort_type?.sub_title}</h4>
+
+              {/* <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-up  inline sm:hidden" viewBox="0 0 16 16">
+                <path fillRule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+              </svg> */}
+
+              {/* <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-do  inline sm:hidden" viewBox="0 0 16 16">
+                <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+              </svg> */}
+            </>
+          )}
+
+
           <ChevronDownSVG />
+
         </button>
       </div>
 
