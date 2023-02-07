@@ -128,11 +128,15 @@ const NavDrawerContents = () => {
   // --------------------------------------------
 
   return (
-    <div // drawer
-    onClick={(e) => e.stopPropagation()} // close if click outside of drawer only.  Don't close if click inside of opened drawer.
-    className="fixed overflow-hidden"
-    style={{ minHeight: '100vh' }}
-  >
+    <div 
+      onClick={(e) => e.stopPropagation()} // close if click outside of drawer only.  Don't close if click inside of opened drawer.
+      // className="fixed overflow-hidden"
+      style={{ 
+        minHeight: '100vh',
+        background: 'hotpink',
+        width: '100%',
+      }}
+    >
     
 
     <div className={
@@ -143,26 +147,6 @@ const NavDrawerContents = () => {
       `
       }
     >
-
-      {/* =============================== */}
-
-      <div // close drawer (X) button
-        className="flex px-4 pt-5 pb-2">
-        <button 
-          onClick={() => {
-            console.log('clicked the close nav drawer button');
-            closeDrawer();
-          }}
-          type="button" 
-          className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
-        >
-          <span className="sr-only">Close menu</span>
-          {/* <!-- Heroicon name: outline/x-mark --> */}
-          <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
 
       {/* =============================== */}
 
@@ -319,14 +303,43 @@ export default function Header({ header_ref }) {
   } = useContext(CartContext);
   
   // --------------------------------------------
+  
+  const Card = ({ title }) => (
+    <div className="bg-green-500">
+      <img src="/img/products/clothes/women/Dri-FIT-One-blue.webp" className="rounded-md overflow-hidden mb-2" />
+      <h5 className="mb-0">{title}</h5>
+      <p>Shop now</p>
+    </div>
+  );
 
+  // --------------------------------------------
+  
   return (
     <>
       <Cart />
 
-      <Drawer title="Nav Drawer" position="left" classes="w-[200px]" portal_id='#portal-nav-drawer'>
-        <div style={{ padding: '0 1rem', marginTop: '0.5rem'}}>
-          <NavDrawerContents />
+      <Drawer title="" position="left" classes="w-[400px]" portal_id='#portal-nav-drawer'>
+        <div style={{ margin: '0', padding: '0', overflowY: 'scroll', background: 'darkorchid', height: '100%' }}>
+          {/* <NavDrawerContents /> */}
+
+          <div style={{ background: 'yellow', height: '100px', width: '100%'}}></div>
+
+
+          <div className="flex justify-evenly" style={{ background: 'red', width: '100%', margin: 0, padding: 0 }}>
+            <div className="bg-orange-300">Men</div>
+            <div className="bg-orange-300">Women</div>
+          </div>
+          <div className="grid grid-cols-2 gap-[1rem]">
+            <Card title='Shoes' />
+            <Card title='Pants' />
+            <Card title='Shirts' />
+            <Card title='Hats' />
+          </div>
+
+          <div>
+            <h4>About</h4>
+            <h4>Contact</h4>
+          </div>
         </div>
       </Drawer>
 

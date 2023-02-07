@@ -2,11 +2,92 @@ import React, { Fragment, useCallback, useEffect, useLayoutEffect, useRef, useSt
 import { createPortal } from 'react-dom';
 import { gsap } from "gsap";
 
+import { transitionTextColor } from '@/util/transition';
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 
 // ==============================================
 
 let openDrawer, closeDrawer;
+
+// ==============================================
+
+const DrawerContents = () => {
+
+  // --------------------------------------------
+
+  const Card = ({ title, classes }) => (
+    <div 
+      className={`${classes}`} 
+      // style={{ outline: 'solid black 1px' }}
+    >
+      <img src="/img/products/clothes/women/Dri-FIT-One-blue.webp" className="rounded-md overflow-hidden mb-4" />
+      <h5 className="text-sm font-medium text-gray-900">{title}</h5>
+      <p className="text-sm text-gray-500">Shop now</p>
+    </div>
+  );
+
+  // --------------------------------------------
+
+  const [active_panel, setActivePanel] = useState(0);
+
+  // --------------------------------------------
+
+  return (
+    <div>
+
+      <div className="flex justify-evenly border-b border-gray-200">
+        <div 
+          onClick={() => setActivePanel(0)}
+          className={
+            `
+              pb-4 w-[130px] text-center border-b-2
+              ${transitionTextColor(active_panel === 0, 'text-indigo-600 border-indigo-600', 'text-gray-900 border-transparent')}
+              cursor-pointer
+              text-base font-medium
+            `
+          }
+        >
+          Men
+        </div>
+        <div 
+          onClick={() => setActivePanel(1)}
+          className={
+            `
+              pb-4 w-[130px] text-center border-b-2
+              ${transitionTextColor(active_panel === 1, 'text-indigo-600 border-indigo-600', 'text-gray-900 border-transparent')}
+              cursor-pointer
+              text-base font-medium
+            `
+          }
+        >
+          Women
+        </div>
+      </div>
+
+      <div className="
+          px-4 py-6
+          grid grid-cols-2 gap-[1rem]
+          border-b border-gray-200
+        "
+      >
+        <Card title='Shoes'  classes="mb-4" />
+        <Card title='Pants'  classes="mb-4" />
+        <Card title='Shirts'                  />
+        <Card title='Hats'                    />
+      </div>
+
+      <div className="px-4 py-6 border-b border-gray-200">
+        <h4 className="mb-6">About</h4>
+        <h4>Contact</h4>
+      </div>
+
+      <div className="px-4 py-6 border-b border-gray-200">
+        <h4 className="mb-6">Register</h4>
+        <h4>Sign in</h4>
+      </div>
+    </div>
+  );
+};
 
 // ==============================================
 
@@ -118,8 +199,8 @@ export default function Drawer({ children, title, position, classes }) {
         ref={overlay_ref}
         className="pointer-events-auto fixed inset-0"
         style={{ 
-          display: 'none', 
-          opacity: 0,
+          // display: 'none',  // !!!!!!!!!! DEBUG !!!!!!!!!!!!!!!!!!!!!!
+          // opacity: 0,       // !!!!!!!!!! DEBUG !!!!!!!!!!!!!!!!!!!!!!
           background: 'rgba(0, 0, 0, 0.8)',
           backdropFilter: 'blur(5px)', // I think this is not animating the blur!  I think a single blur is computed and then the opacity on it is animated - which is efficient.  I think animating a blur causes a diffrent blur to be computed for each frame of the animation with each one slightly more blurred than the previous.
           WebkitBackdropFilter: 'blur(5px)',
@@ -130,7 +211,6 @@ export default function Drawer({ children, title, position, classes }) {
       </div>
 
       <aside 
-        id="cart" 
         ref={container_ref}
         className={`
           z-100
@@ -140,9 +220,11 @@ export default function Drawer({ children, title, position, classes }) {
           top: 0,
           background: 'white',
           height: '100vh',
-          // width: '300px',
           zIndex: 100,
-          ...translate,
+          border: 'solid black 10px',
+          padding: 0,
+          margin: 0
+          // ...translate,  // !!!!!!!!!! DEBUG !!!!!!!!!!!!!!!!!!!!!!
       }}
       >
 
@@ -150,12 +232,17 @@ export default function Drawer({ children, title, position, classes }) {
 
         <div
           id="cart-title"
-          className="ml-4 mr-6 pt-8 pb-4"
+          className={`
+            ml-4 
+            ${position === 'right' ? 'mr-6' : 'mr-4'} 
+            py-6 
+          `}
           style={{ 
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
             // background: 'lightgreen'
+            flexDirection: position === 'left' ? 'row-reverse' : 'row',
           }}
         >
 
@@ -172,7 +259,7 @@ export default function Drawer({ children, title, position, classes }) {
 
         {/* - - - - - - - - - - - - - - - - - - */}
 
-        {children}
+        <DrawerContents />
 
         {/* - - - - - - - - - - - - - - - - - - */}
 
