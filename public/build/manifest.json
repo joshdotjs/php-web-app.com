@@ -4,7 +4,7 @@
     "src": "resources/js/comps/_layout/logo.svg"
   },
   "resources/js/app.css": {
-    "file": "assets/app-155e4e0f.css",
+    "file": "assets/app-4e452bdd.css",
     "src": "resources/js/app.css"
   },
   "resources/css/app.css": {
@@ -13,11 +13,11 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-937973d8.js",
+    "file": "assets/app-ebc8418f.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-155e4e0f.css"
+      "assets/app-4e452bdd.css"
     ],
     "assets": [
       "assets/logo-826a4c32.svg"
