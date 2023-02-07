@@ -3,7 +3,7 @@ import React from 'react';
 export default function CartButton({cart_btn_ref, cart_count_ref, cart_icon_target_ref, onClick}) {
 
   return (
-    <div 
+    <button 
       id="cart-btn"
       ref={cart_btn_ref}
       onClick={onClick}
@@ -25,6 +25,6 @@ export default function CartButton({cart_btn_ref, cart_count_ref, cart_icon_targ
         <span style={{ color: 'white' }} ></span>
       </div>
       
-    </div>
+    </button>
   );
 }

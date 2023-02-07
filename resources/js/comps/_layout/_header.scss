@@ -38,15 +38,10 @@ header#navbar {
       // #logo {
       //   margin: 0;
       // }
-    
-      #cart-btn {  position: relative;
-        // position: absolute;
-        // top: 50%;
-        // transform: translateY(-50%);
-        // right: $px;   
-        // outline: dashed white 10px;
-        
-        // -Combine this with the scale factor of the hidden-target.
+
+      #cart-btn,
+      #hamburger-btn {
+        // -Used with scale factor of the hidden-target for #cart-btn
         height: 50px;
         width: 50px;
       
@@ -58,6 +53,16 @@ header#navbar {
         box-shadow: 0 1rem 2rem hsla(0 0% 0% / 0.2);
 
         cursor: pointer;
+      }
+    
+      #cart-btn {  position: relative;
+        // position: absolute;
+        // top: 50%;
+        // transform: translateY(-50%);
+        // right: $px;   
+        // outline: dashed white 10px;
+        
+
 
         // svg {
         //   max-width: 50px;

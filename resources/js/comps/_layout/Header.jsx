@@ -109,7 +109,7 @@ export default function Header() {
 
 
             <div // buttons container
-              className="flex  justify-between  w-[100px]  md:w-fit"
+              className="flex  justify-between  w-[135px]  md:w-fit"
             >
 
               <CartButton onClick={() => openCart({})} {...{cart_btn_ref, cart_count_ref, cart_icon_target_ref}} />
