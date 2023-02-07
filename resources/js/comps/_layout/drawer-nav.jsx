@@ -6,7 +6,7 @@ import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 
 // ==============================================
 
-let openDrawer;
+let openDrawer, closeDrawer;
 
 // ==============================================
 
@@ -41,7 +41,7 @@ export default function Drawer({ children, title, position, classes }) {
 
   // --------------------------------------------
 
-  const closeDrawer = () => {
+  closeDrawer = () => {
     hideOverlay();
     tl_ref.current?.reverse();
   };
@@ -187,4 +187,4 @@ export default function Drawer({ children, title, position, classes }) {
 
 // ==============================================
 
-export { openDrawer };
+export { openDrawer, closeDrawer };
