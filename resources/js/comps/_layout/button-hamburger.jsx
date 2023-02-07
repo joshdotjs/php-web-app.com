@@ -2,7 +2,7 @@ import React from "react";
 
 // ==============================================
 
-export default function ButtonDrawer({ onClick }) {
+export default function HamburgerButton({ onClick }) {
   return (
     <button
       onClick={() => onClick()}
