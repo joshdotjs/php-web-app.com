@@ -519,14 +519,12 @@ export default function Cart() {
                   <Ellipsis color={light} fontSize='0.8rem' fontWeight='400' classes="mb-2">{sub_title}</Ellipsis>
                     
                   <div style={{
-                    // background: 'yellow',
                     display: 'flex',
                     justifyContent: 'space-between',
                     // alignItems: 'center',
-                    // background: 'yellow',
                     marginTop: 'auto',
                     position:'relative',
-                    background: 'lightgreen',
+                    // background: 'lightgreen',
                     height: '16px'
                   }}>
                     
@@ -541,9 +539,8 @@ export default function Cart() {
                       // height="16" 
                       fill="currentColor" 
                       viewBox="0 0 16 16"
-                      style={{ 
-                        background: 'red', 
-                        // padding: '1rem'
+                      style={{ // increase size to make easier to click on mobile
+                        // background: 'red', 
                         position: 'absolute',
                         height: '32px',
                         right: 0,
