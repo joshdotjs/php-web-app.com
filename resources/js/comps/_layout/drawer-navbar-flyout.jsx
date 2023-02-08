@@ -129,7 +129,7 @@ export default function NavbarFlyoutDrawer() {
     <div 
       className="hidden md:block"
       style={{ position: 'absolute',
-        border: 'dashed hotpink 1px',
+        // border: 'dashed hotpink 1px',
         height: flyout_height,
         width: '100vw',
         // top: '200px',
@@ -148,6 +148,7 @@ export default function NavbarFlyoutDrawer() {
           backdropFilter: 'blur(5px)', // I think this is not animating the blur!  I think a single blur is computed and then the opacity on it is animated - which is efficient.  I think animating a blur causes a diffrent blur to be computed for each frame of the animation with each one slightly more blurred than the previous.
           WebkitBackdropFilter: 'blur(5px)',
           // zIndex: '99'
+          top: header_height,
         }}
         onClick={() => closeDrawer()}
       >  
