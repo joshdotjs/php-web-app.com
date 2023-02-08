@@ -389,8 +389,8 @@ export default function Cart() {
         ref={overlay_ref}
         className="pointer-events-auto fixed inset-0"
         style={{ 
-          // display: 'none', 
-          // opacity: 0,
+          display: 'none', 
+          opacity: 0,
           background: 'rgba(0, 0, 0, 0.65)',
           backdropFilter: 'blur(5px)', // I think this is not animating the blur!  I think a single blur is computed and then the opacity on it is animated - which is efficient.  I think animating a blur causes a diffrent blur to be computed for each frame of the animation with each one slightly more blurred than the previous.
           WebkitBackdropFilter: 'blur(5px)',
@@ -406,16 +406,14 @@ export default function Cart() {
         className="
           w-[300px]
           md:w-[350px]
-          z-100
         " 
         style={{ position: 'fixed',
         top: 0,
         right: 0,
         background: 'white',
         height: '100vh',
-        // width: '300px',
         zIndex: 100,
-        // transform: 'translate(100%)'
+        transform: 'translate(100%)'
       }}
       >
 
