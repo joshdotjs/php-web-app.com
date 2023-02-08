@@ -169,7 +169,7 @@ const DrawerContents = () => {
 
 // ==============================================
 
-export default function Drawer({ title, position, classes }) {
+export default function NavDrawer({ title, position, classes }) {
 
   // --------------------------------------------
 
@@ -257,13 +257,13 @@ export default function Drawer({ title, position, classes }) {
   if (position === 'left') {
     translate = {
       left: 0,
-      transform: 'translate(-100%)'
+      transform: 'translateX(-100%)'
     };
   }
   else {
     translate = {
       right: 0,
-      transform: 'translate(100%)'
+      transform: 'translateX(100%)'
     };
   }
 

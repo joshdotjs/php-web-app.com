@@ -52,19 +52,14 @@ body {
   opacity: 0;
   margin: 0;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-
-
   
-  .react-root { //position: relative;
+  .react-root {
 
-
-    header#navbar {  position: fixed;  z-index: 9; /* blur-overlay: 10 */ }
-    // aside#navdrawer {  position: fixed;  z-index: 9; /* blur-overlay: 10 */ }
-    // aside#cart {  position: relative;  z-index: 9; /* blur-overlay: 10 */ }
-    // .react-root > #layout > main#page {  position: relative;  z-index: 0; }
-
-    header#navbar {
-      nav { @include gutter-padding; .gutter { @include gutter-margin; } }
+    header#navbar { position: fixed; z-index: 10;
+      nav {         position: relative; z-index: 1; // on top of flyout
+        @include gutter-padding; 
+        .gutter { @include gutter-margin; } 
+      }
       nav#top    { height: var(--navbar-top-height); }
       nav#bottom { height: var(--navbar-bottom-height); }
     }

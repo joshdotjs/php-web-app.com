@@ -12,7 +12,7 @@ import CartContext from '@/context/cart-ctx';
 import NavbarBottom from './header-navbar-bottom';
 import NavbarTop from './header-navbar-top'; 
 
-import Cart, { openCart } from './drawer-cart';
+import CartDrawer, { openCart } from './drawer-cart';
 import NavDrawer, { openDrawer as openNavDrawer } from './drawer-nav';
 
 import './header.scss';
@@ -22,22 +22,10 @@ import './header.scss';
 export default function Header() {
 
   // --------------------------------------------
-
-  const { logged_in, user, logOut } = useContext(AuthContext);
-
-  // --------------------------------------------
-
-  const {
-    cart_btn_ref,
-    cart_icon_target_ref,
-    cart_count_ref,
-  } = useContext(CartContext);
-
-  // --------------------------------------------
   
   return (
     <>
-      <Cart />
+      <CartDrawer />
 
       <NavDrawer title="" position="left" classes="w-[300px]">
       </NavDrawer>

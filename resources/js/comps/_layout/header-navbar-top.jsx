@@ -35,7 +35,7 @@ export default function NavbarTop() {
             <a href="/store">Store</a>
           </li>
 
-          <span class="hidden md:inline mx-2">│</span>
+          <span className="hidden md:inline mx-2">│</span>
 
           {
             logged_in 
@@ -46,7 +46,7 @@ export default function NavbarTop() {
                   Log out
                 </li>
 
-                <span class="mx-2">│</span>
+                <span className="mx-2">│</span>
 
                 <li className="nav-link inline">
                   <a href="/admin-dashboard">{user?.email}</a>
@@ -60,7 +60,7 @@ export default function NavbarTop() {
                   <a href="/auth/register">Register</a>
                 </li>
 
-                <span class="mx-2">│</span>
+                <span className="mx-2">│</span>
 
                 <li className="nav-link inline">
                   <a href="/auth/login">Log in</a>

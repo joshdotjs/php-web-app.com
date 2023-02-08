@@ -4,12 +4,16 @@ import React, { useState, useEffect, useRef, useContext } from 'react';
 // import Notifications from './notify/notify';
 import HamburgerButton from './header-button-hamburger';
 import CartButton from './header-button-cart';
+import NavbarFlyoutDrawer, { 
+  openDrawer as openFlyout,
+  closeDrawer as closeFlyout,
+} from './drawer-navbar-flyout';
 
 // import AuthContext from '@/context/auth-ctx';
 import CartContext from '@/context/cart-ctx';
 
-import Cart, { openCart } from './drawer-cart';
-import NavDrawer, { openDrawer as openNavDrawer } from './drawer-nav';
+import { openCart } from './drawer-cart';
+import { openDrawer as openNavDrawer } from './drawer-nav';
 
 import logo from './logo.svg';
 
@@ -32,38 +36,42 @@ export default function NavbarBottom() {
   // --------------------------------------------
   
   return (
-    <nav id="bottom">
-      <div className="gutter">
+    <>
+      <NavbarFlyoutDrawer />
 
-        <a 
-          // href="/"
-        >
-          <img class="h-8 w-auto" src={logo} alt="Logo" />
-        </a>
+      <nav id="bottom">
+        <div className="gutter">
+
+          <a 
+            // href="/"
+            >
+            <img className="h-8 w-auto" src={logo} alt="Logo" />
+          </a>
 
 
-        <div // navlinks
-          className="hidden md:flex"
-        >
-          <div className="mr-6">New & Featured</div>
-          <div className="mr-6">Men</div>
-          <div className="lg:mr-6">Women</div>
-          <div className="hidden lg:block ">Sale</div>
+          <ul // navlinks
+            className="hidden md:flex"
+          >
+            <li className="mr-6" onClick={() => openFlyout()}>New & Featured</li>
+            <li className="mr-6">Men</li>
+            <li className="lg:mr-6">Women</li>
+            <li className="hidden lg:block ">Sale</li>
+          </ul>
+
+
+          <div // buttons container
+            className="flex  justify-between  w-[110px]  md:w-fit"
+            >
+
+            <CartButton onClick={() => openCart({})} {...{cart_btn_ref, cart_count_ref, cart_icon_target_ref}} />
+
+            <HamburgerButton onClick={() => openNavDrawer()}/>
+
+          </div>
+
         </div>
-
-
-        <div // buttons container
-          className="flex  justify-between  w-[110px]  md:w-fit"
-        >
-
-          <CartButton onClick={() => openCart({})} {...{cart_btn_ref, cart_count_ref, cart_icon_target_ref}} />
-
-          <HamburgerButton onClick={() => openNavDrawer()}/>
-
-        </div>
-
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 }
 

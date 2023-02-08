@@ -9,7 +9,7 @@ header#navbar {
   $light: white;
   $dark-blue: #111926;
 
-  
+  li { cursor: pointer; }  
 
   nav {
     font-weight: 500;
@@ -23,20 +23,7 @@ header#navbar {
   
   nav#top {
     background: $dark-blue;
-    color: white;
-
-
-    // #logo-text {
-    // }
-
-    
-    ul#nav-links {     
-      li.nav-link {
-        cursor: pointer;
-      }
-    }
-  
-    
+    color: white;    
   }
   
   nav#bottom {

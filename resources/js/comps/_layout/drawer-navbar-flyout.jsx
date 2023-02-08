@@ -1,16 +1,31 @@
 import React, { Fragment, useCallback, useEffect, useLayoutEffect, useRef, useState, useContext } from 'react';
-import { createPortal } from 'react-dom';
+// import { createPortal } from 'react-dom';
 import { gsap } from "gsap";
 
+import { transitionTextColor } from '@/util/transition';
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
+import { disableClick, enableClick } from '@/util/dom';
 
 // ==============================================
 
-let openDrawer;
+let openDrawer, closeDrawer;
 
 // ==============================================
 
-export default function Drawer({ children, title, position, classes }) {
+const DrawerContents = () => {
+
+  // --------------------------------------------
+
+  return (
+    <div>
+      CONTENTS
+    </div>
+  );
+};
+
+// ==============================================
+
+export default function NavbarFlyoutDrawer() {
 
   // --------------------------------------------
 
@@ -19,29 +34,36 @@ export default function Drawer({ children, title, position, classes }) {
 
   // --------------------------------------------
   
-  const portal_root = document.querySelector('#portal-mobile-filters-drawer');
+  // const portal_root = document.querySelector('#portal-navbar-flyout-drawer');
 
   // --------------------------------------------
 
   openDrawer = () => {
 
+    console.log('openDrawer()');
+
     showOverlay();   
     const container = container_ref?.current;
+
+    const container_container = container.parentNode;
 
     lr(tl_ref.current);
     if (tl_ref.current) // if cart is still open then reset timeline before opening. Fixes bug where timeline is overwritten with no animation if cart is already open and added to. Cart should always be closed when adding new item, but just in case this ensures the cart is closable if added to when already open if app is in some unforseen state.
       tl_ref.current.revert();
 
+    container_container.style.display = 'block';
+
     tl_ref.current = gsap.to(container, { 
-      x: 0,
+      y: 0,//'100px',
       duration: 0.3,
-     });
+      onReverseComplete: () => container_container.style.display = 'none',
+    });
 
   };
 
   // --------------------------------------------
 
-  const closeDrawer = () => {
+  closeDrawer = () => {
     hideOverlay();
     tl_ref.current?.reverse();
   };
@@ -60,10 +82,6 @@ export default function Drawer({ children, title, position, classes }) {
   // --------------------------------------------
   
   const showOverlay = () => {
-    // const container = document.querySelector('#portal-cart');
-    // container.style.zIndex = 100;
-    // console.log('container: ',  container);
-
     lr('opening cart drawer');
     const ref = overlay_ref.current;
     ref.style.display = 'block';
@@ -96,52 +114,58 @@ export default function Drawer({ children, title, position, classes }) {
 
   // --------------------------------------------
 
-  let translate;
-  if (position === 'left') {
-    translate = {
-      left: 0,
-      transform: 'translate(-100%)'
-    };
-  }
-  else {
-    translate = {
-      right: 0,
-      transform: 'translate(100%)'
-    };
-  }
+  const navbar_top_height = '50px';
+  const navbar_bottom_height = '70px';
+  const header_height =  '120px';
+
+  const flyout_height = '200px';
+
+  const translate = {
+    // top: 0,
+    transform: `translateY(-${flyout_height})`,
+    // --navbar-top-height: 50px;
+    // --navbar-bottom-height: 70px;
+  };
 
   // --------------------------------------------
   
-  return  portal_root ? createPortal(
-    <div className="lg:hidden">
+  return ( // createPortal(
+    <div 
+      className="hidden md:block"
+      style={{ position: 'absolute',
+        border: 'dashed hotpink 1px',
+        height: flyout_height,
+        width: '100vw',
+        // top: '200px',
+        top: header_height,
+        overflow: 'hidden',
+        display: 'none',
+      }}
+    >
       <div // Blur Overlay
         ref={overlay_ref}
         className="pointer-events-auto fixed inset-0"
         style={{ 
-          display: 'none', 
-          opacity: 0,
-          background: 'rgba(0, 0, 0, 0.5)',
+          display: 'none',
+          opacity: 0,     
+          background: 'rgba(0, 0, 0, 0.65)',
           backdropFilter: 'blur(5px)', // I think this is not animating the blur!  I think a single blur is computed and then the opacity on it is animated - which is efficient.  I think animating a blur causes a diffrent blur to be computed for each frame of the animation with each one slightly more blurred than the previous.
           WebkitBackdropFilter: 'blur(5px)',
-          zIndex: '99',
+          // zIndex: '99'
         }}
         onClick={() => closeDrawer()}
       >  
       </div>
 
       <aside 
-        id="cart" 
         ref={container_ref}
-        className={`
-          z-100
-          ${classes}
-        `} 
-        style={{ position: 'fixed',
-          top: 0,
-          background: 'white',
-          height: '100vh',
-          // width: '300px',
-          zIndex: 100,
+        style={{ 
+          // position: 'fixed',
+          background: 'red',
+          height: '200px',
+          width: '100vw',
+          padding: 0,
+          margin: 0,
           ...translate,
       }}
       >
@@ -149,8 +173,9 @@ export default function Drawer({ children, title, position, classes }) {
         {/* - - - - - - - - - - - - - - - - - - */}
 
         <div
-          id="cart-title"
-          className="ml-4 mr-6 pt-8 pb-4"
+          className={`
+            py-6 
+          `}
           style={{ 
             display: 'flex',
             justifyContent: 'space-between',
@@ -159,7 +184,7 @@ export default function Drawer({ children, title, position, classes }) {
           }}
         >
 
-          <h4>{title}</h4>
+          <h4>TITLE</h4>
 
           <svg onClick={closeDrawer}
             xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" 
@@ -172,19 +197,21 @@ export default function Drawer({ children, title, position, classes }) {
 
         {/* - - - - - - - - - - - - - - - - - - */}
 
-        {children}
+        <DrawerContents />
 
         {/* - - - - - - - - - - - - - - - - - - */}
 
       </aside>
+
+
     </div>
-    ,
-    portal_root
-  ) : null;
+    // ,
+    // portal_root
+  );
 
   // --------------------------------------------
 };
 
 // ==============================================
 
-export { openDrawer };
+export { openDrawer, closeDrawer }; // NOTE: Need to pass these in as props like: () => openDrawer();
