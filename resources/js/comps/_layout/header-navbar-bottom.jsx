@@ -53,7 +53,7 @@ export default function NavbarBottom() {
 
 
         <div // buttons container
-          className="flex  justify-between  w-[105px]  md:w-fit"
+          className="flex  justify-between  w-[110px]  md:w-fit"
         >
 
           <CartButton onClick={() => openCart({})} {...{cart_btn_ref, cart_count_ref, cart_icon_target_ref}} />
