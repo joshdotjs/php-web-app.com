@@ -8,8 +8,8 @@ import CartButton from './header-button-cart';
 // import AuthContext from '@/context/auth-ctx';
 import CartContext from '@/context/cart-ctx';
 
-import Cart, { openCart } from './cart';
-import NavDrawer, { openDrawer as openNavDrawer } from './header-drawer-nav';
+import Cart, { openCart } from './drawer-cart';
+import NavDrawer, { openDrawer as openNavDrawer } from './drawer-nav';
 
 import logo from './logo.svg';
 

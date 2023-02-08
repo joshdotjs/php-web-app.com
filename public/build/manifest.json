@@ -8,12 +8,12 @@
     "src": "resources/js/app.css"
   },
   "resources/css/app.css": {
-    "file": "assets/app-8cef35b8.css",
+    "file": "assets/app-36a7b8e6.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-923e029e.js",
+    "file": "assets/app-588fedf8.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [

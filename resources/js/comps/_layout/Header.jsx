@@ -12,8 +12,8 @@ import CartContext from '@/context/cart-ctx';
 import NavbarBottom from './header-navbar-bottom';
 import NavbarTop from './header-navbar-top'; 
 
-import Cart, { openCart } from './cart';
-import NavDrawer, { openDrawer as openNavDrawer } from './header-drawer-nav';
+import Cart, { openCart } from './drawer-cart';
+import NavDrawer, { openDrawer as openNavDrawer } from './drawer-nav';
 
 import './header.scss';
 

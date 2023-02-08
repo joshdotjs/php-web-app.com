@@ -389,8 +389,8 @@ export default function Cart() {
         ref={overlay_ref}
         className="pointer-events-auto fixed inset-0"
         style={{ 
-          display: 'none', 
-          opacity: 0,
+          // display: 'none', 
+          // opacity: 0,
           background: 'rgba(0, 0, 0, 0.65)',
           backdropFilter: 'blur(5px)', // I think this is not animating the blur!  I think a single blur is computed and then the opacity on it is animated - which is efficient.  I think animating a blur causes a diffrent blur to be computed for each frame of the animation with each one slightly more blurred than the previous.
           WebkitBackdropFilter: 'blur(5px)',
@@ -415,7 +415,7 @@ export default function Cart() {
         height: '100vh',
         // width: '300px',
         zIndex: 100,
-        transform: 'translate(100%)'
+        // transform: 'translate(100%)'
       }}
       >
 
@@ -524,7 +524,10 @@ export default function Cart() {
                     justifyContent: 'space-between',
                     // alignItems: 'center',
                     // background: 'yellow',
-                    marginTop: 'auto'
+                    marginTop: 'auto',
+                    position:'relative',
+                    background: 'lightgreen',
+                    height: '16px'
                   }}>
                     
                     {/* <Ellipsis color='black' fontSize='0.8rem' fontWeight='400' classes="mt-3 mb-1 text-left">Qty: {item.qty}</Ellipsis> */}
@@ -533,11 +536,21 @@ export default function Cart() {
                     <svg 
                       onClick={() => remove(item)}
                       className="bi bi-trash  cursor-pointer" 
-                      xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
-                      // fill="currentColor" 
-                      fill="black"
+                      xmlns="http://www.w3.org/2000/svg" 
+                      // width="16" 
+                      // height="16" 
+                      fill="currentColor" 
                       viewBox="0 0 16 16"
-                      >
+                      style={{ 
+                        background: 'red', 
+                        // padding: '1rem'
+                        position: 'absolute',
+                        height: '32px',
+                        right: 0,
+                        padding: '8px',
+                        top: '-8px'
+                      }}
+                    >
                       <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                       <path fillRule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                     </svg>
