@@ -23,19 +23,33 @@ const Panel = ({ idx, panel_refs, imgs }) => {
 
   // --------------------------------------------
 
-  console.log("imgs['shoes']: ", imgs['shoes']);
+  const [active_hovered, setActiveHovered] = useState();
 
   // --------------------------------------------
 
-  const Card = ({ title, img, classes }) => (
+  const onHover = (idx) => {
+    setActiveHovered(idx);
+  };
+
+  // --------------------------------------------
+
+  const offHover = () => {
+    setActiveHovered(null);
+  };
+
+  // --------------------------------------------
+
+  const Card = ({ idx, title, img, classes, onHover, offHover }) => (
     <div 
       className={`
         cursor-pointer
         ${classes}
       `}
+      onMouseEnter={onHover}
+      onMouseLeave={offHover}
     >
-      <img src={img} className="rounded-md overflow-hidden mb-4 w-full" />
-      <h5 className="text-sm font-medium text-gray-900">{title}</h5>
+      <img src={img} className={`rounded-md overflow-hidden mb-4 w-full ${active_hovered === idx ? 'opacity-80' : 'opacity-100'}`}  />
+      <h5 className={`text-sm font-medium ${active_hovered === idx ? 'text-indigo-600' : 'text-gray-900'}`}>{title}</h5>
       <p className="text-sm text-gray-500">Shop now</p>
     </div>
   );
@@ -57,10 +71,10 @@ const Panel = ({ idx, panel_refs, imgs }) => {
         gap: '1rem',
       }}
     >
-      <Card title={imgs['shoes'].title}       classes="" img={imgs['shoes'].img}       />
-      <Card title={imgs['clothes'].title}     classes="" img={imgs['clothes'].img}     />
-      <Card title={imgs['accessories'].title} classes="" img={imgs['accessories'].img} />
-      <Card title={imgs['equipment'].title}   classes="" img={imgs['equipment'].img}   />
+      <Card idx={0} title={imgs['shoes'].title}       classes="" img={imgs['shoes'].img}       onHover={() => onHover(0)} {...{offHover, active_hovered}} />
+      <Card idx={1} title={imgs['clothes'].title}     classes="" img={imgs['clothes'].img}     onHover={() => onHover(1)} {...{offHover, active_hovered}} />
+      <Card idx={2} title={imgs['accessories'].title} classes="" img={imgs['accessories'].img} onHover={() => onHover(2)} {...{offHover, active_hovered}} />
+      <Card idx={3} title={imgs['equipment'].title}   classes="" img={imgs['equipment'].img}   onHover={() => onHover(3)} {...{offHover, active_hovered}} />
     </div>
   );
 };
