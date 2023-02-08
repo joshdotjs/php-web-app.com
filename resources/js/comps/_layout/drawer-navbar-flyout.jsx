@@ -69,20 +69,23 @@ export default function NavbarFlyoutDrawer() {
     const duration = 0.3;
 
     panel_refs.current.forEach((ref, i) => {
-      if (i !== idx) {
+      if (i !== idx) { // place all other panels in back
         gsap.to(ref, { 
           opacity: 0, 
-          onStart: () => ref.style.pointEvents = 'none',
+          onStart: () => ref.style.pointEvents = 'none', // don't want to be able to click links in non-active panels
           duration,
         });
       }
     });
 
     const ref = panel_refs.current[idx];
-    gsap.to(ref, {
+    gsap.to(ref, { // bring current panel to front
       opacity: 1,
-      onStart: () => ref.style.display = 'grid',
-      onComplete: () => enableClick(),
+      onStart: () => ref.style.display = 'grid', // only render non default active panel 1st time if user opens it => lazy load (no reason to display: 'none' after first render here)
+      onComplete: () => {
+        ref.style.pointerEvents = 'auto'; // allow clicking of links in active panel
+        enableClick();
+      },
       duration,
     });
 
@@ -94,11 +97,10 @@ export default function NavbarFlyoutDrawer() {
 
     console.log('openDrawer()');
 
-    if (drawer_open) { // drawer already open => change panel
-      
-      changePanel(idx);      
-    
-    } else { // open drawer
+    if (active_panel !== idx) // Panel other than currently active panel clicked => set active_panel = idx
+      changePanel(idx);
+
+    if (!drawer_open) { // drawer is not open => open it
 
       setDrawerOpen(true);
       showOverlay();   
