@@ -52,10 +52,10 @@ export default function NavbarBottom() {
           <ul // navlinks
             className="hidden md:flex"
           >
-            <li className="mr-6" onClick={() => openFlyout()}>New & Featured</li>
-            <li className="mr-6">Men</li>
-            <li className="lg:mr-6">Women</li>
-            <li className="hidden lg:block ">Sale</li>
+            <li className="mr-6"            onClick={() => openFlyout(0)}>New & Featured</li>
+            <li className="mr-6"            onClick={() => openFlyout(1)}>Men</li>
+            <li className="lg:mr-6"         onClick={() => openFlyout(2)}>Women</li>
+            <li className="hidden lg:block" onClick={() => openFlyout(3)}>Sale</li>
           </ul>
 
 

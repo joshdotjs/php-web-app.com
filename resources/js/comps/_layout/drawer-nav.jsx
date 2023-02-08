@@ -211,11 +211,9 @@ export default function NavDrawer({ title, position, classes }) {
 
   const tl_ref = useRef(null);
   const container_ref = useRef(null);
-  const q = gsap.utils.selector(container_ref); // Returns a selector function that's scoped to a particular Element, meaning it'll only find descendants of that Element .
 
   // --------------------------------------------
 
-  // const { overlay_ref } = useContext(CartContext);
   const overlay_ref = useRef(null);
 
   // --------------------------------------------

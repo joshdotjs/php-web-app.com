@@ -12,14 +12,39 @@ let openDrawer, closeDrawer;
 
 // ==============================================
 
-const DrawerContents = () => {
+const DrawerContents = ({ panel_refs, active_panel }) => {
 
+  // --------------------------------------------
   // --------------------------------------------
 
   return (
-    <div>
-      CONTENTS
-    </div>
+    <>
+      <div 
+        ref={el => panel_refs.current[0] = el}
+        className="grid grid-cols-2 gap-[1rem]
+          mx-4
+          absolute  left-0  top-0
+          w-[100%]
+          h-[100%]
+        "
+        style={{ opacity: 1, display: 'grid'  }}
+      >
+        PANEL 1
+      </div>
+
+      <div 
+        ref={el => panel_refs.current[1] = el}
+        className="grid grid-cols-2 gap-[1rem]
+          mx-4
+          absolute  left-0  top-0
+          w-[100%]
+          h-[100%]
+        "
+        style={{ opacity: 0, display: 'none'  }}
+      >
+        PANEL 2
+      </div>
+    </>
   );
 };
 
@@ -29,40 +54,75 @@ export default function NavbarFlyoutDrawer() {
 
   // --------------------------------------------
 
-  // -<children /> needs to have either margin or padding of 1rem 
-  //  to match the padding in the title
+  // -used to not open twice if already open and user clicks another navlink
+  const [drawer_open, setDrawerOpen] = useState(false);
+  const [active_panel, setActivePanel] = useState(0);
+  const panel_refs = useRef([]);
 
   // --------------------------------------------
-  
-  // const portal_root = document.querySelector('#portal-navbar-flyout-drawer');
 
-  // --------------------------------------------
+  const changePanel = (idx) => {
 
-  openDrawer = () => {
+    disableClick();
+    setActivePanel(idx);
 
-    console.log('openDrawer()');
+    const duration = 0.3;
 
-    showOverlay();   
-    
-    lr(tl_ref.current);
-    if (tl_ref.current) // if still open then reset timeline before opening.
-      tl_ref.current.revert();
-    
-    const container = container_ref?.current;
-    const container_container = container.parentNode;
-    container_container.style.display = 'block';
+    panel_refs.current.forEach((ref, i) => {
+      if (i !== idx) {
+        gsap.to(ref, { 
+          opacity: 0, 
+          onStart: () => ref.style.pointEvents = 'none',
+          duration,
+        });
+      }
+    });
 
-    tl_ref.current = gsap.to(container, { 
-      y: 0,
-      duration: 0.3,
-      onReverseComplete: () => container_container.style.display = 'none',
+    const ref = panel_refs.current[idx];
+    gsap.to(ref, {
+      opacity: 1,
+      onStart: () => ref.style.display = 'grid',
+      onComplete: () => enableClick(),
+      duration,
     });
 
   };
 
   // --------------------------------------------
 
+  openDrawer = (idx) => {
+
+    console.log('openDrawer()');
+
+    if (drawer_open) { // drawer already open => change panel
+      
+      changePanel(idx);      
+    
+    } else { // open drawer
+
+      setDrawerOpen(true);
+      showOverlay();   
+      
+      lr(tl_ref.current);
+      if (tl_ref.current) // if still open then reset timeline before opening.
+        tl_ref.current.revert();
+      
+      const container = container_ref?.current;
+      const container_container = container.parentNode;
+      container_container.style.display = 'block';
+  
+      tl_ref.current = gsap.to(container, { 
+        y: 0,
+        duration: 0.3,
+        onReverseComplete: () => container_container.style.display = 'none',
+      });
+    }
+  };
+
+  // --------------------------------------------
+
   closeDrawer = () => {
+    setDrawerOpen(false);
     hideOverlay();
     tl_ref.current?.reverse();
   };
@@ -169,32 +229,7 @@ export default function NavbarFlyoutDrawer() {
 
         {/* - - - - - - - - - - - - - - - - - - */}
 
-        <div
-          className={`
-            py-6 
-          `}
-          style={{ 
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            // background: 'lightgreen'
-          }}
-        >
-
-          <h4>TITLE</h4>
-
-          <svg onClick={closeDrawer}
-            xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" 
-            className="bi bi-x  cursor-pointer" viewBox="0 0 16 16"
-            // style={{ background: 'red' }}
-            >
-            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-          </svg>
-        </div>
-
-        {/* - - - - - - - - - - - - - - - - - - */}
-
-        <DrawerContents />
+        <DrawerContents {...{active_panel, panel_refs}} />
 
         {/* - - - - - - - - - - - - - - - - - - */}
 

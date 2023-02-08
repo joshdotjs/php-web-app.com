@@ -446,9 +446,10 @@ export default function Cart() {
           id="cart-line-items-window"
           style={{
             // outline: 'solid black 20px',
-            maxHeight: `calc(100vh - ${line_items_window_height}px)`,
+            height: `calc(100vh - ${line_items_window_height}px)`,
             overflow: 'scroll'
           }}
+
         >
           {layout.items.map((item, idx) => {
             console.log('item: ', item);
