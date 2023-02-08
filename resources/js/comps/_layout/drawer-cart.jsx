@@ -239,7 +239,7 @@ export default function Cart() {
     removeFromCartLS( variant_id );
 
     // set the item as exiting which will add a CSS class for display: none;
-    item.status = "exiting"; // JOSH: This mutates the state!!!!
+    item.status = "exiting"; // NOTE:This mutates the state!!!!
     
     setLayout((prev_layout) => { // Update state without mutation:
 
@@ -447,7 +447,7 @@ export default function Cart() {
           style={{
             // outline: 'solid black 20px',
             height: `calc(100vh - ${line_items_window_height}px)`,
-            overflow: 'scroll'
+            overflowY: 'scroll'
           }}
 
         >
