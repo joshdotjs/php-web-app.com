@@ -5,46 +5,82 @@ import { gsap } from "gsap";
 import { transitionTextColor } from '@/util/transition';
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 import { disableClick, enableClick } from '@/util/dom';
+import { img_map } from '@/maps/img-map';
 
 // ==============================================
 
 let openDrawer, closeDrawer;
 
+const navbar_top_height    = '50px';
+const navbar_bottom_height = '70px';
+const header_height        = '120px';
+const flyout_height        = '300px';
+const flyout_height_minus_translation = `${300 - 120}px`;
+
+// ==============================================
+
+const Panel = ({ idx, panel_refs, imgs }) => {
+
+  // --------------------------------------------
+
+  console.log("imgs['shoes']: ", imgs['shoes']);
+
+  // --------------------------------------------
+
+  const Card = ({ title, img, classes }) => (
+    <div 
+      className={`
+        cursor-pointer
+        ${classes}
+      `}
+
+    >
+      <img src={img} className="rounded-md overflow-hidden mb-4 w-full" />
+      <h5 className="text-sm font-medium text-gray-900">{title}</h5>
+      <p className="text-sm text-gray-500">Shop now</p>
+    </div>
+  );
+
+  // --------------------------------------------
+
+  return (
+    <div 
+      ref={el => panel_refs.current[idx] = el}
+      className="absolute  left-0  top-0"
+      style={{ 
+        opacity: 0, 
+        display: 'none',
+        left: '50%',
+        top: '41.5%',
+        transform: 'translateX(-50%) translateY(-50%)',
+        height: flyout_height_minus_translation,
+        gridTemplateColumns: 'repeat(4, 180px)',
+        gap: '1rem',
+      }}
+    >
+      <Card title={imgs['shoes'].title}       classes="" img={imgs['shoes'].img}       />
+      <Card title={imgs['clothes'].title}     classes="" img={imgs['clothes'].img}     />
+      <Card title={imgs['accessories'].title} classes="" img={imgs['accessories'].img} />
+      <Card title={imgs['equipment'].title}   classes="" img={imgs['equipment'].img}   />
+    </div>
+  );
+};
+
 // ==============================================
 
 const DrawerContents = ({ panel_refs, active_panel }) => {
 
-  // --------------------------------------------
-  // --------------------------------------------
-
   return (
-    <>
-      <div 
-        ref={el => panel_refs.current[0] = el}
-        className="grid grid-cols-2 gap-[1rem]
-          mx-4
-          absolute  left-0  top-0
-          w-[100%]
-          h-[100%]
-        "
-        style={{ opacity: 1, display: 'grid'  }}
-      >
-        PANEL 1
-      </div>
-
-      <div 
-        ref={el => panel_refs.current[1] = el}
-        className="grid grid-cols-2 gap-[1rem]
-          mx-4
-          absolute  left-0  top-0
-          w-[100%]
-          h-[100%]
-        "
-        style={{ opacity: 0, display: 'none'  }}
-      >
-        PANEL 2
-      </div>
-    </>
+    <div style={{
+      // border: 'dashed hotpink 2px',
+      height: '100%',
+      position: 'relative',
+    }}>
+      <Panel idx={0} imgs={img_map['new']}    {...{panel_refs, active_panel}} />
+      <Panel idx={1} imgs={img_map['men']}    {...{panel_refs, active_panel}} />
+      <Panel idx={2} imgs={img_map['women']}  {...{panel_refs, active_panel}} />
+      <Panel idx={3} imgs={img_map['sale']}   {...{panel_refs, active_panel}} />
+    </div>
   );
 };
 
@@ -66,7 +102,7 @@ export default function NavbarFlyoutDrawer() {
     disableClick();
     setActivePanel(idx);
 
-    const duration = 0.3;
+    const duration = 0.2;
 
     panel_refs.current.forEach((ref, i) => {
       if (i !== idx) { // place all other panels in back
@@ -97,8 +133,8 @@ export default function NavbarFlyoutDrawer() {
 
     console.log('openDrawer()');
 
-    if (active_panel !== idx) // Panel other than currently active panel clicked => set active_panel = idx
-      changePanel(idx);
+    // if (active_panel !== idx) // Panel other than currently active panel clicked => set active_panel = idx
+    changePanel(idx);
 
     if (!drawer_open) { // drawer is not open => open it
 
@@ -115,7 +151,7 @@ export default function NavbarFlyoutDrawer() {
   
       tl_ref.current = gsap.to(container, { 
         y: 0,
-        duration: 0.3,
+        duration: 0.2,
         onReverseComplete: () => container_container.style.display = 'none',
       });
     }
@@ -172,12 +208,6 @@ export default function NavbarFlyoutDrawer() {
 
   // --------------------------------------------
 
-  const navbar_top_height = '50px';
-  const navbar_bottom_height = '70px';
-  const header_height =  '120px';
-
-  const flyout_height = '200px';
-
   const translate = {
     // top: 0,
     transform: `translateY(-${flyout_height})`,
@@ -219,14 +249,14 @@ export default function NavbarFlyoutDrawer() {
       <aside 
         ref={container_ref}
         style={{ 
-          // position: 'fixed',
-          background: 'red',
-          height: '200px',
+          background: 'white',
+          height: flyout_height,
           width: '100vw',
           padding: 0,
           margin: 0,
           ...translate,
-      }}
+        }}
+        className="hidden md:block"
       >
 
         {/* - - - - - - - - - - - - - - - - - - */}
