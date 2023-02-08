@@ -15,6 +15,8 @@ import CartContext from '@/context/cart-ctx';
 import { openCart } from './drawer-cart';
 import { openDrawer as openNavDrawer } from './drawer-nav';
 
+import { transitionTextColor } from '@/util/transition';
+
 import logo from './logo.svg';
 
 // ==============================================
@@ -24,6 +26,9 @@ export default function NavbarBottom() {
   // --------------------------------------------
 
   // const { logged_in, user, logOut } = useContext(AuthContext);
+
+  const [active_panel, setActivePanel] = useState(0);
+  const [drawer_open, setDrawerOpen] = useState(false);
 
   // --------------------------------------------
 
@@ -37,7 +42,7 @@ export default function NavbarBottom() {
   
   return (
     <>
-      <NavbarFlyoutDrawer />
+      <NavbarFlyoutDrawer {...{active_panel, setActivePanel, drawer_open, setDrawerOpen}}/>
 
       <nav id="bottom">
         <div className="gutter">
@@ -52,10 +57,10 @@ export default function NavbarBottom() {
           <ul // navlinks
             className="hidden md:flex"
           >
-            <li className="mr-6"            onClick={() => openFlyout(0)}>New & Featured</li>
-            <li className="mr-6"            onClick={() => openFlyout(1)}>Men</li>
-            <li className="lg:mr-6"         onClick={() => openFlyout(2)}>Women</li>
-            <li className="hidden lg:block" onClick={() => openFlyout(3)}>Sale</li>
+            <li className={`pt-[2px] mr-8            ${transitionTextColor(active_panel === 0 && drawer_open, 'border-b-2', 'border-b-2 border-transparent')}`} onClick={() => openFlyout(0)}>New & Featured</li>
+            <li className={`pt-[2px] mr-8            ${transitionTextColor(active_panel === 1 && drawer_open, 'border-b-2', 'border-b-2 border-transparent')}`} onClick={() => openFlyout(1)}>Men</li>
+            <li className={`pt-[2px] lg:mr-8         ${transitionTextColor(active_panel === 2 && drawer_open, 'border-b-2', 'border-b-2 border-transparent')}`} onClick={() => openFlyout(2)}>Women</li>
+            <li className={`pt-[2px] hidden lg:block ${transitionTextColor(active_panel === 3 && drawer_open, 'border-b-2', 'border-b-2 border-transparent')}`} onClick={() => openFlyout(3)}>Sale</li>
           </ul>
 
 

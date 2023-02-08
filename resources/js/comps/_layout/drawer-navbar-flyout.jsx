@@ -33,7 +33,6 @@ const Panel = ({ idx, panel_refs, imgs }) => {
         cursor-pointer
         ${classes}
       `}
-
     >
       <img src={img} className="rounded-md overflow-hidden mb-4 w-full" />
       <h5 className="text-sm font-medium text-gray-900">{title}</h5>
@@ -86,13 +85,11 @@ const DrawerContents = ({ panel_refs, active_panel }) => {
 
 // ==============================================
 
-export default function NavbarFlyoutDrawer() {
+export default function NavbarFlyoutDrawer({ active_panel, setActivePanel, drawer_open, setDrawerOpen }) {
 
   // --------------------------------------------
 
   // -used to not open twice if already open and user clicks another navlink
-  const [drawer_open, setDrawerOpen] = useState(false);
-  const [active_panel, setActivePanel] = useState(0);
   const panel_refs = useRef([]);
 
   // --------------------------------------------
