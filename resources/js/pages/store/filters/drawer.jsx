@@ -60,10 +60,6 @@ export default function Drawer({ children, title, position, classes }) {
   // --------------------------------------------
   
   const showOverlay = () => {
-    // const container = document.querySelector('#portal-cart');
-    // container.style.zIndex = 100;
-    // console.log('container: ',  container);
-
     lr('opening cart drawer');
     const ref = overlay_ref.current;
     ref.style.display = 'block';
@@ -88,9 +84,6 @@ export default function Drawer({ children, title, position, classes }) {
        onComplete: () => {
         ref.style.display = 'none';
         document.body.style.overflow = "overlay"; // custom scrollbar overlay
-
-        const container = document.querySelector('#portal-cart');
-        container.style.zIndex = -1;
       }});
   };
 

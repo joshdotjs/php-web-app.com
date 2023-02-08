@@ -357,8 +357,6 @@ export default function Cart() {
         ref.style.display = 'none';
         document.body.style.overflow = "overlay"; // custom scrollbar overlay
 
-        // const container = document.querySelector('#portal-cart');
-        // container.style.zIndex = -1;
       }});
   };
 

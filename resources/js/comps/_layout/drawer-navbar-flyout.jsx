@@ -43,18 +43,17 @@ export default function NavbarFlyoutDrawer() {
     console.log('openDrawer()');
 
     showOverlay();   
-    const container = container_ref?.current;
-
-    const container_container = container.parentNode;
-
+    
     lr(tl_ref.current);
-    if (tl_ref.current) // if cart is still open then reset timeline before opening. Fixes bug where timeline is overwritten with no animation if cart is already open and added to. Cart should always be closed when adding new item, but just in case this ensures the cart is closable if added to when already open if app is in some unforseen state.
+    if (tl_ref.current) // if still open then reset timeline before opening.
       tl_ref.current.revert();
-
+    
+    const container = container_ref?.current;
+    const container_container = container.parentNode;
     container_container.style.display = 'block';
 
     tl_ref.current = gsap.to(container, { 
-      y: 0,//'100px',
+      y: 0,
       duration: 0.3,
       onReverseComplete: () => container_container.style.display = 'none',
     });
@@ -106,9 +105,6 @@ export default function NavbarFlyoutDrawer() {
        onComplete: () => {
         ref.style.display = 'none';
         document.body.style.overflow = "overlay"; // custom scrollbar overlay
-
-        const container = document.querySelector('#portal-cart');
-        container.style.zIndex = -1;
       }});
   };
 
