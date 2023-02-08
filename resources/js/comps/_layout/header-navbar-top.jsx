@@ -27,24 +27,28 @@ export default function NavbarTop() {
     <nav id="top">
       <div className="gutter">
         
-        <a href="/">React</a>
+        <a id="logo-text" href="/" >React</a>
 
         <ul id="nav-links">
 
-          <li className="nav-link">
+          <li className="nav-link hidden md:inline">
             <a href="/store">Store</a>
           </li>
+
+          <span class="hidden md:inline mx-2">│</span>
 
           {
             logged_in 
             ? 
             (
               <>
-                <li className="nav-link" onClick={logOut}>
+                <li className="nav-link inline" onClick={logOut}>
                   Log out
                 </li>
 
-                <li className="nav-link">
+                <span class="mx-2">│</span>
+
+                <li className="nav-link inline">
                   <a href="/admin-dashboard">{user?.email}</a>
                 </li>
               </>
@@ -52,11 +56,13 @@ export default function NavbarTop() {
             : 
             (
               <>
-                <li className="nav-link">
+                <li className="nav-link inline">
                   <a href="/auth/register">Register</a>
                 </li>
 
-                <li className="nav-link">
+                <span class="mx-2">│</span>
+
+                <li className="nav-link inline">
                   <a href="/auth/login">Log in</a>
                 </li>
               </>

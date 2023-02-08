@@ -12,6 +12,7 @@ header#navbar {
   
 
   nav {
+    font-weight: 500;
     .gutter {
       height: 100%;
       display: flex;
@@ -25,23 +26,16 @@ header#navbar {
     color: white;
 
 
-    a {
-      margin: 0;
-      padding: 0;
-    }
+    // #logo-text {
+    // }
 
-    .gutter {
-      ul#nav-links {
-      
-        li.nav-link {
-          cursor: pointer;
-          display: inline-block;
-          &:not(:last-child) {
-            margin-right: 1.5rem;
-          }
-        }
+    
+    ul#nav-links {     
+      li.nav-link {
+        cursor: pointer;
       }
     }
+  
     
   }
   
