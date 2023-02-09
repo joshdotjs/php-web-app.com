@@ -152,6 +152,10 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
           // -just remove item from dom:
           item.remove();
+
+          // NEW: Bring in new item to fill empty spot after grid collapse
+          // setTimeout(fillEmpySpotAfterGridCollapse, 3e3);
+          fillEmpySpotAfterGridCollapse();
         }
       });
     };
@@ -212,7 +216,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
   //  --  remove() sets layout.items[n].location = 'cart'    which is used to remove the row lf layout.items[n] from state in removeItems (at end of useLayoutEffect)
   //  --  NOT used for move to cart animation
 
-  const remove = (row_idx) => { 
+  const remove = (row_idx) => {  // collapse hole in grid
 
     setLayout((prev_layout) => { // Update state without mutation:
 
@@ -236,6 +240,71 @@ export default function Page({ products_SSR, num_products_SSR }) {
       return new_layout;
     });
 
+  };
+
+  // --------------------------------------------
+
+  const fillEmpySpotAfterGridCollapse = async () => {
+
+      // - - - - - - - - - - - - - - - - - - - - - 
+
+      // const holdGridHeight = () => {
+      //   // -Keep height of grid constant through FLIP animation:
+      //   const grid_items = document.querySelector('#grid-items');
+      //   console.log('grid items: ', grid_items);
+      //   const grid_height = grid_items.offsetHeight;
+      //   grid_items.style.height = `${grid_height}px`;
+      // };
+      // holdGridHeight();
+
+      // - - - - - - - - - - - - - - - - - - - - - 
+
+      const prev_items = layout.items;
+    
+      // - - - - - - - - - - - - - - - - - - - - - 
+
+      const { products: filtered_items_from_backend, num_products } = await getProducts({ filter, page_num, sort_type });
+      setNumProducts(num_products);
+      
+      // - - - - - - - - - - - - - - - - - - - - - 
+
+      //  -Take the non_removed_items and compare it agains the items returned from the backend endpoint.
+      //  -Take the union of the two arrays by appending onto the end of the array.
+      //    --The reason we need to do this is because for the new items that are retrieved from 
+      //      the backend there may be some that are already on the screen.
+
+      // -O(n^2) comparison, but these two arrays will always be small (~10 elements in each array  =>  ~100 itterations)
+      let filtered_items_from_backend_not_currently_in_UI = [];
+      filtered_items_from_backend.forEach((item_from_backend) => {
+
+        let is_item_in_UI = false;
+        prev_items.forEach((prev_item) => {
+          if ( prev_item.product.id === item_from_backend.product.id )
+            is_item_in_UI = true;
+        });
+
+        if (!is_item_in_UI) {
+          filtered_items_from_backend_not_currently_in_UI.push(item_from_backend);
+        }
+      });
+
+      const new_items_from_backend = filtered_items_from_backend_not_currently_in_UI.map(({product, variants}) => product2layoutItem({ product, variants }));
+      console.log('new_items_from_backend: ', new_items_from_backend);
+      
+      // - - - - - - - - - - - - - - - - - - - - - 
+
+      // -We only want 6 items per page
+      const num_empty_cells = 6 - prev_items.filter(({status}) => status !== 'exiting').length;
+
+      // - - - - - - - - - - - - - - - - - - - - - 
+
+      const new_layout = {
+        items: [ ...prev_items, ...new_items_from_backend.slice(0, num_empty_cells)], // items with status property updated
+        state: Flip.getState(q('.box')),
+      };
+      setLayout(new_layout);
+      
+      // - - - - - - - - - - - - - - - - - - - - - 
   };
 
   // --------------------------------------------
