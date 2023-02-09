@@ -20,6 +20,8 @@ import { fetchGET2, fetchPOST2 } from '@/util/fetch';
 import { set2arr } from '@/util/transform';
 import { getLS, removeLS } from '@/util/local-storage';
 
+// ==============================================
+
 gsap.registerPlugin(
   Flip, 
   CustomEase, 
@@ -350,32 +352,10 @@ export default function Page({ products_SSR, num_products_SSR }) {
   const genders = ['men', 'women', 'unisex'];
   const prices = ['25-50', '50-100', '100-150', '150-200', '200+'];
 
-
-  const filters_ls = getLS('filters');
-  console.log('_store.jsx - filters_ls: ', filters_ls);
-
-
-  let init_filters;
-
-
-  if (filters_ls) {
-    init_filters = {
-      category: new Set([filters_ls.category]),
-      gender:   new Set([filters_ls.gender]),
-      price:    new Set(prices),
-    };
-    removeLS('filters');
-  } else {
-    init_filters = {
-      category: new Set(categories),  
-      gender:   new Set(genders),     
-      price:    new Set(prices),      
-    };
-  }
-  
-
   const [filter, setFilter] = useState({ // type => key, option => value
-    ...init_filters,
+    category: new Set(categories),  // options 1
+    gender:   new Set(genders),     // options 2
+    price:    new Set(prices),      // options 3
     getNum(type) { return this[type].size; },
     in_init_state: {
       category: true, // this.category.size === categories.length (is Set this.category same size as the full array categories)
@@ -391,8 +371,126 @@ export default function Page({ products_SSR, num_products_SSR }) {
     },
   });
 
-  debugger;
-  console.log('filter: ', filter);
+  // --------------------------------------------
+
+  useLayoutEffect(() => {
+    const initializeFiltersFromLS = async () => {
+
+      const filters_ls = getLS('filters');
+      console.log('_store.jsx - filters_ls: ', filters_ls);
+      debugger;
+      
+      if (filters_ls) {
+        const init_filters = {
+          category: new Set([filters_ls.category]),
+          gender:   new Set([filters_ls.gender]),
+          price:    new Set(prices),
+        };
+        removeLS('filters');
+
+        // - - - - - - - - - - - - - - - - - - - - - 
+
+        // -Keep height of grid constant through FLIP animation:
+        const grid_items = document.querySelector('#grid-items');
+        console.log('grid items: ', grid_items);
+        const grid_height = grid_items.offsetHeight;
+        grid_items.style.height = `${grid_height}px`;
+
+        // - - - - - - - - - - - - - - - - - - - - - 
+
+        const  new_filter = { 
+          ...filter,
+          ...init_filters, 
+          in_init_state: { // -uncheck all and only check first selection:
+            ...filter.in_init_state, 
+            category: false,
+            gender: false,
+          },
+        };
+
+        // - - - - - - - - - - - - - - - - - - - - - 
+
+        const prev_items = layout.items;
+      
+        // -step 4:
+        const status_updated_items = prev_items.map(prev_item => {
+
+          const { product } = prev_item;
+
+          const category = product['category'];
+          const gender   = product['gender'];
+          const price    = product['price']; 
+
+          const category_set = new_filter['category'];
+          const gender_set   = new_filter['gender'];
+          const price_set    = new_filter['price'];
+          
+          //  -Filter on intersection of all filters 
+          if (category_set.has(category) && gender_set.has(gender) /*&& price_set.has(price) */ ) {
+            return { ...prev_item, status: 'entered' };
+          }
+          else { 
+            return { ...prev_item, status: 'exiting' };
+          }
+        });
+
+        // - - - - - - - - - - - - - - - - - - - - - 
+
+        const { products: filtered_items_from_backend, num_products } = await getProducts({ filter: new_filter, page_num, sort_type });
+        setNumProducts(num_products);
+        
+        // - - - - - - - - - - - - - - - - - - - - - 
+
+        //  -Take the non_removed_items and compare it agains the items returned from the backend endpoint.
+        //  -Take the union of the two arrays by appending onto the end of the array.
+        //    --The reason we need to do this is because for the new items that are retrieved from 
+        //      the backend there may be some that are already on the screen.
+
+        // -O(n^2) comparison, but these two arrays will always be small (~10 elements in each array  =>  ~100 itterations)
+        let filtered_items_from_backend_not_currently_in_UI = [];
+        filtered_items_from_backend.forEach((item_from_backend) => {
+
+          let is_item_in_UI = false;
+          status_updated_items.forEach((status_updated_item) => {
+            if ( status_updated_item.product.id === item_from_backend.product.id )
+              is_item_in_UI = true;
+          });
+
+          if (!is_item_in_UI) {
+            filtered_items_from_backend_not_currently_in_UI.push(item_from_backend);
+          }
+        });
+
+        // console.log('filtered items (from backend): ', filtered_items_from_backend);
+        // console.log('status_updated_items: ', status_updated_items);
+        // console.log('filtered_items_from_backend_not_currently_in_UI: ', filtered_items_from_backend_not_currently_in_UI);
+
+        const new_items_from_backend = filtered_items_from_backend_not_currently_in_UI.map(({product, variants}) => product2layoutItem({ product, variants }));
+        console.log('new_items_from_backend: ', new_items_from_backend);
+        
+        // - - - - - - - - - - - - - - - - - - - - - 
+
+        // -We only want 6 items per page
+        const num_empty_cells = 6 - status_updated_items.filter(({status}) => status !== 'exiting').length;
+
+        // - - - - - - - - - - - - - - - - - - - - - 
+
+        const new_layout = {
+          items: [ ...status_updated_items, ...new_items_from_backend.slice(0, num_empty_cells)], // items with status property updated
+          state: Flip.getState(q('.box')),
+        };
+        setLayout(new_layout);
+        
+        // - - - - - - - - - - - - - - - - - - - - - 
+
+        setFilter(new_filter);
+
+        // - - - - - - - - - - - - - - - - - - - - - 
+
+      } // if (filters_ls)
+    }; // cosnt initializeFiltersFromLS = () => {};
+    setTimeout(initializeFiltersFromLS, 200);
+  }, []);
 
   // --------------------------------------------
 
