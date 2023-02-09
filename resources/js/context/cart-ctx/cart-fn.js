@@ -73,13 +73,18 @@ const removeFromCartLS = (variant_id) => {
 const updateNumCartItems = () => {
 
   const cart_count = document.querySelector('header#navbar #cart-count');
-  cart_count.style.opacity = 1;
-
+  
   const cart = getCartLS();
-  const cart_count_span = cart_count.querySelector('span');
-  // console.log('cart: ', cart);
-  cart_count_span.textContent = cart?.length;
+  const num_items_in_cart = cart?.length;
 
+  const cart_count_span = cart_count.querySelector('span');
+  cart_count_span.textContent = num_items_in_cart;
+
+  if (num_items_in_cart > 0) {
+    cart_count.style.opacity = 1;
+  } else {
+    cart_count.style.opacity = 0;
+  }
 };
 
 // ==============================================
