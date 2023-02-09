@@ -19,6 +19,23 @@ const flyout_height_minus_translation = `${300 - 120}px`;
 
 // ==============================================
 
+const Card = ({ jdx, title, img, classes, onHover, offHover, active_hovered }) => (
+  <div 
+    className={`
+      cursor-pointer
+      ${classes}
+    `}
+    onMouseEnter={() => onHover(jdx)}
+    onMouseLeave={offHover}
+  >
+    <img src={img} className={`rounded-md overflow-hidden mb-4 w-full ${active_hovered === jdx ? 'opacity-80' : 'opacity-100'}`}  />
+    <h5 className={`text-sm font-medium ${active_hovered === jdx ? 'text-indigo-600' : 'text-gray-900'}`}>{title}</h5>
+    <p className="text-sm text-gray-500">Shop now</p>
+  </div>
+);
+
+// ==============================================
+
 const Panel = ({ idx, panel_refs, imgs }) => {
 
   // --------------------------------------------
@@ -27,8 +44,11 @@ const Panel = ({ idx, panel_refs, imgs }) => {
 
   // --------------------------------------------
 
-  const onHover = (idx) => {
-    setActiveHovered(idx);
+  const onHover = (jdx) => {
+
+    console.log('idx: ', idx, '\tjdx: ', jdx);
+
+    setActiveHovered(jdx);
   };
 
   // --------------------------------------------
@@ -36,23 +56,6 @@ const Panel = ({ idx, panel_refs, imgs }) => {
   const offHover = () => {
     setActiveHovered(null);
   };
-
-  // --------------------------------------------
-
-  const Card = ({ idx, title, img, classes, onHover, offHover }) => (
-    <div 
-      className={`
-        cursor-pointer
-        ${classes}
-      `}
-      onMouseEnter={onHover}
-      onMouseLeave={offHover}
-    >
-      <img src={img} className={`rounded-md overflow-hidden mb-4 w-full ${active_hovered === idx ? 'opacity-80' : 'opacity-100'}`}  />
-      <h5 className={`text-sm font-medium ${active_hovered === idx ? 'text-indigo-600' : 'text-gray-900'}`}>{title}</h5>
-      <p className="text-sm text-gray-500">Shop now</p>
-    </div>
-  );
 
   // --------------------------------------------
 
@@ -71,10 +74,10 @@ const Panel = ({ idx, panel_refs, imgs }) => {
         gap: '1rem',
       }}
     >
-      <Card idx={0} title={imgs['shoes'].title}       classes="" img={imgs['shoes'].img}       onHover={() => onHover(0)} {...{offHover, active_hovered}} />
-      <Card idx={1} title={imgs['clothes'].title}     classes="" img={imgs['clothes'].img}     onHover={() => onHover(1)} {...{offHover, active_hovered}} />
-      <Card idx={2} title={imgs['accessories'].title} classes="" img={imgs['accessories'].img} onHover={() => onHover(2)} {...{offHover, active_hovered}} />
-      <Card idx={3} title={imgs['equipment'].title}   classes="" img={imgs['equipment'].img}   onHover={() => onHover(3)} {...{offHover, active_hovered}} />
+      <Card jdx={0} title="Shoes"       classes="" img={imgs['shoes'].img}       {...{onHover, offHover, active_hovered}} />
+      <Card jdx={1} title="clothes"     classes="" img={imgs['clothes'].img}     {...{onHover, offHover, active_hovered}} />
+      <Card jdx={2} title="accessories" classes="" img={imgs['accessories'].img} {...{onHover, offHover, active_hovered}} />
+      <Card jdx={3} title="equipment"   classes="" img={imgs['equipment'].img}   {...{onHover, offHover, active_hovered}} />
     </div>
   );
 };
@@ -119,7 +122,7 @@ export default function NavbarFlyoutDrawer({ active_panel, setActivePanel, drawe
       if (i !== idx) { // place all other panels in back
         gsap.to(ref, { 
           opacity: 0, 
-          onStart: () => ref.style.pointEvents = 'none', // don't want to be able to click links in non-active panels
+          onStart: () => ref.style.display = 'none',
           duration,
         });
       }
@@ -128,9 +131,8 @@ export default function NavbarFlyoutDrawer({ active_panel, setActivePanel, drawe
     const ref = panel_refs.current[idx];
     gsap.to(ref, { // bring current panel to front
       opacity: 1,
-      onStart: () => ref.style.display = 'grid', // only render non default active panel 1st time if user opens it => lazy load (no reason to display: 'none' after first render here)
+      onStart: () => ref.style.display = 'grid',
       onComplete: () => {
-        ref.style.pointerEvents = 'auto'; // allow clicking of links in active panel
         enableClick();
       },
       duration,
@@ -248,7 +250,7 @@ export default function NavbarFlyoutDrawer({ active_panel, setActivePanel, drawe
           display: 'none',
           opacity: 0,     
           background: 'rgba(0, 0, 0, 0.65)',
-          backdropFilter: 'blur(5px)', // I think this is not animating the blur!  I think a single blur is computed and then the opacity on it is animated - which is efficient.  I think animating a blur causes a diffrent blur to be computed for each frame of the animation with each one slightly more blurred than the previous.
+          backdropFilter: 'blur(5px)',
           WebkitBackdropFilter: 'blur(5px)',
           // zIndex: '99'
           top: header_height,
