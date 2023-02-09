@@ -162,13 +162,14 @@ const DrawerContents = () => {
       </div>
 
       <div className="px-4 py-6 border-b border-gray-200">
-        <h4 className="mb-6 cursor-pointer">About</h4>
-        <h4 className="     cursor-pointer">Contact</h4>
+        {/* <h4 className="mb-6"><a href="/about"  >About</a></h4> */}
+        {/* <h4 className="    "><a href="/contact">Contact</a></h4> */}
+        <h4 className=""><a href="/store">Store</a></h4>
       </div>
 
       <div className="px-4 py-6 border-b border-gray-200">
-        <h4 className="mb-6 cursor-pointer">Register</h4>
-        <h4 className="     cursor-pointer">Sign in</h4>
+        <h4 className="mb-6 "><a href="/auth/login"   >Register</a></h4>
+        <h4 className="     "><a href="/auth/register">Sign in</a> </h4>
       </div>
     </div>
   );

@@ -37,19 +37,7 @@ header#navbar {
     // position: relative; 
     // z-index: -1; // place under the top navbar
 
-
-
     .gutter {
-
-
-
-
-
-
-
-
-
-
 
       // #logo {
       //   margin: 0;
@@ -64,16 +52,16 @@ header#navbar {
         color: white; 
         border: solid white 1px;
 
-        padding: 0.65rem;
-      
         border-radius: 0.25rem;
         box-shadow: 0 1rem 2rem hsla(0 0% 0% / 0.2);
 
         cursor: pointer;
       }
-      
-      #cart-btn {  position: relative;
 
+      #hamburger-btn { padding: 0.5rem; }
+      #cart-btn      { padding: 0.65rem; }
+
+      #cart-btn {  position: relative;
 
         // svg {
         //   max-width: 50px;

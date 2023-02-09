@@ -6,7 +6,7 @@ export default function HamburgerButton({ onClick }) {
   return (
     <button
       id="hamburger-btn"
-      className="w-[30px]  md:hidden"
+      className="w-[30px] md:hidden"
       onClick={() => onClick()}
     >
       <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
