@@ -1,18 +1,23 @@
 {
   "files.exclude": {
+    // "package.json": true,
+    ".env": true,
+    // "vite.config.js": true,
+    // "jsconfig.json": true,
+    "postcss.config.js": true,
+    // "tailwind.config.js": true,
+
+
+    ".gitignore": true,
     // "**/*.css": true,
     // "**/*.css.map": true,
     // "**/css": true,
-    ".env": true,
+    
+
+    
     ".env.example": true,
     ".editorconfig": true,
-    ".gitignore": true,
     ".gitattributes": true,
-    "jsconfig.json": true,
-    "vite.config.js": true,
-    "tailwind.config.js": true,
-    "postcss.config.js": true,
-    // "package.json": true,
     "package-lock.json": true,
     "composer.json": true,
     "composer.lock": true,

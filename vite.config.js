@@ -15,6 +15,8 @@ export default defineConfig({
   resolve: { // https://javascript.plainenglish.io/how-to-set-up-path-resolving-in-vite-ad284e0d9eae
     alias: {
       '@': path.resolve(__dirname, './resources/js'),
+      'util': path.resolve(__dirname, './resources/js/util'),
+      'scss': path.resolve(__dirname, './resources/scss'),
     },
   },
 });

@@ -7,7 +7,7 @@ import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 import { disableClick, enableClick } from '@/util/dom';
 
 import { img_map } from '@/maps/img-map';
-import { setLS } from '@/util/local-storage';
+import { setLS } from 'util/local-storage';
 
 // ==============================================
 

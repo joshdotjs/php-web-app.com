@@ -1,3 +1,6 @@
+// @use 'scss/globals' as g;
+@use '@/../scss/mixins' as m;
+
 .checkbox-container {  
   // height: 50px;
   // padding: 0.5rem 1rem;
@@ -17,16 +20,27 @@
 
     &::before {
       content: '';
-      font-size: 12px;
       width: 0.95em;
       height: 0.95em;
+
+      @include m.maxbreak {
+        background: white;
+        padding: 0.7em !important;
+        font-size: 11px;
+      } 
+      @include m.minbreak { 
+        background: lightgreen;
+        padding: 0.6em !important;
+        font-size: 13px;
+      }
+
+
       border: 0.05em solid black;
       border-radius: 0.15em;
       margin-right: 0.5em;
 
-      background: white;
+
       color: black !important;
-      padding: 0.65em !important;
 
       // clip-path: polygon(
       //   100% 0,      /* upper-left */
