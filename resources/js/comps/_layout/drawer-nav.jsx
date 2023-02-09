@@ -6,6 +6,8 @@ import { transitionTextColor } from '@/util/transition';
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 import { disableClick, enableClick } from '@/util/dom';
 
+import { img_map } from '@/maps/img-map';
+
 // ==============================================
 
 let openDrawer, closeDrawer;
@@ -112,10 +114,10 @@ const DrawerContents = () => {
           //  since the others are removed from document flow
           style={{ visibility: 'hidden' }} 
         >
-          <Card title='Shoes'  classes="mb-4" img="/img/products/clothes/women/Dri-FIT-One-blue.webp"                />
-          <Card title='Pants'  classes="mb-4" img="/img/products/clothes/women/Nike-Sportswear-pink.webp"            />
-          <Card title='Shirts'                img="/img/products/clothes/women/Sportswear-Phoenix-Fleece-brown.webp" />
-          <Card title='Hats'                  img="/img/products/clothes/women/Nike-Swoosh-green.webp"               />
+          <Card title='Shoes'  classes="mb-4" img={img_map['women']['shoes'].img}       />
+          <Card title='Pants'  classes="mb-4" img={img_map['women']['clothes'].img}     />
+          <Card title='Shirts'                img={img_map['women']['accessories'].img} />
+          <Card title='Hats'                  img={img_map['women']['equipment'].img}   />
         </div>
 
         {/* ------------------------------------------- */}
@@ -128,10 +130,10 @@ const DrawerContents = () => {
           "
           style={{ opacity: 1, display: 'grid'  }}
         >
-          <Card title='Shoes'   classes="mb-4" img="/img/products/clothes/women/Dri-FIT-One-blue.webp"                />
-          <Card title='Clothes' classes="mb-4" img="/img/products/clothes/women/Nike-Sportswear-pink.webp"            />
-          <Card title='Pants'                  img="/img/products/clothes/women/Sportswear-Phoenix-Fleece-brown.webp" />
-          <Card title='Accessories'            img="/img/products/clothes/women/Nike-Swoosh-green.webp"               />
+          <Card title='Shoes'   classes="mb-4" img={img_map['women']['shoes'].img}       />
+          <Card title='Clothes' classes="mb-4" img={img_map['women']['clothes'].img}     />
+          <Card title='Pants'                  img={img_map['women']['accessories'].img} />
+          <Card title='Accessories'            img={img_map['women']['equipment'].img}   />
         </div>
 
         {/* ------------------------------------------- */}
@@ -144,10 +146,10 @@ const DrawerContents = () => {
           "
           style={{ opacity: 0, display: 'none'  }}
         >
-          <Card title='Shoes'   classes="mb-4" img="/img/products/shoes/men/Vaporfly-2-1.webp"                />
-          <Card title='Clothes' classes="mb-4" img="/img/products/clothes/men/Dri-FIT-DNA-shorts-blue.webp"           />
-          <Card title='Pants'                  img="/img/products/clothes/men/cargo-pants-green.webp"                 />
-          <Card title='Accessories'            img="/img/products/accessories/men/backpack.webp"       />
+          <Card title='Shoes'   classes="mb-4" img={img_map['men']['shoes'].img}       />
+          <Card title='Clothes' classes="mb-4" img={img_map['men']['clothes'].img}     />
+          <Card title='Pants'                  img={img_map['men']['accessories'].img} />
+          <Card title='Accessories'            img={img_map['men']['equipment'].img}   />
         </div>
 
         {/* ------------------------------------------- */}

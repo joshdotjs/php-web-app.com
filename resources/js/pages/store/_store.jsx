@@ -373,6 +373,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
   // --------------------------------------------
 
+  // -filter items if clicked navlink
   useLayoutEffect(() => {
     const initializeFiltersFromLS = async () => {
 
