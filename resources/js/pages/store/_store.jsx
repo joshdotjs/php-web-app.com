@@ -390,15 +390,18 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
         // - - - - - - - - - - - - - - - - - - - - - 
 
-        // -Keep height of grid constant through FLIP animation:
-        const grid_items = document.querySelector('#grid-items');
-        console.log('grid items: ', grid_items);
-        const grid_height = grid_items.offsetHeight;
-        grid_items.style.height = `${grid_height}px`;
+        const holdGridHeight = () => {
+          // -Keep height of grid constant through FLIP animation:
+          const grid_items = document.querySelector('#grid-items');
+          console.log('grid items: ', grid_items);
+          const grid_height = grid_items.offsetHeight;
+          grid_items.style.height = `${grid_height}px`;
+        };
+        holdGridHeight();
 
         // - - - - - - - - - - - - - - - - - - - - - 
 
-        const  new_filter = { 
+        const new_filter = { 
           ...filter,
           ...init_filters, 
           in_init_state: { // -uncheck all and only check first selection:

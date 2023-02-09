@@ -1,5 +1,5 @@
 // @use 'scss/globals' as g;
-@use '@/../scss/mixins' as m;
+@use 'scss/mixins' as m;
 
 .checkbox-container {  
   // height: 50px;
@@ -29,7 +29,7 @@
         font-size: 11px;
       } 
       @include m.minbreak { 
-        background: lightgreen;
+        background: white;
         padding: 0.6em !important;
         font-size: 13px;
       }
