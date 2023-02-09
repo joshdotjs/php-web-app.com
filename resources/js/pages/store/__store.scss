@@ -70,7 +70,7 @@ main#page.store {
       // top row is the filter buttons
       #filter-button-row {
         height: $bar-height;
-        display: flex;
+        // display: flex / none based on the size (two versions for different click handler)
         justify-content: space-between;
         align-items: center;
         #show-filters-button { 

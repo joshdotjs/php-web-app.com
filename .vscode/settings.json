@@ -6,7 +6,7 @@
     ".env": true,
     ".env.example": true,
     ".editorconfig": true,
-    // ".gitignore": true,
+    ".gitignore": true,
     ".gitattributes": true,
     "jsconfig.json": true,
     "vite.config.js": true,
