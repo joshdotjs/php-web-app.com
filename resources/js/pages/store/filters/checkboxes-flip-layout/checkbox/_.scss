@@ -17,6 +17,7 @@
 
     &::before {
       content: '';
+      font-size: 12px;
       width: 0.95em;
       height: 0.95em;
       border: 0.05em solid black;
@@ -25,7 +26,7 @@
 
       background: white;
       color: black !important;
-      padding: 0.5em !important;
+      padding: 0.65em !important;
 
       // clip-path: polygon(
       //   100% 0,      /* upper-left */
