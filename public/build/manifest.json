@@ -4,20 +4,20 @@
     "src": "resources/js/comps/_layout/logo.svg"
   },
   "resources/js/app.css": {
-    "file": "assets/app-6fb76e81.css",
+    "file": "assets/app-8bf4bc21.css",
     "src": "resources/js/app.css"
   },
   "resources/css/app.css": {
-    "file": "assets/app-1026abbb.css",
+    "file": "assets/app-78e240e6.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-7f132619.js",
+    "file": "assets/app-4bce2bf9.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-6fb76e81.css"
+      "assets/app-8bf4bc21.css"
     ],
     "assets": [
       "assets/logo-826a4c32.svg"
