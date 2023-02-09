@@ -154,8 +154,8 @@ export default function Page({ products_SSR, num_products_SSR }) {
           item.remove();
 
           // NEW: Bring in new item to fill empty spot after grid collapse
-          // setTimeout(fillEmpySpotAfterGridCollapse, 3e3);
-          fillEmpySpotAfterGridCollapse();
+          setTimeout(fillEmpySpotAfterGridCollapse, 3e3);
+          // fillEmpySpotAfterGridCollapse();
         }
       });
     };
