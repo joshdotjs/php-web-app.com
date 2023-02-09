@@ -304,6 +304,7 @@ export default function NavDrawer({ title, position, classes }) {
           padding: 0,
           margin: 0,
           ...translate,
+          overflowY: 'scroll'
       }}
       >
 
