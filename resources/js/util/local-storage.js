@@ -34,7 +34,6 @@ function getWithExpiry( key ) {
 
 // ==============================================
 
-
 // const getLS = (key /*: string */) => JSON.parse(localStorage.getItem(key));
 const getLS = (key /*: string */) => getWithExpiry( key );
 
@@ -46,19 +45,6 @@ const setLS = (key, value /*: string, object */) => setWithExpiry({ key, value, 
 // ==============================================
 
 const removeLS = (key /*: string */) => localStorage.removeItem(key);
-
-// ==============================================
-
-// -Not using local storage at all for auth - using PHP SSR with cookies sent with each request
-// const setLoggedInLS = (x) => setLS('logged_in', x);
-// const getLoggedInLS = (x) => getLS('logged_in');
-
-// ==============================================
-
-// const getFiltersLS = () => getLS('filters');
-// const setFiltersLS = ({ department, tag, category }) => {
-//   setLS('filters', { department, tag, category });
-// };
 
 // ==============================================
 

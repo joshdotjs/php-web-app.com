@@ -25,4 +25,22 @@ const img_map = {
   },
 };
 
+// ==============================================
+
+// const imgMappingKey2Index = ({ category, gender }) => {
+//   const idx = ['new', 'men', 'women', 'sale'].indexOf(category);
+//   const jdx = ['shoes', 'clothes', 'accessories', 'equipment'].indexOf(gender);
+//   return { idx, jdx };
+// };
+
+// ==============================================
+
+// const imgMappingIndex2key = ({ idx, jdx }) => {
+//   const category = ['new', 'men', 'women', 'sale'][jdx];
+//   const gender = ['shoes', 'clothes', 'accessories', 'equipment'][idx];
+//   return { category, gender };
+// };
+
+// ==============================================
+
 export { img_map };

@@ -6,6 +6,7 @@ import { transitionTextColor } from '@/util/transition';
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 import { disableClick, enableClick } from '@/util/dom';
 import { img_map } from '@/maps/img-map';
+import { getLS, setLS } from '@/util/local-storage';
 
 // ==============================================
 
@@ -19,24 +20,28 @@ const flyout_height_minus_translation = `${300 - 120}px`;
 
 // ==============================================
 
-const Card = ({ jdx, title, img, classes, onHover, offHover, active_hovered }) => (
-  <div 
+const Card = ({ jdx, title, img, classes, onHover, offHover, active_hovered, category, gender, tag }) => (
+  <a 
+    href="/store"
     className={`
       cursor-pointer
       ${classes}
     `}
     onMouseEnter={() => onHover(jdx)}
     onMouseLeave={offHover}
+    onClick={() => {
+      setLS('filters', { category, gender, tag });
+    }}
   >
     <img src={img} className={`rounded-md overflow-hidden mb-4 w-full ${active_hovered === jdx ? 'opacity-80' : 'opacity-100'}`}  />
     <h5 className={`text-sm font-medium ${active_hovered === jdx ? 'text-indigo-600' : 'text-gray-900'}`}>{title}</h5>
     <p className="text-sm text-gray-500">Shop now</p>
-  </div>
+  </a>
 );
 
 // ==============================================
 
-const Panel = ({ idx, panel_refs, imgs }) => {
+const Panel = ({ idx, panel_refs, imgs, gender, tag }) => {
 
   // --------------------------------------------
 
@@ -74,10 +79,10 @@ const Panel = ({ idx, panel_refs, imgs }) => {
         gap: '1rem',
       }}
     >
-      <Card jdx={0} title="Shoes"       classes="" img={imgs['shoes'].img}       {...{onHover, offHover, active_hovered}} />
-      <Card jdx={1} title="clothes"     classes="" img={imgs['clothes'].img}     {...{onHover, offHover, active_hovered}} />
-      <Card jdx={2} title="accessories" classes="" img={imgs['accessories'].img} {...{onHover, offHover, active_hovered}} />
-      <Card jdx={3} title="equipment"   classes="" img={imgs['equipment'].img}   {...{onHover, offHover, active_hovered}} />
+      <Card jdx={0} title="Shoes"       category="shoes"       classes="" img={imgs['shoes'].img}       {...{onHover, offHover, active_hovered, gender, tag}} />
+      <Card jdx={1} title="Clothes"     category="clothes"     classes="" img={imgs['clothes'].img}     {...{onHover, offHover, active_hovered, gender, tag}} />
+      <Card jdx={2} title="Accessories" category="accessories" classes="" img={imgs['accessories'].img} {...{onHover, offHover, active_hovered, gender, tag}} />
+      <Card jdx={3} title="Equipment"   category="equipment"   classes="" img={imgs['equipment'].img}   {...{onHover, offHover, active_hovered, gender, tag}} />
     </div>
   );
 };
@@ -92,10 +97,10 @@ const DrawerContents = ({ panel_refs, active_panel }) => {
       height: '100%',
       position: 'relative',
     }}>
-      <Panel idx={0} imgs={img_map['new']}    {...{panel_refs, active_panel}} />
-      <Panel idx={1} imgs={img_map['men']}    {...{panel_refs, active_panel}} />
-      <Panel idx={2} imgs={img_map['women']}  {...{panel_refs, active_panel}} />
-      <Panel idx={3} imgs={img_map['sale']}   {...{panel_refs, active_panel}} />
+      <Panel idx={0} imgs={img_map['new']}   gender="all"   tag="new"  {...{panel_refs, active_panel}} />
+      <Panel idx={1} imgs={img_map['men']}   gender="men"   tag="all"  {...{panel_refs, active_panel}} />
+      <Panel idx={2} imgs={img_map['women']} gender="women" tag="all"  {...{panel_refs, active_panel}} />
+      <Panel idx={3} imgs={img_map['sale']}  gender="all"   tag="sale" {...{panel_refs, active_panel}} />
     </div>
   );
 };
