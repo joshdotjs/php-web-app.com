@@ -18,6 +18,7 @@ import { disableClick, enableClick } from '@/util/dom';
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 import { fetchGET2, fetchPOST2 } from '@/util/fetch';
 import { set2arr } from '@/util/transform';
+import { getLS, removeLS } from '@/util/local-storage';
 
 gsap.registerPlugin(
   Flip, 
@@ -349,10 +350,32 @@ export default function Page({ products_SSR, num_products_SSR }) {
   const genders = ['men', 'women', 'unisex'];
   const prices = ['25-50', '50-100', '100-150', '150-200', '200+'];
 
+
+  const filters_ls = getLS('filters');
+  console.log('_store.jsx - filters_ls: ', filters_ls);
+
+
+  let init_filters;
+
+
+  if (filters_ls) {
+    init_filters = {
+      category: new Set([filters_ls.category]),
+      gender:   new Set([filters_ls.gender]),
+      price:    new Set(prices),
+    };
+    removeLS('filters');
+  } else {
+    init_filters = {
+      category: new Set(categories),  
+      gender:   new Set(genders),     
+      price:    new Set(prices),      
+    };
+  }
+  
+
   const [filter, setFilter] = useState({ // type => key, option => value
-    category: new Set(categories),  // options 1
-    gender:   new Set(genders),     // options 2
-    price:    new Set(prices),      // options 3
+    ...init_filters,
     getNum(type) { return this[type].size; },
     in_init_state: {
       category: true, // this.category.size === categories.length (is Set this.category same size as the full array categories)
@@ -367,6 +390,9 @@ export default function Page({ products_SSR, num_products_SSR }) {
       setFilter((prev) => ({ ...prev, [type]: new Set([option]) }));
     },
   });
+
+  debugger;
+  console.log('filter: ', filter);
 
   // --------------------------------------------
 
