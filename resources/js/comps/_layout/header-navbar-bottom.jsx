@@ -48,7 +48,7 @@ export default function NavbarBottom() {
         <div className="gutter">
 
           <a 
-            // href="/"
+            href="/"
             >
             <img className="h-8 w-auto" src={logo} alt="Logo" />
           </a>
