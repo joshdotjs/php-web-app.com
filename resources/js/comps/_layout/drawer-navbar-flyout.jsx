@@ -5,8 +5,9 @@ import { gsap } from "gsap";
 import { transitionTextColor } from '@/util/transition';
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 import { disableClick, enableClick } from '@/util/dom';
+
 import { img_map } from '@/maps/img-map';
-import { getLS, setLS } from '@/util/local-storage';
+import { setLS } from '@/util/local-storage';
 
 // ==============================================
 
@@ -16,7 +17,7 @@ const navbar_top_height    = '50px';
 const navbar_bottom_height = '70px';
 const header_height        = '120px';
 const flyout_height        = '300px';
-const flyout_height_minus_translation = `${300 - 120}px`;
+const flyout_height_minus_translation = `${300 - 120}px`; // flyout - header
 
 // ==============================================
 

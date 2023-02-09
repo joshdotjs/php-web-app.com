@@ -379,7 +379,6 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
       const filters_ls = getLS('filters');
       console.log('_store.jsx - filters_ls: ', filters_ls);
-      debugger;
       
       if (filters_ls) {
         const init_filters = {
