@@ -130,12 +130,9 @@ export default function Cart() {
   openCart = ({ onComplete=null }) => {
 
     showOverlay();
-
-    console.log('openCart()');
     
     const container = container_ref?.current;
 
-    lr(tl_ref.current);
     if (tl_ref.current) // if cart is still open then reset timeline before opening. Fixes bug where timeline is overwritten with no animation if cart is already open and added to. Cart should always be closed when adding new item, but just in case this ensures the cart is closable if added to when already open if app is in some unforseen state.
       tl_ref.current.revert();
 
@@ -173,7 +170,6 @@ export default function Cart() {
   
           let items;
           if (cart?.length === prev_items?.length) { // duplicate item => only increase quantity (already updated)
-            lr('duplicate');
             items = cart.map(({ product, variant, qty}) => ({ id: variant.id, status: 'entered', product, variant, qty }));
           } else { // new item => add to cart
             const { product, variant, qty } = cart.at(-1);
@@ -233,8 +229,6 @@ export default function Cart() {
     
   const remove = (item) => {  
 
-    console.log('item: ', item);
-
     const { variant: { id: variant_id }} = item;
     removeFromCartLS( variant_id );
 
@@ -242,8 +236,6 @@ export default function Cart() {
     item.status = "exiting"; // NOTE:This mutates the state!!!!
     
     setLayout((prev_layout) => { // Update state without mutation:
-
-      console.log('prev_layout: ', prev_layout);
 
       const { items: prev_items } = prev_layout;
 
@@ -452,7 +444,6 @@ export default function Cart() {
 
         >
           {layout.items.map((item, idx) => {
-            console.log('item: ', item);
             
             const {status, product: { title, sub_title, body, price, category }, variant: { id, img, color, size, qty }} = item;
             

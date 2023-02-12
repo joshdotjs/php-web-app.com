@@ -159,8 +159,7 @@ export default function NavbarFlyoutDrawer({ active_panel, setActivePanel, drawe
 
       setDrawerOpen(true);
       showOverlay();   
-      
-      lr(tl_ref.current);
+    
       if (tl_ref.current) // if still open then reset timeline before opening.
         tl_ref.current.revert();
       

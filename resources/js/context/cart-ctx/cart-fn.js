@@ -10,8 +10,6 @@ const setCartLS = (cart) => setLS('cart', cart);
 
  const addToCartLS = ({ product, variant, fire=false }) => {
 
-  console.log('cart.js -- addToCart() -- product: ', product, '\nvariant: ', variant);
-
   const { id: variant_id } = variant;
 
   // -Step 1: get cart from LS:

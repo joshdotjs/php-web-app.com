@@ -1474,7 +1474,7 @@
     'qty'         =>  0,
     'size'        =>  "",     
     'color'       =>  "white",     
-    'img'         =>  "/img/products/shoes/women/Downshifter-12-white.webp",     
+    'img'         =>  "/img/products/shoes/women/Downshifter-12-grey.webp",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([

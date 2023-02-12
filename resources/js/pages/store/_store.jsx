@@ -97,7 +97,6 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
     const animate = () => {
       const item = refs.current[idx];
-      console.log('item: ', item);
            
       // Grab height from rendered element - currently computed relative to current location.
       const height = item.offsetHeight;
@@ -109,7 +108,6 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
       // Follow same procedure for the grid container:
       const grid_items = document.querySelector('#grid-items');
-      console.log('grid items: ', grid_items);
       const grid_height = grid_items.offsetHeight;
       grid_items.style.height = `${grid_height}px`;
 
@@ -152,9 +150,6 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
           // -just remove item from dom:
           item.remove();
-
-          // NEW: Bring in new item to fill empty spot after grid collapse
-          // setTimeout(fillEmpySpotAfterGridCollapse, 3e3);
         }
       });
     };
@@ -234,8 +229,6 @@ export default function Page({ products_SSR, num_products_SSR }) {
         state: Flip.getState(q(".box")),
       }};
 
-      console.log('new_layout: ', new_layout);
-
       return new_layout;
     });
 
@@ -264,9 +257,15 @@ export default function Page({ products_SSR, num_products_SSR }) {
     //    --Step 4: Update items property in setLayout.
 
     // -Step 1
-    const total_num_items = layout.items.length;
-    const num_pages = Math.floor(PRODUCTS_PER_PAGE / total_num_items);
-    const { products: filtered_items_from_backend, num_products } = await getProducts({ filter, page_num: (page_num + 1) % num_pages, sort_type }); 
+    // const total_num_items = layout.items.length;
+    const num_pages = Math.ceil(num_products / PRODUCTS_PER_PAGE);
+    const next_page_num = (page_num + 2) % num_pages; // +2 because page_num is zero based => +1 to get next page, +1 to make page_num match 1-based num_pages
+    // console.clear();
+    // console.log('removeItems() - page_num: ', page_num);
+    // console.log('removeItems() - num_pages: ', num_pages);
+    // console.log('removeItems() - next_page_num: ', next_page_num);
+    const { products: filtered_items_from_backend } = await getProducts({ filter, page_num: next_page_num, sort_type, reset_page_num: false, products_per_page: 12 }); 
+    // console.log('filtered_items_from_backend: ', filtered_items_from_backend);
     // TODO: Increase the number of products returned by allowing  anew parameter to getProducts() endpoint to specify the number of products to return.
     //  -It is possible that all the items returned from the backend endpoint are already in the grid (or have been removed from the grid).
     //  -We need new items, so grabbing a large number of items increases our chances that we will get new products
@@ -308,7 +307,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
       });
 
       const new_items_from_backend = filtered_items_from_backend_not_currently_in_UI.map(({product, variants}) => product2layoutItem({ product, variants }));
-      console.log('new_items_from_backend: ', new_items_from_backend);
+      
       
       // - - - - - - - - - - - - - - - - - - - - - 
 
@@ -381,9 +380,9 @@ export default function Page({ products_SSR, num_products_SSR }) {
             opacity: 0, 
             scale: 0,
             duration,
-            onComplete: () => {
-              lg('onLeave() - onComplete()');
-            },
+            // onComplete: () => {
+            //   lg('onLeave() - onComplete()');
+            // },
           });
         },
         duration,
@@ -396,7 +395,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
   // --------------------------------------------
 
-  const getProducts = async ({ filter, page_num, sort_type }) => {
+  const getProducts = async ({ filter, page_num, sort_type, reset_page_num=true, products_per_page=PRODUCTS_PER_PAGE }) => {
     // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products`;
     const url = `${API_URL_LARAVEL}/api/filter-products`;
     const sort_col = {'Name':  'title', 'Price': 'price'}[sort_type ? sort_type.title : 'Name'];
@@ -406,7 +405,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
       page_num,
       sort_direction: sort_type ? sort_type.direction : 'DESC',
       sort_col,
-      products_per_page: PRODUCTS_PER_PAGE,
+      products_per_page,
     };
   
     const [data, error] = await fetchPOST2({ url, body });
@@ -416,7 +415,10 @@ export default function Page({ products_SSR, num_products_SSR }) {
     } else {
 
       const { products, num_products, page_num } = data;
-      setPageNum(page_num); // page_num possibly beyond the number of pages for updated filtered products => already handled on backend, just sync frontend pagination
+      console.log('getProducts() - page_num: ', page_num);
+      if (reset_page_num) {
+        setPageNum(page_num); // page_num possibly beyond the number of pages for updated filtered products => already handled on backend, just sync frontend pagination
+      }
       return { products, num_products };
     }
   };
@@ -455,9 +457,10 @@ export default function Page({ products_SSR, num_products_SSR }) {
     const initializeFiltersFromLS = async () => {
 
       const filters_ls = getLS('filters');
-      console.log('_store.jsx - filters_ls: ', filters_ls);
       
       if (filters_ls) {
+        console.log('_store.jsx - filters_ls: ', filters_ls);
+
         const init_filters = {
           category: new Set([filters_ls.category]),
           gender:   new Set([filters_ls.gender]),
@@ -546,7 +549,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
         // console.log('filtered_items_from_backend_not_currently_in_UI: ', filtered_items_from_backend_not_currently_in_UI);
 
         const new_items_from_backend = filtered_items_from_backend_not_currently_in_UI.map(({product, variants}) => product2layoutItem({ product, variants }));
-        console.log('new_items_from_backend: ', new_items_from_backend);
+        
         
         // - - - - - - - - - - - - - - - - - - - - - 
 
@@ -676,7 +679,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
     // console.log('filtered_items_from_backend_not_currently_in_UI: ', filtered_items_from_backend_not_currently_in_UI);
 
     const new_items_from_backend = filtered_items_from_backend_not_currently_in_UI.map(({product, variants}) => product2layoutItem({ product, variants }));
-    console.log('new_items_from_backend: ', new_items_from_backend);
+    
     
     // - - - - - - - - - - - - - - - - - - - - - 
 

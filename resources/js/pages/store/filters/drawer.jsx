@@ -28,7 +28,6 @@ export default function Drawer({ children, title, position, classes }) {
     showOverlay();   
     const container = container_ref?.current;
 
-    lr(tl_ref.current);
     if (tl_ref.current) // if cart is still open then reset timeline before opening. Fixes bug where timeline is overwritten with no animation if cart is already open and added to. Cart should always be closed when adding new item, but just in case this ensures the cart is closable if added to when already open if app is in some unforseen state.
       tl_ref.current.revert();
 

@@ -19,8 +19,6 @@ fs.createReadStream(`${read_path}/data.csv`)
   .on('data', (data) => results.push(data))
   .on('end', () => {
 
-    // console.log('results: ', results);
-
     const first_row = results[0];
     const cols = Object.keys(first_row);
 
