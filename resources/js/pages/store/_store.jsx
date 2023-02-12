@@ -259,33 +259,24 @@ export default function Page({ products_SSR, num_products_SSR }) {
     // -Step 1
     // const total_num_items = layout.items.length;
     const num_pages = Math.ceil(num_products / PRODUCTS_PER_PAGE);
-    const next_page_num = (page_num + 2) % num_pages; // +2 because page_num is zero based => +1 to get next page, +1 to make page_num match 1-based num_pages
+    
+    const one_based_page_num = page_num + 1;
+
+    // const next_page_num = (page_num + 1) % num_pages;
+    const next_page_num = (one_based_page_num + 1) % (num_pages + 1);
+
     // console.clear();
-    // console.log('removeItems() - page_num: ', page_num);
+    // console.log('filter: ', filter);
+    // console.log('removeItems() - one_based_page_num: ', one_based_page_num);
     // console.log('removeItems() - num_pages: ', num_pages);
     // console.log('removeItems() - next_page_num: ', next_page_num);
-    const { products: filtered_items_from_backend } = await getProducts({ filter, page_num: next_page_num, sort_type, reset_page_num: false, products_per_page: 12 }); 
-    // console.log('filtered_items_from_backend: ', filtered_items_from_backend);
-    // TODO: Increase the number of products returned by allowing  anew parameter to getProducts() endpoint to specify the number of products to return.
+
+    const { products: filtered_items_from_backend } = await getProducts({ filter, page_num: 0, sort_type, reset_page_num: false, products_per_page: PRODUCTS_PER_PAGE * 2 }); 
+    console.log('filtered_items_from_backend: ', filtered_items_from_backend);
+    // Increase the number of products returned.
     //  -It is possible that all the items returned from the backend endpoint are already in the grid (or have been removed from the grid).
     //  -We need new items, so grabbing a large number of items increases our chances that we will get new products
     //   without having to write specific logic to ensure that we get new products.
-    // NOTE: Actually, a better ways is to just ensure that we do get products thtat are not on the current page.
-    // -We can do this by doing this:
-    //  --1. Grab products from ( page_num + 1 ) % num_pages
-    //  --2. We could also record the number of items that we have moved into the cart and then if that number
-    //       is greater than the number of items in the grid, then we can just grab products from: ( page_num + 2 ) % num_pages.
-    //       ---However, I don't want to have to introduce another state variable to count number of products moved into cart,
-    //          because it also requires us to reset this state variable when the page changes and it is just sloppy feeling and adding unnessesary complexity.
-    //       ---I could just number of items in cart, but again, if we change the page we are viewing then we actually need to start count over again.
-    //       ---I am instead going to opt to do only (1) because what are the chances the user places all the items from the current page in the cart?
-    //       ---If they did place all the items from the current page in the cart then each time this replacement code runs it will be updating the hole in the
-    //          grid with items from the following page until we have used all the items from teh following page, then there will just be a hole in the grid
-    //          with no more items added if the user also adds all these new items in the cart, and the grid logic will work just like it did not
-    //          have the grid hole fill logic.  But that will only occur after the user placed all the current page items in the cart and then 
-    //          proceeds to also place all the items fromt he grid hole fill logic (next pages products) in the cart.
-    //        ---This is a very unlikely scenario, so I am not going to worry about it.  This is all for aestehtics anyway, so it is not a big deal.
-    //        ---If they really need to see brand new products guaranteed then they can just change to the next page or change the filter.
 
     const mergeItems = (filtered_items_from_backend,  prev_items) => {
       //  -Take the non_removed_items and compare them agains the items returned from the backend endpoint.
@@ -312,12 +303,11 @@ export default function Page({ products_SSR, num_products_SSR }) {
       // - - - - - - - - - - - - - - - - - - - - - 
 
       // -We only want 6 items per page
-      const num_empty_cells = 6 - prev_items.filter(({status}) => status !== 'exiting').length;
+      const num_empty_cells = PRODUCTS_PER_PAGE - prev_items.filter(({status}) => status !== 'exiting').length;
 
       // - - - - - - - - - - - - - - - - - - - - - 
 
       const merged_items = [ ...prev_items, ...new_items_from_backend.slice(0, num_empty_cells)];
-
       return merged_items;
   };
 
@@ -329,6 +319,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
       });
 
       const merged_items = mergeItems(filtered_items_from_backend, non_removed_items);
+      console.log('merged-items: ', merged_items);
 
       return {
         state: Flip.getState(q(".box")),

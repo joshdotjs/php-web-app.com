@@ -47,8 +47,8 @@ class ProductController extends Controller
     $products = DB::table('products')
       ->whereIn('category', $categories)
       ->whereIn('gender', $genders)
-      ->skip($page_num * 6)
-      ->take(6)
+      ->skip($page_num * $products_per_page)
+      ->take($products_per_page)
       ->orderBy($sort_col, $sort_direction)
       ->get();
 
