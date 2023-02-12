@@ -100,10 +100,8 @@ Route::get('/store', function () {
   return view('store', [
     'products'         =>  json_encode($arr),
     'num_products'     =>  $num_products,
-    // 'API_URL_NODE'     =>  env('API_URL_NODE'), // Cart: Checkout
-    'API_URL_NODE'     =>  config('API_URL_NODE'), // Cart: Checkout
-    // 'API_URL_LARAVEL'  =>  env('API_URL_LARAVEL'),  // Laravel REST API
-    'API_URL_LARAVEL'  =>  config('API_URL_LARAVEL'),  // Laravel REST API
+    'API_URL_NODE'     =>  env('API_URL_NODE'), // Cart: Checkout
+    'API_URL_LARAVEL'  =>  env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
 
