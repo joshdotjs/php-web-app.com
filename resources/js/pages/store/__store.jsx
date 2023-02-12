@@ -11,8 +11,10 @@ import './__store.scss';
 const main_root = document.querySelector('#react-root-store');
 if(main_root){
 
+  console.log('main_root.dataset: ', main_root.dataset);
+
   const API_URL_NODE = main_root.dataset.apiUrlNode;
-  console.log('API_URL_NODE', API_URL_NODE);
+  console.log('API_URL_NODE: ', API_URL_NODE);
 
   window.API_URL_NODE      = main_root.dataset.apiUrlNode;
   window.API_URL_LARAVEL   = main_root.dataset.apiUrlLaravel;
