@@ -1,7 +1,7 @@
 {
   "files.exclude": {
     // "package.json": true,
-    ".env": true,
+    // ".env": true,
     // "vite.config.js": true,
     // "jsconfig.json": true,
     "postcss.config.js": true,

@@ -256,14 +256,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
     //              matches number of items in full grid.
     //    --Step 4: Update items property in setLayout.
 
-    // -Step 1
-    // const total_num_items = layout.items.length;
-    const num_pages = Math.ceil(num_products / PRODUCTS_PER_PAGE);
-    
-    const one_based_page_num = page_num + 1;
 
-    // const next_page_num = (page_num + 1) % num_pages;
-    const next_page_num = (one_based_page_num + 1) % (num_pages + 1);
 
     // console.clear();
     // console.log('filter: ', filter);
@@ -271,6 +264,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
     // console.log('removeItems() - num_pages: ', num_pages);
     // console.log('removeItems() - next_page_num: ', next_page_num);
 
+      // --Step 1
     const { products: filtered_items_from_backend } = await getProducts({ filter, page_num: 0, sort_type, reset_page_num: false, products_per_page: PRODUCTS_PER_PAGE * 2 }); 
     console.log('filtered_items_from_backend: ', filtered_items_from_backend);
     // Increase the number of products returned.
@@ -314,13 +308,16 @@ export default function Page({ products_SSR, num_products_SSR }) {
     // -this callback cannot be async => 
     setLayout((prev) => {{
 
+      // --Step 2
       const non_removed_items = prev.items.filter((item) => {
         return !items_to_remove.includes(item);
       });
 
+      // --Step 3
       const merged_items = mergeItems(filtered_items_from_backend, non_removed_items);
       console.log('merged-items: ', merged_items);
 
+      // --Step 4
       return {
         state: Flip.getState(q(".box")),
         items: merged_items,
