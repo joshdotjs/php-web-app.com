@@ -154,8 +154,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
           item.remove();
 
           // NEW: Bring in new item to fill empty spot after grid collapse
-          setTimeout(fillEmpySpotAfterGridCollapse, 3e3);
-          // fillEmpySpotAfterGridCollapse();
+          // setTimeout(fillEmpySpotAfterGridCollapse, 3e3);
         }
       });
     };
@@ -244,34 +243,54 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
   // --------------------------------------------
 
-  const fillEmpySpotAfterGridCollapse = async () => {
 
-      // - - - - - - - - - - - - - - - - - - - - - 
 
-      // const holdGridHeight = () => {
-      //   // -Keep height of grid constant through FLIP animation:
-      //   const grid_items = document.querySelector('#grid-items');
-      //   console.log('grid items: ', grid_items);
-      //   const grid_height = grid_items.offsetHeight;
-      //   grid_items.style.height = `${grid_height}px`;
-      // };
-      // holdGridHeight();
+  // --------------------------------------------
 
-      // - - - - - - - - - - - - - - - - - - - - - 
+  // STEP 7: removeItems extracts the rows from layout.items that have location: 'cart' (as opposed to location: 'grid') - it does NOT remove filtered grid items.
+  //  --Called at end of useLayoutEffect()
 
-      const prev_items = layout.items;
-    
-      // - - - - - - - - - - - - - - - - - - - - - 
-
-      const { products: filtered_items_from_backend, num_products } = await getProducts({ filter, page_num, sort_type });
-      setNumProducts(num_products);
+  const removeItems = useCallback(async (items_to_remove) => {
       
-      // - - - - - - - - - - - - - - - - - - - - - 
+    if (!items_to_remove.length) return;
 
-      //  -Take the non_removed_items and compare it agains the items returned from the backend endpoint.
+    // -Get new batch of products from backend to fill hole in grid
+    //  with one of the items not already in grid.
+    //    --Step 1: Hit backend and get new batch of products.
+    //    --Step 2: Filter out items from layout.items that were removed from grid.
+    //    --Step 3: Compare list of products from (1) and (2) and 
+    //              merge (2) into (1) until number of items
+    //              matches number of items in full grid.
+    //    --Step 4: Update items property in setLayout.
+
+    // -Step 1
+    const total_num_items = layout.items.length;
+    const num_pages = Math.floor(PRODUCTS_PER_PAGE / total_num_items);
+    const { products: filtered_items_from_backend, num_products } = await getProducts({ filter, page_num: (page_num + 1) % num_pages, sort_type }); 
+    // TODO: Increase the number of products returned by allowing  anew parameter to getProducts() endpoint to specify the number of products to return.
+    //  -It is possible that all the items returned from the backend endpoint are already in the grid (or have been removed from the grid).
+    //  -We need new items, so grabbing a large number of items increases our chances that we will get new products
+    //   without having to write specific logic to ensure that we get new products.
+    // NOTE: Actually, a better ways is to just ensure that we do get products thtat are not on the current page.
+    // -We can do this by doing this:
+    //  --1. Grab products from ( page_num + 1 ) % num_pages
+    //  --2. We could also record the number of items that we have moved into the cart and then if that number
+    //       is greater than the number of items in the grid, then we can just grab products from: ( page_num + 2 ) % num_pages.
+    //       ---However, I don't want to have to introduce another state variable to count number of products moved into cart,
+    //          because it also requires us to reset this state variable when the page changes and it is just sloppy feeling and adding unnessesary complexity.
+    //       ---I could just number of items in cart, but again, if we change the page we are viewing then we actually need to start count over again.
+    //       ---I am instead going to opt to do only (1) because what are the chances the user places all the items from the current page in the cart?
+    //       ---If they did place all the items from the current page in the cart then each time this replacement code runs it will be updating the hole in the
+    //          grid with items from the following page until we have used all the items from teh following page, then there will just be a hole in the grid
+    //          with no more items added if the user also adds all these new items in the cart, and the grid logic will work just like it did not
+    //          have the grid hole fill logic.  But that will only occur after the user placed all the current page items in the cart and then 
+    //          proceeds to also place all the items fromt he grid hole fill logic (next pages products) in the cart.
+    //        ---This is a very unlikely scenario, so I am not going to worry about it.  This is all for aestehtics anyway, so it is not a big deal.
+    //        ---If they really need to see brand new products guaranteed then they can just change to the next page or change the filter.
+
+    const mergeItems = (filtered_items_from_backend,  prev_items) => {
+      //  -Take the non_removed_items and compare them agains the items returned from the backend endpoint.
       //  -Take the union of the two arrays by appending onto the end of the array.
-      //    --The reason we need to do this is because for the new items that are retrieved from 
-      //      the backend there may be some that are already on the screen.
 
       // -O(n^2) comparison, but these two arrays will always be small (~10 elements in each array  =>  ~100 itterations)
       let filtered_items_from_backend_not_currently_in_UI = [];
@@ -298,23 +317,10 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
       // - - - - - - - - - - - - - - - - - - - - - 
 
-      const new_layout = {
-        items: [ ...prev_items, ...new_items_from_backend.slice(0, num_empty_cells)], // items with status property updated
-        state: Flip.getState(q('.box')),
-      };
-      setLayout(new_layout);
-      
-      // - - - - - - - - - - - - - - - - - - - - - 
+      const merged_items = [ ...prev_items, ...new_items_from_backend.slice(0, num_empty_cells)];
+
+      return merged_items;
   };
-
-  // --------------------------------------------
-
-  // STEP 7: removeItems extracts the rows from layout.items that have location: 'cart' (as opposed to location: 'grid') - it does NOT remove filtered grid items.
-  //  --Called at end of useLayoutEffect()
-
-  const removeItems = useCallback((items_to_remove) => {
-      
-    if (!items_to_remove.length) return;
 
     // -this callback cannot be async => 
     setLayout((prev) => {{
@@ -323,9 +329,11 @@ export default function Page({ products_SSR, num_products_SSR }) {
         return !items_to_remove.includes(item);
       });
 
+      const merged_items = mergeItems(filtered_items_from_backend, non_removed_items);
+
       return {
         state: Flip.getState(q(".box")),
-        items: non_removed_items,
+        items: merged_items,
       };
     }});
   }, [q]);
