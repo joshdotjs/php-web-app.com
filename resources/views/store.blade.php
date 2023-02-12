@@ -4,7 +4,7 @@
 
   {{-- react --}}
   <div 
-    id="root-main"
+    id="react-root-store"
     class="react-root"
     data-products="{{$products}}"
     data-num-products="{{$num_products}}"
