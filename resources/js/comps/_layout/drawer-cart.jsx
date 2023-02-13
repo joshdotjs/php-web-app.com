@@ -103,7 +103,7 @@ export default function Cart() {
 
       // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/orders`;
       const url = `/api/orders`;
-      debugger;
+
       const [data, error] = await authFetch({
         url: url, 
         method: 'POST', 
@@ -123,7 +123,7 @@ export default function Cart() {
 
     };
 
-    // insertOrderInDB();
+    insertOrderInDB();
 
     // - - - - - - - - - - - - - - - - - - - - - 
 

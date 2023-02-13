@@ -11,6 +11,10 @@ import '@/pages/admin/__products.jsx';
 import '@/pages/admin/orders/__orders.jsx';
 import '@/pages/admin/orders/[id].jsx';
 
+// Users:
+import '@/pages/user/orders/__orders.jsx';
+import '@/pages/user/orders/[id].jsx';
+
 // Auth:
 import '@/pages/auth/login/__login.jsx';
 

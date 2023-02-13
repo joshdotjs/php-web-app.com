@@ -15,6 +15,8 @@ if(root) {
   window.API_URL_LARAVEL = root.dataset.apiUrlLaravel;
   const orders_SSR = JSON.parse(root.dataset.orders);
 
+  console.log('orders_SSR', orders_SSR);
+
   createRoot(root).render(
     <Layout name="anim-orders">
       <App orders={orders_SSR} />

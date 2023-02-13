@@ -13,9 +13,9 @@ class OrderController extends Controller
 
   // ------------------------------------------
 
-  public function getOrders() {  
+  public function getOrders() {
+
     $orders = DB::table('orders')->get();
-    $users = DB::table('users')->get();
 
     $orders = DB::table('users')
       ->join('orders', 'users.id', 'orders.user_id')
@@ -27,6 +27,20 @@ class OrderController extends Controller
         'orders.created_at',
         'orders.time_stamp',
       )
+      ->get();
+
+    return $orders;
+    // return response($orders, 201);
+  }
+  
+  // ------------------------------------------
+
+  public function getOrdersByUserID(Request $req) {  
+
+    $user_id = $req->user()->id;
+
+    $orders = DB::table('orders')
+      ->where('user_id', '=', $user_id)
       ->get();
 
     return $orders;
@@ -74,24 +88,6 @@ class OrderController extends Controller
 
   // ------------------------------------------
 
-  // OLD:
-  // public function createOrder(Request $request) {
-  //   return "/api/create-order [POST]";
-
-  //   $incoming_fields = $request-> validate([
-  //     'total' => 'required', 
-  //   ]);
-
-  //   $new_order = Order::create([
-  //     'total'   => $incoming_fields['total'],
-  //     'user_id' => auth()->id(), 
-  //   ]);
-
-  //   return $new_order;
-  // }
-
-  // ------------------------------------------
-
   public function createOrder(Request $req) {
 
     // -Step 0: Get user_id from the decoded token
@@ -107,7 +103,8 @@ class OrderController extends Controller
     $order_id = DB::table('orders')->insertGetId([
       'user_id'    => $user_id, 
       'total'      => 0, 
-      'status'     => 1, 
+      'status'     => 1,
+      'time_stamp' => time(),
       'created_at' => date("Y-m-d H:i:s")
     ]);
 

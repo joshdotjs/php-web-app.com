@@ -79,6 +79,28 @@ Route::get('/admin/orders/{id}', function ($id) {
 
 // ==============================================
 
+Route::get('/user/orders', function () {
+
+  $orderController = new OrderController();
+  $orders = $orderController->getOrders();
+
+  return view('user-orders', [
+    'orders'          => $orders,
+    'API_URL_NODE'    => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+  ]);
+});
+
+Route::get('/user/orders/{id}', function ($id) {
+  return view('user-order-details', [
+    'API_URL_NODE'    => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+    'id'              => $id,
+  ]);
+});
+
+// ==============================================
+
 Route::get('/store', function () {
   $products = DB::table('products')->skip(0)->take(6)->get();
 
@@ -100,7 +122,7 @@ Route::get('/store', function () {
   return view('store', [
     'products'         =>  json_encode($arr),
     'num_products'     =>  $num_products,
-    'API_URL_NODE'     =>  env('API_URL_NODE'), // Cart: Checkout
+    'API_URL_NODE'     =>  env('API_URL_NODE'),     // Cart: Checkout
     'API_URL_LARAVEL'  =>  env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
@@ -164,3 +186,20 @@ Route::get('/store/product/{id}',  function($id) {
 
 // User:
 Route::post('/register',                [UserController::class, 'register']);
+
+// ==============================================
+
+// Checkout:
+Route::get('/checkout-success', function () {
+  return view('checkout-success', [
+    'API_URL_NODE'    => env('API_URL_NODE'),     // Cart: Checkout
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+  ]);
+});
+
+Route::get('/checkout-fail', function () {
+  return view('checkout-fail', [
+    'API_URL_NODE'    => env('API_URL_NODE'),     // Cart: Checkout
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+  ]);
+});
