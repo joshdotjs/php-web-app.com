@@ -71,7 +71,8 @@ export default function Cart() {
       lr('submitOrderToNode()');
 
       // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/checkout/stripe-checkout-node`;
-      const url = `${window.API_URL_NODE}/api/checkout/stripe-checkout-laravel`;
+      const url = `${API_URL_NODE}/api/checkout/php`;
+      // const url = `https://ecommerce-nodejs.herokuapp.com/api/checkout/stripe-checkout-laravel`;
       console.log('url: ', url);
 
       const cart = getCartLS();
