@@ -24,6 +24,7 @@ function Page() {
 
     // const url = `/api/orders/${query.id}`;
     const url = `/api/user/orders`;
+    console.log('url: ', url);
     const [data, error] = await authFetch({ url });
     console.log('data: ', data);
 
@@ -97,10 +98,11 @@ const root = document.querySelector('#react-root--user-orders-page');
 if(root){
   window.API_URL_NODE = root.dataset.apiUrlNode;
   window.API_URL_LARAVEL = root.dataset.apiUrlLaravel;
-  const orders_SSR = JSON.parse(root.dataset.orders);
+  // const orders_SSR = JSON.parse(root.dataset.orders);
   createRoot(root).render(
-    <Layout name="user--orders" restrict="admin">
-      <Page orders={orders_SSR} />
+    // <Layout name="user--orders" restrict="admin">
+    <Layout name="user--orders">
+      <Page />
     </Layout>
   );
 }

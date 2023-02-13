@@ -64,7 +64,7 @@ Route::get('/admin/orders', function () {
 
   return view('admin-orders', [
     'orders'          => $orders,
-    'API_URL_NODE'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
+    'API_URL_NODE'    => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
 });
@@ -81,11 +81,11 @@ Route::get('/admin/orders/{id}', function ($id) {
 
 Route::get('/user/orders', function () {
 
-  $orderController = new OrderController();
-  $orders = $orderController->getOrders();
+  // $orderController = new OrderController();
+  // $orders = $orderController->getOrders();
 
   return view('user-orders', [
-    'orders'          => $orders,
+    // 'orders'          => $orders,
     'API_URL_NODE'    => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
   ]);
