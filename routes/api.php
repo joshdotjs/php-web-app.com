@@ -28,6 +28,16 @@ Route::post('/login',             [UserController::class, 'loginApi']);
 
 // ==============================================
 
+Route::get('/',  function(Request $req) {
+
+  $x = 0;
+
+  return "SUCCESS";
+
+});
+
+// ==============================================
+
 // Orders:
 // Route::get('/orders',             [OrderController::class, 'getOrders']);//->middleware('auth:sanctum');
 Route::get('/orders/{id}',        [OrderController::class, 'getOrderByID']);//->middleware('auth:sanctum');
@@ -63,17 +73,17 @@ Route::post('/filter-products', [ProductController::class, 'filterProducts']);
 // ==============================================
 
 // Dev:
-Route::get('/josh', function() {
-  DB::table('products')->insert([
-    'title'    => 'Addd', 
-    'body'     => 'B', 
-    'price'    => 100, 
-    'category' => 'shirts', 
-  ]);
-  return 'JOSH';
-});
-Route::post('/josh', function(Request $req) {
-  return 'PHP - createProduct()';
-})->middleware('auth:sanctum');
+// Route::get('/josh', function() {
+//   DB::table('products')->insert([
+//     'title'    => 'Addd', 
+//     'body'     => 'B', 
+//     'price'    => 100, 
+//     'category' => 'shirts', 
+//   ]);
+//   return 'JOSH';
+// });
+// Route::post('/josh', function(Request $req) {
+//   return 'PHP - createProduct()';
+// })->middleware('auth:sanctum');
 
 // ==============================================

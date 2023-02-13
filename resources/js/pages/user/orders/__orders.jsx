@@ -57,7 +57,7 @@ function Page() {
       <table className="border-separate border-spacing-2 border border-slate-500 ">
         <thead>
           <tr>
-            <th>Date</th>
+            <th>Date FUCK</th>
             <th>Status</th>
             <th>Total</th>
             <th></th>
@@ -100,8 +100,7 @@ if(root){
   window.API_URL_LARAVEL = root.dataset.apiUrlLaravel;
   // const orders_SSR = JSON.parse(root.dataset.orders);
   createRoot(root).render(
-    // <Layout name="user--orders" restrict="admin">
-    <Layout name="user--orders">
+    <Layout name="user--orders" restrict="user">
       <Page />
     </Layout>
   );

@@ -31,8 +31,12 @@ export default function Page() {
     const email = email_ref.current.value;
     const password = password_ref.current.value;
 
+    
+
     // const [data, error] = await fetchPOST2({ url: 'http://127.0.0.1:8000/api/login', 
-    const url = `${API_URL_LARAVEL}/api/login`;
+    // const url = `${API_URL_LARAVEL}/api/login`;
+    const url = `/api/login`;
+    console.log('url: ',url);
     const [data, error] = await fetchPOST2({ url, 
       response_type: 'text',
       body: {

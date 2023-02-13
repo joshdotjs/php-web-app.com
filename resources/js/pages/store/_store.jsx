@@ -398,7 +398,6 @@ export default function Page({ products_SSR, num_products_SSR }) {
   
     const [data, error] = await fetchPOST2({ url, body });
     if (error) {
-      debugger;
       alert(error);
     } else {
 
