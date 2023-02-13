@@ -88,6 +88,8 @@ export default function Cart() {
           return res.json().then(json => Promise.reject(json));
         })
         .then(({ url }) => {
+          console.log('fetch().then().then() -- url: ', url);
+          debugger;
           window.location = url;
         })
         .catch(e => {
