@@ -90,24 +90,29 @@ class OrderController extends Controller
 
   public function createOrder(Request $req) {
 
-    // -Step 0: Get user_id from the decoded token
+    // -Step 0: Get user_id from request
     // -Step 1: Insert into orders table with { user_id, status}
     // -Step 2: Loop over line_items (elements of cart array) and insert into order_2_variants
     //          inserting a row with { order_id, variant_id, qty }, while accumulating the total.
     // -Step 3: Update orders row with total
 
     // Step 0:
-    $user_id = $req->user()->id;
+    // $user_id = $req->user()->id; // only works if ->middleware('auth:sanctum') is set in routes/api.php
+    $user = $req['user'];
+    $user_id = $user['id'];
+    $payment_intent_id = $req['payment_intent_id'];
 
     // Step 1: 
     $order_id = DB::table('orders')->insertGetId([
-      'user_id'    => $user_id, 
-      'total'      => 0, 
-      'status'     => 1,
-      'time_stamp' => time(),
-      'created_at' => date("Y-m-d H:i:s")
+      'user_id'           => $user_id, 
+      'payment_intent_id' => $payment_intent_id,
+      'total'             => 0, 
+      'status'            => 0,
+      'time_stamp'        => time(),
+      'created_at'        => date("Y-m-d H:i:s"),
     ]);
 
+    // Get cart from request
     $cart = $req['cart'];
 
     // Step 2: 
@@ -141,7 +146,8 @@ class OrderController extends Controller
       ->update(['total' => $total]);
 
     // Return the order...
-    return $this->getOrderByID($order_id);
+    // return $this->getOrderByID($order_id);
+    return response(['status' => 'success'], 201);
   }
 
   // ------------------------------------------

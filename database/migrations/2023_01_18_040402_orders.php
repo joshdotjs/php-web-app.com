@@ -20,6 +20,7 @@ return new class extends Migration
         $table->integer('time_stamp'); // unix
         $table->integer('total');
         $table->integer('status');
+        $table->string('payment_intent_id');
         $table->foreignId('user_id')->constrained()->onDelete('cascade');
         // -constrained stops you from creating a row if this foreign key does not exist.
         // -if user with user_id creates x blog posts, and user with user_id is deleted then the users' created blog posts are also deleted.

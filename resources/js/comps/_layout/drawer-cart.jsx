@@ -9,6 +9,7 @@ import Button from '@/comps/button/button';
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 import { authFetch } from '@/util/fetch';
 import { getCartLS, removeFromCartLS, updateNumCartItems, clearCartLS } from '@/context/cart-ctx/cart-fn';
+import { getLS } from '@/util/local-storage';
 
 gsap.registerPlugin(Flip);
 
@@ -74,11 +75,12 @@ export default function Cart() {
       console.log('url: ', url);
 
       const cart = getCartLS();
+      const user = getLS('user');
       
       fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json", },
-        body: JSON.stringify({ cart }),
+        body: JSON.stringify({ cart, user }),
       })
         .then(res => {
           if (res.ok) return res.json();
@@ -118,12 +120,12 @@ export default function Cart() {
       if (!error) {
         lg('SUCCESS');
         console.log('data: ', data);
-        resetCart();
+        // resetCart();
       }
 
     };
 
-    insertOrderInDB();
+    // insertOrderInDB();
 
     // - - - - - - - - - - - - - - - - - - - - - 
 

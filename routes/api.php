@@ -33,10 +33,21 @@ Route::post('/login',             [UserController::class, 'loginApi']);
 Route::get('/orders/{id}',        [OrderController::class, 'getOrderByID']);//->middleware('auth:sanctum');
 Route::get('/user/orders',        [OrderController::class, 'getOrdersByUserID'])->middleware('auth:sanctum');
 // OLD: Route::post('/create-order',      [OrderController::class, 'createOrder'])->middleware('auth:sanctum'); // Middleware: only allow logged in user
-Route::post('/orders',            [OrderController::class, 'createOrder'])->middleware('auth:sanctum');
-
+// Route::post('/orders',            [OrderController::class, 'createOrder'])->middleware('auth:sanctum');
+Route::post('/orders',            [OrderController::class, 'createOrder']);
 // Route::delete('/delete-order/{id}', [OrderController::class, 'createOrder'])->middleware('auth:sanctum', 'can:delete,post');
+Route::post('/orders/update-status', function(Request $req) {
 
+  $payment_intent_id = $req['payment_intent_id'];
+  $status = $req['status'];
+
+  $num_rows_affected = DB::table('orders')
+    ->where('payment_intent_id', $payment_intent_id)
+    ->update(['status' => $status]);
+
+  
+  return response(['status' => 'success'], 201);
+});
 
 // ==============================================
 
