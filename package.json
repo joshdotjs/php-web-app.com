@@ -5,7 +5,8 @@
         "build": "vite build",
         "deploy": "npm run build  &&  git add .  &&  git commit -m 'deploy'  &&  git push prod main",
         "csv": "node ./csv/index.js",
-        "seed": "npm run csv && php artisan migrate:fresh --seed"
+        "reset-db": "npm run csv && php artisan migrate:fresh --seed",
+        "ssh": "ssh root@php-web-app.com"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.13",
