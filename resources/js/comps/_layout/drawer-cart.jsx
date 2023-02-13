@@ -72,31 +72,38 @@ export default function Cart() {
 
       // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/checkout/stripe-checkout-node`;
       const url = `${API_URL_NODE}/api/checkout/php`;
-      // const url = `https://ecommerce-nodejs.herokuapp.com/api/checkout/stripe-checkout-laravel`;
       console.log('url: ', url);
 
       const cart = getCartLS();
       const user = getLS('user');
+
+      console.log('user: ', user);
+
+      if (!user) {
+        alert('please login to checkout.');
+        window.location = '/auth/login';
+      } else {
+        fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", },
+          body: JSON.stringify({ cart, user }),
+        })
+          .then(res => {
+            if (res.ok) return res.json();
+            return res.json().then(json => Promise.reject(json));
+          })
+          .then((data) => {
+            console.log('fetch().then().then() -- data: ', data);
+            debugger;
+  
+            const { url } = data;
+            window.location = url;
+          })
+          .catch(e => {
+            console.error(e.error);
+          });
+      }
       
-      fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", },
-        body: JSON.stringify({ cart, user }),
-      })
-        .then(res => {
-          if (res.ok) return res.json();
-          return res.json().then(json => Promise.reject(json));
-        })
-        .then((data) => {
-          console.log('fetch().then().then() -- data: ', data);
-          debugger;
-          
-          const { url } = data;
-          window.location = url;
-        })
-        .catch(e => {
-          console.error(e.error);
-        });
 
     };
 
