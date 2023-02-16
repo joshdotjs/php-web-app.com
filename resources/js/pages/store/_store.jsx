@@ -180,6 +180,10 @@ export default function Page({ products_SSR, num_products_SSR }) {
     }
   ));
 
+  useEffect(() => {
+    console.log('layout', layout);
+  }, [layout]);
+
   // --------------------------------------------
 
   // STEP 2: Create gsap.context in React state
@@ -402,7 +406,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
     } else {
 
       const { products, num_products, page_num } = data;
-      console.log('getProducts() - page_num: ', page_num);
+
       if (reset_page_num) {
         setPageNum(page_num); // page_num possibly beyond the number of pages for updated filtered products => already handled on backend, just sync frontend pagination
       }

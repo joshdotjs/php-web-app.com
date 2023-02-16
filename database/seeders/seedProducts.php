@@ -542,38 +542,6 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  1,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  1,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  1,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  1,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
     'product_id'  =>  2,
     'qty'         =>  0,
     'size'        =>  "",     
@@ -646,14 +614,6 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  4,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
     'product_id'  =>  5,
     'qty'         =>  0,
     'size'        =>  "",     
@@ -675,54 +635,6 @@
     'size'        =>  "",     
     'color'       =>  "black",     
     'img'         =>  "/img/products/shoes/men/Air-Zoom-Rival-Fly-3-black.webp",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  5,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  5,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  5,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  5,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  5,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  5,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
@@ -819,38 +731,6 @@
     'size'        =>  "",     
     'color'       =>  "purple",     
     'img'         =>  "/img/products/shoes/men/pegasus-39-purple.webp",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  9,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  9,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  9,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  9,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
@@ -1086,38 +966,6 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  17,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  17,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  17,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  17,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
     'product_id'  =>  18,
     'qty'         =>  0,
     'size'        =>  "",     
@@ -1131,30 +979,6 @@
     'size'        =>  "",     
     'color'       =>  "white",     
     'img'         =>  "/img/products/clothes/women/Nike-Sportswear-white.webp",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  18,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  18,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  18,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
@@ -1606,30 +1430,6 @@
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([
-    'product_id'  =>  42,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  42,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  42,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
     'product_id'  =>  43,
     'qty'         =>  0,
     'size'        =>  "",     
@@ -1771,14 +1571,6 @@
     'size'        =>  "",     
     'color'       =>  "blue",     
     'img'         =>  "/img/products/shoes/men/Flex-Experience-Run-11-blue.webp",     
-    'created_at'  =>  date("Y-m-d H:i:s")
-  ]);
-  DB::table('variants')->insert([
-    'product_id'  =>  48,
-    'qty'         =>  0,
-    'size'        =>  "",     
-    'color'       =>  "",     
-    'img'         =>  "",     
     'created_at'  =>  date("Y-m-d H:i:s")
   ]);
   DB::table('variants')->insert([

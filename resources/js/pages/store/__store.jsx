@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import Layout from '@/comps/_layout/_layout';
@@ -11,10 +11,10 @@ import './__store.scss';
 const main_root = document.querySelector('#react-root-store');
 if(main_root){
 
-  console.log('main_root.dataset: ', main_root.dataset);
+  // console.log('main_root.dataset: ', main_root.dataset);
 
   const API_URL_NODE = main_root.dataset.apiUrlNode;
-  console.log('API_URL_NODE: ', API_URL_NODE);
+  // console.log('API_URL_NODE: ', API_URL_NODE);
 
   window.API_URL_NODE      = main_root.dataset.apiUrlNode;
   window.API_URL_LARAVEL   = main_root.dataset.apiUrlLaravel;
@@ -24,9 +24,11 @@ if(main_root){
   const num_products_SSR = main_root.dataset.numProducts;
 
   createRoot(main_root).render(
-    <Layout name="store">
-      <Page {...{products_SSR, num_products_SSR}} />
-    </Layout>
+    <StrictMode>
+      <Layout name="store">
+        <Page {...{products_SSR, num_products_SSR}} />
+      </Layout>
+    </StrictMode>
   );
 }
 

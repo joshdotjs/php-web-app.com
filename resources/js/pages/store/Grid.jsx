@@ -158,15 +158,19 @@ export default function Grid({
         
 
         {layout.items.map((item, idx) => {
+
+          const key = `box-${item.product.id}`;
+
           return (
             <li // item
-            key={item.product.id}
-            id={`box-${item.product.id}`} 
-            className="box"
-            style={{ 
-              display: item.status === 'exiting' ? 'none' : 'grid',
-              // minWidth: '200px'
-            }}
+              key={key}
+              id={key} 
+              data-flip-id={key}
+              className="box"
+              style={{ 
+                display: item.status === 'exiting' ? 'none' : 'grid',
+                // minWidth: '200px'
+              }}
             >
               <div 
                 ref={el => refs.current[idx] = el}
