@@ -24,11 +24,11 @@ if(main_root){
   const num_products_SSR = main_root.dataset.numProducts;
 
   createRoot(main_root).render(
-    <StrictMode>
+    // <StrictMode>
       <Layout name="store">
         <Page {...{products_SSR, num_products_SSR}} />
       </Layout>
-    </StrictMode>
+    // </StrictMode>
   );
 }
 

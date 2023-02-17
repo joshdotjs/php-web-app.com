@@ -27,6 +27,7 @@ class ProductController extends Controller
     $sort_direction    = $req['sort_direction'];
     $categories        = $req['categories'];
     $genders           = $req['genders'];
+    $tags              = $req['tags'];
     $products_per_page = $req['products_per_page']; 
 
     $num_products = DB::table('products')
@@ -44,13 +45,25 @@ class ProductController extends Controller
     // $products = DB::table('products')
     //   ->whereIn('category', ['accessories', 'clothes'])
     //   ->get();
-    $products = DB::table('products')
-      ->whereIn('category', $categories)
-      ->whereIn('gender', $genders)
-      ->skip($page_num * $products_per_page)
-      ->take($products_per_page)
-      ->orderBy($sort_col, $sort_direction)
-      ->get();
+
+    if ($tags) {
+      $products = DB::table('products')
+        ->whereIn('category', $categories)
+        ->whereIn('gender',   $genders)
+        ->whereIn('tag',      $tags)
+        ->skip($page_num * $products_per_page)
+        ->take($products_per_page)
+        ->orderBy($sort_col, $sort_direction)
+        ->get();
+      } else {
+      $products = DB::table('products')
+        ->whereIn('category', $categories)
+        ->whereIn('gender',   $genders)
+        ->skip($page_num * $products_per_page)
+        ->take($products_per_page)
+        ->orderBy($sort_col, $sort_direction)
+        ->get();
+    }
 
 
     // -Each row stores product data with an array storing the variants for that rows products

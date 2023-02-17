@@ -180,9 +180,9 @@ export default function Page({ products_SSR, num_products_SSR }) {
     }
   ));
 
-  useEffect(() => {
-    console.log('layout', layout);
-  }, [layout]);
+  // useEffect(() => {
+  //   console.log('layout', layout);
+  // }, [layout]);
 
   // --------------------------------------------
 
@@ -394,6 +394,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
     const body = {
       categories: set2arr(filter?.category), 
       genders: set2arr(filter?.gender),
+      tags: set2arr(filter?.tag),
       page_num,
       sort_direction: sort_type ? sort_type.direction : 'DESC',
       sort_col,
@@ -430,9 +431,10 @@ export default function Page({ products_SSR, num_products_SSR }) {
     price:    new Set(prices),      // options 3
     getNum(type) { return this[type].size; },
     in_init_state: {
-      category: true, // this.category.size === categories.length (is Set this.category same size as the full array categories)
+      category: true,  // this.category.size === categories.length (is Set this.category same size as the full array categories)
       gender:   true,
-      price:    true
+      price:    true,
+      tag:      false, // don't want this logic for tag, since we initialize with none selected, instead of all (like the others)
     },
     //  -start wil all-selected => don't display any checkmarks
     //  -when changed from true to false, we reset all sets
@@ -486,7 +488,6 @@ export default function Page({ products_SSR, num_products_SSR }) {
         const holdGridHeight = () => {
           // -Keep height of grid constant through FLIP animation:
           const grid_items = document.querySelector('#grid-items');
-          console.log('grid items: ', grid_items);
           const grid_height = grid_items.offsetHeight;
           grid_items.style.height = `${grid_height}px`;
         };
@@ -597,7 +598,6 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
     // -Keep height of grid constant through FLIP animation:
     const grid_items = document.querySelector('#grid-items');
-    console.log('grid items: ', grid_items);
     const grid_height = grid_items.offsetHeight;
     grid_items.style.height = `${grid_height}px`;
 
@@ -645,17 +645,22 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
       const category = product['category'];
       const gender   = product['gender'];
+      const tag      = product['tag']; 
       const price    = product['price']; 
 
       const category_set = new_filter['category'];
       const gender_set   = new_filter['gender'];
+      const tag_set      = new_filter['tag'];
       const price_set    = new_filter['price'];
+
       
       //  -Filter on intersection of all filters 
-      if (category_set.has(category) && gender_set.has(gender) /*&& price_set.has(price) */ ) {
+      if (category_set.has(category) && gender_set.has(gender) && tag_set.has(tag)) {
+        lg('CASE 1');
         return { ...prev_item, status: 'entered' };
       }
       else { 
+        lr('CASE 2'); 
         return { ...prev_item, status: 'exiting' };
       }
     });
@@ -692,6 +697,9 @@ export default function Page({ products_SSR, num_products_SSR }) {
     // console.log('filtered_items_from_backend_not_currently_in_UI: ', filtered_items_from_backend_not_currently_in_UI);
 
     const new_items_from_backend = filtered_items_from_backend_not_currently_in_UI.map(({product, variants}) => product2layoutItem({ product, variants }));
+
+
+    console.log('new_items_from_backend: ', new_items_from_backend);
     
     
     // - - - - - - - - - - - - - - - - - - - - - 
@@ -700,6 +708,8 @@ export default function Page({ products_SSR, num_products_SSR }) {
     const num_empty_cells = 6 - status_updated_items.filter(({status}) => status !== 'exiting').length;
 
     // - - - - - - - - - - - - - - - - - - - - - 
+
+
 
     const new_layout = {
       items: [ ...status_updated_items, ...new_items_from_backend.slice(0, num_empty_cells)], // items with status property updated
@@ -747,7 +757,6 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
     // -Keep height of grid constant through FLIP animation:
     const grid_items = document.querySelector('#grid-items');
-    console.log('grid items: ', grid_items);
     const grid_height = grid_items.offsetHeight;
     grid_items.style.height = `${grid_height}px`;
 
@@ -791,7 +800,6 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
     // -Keep height of grid constant through FLIP animation:
     const grid_items = document.querySelector('#grid-items');
-    console.log('grid items: ', grid_items);
     const grid_height = grid_items.offsetHeight;
     grid_items.style.height = `${grid_height}px`;
 

@@ -40,7 +40,7 @@ export default function Storefront() {
           <a 
             href="/store" 
             onClick={() => {
-              setLS('filters', { category: 'all', gender: 'men', tag: 'all' });
+              setLS('filters', { category: 'all', gender: 'men', tag: 'none' });
             }}
             className="group block"
           >
@@ -55,7 +55,7 @@ export default function Storefront() {
           <a 
             href="/store" 
             onClick={() => {
-              setLS('filters', { category: 'all', gender: 'women', tag: 'all' });
+              setLS('filters', { category: 'all', gender: 'women', tag: 'none' });
             }}
             className="group block"
           >
@@ -70,7 +70,7 @@ export default function Storefront() {
           <a 
             href="/store" 
             onClick={() => {
-              setLS('filters', { category: 'all', gender: 'women', tag: 'all' });
+              setLS('filters', { category: 'all', gender: 'women', tag: 'none' });
             }}
             className="group block"
           >
@@ -109,7 +109,7 @@ export default function Storefront() {
           <a 
             href="/store" 
             onClick={() => {
-              setLS('filters', { category: 'all', gender: 'all', tag: 'all' });
+              setLS('filters', { category: 'all', gender: 'all', tag: 'none' });
             }}
             className="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block"
           >
