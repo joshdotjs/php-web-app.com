@@ -31,6 +31,7 @@ const build = ({ products, cols }) => {
     'body'          =>  "${products[i].product['body']}",     
     'category'      =>  "${products[i].product['category']}",     
     'gender'        =>  "${products[i].product['gender']}",     
+    'tag'           =>  "${products[i].product['tag']}",     
     'price'         =>   ${products[i].product['price'] * 100},
     'price_compare' =>   ${products[i].product['price_compare'] * 100},
     'created_at'    =>  date("Y-m-d H:i:s")

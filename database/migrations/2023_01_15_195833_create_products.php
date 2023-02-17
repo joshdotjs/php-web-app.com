@@ -20,8 +20,9 @@ return new class extends Migration
             $table->string('title');
             $table->string('sub_title');
             $table->longText('body');
-            $table->string('category');
-            $table->string('gender');
+            $table->string('category');   // ['shoes', 'clothes', 'accessories']
+            $table->string('gender');     // ['men', 'women', 'unisex']
+            $table->string('tag');        // ['new', 'sale']
             $table->integer('price');
             $table->integer('price_compare');
         });

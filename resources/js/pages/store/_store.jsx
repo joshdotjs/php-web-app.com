@@ -441,6 +441,10 @@ export default function Page({ products_SSR, num_products_SSR }) {
     },
   });
 
+  useEffect(() => {
+    console.log('filter: ', filter);
+  }, [filter]);
+
   // --------------------------------------------
 
   // -filter items if clicked navlink
@@ -460,9 +464,17 @@ export default function Page({ products_SSR, num_products_SSR }) {
         if (categories === 'all') { categories = ['shoes', 'clothes', 'accessories'];
         } else { categories = [categories]; }
 
+        let genders = filters_ls.gender;
+        if (genders === 'all') { genders = ['men', 'women', 'unisex'];
+        } else { genders = [genders]; }
+
+        let tags = filters_ls.tag;
+        if (tags === 'all') { tags = ['new', 'sale'];
+        } else { tags = [tags]; }
+
         const init_filters = {
           category: new Set(categories),
-          gender:   new Set([filters_ls.gender]),
+          gender:   new Set(genders),
           price:    new Set(prices),
         };
         removeLS('filters');
