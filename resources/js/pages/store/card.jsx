@@ -2,6 +2,8 @@ import React from 'react';
 import { useState, useRef, useLayoutEffect, useEffect, useContext } from 'react';
 import { gsap } from 'gsap';
 
+import { Badge } from '@mantine/core';
+
 // import CartContext from '@/context/cart-ctx';
 import { addToCartLS } from '@/context/cart-ctx/cart-fn';
 
@@ -48,7 +50,7 @@ export default function Card ({ item, addToCartAnim, idx }) {
   // --------------------------------------------
 
   const { product, variants } = item;
-  const { price, price_compare, title, sub_title, body, category } = product;
+  const { price, price_compare, title, sub_title, body, category, tag } = product;
 
   const [hovered_image, setHoveredImage]        = useState(variants[0].img);
   const [chosen_variant_id, setChosenVariantId] = useState(variants[0].id);
@@ -111,6 +113,24 @@ export default function Card ({ item, addToCartAnim, idx }) {
       >
         <img src={hovered_image} />
 
+        { tag === 'new' &&
+          <Badge 
+            pos="absolute" top="1rem" right="1rem"
+            // variant="gradient" gradient={{ from: 'teal', to: 'lime', deg: 105 }}
+            variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }}
+            >
+            New
+          </Badge>
+        }
+
+        { tag === 'sale' &&
+          <Badge 
+            pos="absolute" top="1rem" right="1rem"
+            variant="gradient" gradient={{ from: 'orange', to: 'red' }}
+          >
+            Sale
+          </Badge>
+        }
 
         <div // btn-container
           className="

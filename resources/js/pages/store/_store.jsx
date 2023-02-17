@@ -420,11 +420,13 @@ export default function Page({ products_SSR, num_products_SSR }) {
   // const [selected_sizes, setSelectedSizes] = useState(new Set());
   const categories = ['shoes', 'clothes', 'accessories'];
   const genders = ['men', 'women', 'unisex'];
+  const tags = ['new', 'sale'];
   const prices = ['25-50', '50-100', '100-150', '150-200', '200+'];
 
   const [filter, setFilter] = useState({ // type => key, option => value
     category: new Set(categories),  // options 1
     gender:   new Set(genders),     // options 2
+    tag:      new Set([]),        // 
     price:    new Set(prices),      // options 3
     getNum(type) { return this[type].size; },
     in_init_state: {
@@ -461,15 +463,15 @@ export default function Page({ products_SSR, num_products_SSR }) {
         //  or to 'all'.
 
         let categories = filters_ls.category;
-        if (categories === 'all') { categories = ['shoes', 'clothes', 'accessories'];
+        if (categories === 'all') { categories = ['shoes', 'clothes', 'accessories']; // TODO: Set this to the categories array
         } else { categories = [categories]; }
 
         let genders = filters_ls.gender;
-        if (genders === 'all') { genders = ['men', 'women', 'unisex'];
+        if (genders === 'all') { genders = ['men', 'women', 'unisex']; // TODO: Set this to the genders array
         } else { genders = [genders]; }
 
         let tags = filters_ls.tag;
-        if (tags === 'all') { tags = ['new', 'sale'];
+        if (tags === 'none') { tags = [];
         } else { tags = [tags]; }
 
         const init_filters = {
@@ -833,12 +835,12 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
       <Drawer title="Filters" position="left" classes="w-[200px]">
         <div style={{ padding: '0 1rem', marginTop: '0.5rem'}}>
-          <Filters { ...{ filter,  categories, genders, prices, applyFilter } } />
+          <Filters { ...{ filter,  categories, genders, tags, prices, applyFilter } } />
         </div>
       </Drawer>
       <div id="grid-left" ref={filters_container_ref}>
         <div style={{  width: '240px', marginRight: '60px' }}>
-          <Filters { ...{ filter,  categories, genders, prices, applyFilter } } />
+          <Filters { ...{ filter,  categories, genders, tags, prices, applyFilter } } />
         </div>
       </div>
 
