@@ -52,7 +52,13 @@ export default function Storefront() {
             <p className="mt-2 text-sm text-gray-500">The men's collection contains products that were made for men. There are several different sub-categories in the men's collection.</p>
           </a>
   
-          <a href="#" className="group block">
+          <a 
+            href="/store" 
+            onClick={() => {
+              setLS('filters', { category: 'all', gender: 'women', tag: 'all' });
+            }}
+            className="group block"
+          >
             <div aria-hidden="true" className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg group-hover:opacity-75 lg:aspect-w-5 lg:aspect-h-6">
               {/* <img src={`${PHP.site_url}/wp-content/uploads/2023/01/new-arrivals-women.webp`}  alt="Natural leather mouse pad on white desk next to porcelain mug and keyboard." className="h-full w-full object-cover object-center" /> */}
               <img src={`img/new-arrivals-women.webp`}  alt="Natural leather mouse pad on white desk next to porcelain mug and keyboard." className="h-full w-full object-cover object-center" />
@@ -61,7 +67,13 @@ export default function Storefront() {
             <p className="mt-2 text-sm text-gray-500">The wommen's collection contains products that were made for women. There are several different sub-categories in this collection.</p>
           </a>
   
-          <a href="#" className="group block">
+          <a 
+            href="/store" 
+            onClick={() => {
+              setLS('filters', { category: 'all', gender: 'women', tag: 'all' });
+            }}
+            className="group block"
+          >
             <div aria-hidden="true" className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg group-hover:opacity-75 lg:aspect-w-5 lg:aspect-h-6">
               {/* <img src={`${PHP.site_url}/wp-content/uploads/2023/01/new-arrivals-kids.webp`} alt="Person placing task list card into walnut card holder next to felt carrying case on leather desk pad." className="h-full w-full object-cover object-center" /> */}
               <img src={`img/new-arrivals-kids.webp`} alt="Person placing task list card into walnut card holder next to felt carrying case on leather desk pad." className="h-full w-full object-cover object-center" />
