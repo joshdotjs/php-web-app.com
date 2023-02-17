@@ -41,6 +41,13 @@ Route::get('/about/contact', function () {
   ]);
 });
 
+Route::get('/debug', function () {
+  return view('home-debug', [
+    'API_URL_NODE'    => env('API_URL_NODE'),     // Cart: Checkout
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+  ]);
+});
+
 // ==============================================
 
 Route::get('/admin', function () {

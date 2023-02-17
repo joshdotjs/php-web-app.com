@@ -4,6 +4,7 @@ import '@/bootstrap';
 import '@/pages/home/__home.jsx';
 import '@/pages/about/__about.jsx';
 import '@/pages/about/__contact.jsx';
+import '@/pages/about/__debug.jsx';
 
 // Admin:
 import '@/pages/admin/__admin.jsx';

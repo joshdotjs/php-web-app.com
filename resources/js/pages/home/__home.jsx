@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client';
 
 import Layout from '@/comps/_layout/_layout';
 import Page from './_home';
-import './.scss';
 
 // ==============================================
 
