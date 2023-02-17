@@ -77,7 +77,7 @@ export default function Storefront() {
                 <span className="block sm:inline">Free standard shipping</span>
               </h2>
               <p className="mt-3 text-xl text-white">All items in the store include free shipping and handling. Expedited shipping speeds are also available at a slightly increased cost. We even offer next day shipping!</p>
-              <a href="#" className="mt-8 block w-full rounded-md border border-transparent bg-white py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto">Get Free Shipping</a>
+              <a href="/store" className="mt-8 block w-full rounded-md border border-transparent bg-white py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto">Get Free Shipping</a>
             </div>
           </div>
         </div>
@@ -173,7 +173,7 @@ export default function Storefront() {
             <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
               <h2 id="comfort-heading" className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Buy now, pay later</h2>
               <p className="mt-3 text-xl text-white">Get your products immediately and break the cost up into four payments spaced over a range of time.  Simply select "buy now, pay later" at checkout to take advantage!</p>
-              <a href="#" className="mt-8 block w-full rounded-md border border-transparent bg-white py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto">Buy Now Pay Later</a>
+              <a href="/store" className="mt-8 block w-full rounded-md border border-transparent bg-white py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto">Buy Now Pay Later</a>
             </div>
           </div>
         </div>
