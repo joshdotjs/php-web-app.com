@@ -41,9 +41,9 @@ export default function Storefront() {
 
   
       <div className="relative mx-auto flex max-w-3xl flex-col items-center py-32 px-6 text-center sm:py-64 lg:px-0">
-        <h1 className="text-4xl font-bold tracking-tight text-white lg:text-6xl">New arrivals are here</h1>
-        <p className="mt-4 text-xl text-white">The new arrivals have, well, newly arrived. Check out the latest options from our summer small-batch release while they're still in stock.</p>
-        <a href="#" className="mt-8 inline-block rounded-md border border-transparent bg-white py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100">Shop New Arrivals</a>
+        <h1 className="text-4xl font-bold tracking-tight text-white lg:text-6xl">eCommerce Store</h1>
+        <p className="mt-4 text-xl text-white">This demo eCommerce store includes a full blown Buy Now Pay Later (BNPL) checkout flow. Go to the /store page to add items to your cart and checkout to test it!</p>
+        <a href="/store" className="mt-8 inline-block rounded-md border border-transparent bg-white py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100">Shop Now</a>
       </div>
     </div>
   );
