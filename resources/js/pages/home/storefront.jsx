@@ -1,5 +1,6 @@
 import React from "react";
 
+import { setLS } from '@/util/local-storage';
 
 // ==============================================
 
@@ -36,7 +37,13 @@ export default function Storefront() {
         <p className="mt-4 text-base text-gray-500">Click one of the links below to be sent to the store page with the corresponding filters applied.</p>
   
         <div className="mt-10 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">
-          <a href="#" className="group block">
+          <a 
+            href="/store" 
+            onClick={() => {
+              setLS('filters', { category: 'all', gender: 'men', tag: 'all' });
+            }}
+            className="group block"
+          >
             <div aria-hidden="true" className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg group-hover:opacity-75 lg:aspect-w-5 lg:aspect-h-6">
               {/* <img src={`${PHP.site_url}/wp-content/uploads/2023/01/new-arrivals-mens.webp`} alt="Brown leather key ring with brass metal loops and rivets on wood table." className="h-full w-full object-cover object-center" /> */}
               <img src={`img/new-arrivals-mens.webp`} alt="Brown leather key ring with brass metal loops and rivets on wood table." className="h-full w-full object-cover object-center" />

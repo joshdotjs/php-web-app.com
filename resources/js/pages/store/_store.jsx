@@ -448,12 +448,20 @@ export default function Page({ products_SSR, num_products_SSR }) {
     const initializeFiltersFromLS = async () => {
 
       const filters_ls = getLS('filters');
-      
+           
       if (filters_ls) {
         console.log('_store.jsx - filters_ls: ', filters_ls);
+        
+        // -When user is sent here from clicking a navlink (or button-link)
+        //  each of the filters (category, gender, tag) will be set to a single value
+        //  or to 'all'.
+
+        let categories = filters_ls.category;
+        if (categories === 'all') { categories = ['shoes', 'clothes', 'accessories'];
+        } else { categories = [categories]; }
 
         const init_filters = {
-          category: new Set([filters_ls.category]),
+          category: new Set(categories),
           gender:   new Set([filters_ls.gender]),
           price:    new Set(prices),
         };
