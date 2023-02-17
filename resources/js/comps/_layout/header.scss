@@ -7,7 +7,7 @@ header#navbar {
 
   $dark: black;
   $light: white;
-  $dark-blue: #111926;
+  $dark-blue: var(--bg-navbar);
 
   li { cursor: pointer; }  
 

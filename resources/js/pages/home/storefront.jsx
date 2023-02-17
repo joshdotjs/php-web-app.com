@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 
-import { ly, lc } from "../../util/log";
 
 // ==============================================
 
@@ -12,33 +11,11 @@ export default function Storefront() {
   const heroSection = () => (
     <div
       className="relative bg-gray-900">
-      {/* <!-- Decorative image and overlay --> */}
-      <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
+      <div aria-hidden="true" className="absolute inset-0 overflow-hidden left-0">
         {/* <img src={`${PHP.site_url}/wp-content/uploads/2023/01/hero-mens.webp`} alt="" className="h-full w-full object-cover object-center" /> */}
         <img src={`/img/hero-mens.webp`} alt="" className="h-full w-full object-cover object-center" />
       </div>
       <div aria-hidden="true" className="absolute inset-0 bg-gray-900 opacity-50"></div>
-  
-
-
-
-
-
-
-
-
-        {/* <Navbar /> */}
-
-
-
-
-
-
-
-
-
-
-
   
       <div className="relative mx-auto flex max-w-3xl flex-col items-center py-32 px-6 text-center sm:py-64 lg:px-0">
         <h1 className="text-4xl font-bold tracking-tight text-white lg:text-6xl">eCommerce Store</h1>
@@ -169,7 +146,6 @@ export default function Storefront() {
                   <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
                   <span className="relative mt-auto text-center text-xl font-bold text-white">Accessories</span>
                 </a>
-
 
               </div>
             </div>

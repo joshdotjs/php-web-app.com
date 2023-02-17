@@ -50,7 +50,14 @@ body {
       nav#bottom { height: var(--navbar-bottom-height); }
     }
 
-    main#page { @include gutter-padding; .gutter { @include gutter-margin; } 
+    main#page {
+
+      &:not(.home) {
+        @include gutter-padding; 
+        .gutter { 
+          @include gutter-margin; 
+      }
+      } 
       // PAGE STYLES ARE INSERTED HERE
       // PAGE STYLES ARE INSERTED HERE
       // PAGE STYLES ARE INSERTED HERE
@@ -65,7 +72,7 @@ body {
 
     footer {
       height: 100px;
-      background: lightgreen;
+      background: var(--bg-navbar);
     }
 
   }
