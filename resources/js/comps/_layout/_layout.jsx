@@ -4,6 +4,7 @@ import { AuthContextProvider } from "@/context/auth-ctx";
 import { CartContextProvider } from "@/context/cart-ctx";
 
 import Header from './header';
+import Footer from './footer';
 
 import './_layout.scss';
 
@@ -25,9 +26,7 @@ export default function Layout({ children, name, restrict }) {
           </div>
         </main> 
 
-        <footer>
-          <p>footer</p>
-        </footer>
+        <Footer />
       
       </CartContextProvider>
     </AuthContextProvider>

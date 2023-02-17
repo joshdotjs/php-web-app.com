@@ -136,7 +136,7 @@ export default function Storefront() {
                     <img src={`/img/men-clothing-a.webp`}  alt="" className="h-full w-full object-cover object-center" />
                   </span>
                   <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
-                  <span className="relative mt-auto text-center text-xl font-bold text-white">Productivity</span>
+                  <span className="relative mt-auto text-center text-xl font-bold text-white">Clothes</span>
                 </a>
   
                 <a href="#" className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
@@ -145,7 +145,7 @@ export default function Storefront() {
                     <img src={`/img/shoes.webp`}  alt="" className="h-full w-full object-cover object-center" />
                   </span>
                   <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
-                  <span className="relative mt-auto text-center text-xl font-bold text-white">Workspace</span>
+                  <span className="relative mt-auto text-center text-xl font-bold text-white">Shoes</span>
                 </a>
   
   
@@ -167,7 +167,7 @@ export default function Storefront() {
                     <img src={`/img/accessories-1.webp`}  alt="" className="h-full w-full object-cover object-center" />
                   </span>
                   <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
-                  <span className="relative mt-auto text-center text-xl font-bold text-white">Sale</span>
+                  <span className="relative mt-auto text-center text-xl font-bold text-white">Accessories</span>
                 </a>
 
 
