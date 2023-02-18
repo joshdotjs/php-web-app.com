@@ -77,6 +77,7 @@ export default function Cart() {
       const cart = getCartLS();
       const user = getLS('user');
 
+      debugger;
       console.log('user: ', user);
 
       if (!user) {
@@ -88,11 +89,13 @@ export default function Cart() {
           headers: { "Content-Type": "application/json", },
           body: JSON.stringify({ cart, user }),
         })
-          .then(res => {
-            if (res.ok) return res.json();
-            return res.json().then(json => Promise.reject(json));
+          .then((res) => {
+            if (res.ok) 
+              return res.json();          
+            return res.json().then((json) => Promise.reject(json));
           })
           .then((data) => {
+            debugger;
             console.log('fetch().then().then() -- data: ', data); 
             const { url } = data;
             window.location = url;

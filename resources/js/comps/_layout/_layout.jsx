@@ -10,7 +10,7 @@ import './_layout.scss';
 
 // ==============================================
 
-export default function Layout({ children, name, restrict }) {
+export default function Layout({ children, name, restrict, gutter='gutter' }) {
 
   // --------------------------------------------
 
@@ -20,8 +20,8 @@ export default function Layout({ children, name, restrict }) {
 
         <Header />
 
-        <main id="page" className={`${name}`}>
-          <div className="gutter">
+        <main id="page" className={`${name} ${gutter}`}>
+          <div className='gutter'>
             {children}
           </div>
         </main> 
@@ -46,7 +46,7 @@ const setStyle  = (el, {property, value }) => el.style[property] = value;
 
 const pageLoadAnim = () => {
   const body = getElem('body');
-  gsap.to(body, { opacity: 1 });
+  gsap.to(body, { opacity: 1, delay: 0.525, duration: 0.75 });
 };
 pageLoadAnim();
 

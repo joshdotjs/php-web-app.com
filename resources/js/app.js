@@ -22,6 +22,9 @@ import '@/pages/auth/__auth.jsx';
 // Store:
 import '@/pages/store/__store.jsx';
 
+// Checkout:
+import '@/pages/checkout/__order-summary.jsx';
+
 // Dev - Anim 1D:
 // import '@/pages/anim-orders/anim-orders-1/_page-anim-orders';
 import '@/pages/anim-orders/anim-orders-2/_page-anim-orders';

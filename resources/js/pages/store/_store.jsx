@@ -596,7 +596,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
       } // if (filters_ls)
     }; // cosnt initializeFiltersFromLS = () => {};
-    setTimeout(initializeFiltersFromLS, 200);
+    setTimeout(initializeFiltersFromLS, 600);
   }, []);
 
   // --------------------------------------------

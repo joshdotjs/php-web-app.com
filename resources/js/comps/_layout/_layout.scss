@@ -53,7 +53,7 @@ body {
 
     main#page {
 
-      &:not(.home) {
+      &:not(.no-gutter) {
         @include gutter-padding; 
         .gutter { 
           @include gutter-margin; 

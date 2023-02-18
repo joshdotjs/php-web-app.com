@@ -10,7 +10,7 @@ const root = document.querySelector('#react-root--home-page');
 if(root){
   window.API_URL_NODE = root.dataset.apiUrlNode;
   createRoot(root).render(
-    <Layout name="home">
+    <Layout name="home" gutter="no-gutter">
       <Page />
     </Layout>
   );
