@@ -56,14 +56,14 @@ class ProductController extends Controller
         ->orderBy($sort_col, $sort_direction)
         ->get();
       } else {
-      $products = DB::table('products')
-        ->whereIn('category', $categories)
-        ->whereIn('gender',   $genders)
-        ->skip($page_num * $products_per_page)
-        ->take($products_per_page)
-        ->orderBy($sort_col, $sort_direction)
-        ->get();
-    }
+        $products = DB::table('products')
+          ->whereIn('category', $categories)
+          ->whereIn('gender',   $genders)
+          ->skip($page_num * $products_per_page)
+          ->take($products_per_page)
+          ->orderBy($sort_col, $sort_direction)
+          ->get();
+      }
 
 
     // -Each row stores product data with an array storing the variants for that rows products
