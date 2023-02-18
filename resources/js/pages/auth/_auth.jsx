@@ -103,7 +103,7 @@ export default function PageAuth({ auth_type }) {
 
   // --------------------------------------------
   
-  const [auth_form, setAuthForm] = useState( { email: '', password: '' } );
+  const [auth_form, setAuthForm] = useState( { email: 'josh@josh.com', password: 'josh' } );
   const updateAuthForm = (key) => (e) => setAuthForm( (prev) => ({...prev, [key]: e.target.value }) );
 
     // --------------------------------------------
@@ -120,7 +120,7 @@ export default function PageAuth({ auth_type }) {
     e.preventDefault();
 
     showNotification({
-      id: 'load-data',
+      id: 'auth-notification',
       loading: true,
       title: 'Authenticating...',
       message: 'Logging you in',
@@ -131,7 +131,6 @@ export default function PageAuth({ auth_type }) {
     // clear previous errors
     clearErrors();
 
-    debugger;
     let url = '';
     // if (auth_type === 'register') { endpoint = `${PHP.rest_url}/signup`; }
     // if (auth_type === 'login')    { endpoint = `${PHP.rest_url}/signin`; }
@@ -155,65 +154,45 @@ export default function PageAuth({ auth_type }) {
 
     // const [data, error] = await fetchPOST2({ endpoint, 
     const [data, error] = await fetchPOST2({ url, 
-      response_type: 'text', // JWT is a string
       body,
     });
+    console.log('data: ', data);
+    console.log('error: ', error);
 
-    if (error) {
-      lr('ERROR');
-    }
-    if (!error) {
-      // console.log('data: ', data);
-      // console.log('JSON.parse(data): ', JSON.parse(data));
-      const { user, token } = JSON.parse(data);
-      console.log('user: ', user);
-      logIn({ user, token });
-    }
-
-
-
-    // if (data.status === 2) {
-    if (!error) {
-      // alert(`Successful ${auth_type}`);
-      // fireEvent('log-in'); // listening for in _header.js
-      // send user to account
-      // window.location.pathname = '/'
-
+    if (data.status === 2&& !error) {
       updateNotification({
-        id: 'load-data',
+        id: 'auth-notification',
         color: 'teal',
         title: 'Success!',
         message: 'You are now logged in',
         icon: <IconCheck size={16} />,
-        autoClose: 1000,
-        onClose: () => {
-
-
-          alert('handle where to send user based on role')
-
-          // if (data.user.roles.includes('administrator'))
-          //   window.location.href = `/admin-dashboard`;
-          // else
-          //   window.location.href = `/orders`;
-
-        }
+        autoClose: 2000,
+        onClose: () => {}
       });
 
+      setTimeout(() => {
+        const { user, token } = data;
+        console.log('user: ', user);
+        console.log('token: ', token);
+        logIn({ user, token });
+      }, 1e3);
+
     }
-    if (error) {
+    if (data.status === 1 || error) {
+      lr('ERROR');
       console.log('response: ', data);
       console.error('auth problem');
 
-      debugger;
       const { validation_failure, message } = data;
 
       updateNotification({
-        id: 'load-data',
+        id: 'auth-notification',
         color: 'red',
         title: 'Error!',
         message: 'TODO: List error message returned from backend',
         icon: <IconX size={16} />,
-        autoClose: 2000,
+        autoClose: 4000,
+        onClose: () => {}
       });
 
       setFormValidationErrors((prev) => ({ ...prev,  [validation_failure]: { error: true, message } }));
