@@ -30,10 +30,19 @@ class ProductController extends Controller
     $tags              = $req['tags'];
     $products_per_page = $req['products_per_page']; 
 
-    $num_products = DB::table('products')
-      ->whereIn('category', $categories)
-      ->whereIn('gender', $genders)
-      ->count();
+    if ($tags) {
+      $num_products = DB::table('products')
+        ->whereIn('category', $categories)
+        ->whereIn('gender',   $genders)
+        ->whereIn('tag',      $tags)
+        ->count(); 
+    } else {
+      $num_products = DB::table('products')
+        ->whereIn('category', $categories)
+        ->whereIn('gender', $genders)
+        ->count(); 
+    }
+
     if ($num_products / $products_per_page < $page_num) {
       // -If currently on page-num beyond edge then just 
       //  retreive

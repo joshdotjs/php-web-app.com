@@ -517,14 +517,22 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
           const category = product['category'];
           const gender   = product['gender'];
+          const tag      = product['tag']; 
           const price    = product['price']; 
 
           const category_set = new_filter['category'];
           const gender_set   = new_filter['gender'];
+          const tag_set      = new_filter['tag'];
           const price_set    = new_filter['price'];
           
           //  -Filter on intersection of all filters 
-          if (category_set.has(category) && gender_set.has(gender) /*&& price_set.has(price) */ ) {
+          if (
+            category_set.has(category) 
+              && 
+            gender_set.has(gender) 
+              && 
+              (tag_set.size > 0 ? tag_set.has(tag) : true) // only check tag if tag_set is not empty
+          ) {
             return { ...prev_item, status: 'entered' };
           }
           else { 
@@ -588,7 +596,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
       } // if (filters_ls)
     }; // cosnt initializeFiltersFromLS = () => {};
-    setTimeout(initializeFiltersFromLS, 1000);
+    setTimeout(initializeFiltersFromLS, 200);
   }, []);
 
   // --------------------------------------------
