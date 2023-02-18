@@ -180,9 +180,9 @@ export default function Page({ products_SSR, num_products_SSR }) {
     }
   ));
 
-  // useEffect(() => {
-  //   console.log('layout', layout);
-  // }, [layout]);
+  useEffect(() => {
+    console.log('layout', layout);
+  }, [layout]);
 
   // --------------------------------------------
 
@@ -451,8 +451,8 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
   // --------------------------------------------
 
-  // -filter items if clicked navlink
-  useLayoutEffect(() => {
+  // -initially filter items if clicked navlink
+  useLayoutEffect(() => { // initialize Filters from LS
     const initializeFiltersFromLS = async () => {
 
       const filters_ls = getLS('filters');
@@ -464,22 +464,23 @@ export default function Page({ products_SSR, num_products_SSR }) {
         //  each of the filters (category, gender, tag) will be set to a single value
         //  or to 'all'.
 
-        let categories = filters_ls.category;
-        if (categories === 'all') { categories = ['shoes', 'clothes', 'accessories']; // TODO: Set this to the categories array
-        } else { categories = [categories]; }
+        let category = filters_ls.category; // single element
+        if (category === 'all') { category = categories; // Array of all categories
+        } else { category = [category]; }
 
-        let genders = filters_ls.gender;
-        if (genders === 'all') { genders = ['men', 'women', 'unisex']; // TODO: Set this to the genders array
-        } else { genders = [genders]; }
+        let gender = filters_ls.gender; // single elemen
+        if (gender === 'all') { gender = genders; // Array of all genders
+        } else { gender = [gender]; }
 
-        let tags = filters_ls.tag;
-        if (tags === 'none') { tags = [];
-        } else { tags = [tags]; }
+        let tag = filters_ls.tag;
+        if (tag === 'none') { tag = [];
+        } else { tag = [tag]; }
 
         const init_filters = {
-          category: new Set(categories),
-          gender:   new Set(genders),
-          price:    new Set(prices),
+          category: new Set(category),
+          gender:   new Set(gender),
+          tag:      new Set(tag),
+          price:    new Set(prices), // all prices always (currently)
         };
         removeLS('filters');
 
@@ -535,6 +536,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
         const { products: filtered_items_from_backend, num_products } = await getProducts({ filter: new_filter, page_num, sort_type });
         setNumProducts(num_products);
+        console.log('filtered_items_from_backend: ', filtered_items_from_backend);
         
         // - - - - - - - - - - - - - - - - - - - - - 
 
@@ -586,7 +588,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
 
       } // if (filters_ls)
     }; // cosnt initializeFiltersFromLS = () => {};
-    setTimeout(initializeFiltersFromLS, 100);
+    setTimeout(initializeFiltersFromLS, 1000);
   }, []);
 
   // --------------------------------------------

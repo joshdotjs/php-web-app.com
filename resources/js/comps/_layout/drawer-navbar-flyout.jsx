@@ -99,8 +99,8 @@ const DrawerContents = ({ panel_refs, active_panel }) => {
       position: 'relative',
     }}>
       <Panel idx={0} imgs={img_map['new']}   gender="all"   tag="new"  {...{panel_refs, active_panel}} />
-      <Panel idx={1} imgs={img_map['men']}   gender="men"   tag="all"  {...{panel_refs, active_panel}} />
-      <Panel idx={2} imgs={img_map['women']} gender="women" tag="all"  {...{panel_refs, active_panel}} />
+      <Panel idx={1} imgs={img_map['men']}   gender="men"   tag="none" {...{panel_refs, active_panel}} />
+      <Panel idx={2} imgs={img_map['women']} gender="women" tag="none" {...{panel_refs, active_panel}} />
       <Panel idx={3} imgs={img_map['sale']}  gender="all"   tag="sale" {...{panel_refs, active_panel}} />
     </div>
   );

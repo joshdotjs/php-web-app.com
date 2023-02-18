@@ -135,10 +135,10 @@ const DrawerContents = () => {
           "
           style={{ opacity: 1, display: 'grid'  }}
         >
-          <Card title='Shoes'   classes="mb-4" img={img_map['women']['shoes'].img}       category="shoes"       gender="women"  tag="all" />
-          <Card title='Clothes' classes="mb-4" img={img_map['women']['clothes'].img}     category="clothes"     gender="women"  tag="all" />
-          <Card title='Accessories'            img={img_map['women']['accessories'].img} category="accessories" gender="women"  tag="all" />
-          <Card title='Equipment'              img={img_map['women']['equipment'].img}   category="equipment"   gender="women"  tag="all" />
+          <Card title='Shoes'   classes="mb-4" img={img_map['women']['shoes'].img}       category="shoes"       gender="women"  tag="none" />
+          <Card title='Clothes' classes="mb-4" img={img_map['women']['clothes'].img}     category="clothes"     gender="women"  tag="none" />
+          <Card title='Accessories'            img={img_map['women']['accessories'].img} category="accessories" gender="women"  tag="none" />
+          <Card title='Equipment'              img={img_map['women']['equipment'].img}   category="equipment"   gender="women"  tag="none" />
         </div>
 
         {/* ------------------------------------------- */}
@@ -151,10 +151,10 @@ const DrawerContents = () => {
           "
           style={{ opacity: 0, display: 'none'  }}
         >
-          <Card title='Shoes'   classes="mb-4" img={img_map['men']['shoes'].img}       category="shoes"       gender="men"  tag="all" />
-          <Card title='Clothes' classes="mb-4" img={img_map['men']['clothes'].img}     category="clothes"     gender="men"  tag="all" />
-          <Card title='Accessories'            img={img_map['men']['accessories'].img} category="accessories" gender="men"  tag="all" />
-          <Card title='Equipment'              img={img_map['men']['equipment'].img}   category="equipment"   gender="men"  tag="all" />
+          <Card title='Shoes'   classes="mb-4" img={img_map['men']['shoes'].img}       category="shoes"       gender="men"  tag="none" />
+          <Card title='Clothes' classes="mb-4" img={img_map['men']['clothes'].img}     category="clothes"     gender="men"  tag="none" />
+          <Card title='Accessories'            img={img_map['men']['accessories'].img} category="accessories" gender="men"  tag="none" />
+          <Card title='Equipment'              img={img_map['men']['equipment'].img}   category="equipment"   gender="men"  tag="none" />
         </div>
 
         {/* ------------------------------------------- */}

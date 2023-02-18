@@ -122,7 +122,13 @@ export default function Storefront() {
           <div className="-my-2">
             <div className="relative box-content h-80 overflow-x-auto py-2 xl:overflow-visible">
               <div className="min-w-screen-xl absolute flex space-x-8 px-4 sm:px-6 lg:px-8 xl:relative xl:grid xl:grid-cols-5 xl:gap-x-8 xl:space-x-0 xl:px-0">
-                <a href="#" className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                <a 
+                  href="/store" 
+                  onClick={() => {
+                    setLS('filters', { category: 'all', gender: 'all', tag: 'new' });
+                  }}
+                  className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
+                >
                   <span aria-hidden="true" className="absolute inset-0">
                     {/* <img src={`${PHP.site_url}/wp-content/uploads/2023/01/category-clothing-women.webp`}  alt="" className="h-full w-full object-cover object-center" /> */}
                     <img src={`/img/category-clothing-women.webp`}  alt="" className="h-full w-full object-cover object-center" />
@@ -131,7 +137,13 @@ export default function Storefront() {
                   <span className="relative mt-auto text-center text-xl font-bold text-white">New Arrivals</span>
                 </a>
   
-                <a href="#" className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                <a 
+                  href="/store" 
+                  onClick={() => {
+                    setLS('filters', { category: 'clothes', gender: 'all', tag: 'none' });
+                  }}
+                  className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
+                >
                   <span aria-hidden="true" className="absolute inset-0">
                     {/* <img src={`${PHP.site_url}/wp-content/uploads/2023/01/category-shoes-women.webp`}  alt="" className="h-full w-full object-cover object-center" /> */}
                     {/* <img src={`img/jordan-1.webp`}  alt="" className="h-full w-full object-cover object-center" /> */}
@@ -141,7 +153,13 @@ export default function Storefront() {
                   <span className="relative mt-auto text-center text-xl font-bold text-white">Clothes</span>
                 </a>
   
-                <a href="#" className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                <a 
+                  href="/store" 
+                  onClick={() => {
+                    setLS('filters', { category: 'shoes', gender: 'all', tag: 'none' });
+                  }}
+                  className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
+                >
                   <span aria-hidden="true" className="absolute inset-0">
                     {/* <img src={`${PHP.site_url}/wp-content/uploads/2023/01/category-glasses-women.webp`}  alt="" className="h-full w-full object-cover object-center" /> */}
                     <img src={`/img/shoes.webp`}  alt="" className="h-full w-full object-cover object-center" />
@@ -151,7 +169,13 @@ export default function Storefront() {
                 </a>
   
   
-                <a href="#" className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                <a 
+                  href="/store" 
+                  onClick={() => {
+                    setLS('filters', { category: 'all', gender: 'all', tag: 'sale' });
+                  }}
+                  className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
+                >
                   <span aria-hidden="true" className="absolute inset-0">
                     {/* <img src={`${PHP.site_url}/wp-content/uploads/2023/01/category-shoes.webp`}  alt="" className="h-full w-full object-cover object-center" /> */}
                     <img src={`/img/leggings.webp`}  alt="" className="h-full w-full object-cover object-center" />
@@ -162,7 +186,13 @@ export default function Storefront() {
                   <span className="relative mt-auto text-center text-xl font-bold text-white">Sale</span>
                 </a>
                 
-                <a href="#" className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+                <a 
+                  href="/store" 
+                  onClick={() => {
+                    setLS('filters', { category: 'accessories', gender: 'all', tag: 'none' });
+                  }}
+                  className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
+                >
                   <span aria-hidden="true" className="absolute inset-0">
                     {/* <img src={`${PHP.site_url}/wp-content/uploads/2023/01/category-shoes.webp`}  alt="" className="h-full w-full object-cover object-center" /> */}
                     {/* <img src={`/img/fleece.webp`}  alt="" className="h-full w-full object-cover object-center" /> */}

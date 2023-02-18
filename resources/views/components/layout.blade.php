@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>PHP Web App</title>
-
-    <title>Josh Holloway | Portfolio</title>
+    <title>Josh Holloway | PHP Web App</title>
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <meta name="description" content="Josh Holloway is a full stack web developer with specialization in building custom eCommerce stores">
     <meta name="keywords" content="JavaScript, React, Node, Laravel, Next.js, GSAP">
