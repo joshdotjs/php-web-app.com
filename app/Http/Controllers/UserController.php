@@ -50,26 +50,43 @@ class UserController extends Controller
 
   // ------------------------------------------
 
-  public function loginApi(Request $request) {
+  public function loginApi(Request $req) {
     // return "/api/login [POST]";
-    // return $request;
+    // return $req;
 
-    $incoming_fields = $request-> validate([
-      'email'    => 'required',
-      'password' => 'required', 
+    $incoming_fields = $req-> validate([
+      'email'    => [],
+      'password' => [], 
     ]);
-    // return $incoming_fields;
+    $email = $incoming_fields['email'];
+    $password = $incoming_fields['password'];
+
+    if (empty($email)) {
+      return [
+        'status' => 1,
+        'message' => 'email cannot be blank',
+        'validation_failure' => 'email'
+      ];
+    }
+
+    if (empty($password)) {
+      return [
+        'status' => 1,
+        'message' => 'password cannot be blank',
+        'validation_failure' => 'password'
+      ];
+    }
 
 
     // attempt(): If the two hashed passwords match an authenticated session will be started for the user.
     $is_valid_login = auth()->attempt([
-      'email' => $incoming_fields['email'], 
-      'password' => $incoming_fields['password']]
-    );
+      'email' => $email, 
+      'password' => $password
+    ]);
     // return $is_valid_login;
 
     if ($is_valid_login) {
-      $user = User::where('email', $incoming_fields['email'])->first();
+      $user = User::where('email', $email)->first();
       $token = $user->createToken('ourapptoken')->plainTextToken;
       return [
         'status' => 2,

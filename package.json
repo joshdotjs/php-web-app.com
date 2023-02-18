@@ -6,7 +6,8 @@
         "deploy": "npm run build  &&  git add .  &&  git commit -m 'deploy'  &&  git push prod main  &&  git push",
         "csv": "node ./csv/index.js",
         "reset-db": "npm run csv && php artisan migrate:fresh --seed",
-        "ssh": "ssh root@php-web-app.com"
+        "ssh": "ssh root@php-web-app.com",
+        "php": "php artisan serve"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.13",
