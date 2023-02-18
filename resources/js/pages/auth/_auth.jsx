@@ -1,8 +1,10 @@
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { gsap } from 'gsap';
 
-import { Modal, Button, Group, Table } from '@mantine/core';
+import AuthContext from '@/context/auth-ctx';
+
+// import { Modal, Button, Group, Table } from '@mantine/core';
 import { 
   NotificationsProvider, 
   showNotification, 
@@ -16,7 +18,7 @@ import logo from 'img/svg/logo.svg';
 import { lc, lg, lo, lp, lb, lr, ly, log } from 'util/log';
 import { getLS, setLS } from 'util/local-storage';
 import { fireEvent } from 'util/custom-event';
-import { fetchGET, fetchPOST } from 'util/fetch';
+import { fetchPOST2 } from 'util/fetch';
 
 // ==============================================
 
@@ -96,6 +98,10 @@ const ValidationForm = ({refs, form_validation_errors, title, name, idx, auth_fo
 export default function PageAuth({ auth_type }) {
 
   // --------------------------------------------
+
+  const { logIn } = useContext(AuthContext);
+
+  // --------------------------------------------
   
   const [auth_form, setAuthForm] = useState( { email: '', password: '' } );
   const updateAuthForm = (key) => (e) => setAuthForm( (prev) => ({...prev, [key]: e.target.value }) );
@@ -125,23 +131,49 @@ export default function PageAuth({ auth_type }) {
     // clear previous errors
     clearErrors();
 
-    let endpoint = '';
-
-    // if (auth_type === 'register') { endpoint = 'http://jadefse.local/wp-json/josh/v1/signup'; }
-    // if (auth_type === 'login')    { endpoint = 'http://jadefse.local/wp-json/josh/v1/signin'; }
+    debugger;
+    let url = '';
     // if (auth_type === 'register') { endpoint = `${PHP.rest_url}/signup`; }
     // if (auth_type === 'login')    { endpoint = `${PHP.rest_url}/signin`; }
-    if (auth_type === 'register') { endpoint = `/api/signup`; }
-    if (auth_type === 'login')    { endpoint = `/api/signin`; }
+    if (auth_type === 'register') { url = `/api/register`; }
+    if (auth_type === 'login')    { url = `/api/login`; }
 
     lo('submit Auth form');
 
     console.log('body: ', auth_form);
 
-    const data = await fetchPOST(endpoint, auth_form);
-    console.log('resposne: ', data);
+    // const data = await fetchPOST(endpoint, auth_form);
 
-    if (data.status === 2) {
+    // const url = `${API_URL_LARAVEL}/api/login`;
+    console.log('url: ',url);
+    const body = {
+      email: auth_form.email,
+      password: auth_form.password,
+    };
+    console.log('body: ', body);
+
+
+    // const [data, error] = await fetchPOST2({ endpoint, 
+    const [data, error] = await fetchPOST2({ url, 
+      response_type: 'text', // JWT is a string
+      body,
+    });
+
+    if (error) {
+      lr('ERROR');
+    }
+    if (!error) {
+      // console.log('data: ', data);
+      // console.log('JSON.parse(data): ', JSON.parse(data));
+      const { user, token } = JSON.parse(data);
+      console.log('user: ', user);
+      logIn({ user, token });
+    }
+
+
+
+    // if (data.status === 2) {
+    if (!error) {
       // alert(`Successful ${auth_type}`);
       // fireEvent('log-in'); // listening for in _header.js
       // send user to account
@@ -168,10 +200,11 @@ export default function PageAuth({ auth_type }) {
       });
 
     }
-    else {
+    if (error) {
       console.log('response: ', data);
       console.error('auth problem');
 
+      debugger;
       const { validation_failure, message } = data;
 
       updateNotification({

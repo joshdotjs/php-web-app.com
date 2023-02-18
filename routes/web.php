@@ -151,16 +151,18 @@ Route::get('/anim-orders', function () {
 // ==============================================
 
 Route::get('/auth/register', function () {
-  return view('auth-register', [
+  return view('auth', [
     'API_URL_NODE' => env('API_URL_NODE'),        // Cart: Checkout
     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
+    'AUTH_TYPE'    => 'register',
   ]);
 });
 
 Route::get('/auth/login', function () {
-  return view('auth-login', [
-    'API_URL_NODE'    => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!! - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
+  return view('auth', [
+    'API_URL_NODE' => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
+    'AUTH_TYPE'    => 'login',
   ]);
 });
 
