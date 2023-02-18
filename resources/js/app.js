@@ -28,7 +28,21 @@ import '@/pages/anim-orders/anim-orders-2/_page-anim-orders';
 // import '@/pages/anim-orders/anim-orders-3/_page-anim-orders';
 
 // ==============================================
+// ==============================================
 
-import { lo, lg, lr, lb, ly } from '@/util/log';
+// import PageAuth from "@/pages/page-auth/_page-auth";
 
+// Auth page 1: Login
+// const auth_page_login_root = document.querySelector("#react-theme--page-auth-login");
+// if (auth_page_login_root) {
+//   ReactDOM.render(<PageAuth auth_type="login" />, auth_page_login_root);
+// }
+
+// Auth page 2: Register
+// const auth_register_page_root = document.querySelector("#react-theme--page-auth-register");
+// if (auth_register_page_root) {
+//   ReactDOM.render(<PageAuth auth_type="register" />, auth_register_page_root);
+// }
+
+// ==============================================
 // ==============================================

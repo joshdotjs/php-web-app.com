@@ -5,6 +5,7 @@
       "@/*": ["resources/js/*"],
       "util/*": ["resources/js/util/*"],
       "scss/*": ["resources/scss/*"],
+      "img/*": ["public/img/*"],
     }
   }
 }

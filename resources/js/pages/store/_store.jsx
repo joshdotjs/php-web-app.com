@@ -269,7 +269,7 @@ export default function Page({ products_SSR, num_products_SSR }) {
     // console.log('removeItems() - next_page_num: ', next_page_num);
 
       // --Step 1
-    const { products: filtered_items_from_backend } = await getProducts({ filter, page_num: 0, sort_type, reset_page_num: false, products_per_page: PRODUCTS_PER_PAGE * 2 }); 
+    const { products: filtered_items_from_backend } = await getProducts({ filter, page_num: 0, sort_type, reset_page_num: false, products_per_page: PRODUCTS_PER_PAGE * 3 }); 
     console.log('filtered_items_from_backend: ', filtered_items_from_backend);
     // Increase the number of products returned.
     //  -It is possible that all the items returned from the backend endpoint are already in the grid (or have been removed from the grid).

@@ -23,28 +23,28 @@ use  Illuminate\Support\Arr;
 Route::get('/', function () {
   return view('home', [
     'API_URL_NODE' => env('API_URL_NODE'), // Cart: Checkout
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
   ]);
 })->name('login'); // middlewaure('auth') will redirect here if user not logged in
 
 Route::get('/about', function () {
   return view('home-about', [
     'API_URL_NODE' => env('API_URL_NODE'), // Cart: Checkout
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
   ]);
 });
 
 Route::get('/about/contact', function () {
   return view('home-contact', [
     'API_URL_NODE' => env('API_URL_NODE'), // Cart: Checkout
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
   ]);
 });
 
 Route::get('/debug', function () {
   return view('home-debug', [
     'API_URL_NODE'    => env('API_URL_NODE'),     // Cart: Checkout
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
   ]);
 });
 
@@ -53,14 +53,14 @@ Route::get('/debug', function () {
 Route::get('/admin', function () {
   return view('admin', [
     'API_URL_NODE' => env('API_URL_NODE'), // Cart: Checkout
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
   ]);
 });
 
 Route::get('/admin/products', function () {
   return view('admin-products', [
     'API_URL_NODE'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
   ]);
 });
 
@@ -72,14 +72,14 @@ Route::get('/admin/orders', function () {
   return view('admin-orders', [
     'orders'          => $orders,
     'API_URL_NODE'    => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
   ]);
 });
 
 Route::get('/admin/orders/{id}', function ($id) {
   return view('admin-order-details', [
     'API_URL_NODE'    => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
     'id'              => $id,
   ]);
 });
@@ -94,14 +94,14 @@ Route::get('/user/orders', function () {
   return view('user-orders', [
     // 'orders'          => $orders,
     'API_URL_NODE'    => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
   ]);
 });
 
 Route::get('/user/orders/{id}', function ($id) {
   return view('user-order-details', [
     'API_URL_NODE'    => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
     'id'              => $id,
   ]);
 });
@@ -130,7 +130,7 @@ Route::get('/store', function () {
     'products'         =>  json_encode($arr),
     'num_products'     =>  $num_products,
     'API_URL_NODE'     =>  env('API_URL_NODE'),     // Cart: Checkout
-    'API_URL_LARAVEL'  =>  env('API_URL_LARAVEL'),  // Laravel REST API
+    'API_URL_LARAVEL'  =>  env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
   ]);
 });
 
@@ -144,7 +144,7 @@ Route::get('/anim-orders', function () {
   return view('anim-orders', [
     'orders'          => $orders,
     'API_URL_NODE'    => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
   ]);
 });
 
@@ -152,15 +152,15 @@ Route::get('/anim-orders', function () {
 
 Route::get('/auth/register', function () {
   return view('auth-register', [
-    'API_URL_NODE' => env('API_URL_NODE'), // Cart: Checkout
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+    'API_URL_NODE' => env('API_URL_NODE'),        // Cart: Checkout
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
   ]);
 });
 
 Route::get('/auth/login', function () {
   return view('auth-login', [
-    'API_URL_NODE'         => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+    'API_URL_NODE'    => env('API_URL_NODE'),     // Cart: Checkout (node-web-app.com)
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!! - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
   ]);
 });
 
@@ -171,7 +171,7 @@ Route::get('/auth/login', function () {
 //   return view('store', [
 //     'products' => $products, 
 //     'API_URL_NODE' => env('API_URL_NODE'), // Cart: Checkout
-//     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+//     'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
 //   ]);
 // });
 
@@ -185,7 +185,7 @@ Route::get('/store/product/{id}',  function($id) {
     'product'  => $product,
     'variants' => $variants,
     'API_URL_NODE'  => env('API_URL_NODE'),
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
   ]);
 });
 
@@ -200,13 +200,13 @@ Route::post('/register',                [UserController::class, 'register']);
 Route::get('/checkout-success', function () {
   return view('checkout-success', [
     'API_URL_NODE'    => env('API_URL_NODE'),     // Cart: Checkout
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
   ]);
 });
 
 Route::get('/checkout-fail', function () {
   return view('checkout-fail', [
     'API_URL_NODE'    => env('API_URL_NODE'),     // Cart: Checkout
-    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API
+    'API_URL_LARAVEL' => env('API_URL_LARAVEL'),  // Laravel REST API - SHOULD NOT NEED - CORS NOT ISSUE SINCE FRONTEND ON SAME DOMAIN!!
   ]);
 });

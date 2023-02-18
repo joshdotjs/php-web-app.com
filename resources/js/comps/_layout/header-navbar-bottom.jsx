@@ -17,7 +17,7 @@ import { openDrawer as openNavDrawer } from './drawer-nav';
 
 import { transitionTextColor } from '@/util/transition';
 
-import logo from './logo.svg';
+import logo from 'img/svg/logo.svg';
 
 // ==============================================
 
