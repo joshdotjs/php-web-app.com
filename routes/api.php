@@ -25,40 +25,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Auth:
 Route::post('/login',         [UserController::class, 'loginApi']);
-// Route::post('/login',         function(Request $request) {
-//     // return "/api/login [POST]";
-//     // return $request;
-
-//     $incoming_fields = $request-> validate([
-//       'email'    => 'required',
-//       'password' => 'required', 
-//     ]);
-//     // return $incoming_fields;
-
-
-//     // attempt(): If the two hashed passwords match an authenticated session will be started for the user.
-//     $is_valid_login = auth()->attempt([
-//       'email' => $incoming_fields['email'], 
-//       'password' => $incoming_fields['password']]
-//     );
-//     // return $is_valid_login;
-
-//     if ($is_valid_login) {
-//       $user = User::where('email', $incoming_fields['email'])->first();
-//       $token = $user->createToken('ourapptoken')->plainTextToken;
-//       return [
-//         'token' => $token,
-//         'user'  => $user,
-//       ];
-//     } else {
-//       return false;
-//     }  
-// });
-Route::get('/login',          function() {
-  $x = 0;
-
-  return 0;
-});
 
 // ==============================================
 
@@ -81,6 +47,17 @@ Route::post('/orders/update-status', function(Request $req) {
 
   
   return response(['status' => 'success'], 201);
+});
+
+Route::post('/get-order-by-payment-intent-id', function(Request $req) {
+
+  $payment_intent_id = $req['payment_intent_id'];
+
+  $order = DB::table('orders')
+    ->where('payment_intent_id', $payment_intent_id)
+    ->first();
+
+  return response(['order' => $order], 201);
 });
 
 // ==============================================

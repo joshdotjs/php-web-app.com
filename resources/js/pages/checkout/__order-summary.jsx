@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import Layout from '@/comps/_layout/_layout';
+import { getLS } from '@/util/local-storage';
+import { authFetch } from '@/util/fetch';
+import { lr, lg } from '@/util/log';
+
+import img from 'img/heros/floating-shoe.jpeg';
 
 // ==============================================
 
@@ -10,8 +15,42 @@ import Layout from '@/comps/_layout/_layout';
 
 // ==============================================
 
-
 function Page() {
+
+  // --------------------------------------------
+
+  const [order, setOrder] = useState();
+
+  // --------------------------------------------
+
+  const getOrder = async () => {
+    const payment_intent_id = getLS('payment_intent_id');
+    const url = '/api/get-order-by-payment-intent-id';
+    const [data, error] = await authFetch({ 
+      url, 
+      method: 'POST',
+      body: { payment_intent_id } }
+    );
+    console.log('data: ', data);
+
+    if (error) {
+      // alert('TODO: Unauthorized Notification...');
+      lr('TODO: Unauthorized Notification...');
+    }
+
+    if (!error) {
+      lg('SUCCESS');
+      console.log('data: ', data);
+      const { order } = data;
+      setOrder(order);
+    }
+  };
+
+  // --------------------------------------------
+
+  useEffect(() => {
+    getOrder();
+  }, []);
 
   // --------------------------------------------
 
@@ -36,7 +75,7 @@ function Page() {
       <main className="relative lg:min-h-full">
         <div className="h-80 overflow-hidden lg:absolute lg:h-full lg:w-1/2 lg:pr-4 xl:pr-12">
           <img
-            src="https://tailwindui.com/img/ecommerce-images/confirmation-page-06-hero.jpg"
+            src={img}
             alt="TODO"
             className="h-full w-full object-cover object-center"
           />

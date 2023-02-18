@@ -17,7 +17,7 @@ export default function Checkbox({ id, type, option, applyFilter, onChange, chec
   return (
     <div className="checkbox-container">
       <input 
-        class="checkbox-input"
+        className="checkbox-input"
         type="checkbox" 
         id={id} 
         name={option} 
@@ -25,7 +25,7 @@ export default function Checkbox({ id, type, option, applyFilter, onChange, chec
         // onChange={onChange(option)} 
         onChange={() => applyFilter({ type, option })} 
       />
-      <label class="checkbox-label" htmlFor={id}>{ option }</label>
+      <label className="checkbox-label" htmlFor={id}>{ option }</label>
     </div>
   );
 

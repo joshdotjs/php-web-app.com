@@ -9,7 +9,7 @@ import Button from '@/comps/button/button';
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 import { authFetch } from '@/util/fetch';
 import { getCartLS, removeFromCartLS, updateNumCartItems, clearCartLS } from '@/context/cart-ctx/cart-fn';
-import { getLS } from '@/util/local-storage';
+import { getLS, setLS } from '@/util/local-storage';
 
 gsap.registerPlugin(Flip);
 
@@ -97,7 +97,8 @@ export default function Cart() {
           .then((data) => {
             debugger;
             console.log('fetch().then().then() -- data: ', data); 
-            const { url } = data;
+            const { url, payment_intent_id } = data;
+            setLS('payment_intent_id', payment_intent_id);
             window.location = url;
           })
           .catch(e => {
