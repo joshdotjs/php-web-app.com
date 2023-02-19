@@ -39,13 +39,34 @@ Route::post('/orders',            [OrderController::class, 'createOrder']);
 Route::post('/orders/update-status', function(Request $req) {
 
   $payment_intent_id = $req['payment_intent_id'];
+  $card_last4        = $req['card_last4'];
+  $card_brand        = $req['card_brand'];
+  $card_exp_month    = $req['card_exp_month'];
+  $card_exp_year     = $req['card_exp_year'];
+
   $status = $req['status'];
 
   $num_rows_affected = DB::table('orders')
     ->where('payment_intent_id', $payment_intent_id)
-    ->update(['status' => $status]);
+    ->update(['status'     => $status])
+  ;
 
-  
+  $num_rows_affected = DB::table('orders')
+    ->where('payment_intent_id', $payment_intent_id)
+    ->update(['card_last4' => $card_last4]);
+
+  $num_rows_affected = DB::table('orders')
+    ->where('payment_intent_id', $payment_intent_id)
+    ->update(['card_brand' => $card_brand]);
+
+  $num_rows_affected = DB::table('orders')
+    ->where('payment_intent_id', $payment_intent_id)
+    ->update(['card_exp_month' => $card_exp_month]);
+
+  $num_rows_affected = DB::table('orders')
+    ->where('payment_intent_id', $payment_intent_id)
+    ->update(['card_exp_year' => $card_exp_year]);
+
   return response(['status' => 'success'], 201);
 });
 
@@ -57,7 +78,28 @@ Route::post('/get-order-by-payment-intent-id', function(Request $req) {
     ->where('payment_intent_id', $payment_intent_id)
     ->first();
 
-  return response(['order' => $order], 201);
+  $products = DB::table('order_2_variants')
+    ->join('variants', 'variants.id', 'order_2_variants.variant_id')
+    ->join('products', 'products.id', 'variants.product_id')
+    ->select(
+      'products.id as product_id',
+      'variants.id as variant_id',
+      'products.title',
+      'products.body',
+      'products.price',
+      'order_2_variants.qty',
+      'variants.size',
+      'variants.color',
+      'variants.img',
+    )
+    ->where('order_2_variants.order_id', '=', $order->id)
+    ->get();
+
+
+  return response([
+    'order' => $order,
+    'products' => $products,
+  ], 201);
 });
 
 // ==============================================

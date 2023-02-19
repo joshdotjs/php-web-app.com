@@ -41,7 +41,7 @@ const getLS = (key /*: string */) => getWithExpiry( key );
 
 // const setLS = (key, value /*: string, object */) => localStorage.setItem(key, JSON.stringify(value));
 // const setLS = (key, value /*: string, object */) => setWithExpiry({ key, value, ttl: 1e3 * 60**2 * 24}); // 1day = (1000ms./s.  *  60s./min.  *  60min./hr.  *  24hr./day) ms./day
-const setLS = (key, value /*: string, object */) => setWithExpiry({ key, value, ttl: 1e3 * 60**2 * 1}); // 1hr = (1000ms./s.  *  60s./min.  *  60min./hr.) ms./hr.
+const setLS = (key, value /*: string, object */) => setWithExpiry({ key, value, ttl: 1e3 * 60**2 * 2}); // 1hr = (1000ms./s.  *  60s./min.  *  60min./hr.) ms./hr.
 
 // ==============================================
 

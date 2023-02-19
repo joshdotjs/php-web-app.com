@@ -108,6 +108,12 @@ class OrderController extends Controller
       'payment_intent_id' => $payment_intent_id,
       'total'             => 0, 
       'status'            => 0,
+
+      'card_last4'        => 0,
+      'card_exp_month'    => 0,
+      'card_exp_year'     => 0,
+      'card_brand'        => '',
+
       'time_stamp'        => time(),
       'created_at'        => date("Y-m-d H:i:s"),
     ]);

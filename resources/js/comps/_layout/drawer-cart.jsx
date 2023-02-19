@@ -72,18 +72,15 @@ export default function Cart() {
 
       // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/checkout/stripe-checkout-node`;
       const url = `${API_URL_NODE}/api/checkout/php`;
-      console.log('url: ', url);
 
       const cart = getCartLS();
       const user = getLS('user');
-
-      debugger;
-      console.log('user: ', user);
-
+      
       if (!user) {
         alert('please login to checkout.');
         window.location = '/auth/login';
       } else {
+
         fetch(url, {
           method: "POST",
           headers: { "Content-Type": "application/json", },
@@ -95,51 +92,18 @@ export default function Cart() {
             return res.json().then((json) => Promise.reject(json));
           })
           .then((data) => {
-            debugger;
             console.log('fetch().then().then() -- data: ', data); 
             const { url, payment_intent_id } = data;
             setLS('payment_intent_id', payment_intent_id);
+
             window.location = url;
           })
           .catch(e => {
             console.error(e.error);
           });
       }
-      
-
     };
-
     submitOrderToNode();
-
-    // - - - - - - - - - - - - - - - - - - - - - 
-
-    const insertOrderInDB = async () => {
-
-      const cart = getCartLS();
-
-      // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/orders`;
-      const url = `/api/orders`;
-
-      const [data, error] = await authFetch({
-        url: url, 
-        method: 'POST', 
-        body: { cart },
-      });
-  
-      if (error) {
-        // alert('TODO: Unauthorization Notification...');
-        lr('FAIL');
-        console.log('error: ', error);
-      }
-      if (!error) {
-        lg('SUCCESS');
-        console.log('data: ', data);
-        // resetCart();
-      }
-
-    };
-
-    // insertOrderInDB();
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
