@@ -6,10 +6,13 @@ import { Flip } from "gsap/Flip";
 
 import Button from '@/comps/button/button';
 
-import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
-import { authFetch } from '@/util/fetch';
+import { lc, lg, lo, lp, lb, lr, ly } from 'util/log';
+import { authFetch } from 'util/fetch';
 import { getCartLS, removeFromCartLS, updateNumCartItems, clearCartLS } from '@/context/cart-ctx/cart-fn';
-import { getLS, setLS } from '@/util/local-storage';
+import { getLS, setLS } from 'util/local-storage';
+
+import './loading-animation/loading-animation.js';
+import { fireEvent } from 'util/events.js';
 
 gsap.registerPlugin(Flip);
 
@@ -66,8 +69,13 @@ export default function Cart() {
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
+    lo('fire event: floading-animation-start');
+    fireEvent('loading-animation-start');
+
+    // - - - - - - - - - - - - - - - - - - - - - 
+
     const submitOrderToNode = () => {
-      console.clear();
+
       lr('submitOrderToNode()');
 
       // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/checkout/stripe-checkout-node`;
@@ -359,6 +367,8 @@ export default function Cart() {
   
   return createPortal(
     <>
+      
+
       <div // Blur Overlay
         ref={overlay_ref}
         className="pointer-events-auto fixed inset-0"
@@ -372,7 +382,11 @@ export default function Cart() {
         }}
         onClick={() => closeCart()}
       >  
+        <loading-animation></loading-animation>
       </div>
+
+      
+
 
       <aside 
         id="cart" 
@@ -405,7 +419,7 @@ export default function Cart() {
         >
 
           <h4>Shopping Cart</h4>
-
+          
           <svg onClick={closeCart}
             xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" 
             className="bi bi-x  cursor-pointer" viewBox="0 0 16 16"
@@ -427,6 +441,7 @@ export default function Cart() {
           }}
 
         >
+
           {layout.items.map((item, idx) => {
             
             const {status, product: { title, sub_title, body, price, category }, variant: { id, img, color, size, qty }} = item;
