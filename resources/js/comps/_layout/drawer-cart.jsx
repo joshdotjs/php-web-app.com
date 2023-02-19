@@ -11,7 +11,7 @@ import { authFetch } from 'util/fetch';
 import { getCartLS, removeFromCartLS, updateNumCartItems, clearCartLS } from '@/context/cart-ctx/cart-fn';
 import { getLS, setLS } from 'util/local-storage';
 
-import './loading-animation/loading-animation.js';
+
 import { fireEvent } from 'util/events.js';
 
 gsap.registerPlugin(Flip);
@@ -69,8 +69,8 @@ export default function Cart() {
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
-    lo('fire event: floading-animation-start');
-    fireEvent('loading-animation-start');
+    // lo('fire event: floading-animation-start');
+    // fireEvent('loading-animation-start');
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
@@ -382,7 +382,6 @@ export default function Cart() {
         }}
         onClick={() => closeCart()}
       >  
-        <loading-animation></loading-animation>
       </div>
 
       
