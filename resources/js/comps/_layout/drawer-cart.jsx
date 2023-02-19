@@ -4,6 +4,8 @@ import uuid from 'react-uuid';
 import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 
+import LoadingContext from '@/context/loading-ctx';
+
 import Button from '@/comps/button/button';
 
 import { lc, lg, lo, lp, lb, lr, ly } from 'util/log';
@@ -11,8 +13,7 @@ import { authFetch } from 'util/fetch';
 import { getCartLS, removeFromCartLS, updateNumCartItems, clearCartLS } from '@/context/cart-ctx/cart-fn';
 import { getLS, setLS } from 'util/local-storage';
 
-
-import { fireEvent } from 'util/events.js';
+// import { fireEvent } from 'util/events.js';
 
 gsap.registerPlugin(Flip);
 
@@ -58,12 +59,14 @@ export default function Cart() {
   const black = 'black';
   const light = '#757575';
   const green = '#41A139';
+  
+  // --------------------------------------------
+
+  const loadingCtx = useContext(LoadingContext);
+  const { startLoading, stopLoading } = loadingCtx;
+
 
   // --------------------------------------------
-  
-  const portal_root = document.querySelector('#portal-cart');
-  
-  // --------------------------------------------983230
 
   const submit = () => {
 
@@ -71,6 +74,7 @@ export default function Cart() {
 
     // lo('fire event: floading-animation-start');
     // fireEvent('loading-animation-start');
+    startLoading();
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
@@ -362,6 +366,10 @@ export default function Cart() {
     setLineItemsWindowHeight(getHeight(cart_title) + getHeight(cart_btn_container));
 
   }, []);
+
+  // --------------------------------------------
+
+  const portal_root = document.querySelector('#portal-cart');
 
   // --------------------------------------------
   

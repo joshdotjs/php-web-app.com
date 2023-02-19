@@ -10,11 +10,6 @@
     data-api-url-laravel="{{$API_URL_LARAVEL}}"
     data-auth-type="{{$AUTH_TYPE}}"
   ></div>
-
-  <div id="portal-cart"></div>
-  <div id="portal-nav-drawer"></div>
-  {{-- <div id="portal-modal"></div> --}}
-  <div id="portal-mobile-filters-drawer"></div>
   {{-- react --}}
 
   {{-- =============================================== --}}

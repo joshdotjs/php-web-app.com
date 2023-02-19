@@ -1,57 +1,13 @@
-import React, { Fragment, useCallback, useEffect, useLayoutEffect, useRef, useState, useContext } from 'react';
+import React, { useRef, useContext } from 'react';
 import { createPortal } from 'react-dom';
-import uuid from 'react-uuid';
-import { gsap } from "gsap";
-import { Flip } from "gsap/Flip";
 
-import Button from '@/comps/button/button';
+import LoadingContext from '@/context/loading-ctx.jsx';
 
 import { lc, lg, lo, lp, lb, lr, ly } from 'util/log';
-import { authFetch } from 'util/fetch';
-import { getCartLS, removeFromCartLS, updateNumCartItems, clearCartLS } from '@/context/cart-ctx/cart-fn';
-import { getLS, setLS } from 'util/local-storage';
-
-import './loading-animation/loading-animation.js';
-import { fireEvent } from 'util/events.js';
-
-gsap.registerPlugin(Flip);
 
 // ==============================================
 
-let openCart;
-
-// ==============================================
-
-const Ellipsis = ({ children, name, classes, color, fontSize, fontWeight }) => {
-
-  const ellipsis = {
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
-  };
-
-  return (
-    <p 
-      className={`
-        ${name}
-        ${classes}
-        w-[130px] md:w-[145px]
-      `}
-      style={{ 
-        color,
-        fontSize,
-        fontWeight,
-        ...ellipsis
-      }}
-    >
-      {children}
-    </p>
-  );
-};
-
-// ==============================================
-
-export default function Cart() {
+export default function LoadingOverlay() {
 
   // --------------------------------------------
 
@@ -61,34 +17,8 @@ export default function Cart() {
 
   // --------------------------------------------
 
-  const overlay_ref = useRef(null);
-
-  // --------------------------------------------
-  
-  const showOverlay = () => {
-    const ref = overlay_ref.current;
-    ref.style.display = 'block';
-    gsap.to(ref, { 
-      opacity: 1, 
-      duration: 0.3,
-      onStart: () => {
-        document.body.style.overflow = "hidden"; // don't scroll stuff underneath the modal
-      },
-    });
-  };
-
-  // --------------------------------------------
-
-  const hideOverlay = () => {
-    const ref = overlay_ref.current;
-    gsap.to(ref, { 
-      opacity: 0,
-       duration: 0.3, 
-       onComplete: () => {
-        ref.style.display = 'none';
-        document.body.style.overflow = "overlay"; // custom scrollbar overlay
-      }});
-  };
+  const loadingCtx = useContext(LoadingContext);
+  const { overlay_ref } = loadingCtx;
 
   // --------------------------------------------
 
@@ -106,11 +36,29 @@ export default function Cart() {
         background: 'rgba(0, 0, 0, 0.65)',
         backdropFilter: 'blur(5px)', // I think this is not animating the blur!  I think a single blur is computed and then the opacity on it is animated - which is efficient.  I think animating a blur causes a diffrent blur to be computed for each frame of the animation with each one slightly more blurred than the previous.
         WebkitBackdropFilter: 'blur(5px)',
-        zIndex: '99'
+        zIndex: '100',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
       onClick={() => closeCart()}
     >  
-      <loading-animation></loading-animation>
+      <div
+        style={{
+          height: '200px',
+          width: '200px',
+          marginTop: '-200px',
+        }}
+      >
+        <lottie-player 
+          id="lottie-player-1" 
+          src="ae/adobe-loading-animation--rounded-7dot5px.json"
+          background="transparent"
+          speed="1"
+          loop  
+          autoplay
+        >
+        </lottie-player>
+      </div>
     </div>    
     ,
     portal_root
@@ -118,7 +66,3 @@ export default function Cart() {
 
   // --------------------------------------------
 };
-
-// ==============================================
-
-export { openCart };
