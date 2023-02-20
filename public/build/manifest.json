@@ -1,26 +1,31 @@
 {
-  "resources/js/comps/_layout/logo.svg": {
+  "public/img/heros/floating-shoe.jpeg": {
+    "file": "assets/floating-shoe-f9754a5a.jpeg",
+    "src": "public/img/heros/floating-shoe.jpeg"
+  },
+  "public/img/svg/logo.svg": {
     "file": "assets/logo-826a4c32.svg",
-    "src": "resources/js/comps/_layout/logo.svg"
+    "src": "public/img/svg/logo.svg"
   },
   "resources/js/app.css": {
-    "file": "assets/app-9339fc56.css",
+    "file": "assets/app-872a9b05.css",
     "src": "resources/js/app.css"
   },
   "resources/css/app.css": {
-    "file": "assets/app-729bd1cc.css",
+    "file": "assets/app-76e44075.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-f2b0c333.js",
+    "file": "assets/app-ef5aed5a.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-9339fc56.css"
+      "assets/app-872a9b05.css"
     ],
     "assets": [
-      "assets/logo-826a4c32.svg"
+      "assets/logo-826a4c32.svg",
+      "assets/floating-shoe-f9754a5a.jpeg"
     ]
   }
 }
