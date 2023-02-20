@@ -74,7 +74,10 @@ export default function Cart() {
 
     // lo('fire event: floading-animation-start');
     // fireEvent('loading-animation-start');
-    startLoading();
+    startLoading({
+      title: 'Submitting order',
+      message: 'Please wait...',
+    });
 
     // - - - - - - - - - - - - - - - - - - - - - 
 

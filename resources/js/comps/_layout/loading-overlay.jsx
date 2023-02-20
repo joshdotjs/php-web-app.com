@@ -1,9 +1,7 @@
-import React, { useRef, useContext } from 'react';
+import React, { useContext } from 'react';
 import { createPortal } from 'react-dom';
 
 import LoadingContext from '@/context/loading-ctx.jsx';
-
-import { lc, lg, lo, lp, lb, lr, ly } from 'util/log';
 
 // ==============================================
 
@@ -11,14 +9,7 @@ export default function LoadingOverlay() {
 
   // --------------------------------------------
 
-  const black = 'black';
-  const light = '#757575';
-  const green = '#41A139';
-
-  // --------------------------------------------
-
-  const loadingCtx = useContext(LoadingContext);
-  const { overlay_ref } = loadingCtx;
+  const { overlay_ref } = useContext(LoadingContext);
 
   // --------------------------------------------
 
@@ -46,7 +37,7 @@ export default function LoadingOverlay() {
         style={{
           height: '200px',
           width: '200px',
-          marginTop: '-200px',
+          marginTop: '-100px',
         }}
       >
         <lottie-player 

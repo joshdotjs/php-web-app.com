@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 // import { gsap } from 'gsap';
 
-// import Notifications from './notify/notify';
 // import HamburgerButton from './header-button-hamburger';
 // import CartButton from './header-button-cart';
 
