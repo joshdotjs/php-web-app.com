@@ -69,7 +69,6 @@ export default function LoadingOverlay() {
         justifyContent: 'center',
         alignItems: 'center',
       }}
-      onClick={() => closeCart()}
     >  
       <div
         style={{
