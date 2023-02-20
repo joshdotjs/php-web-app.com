@@ -114,6 +114,7 @@ export default function Cart() {
 
       // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/checkout/stripe-checkout-node`;
       const url = `${API_URL_NODE}/api/checkout/php`;
+      console.log('url:', url);
 
       const cart = getCartLS();
       const user = getLS('user');
