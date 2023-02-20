@@ -3,18 +3,10 @@ import { gsap } from "gsap";
 import { AuthContextProvider } from "@/context/auth-ctx";
 import { CartContextProvider } from "@/context/cart-ctx";
 
-import { MantineProvider, Notification } from '@mantine/core';
-
-import { 
-  NotificationsProvider, 
-  showNotification, 
-  updateNotification, 
-  cleanNotifications 
-} from '@mantine/notifications';
-
 import Header from './header';
 import Footer from './footer';
 import LoadingOverlay from "./loading/loading-overlay";
+import Notifications from "./notify/notify";
 
 import './_layout.scss';
 
@@ -25,29 +17,25 @@ export default function Layout({ children, name, restrict, gutter='gutter' }) {
   // --------------------------------------------
 
   return (
-    <MantineProvider theme={{ colors: { blue: [], }}}> 
-      <NotificationsProvider>
+    <Notifications>
+      <AuthContextProvider { ...{ restrict } }>
+        <CartContextProvider>
 
-        <AuthContextProvider { ...{ restrict } }>
-          <CartContextProvider>
+            <Header />
 
-              <Header />
+            <main id="page" className={`${name} ${gutter}`}>
+              <div className='gutter'>
+                {children}
+              </div>
+            </main> 
 
-              <main id="page" className={`${name} ${gutter}`}>
-                <div className='gutter'>
-                  {children}
-                </div>
-              </main> 
+            <Footer />
 
-              <Footer />
+            <LoadingOverlay />
 
-              <LoadingOverlay />
-          
-          </CartContextProvider>
-        </AuthContextProvider>
-
-      </NotificationsProvider>
-    </MantineProvider>
+        </CartContextProvider>
+      </AuthContextProvider>
+    </Notifications>
   );
 
   // --------------------------------------------

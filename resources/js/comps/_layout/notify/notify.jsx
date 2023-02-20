@@ -1,4 +1,7 @@
 import React from "react";
+
+import { MantineProvider } from '@mantine/core';
+
 import { 
   NotificationsProvider, 
   showNotification, 
@@ -58,4 +61,19 @@ const updateNotify = ({ id="notification", title, message, autoClose=3000, disal
 
 // ==============================================
 
+const Notifications = ({ children }) => {
+  return (
+    <MantineProvider theme={{ colors: { blue: [], }}}> 
+      <NotificationsProvider>
+
+        {children}
+        
+      </NotificationsProvider>
+    </MantineProvider>
+  );
+};
+
+// ==============================================
+
+export default Notifications;
 export { showNotify, updateNotify };
