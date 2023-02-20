@@ -2,11 +2,19 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { AuthContextProvider } from "@/context/auth-ctx";
 import { CartContextProvider } from "@/context/cart-ctx";
-import { LoadingContextProvider } from "@/context/loading-ctx";
+
+import { MantineProvider, Notification } from '@mantine/core';
+
+import { 
+  NotificationsProvider, 
+  showNotification, 
+  updateNotification, 
+  cleanNotifications 
+} from '@mantine/notifications';
 
 import Header from './header';
 import Footer from './footer';
-import LoadingOverlay from "./loading-overlay";
+import LoadingOverlay from "./loading/loading-overlay";
 
 import './_layout.scss';
 
@@ -17,25 +25,29 @@ export default function Layout({ children, name, restrict, gutter='gutter' }) {
   // --------------------------------------------
 
   return (
-    <AuthContextProvider { ...{ restrict } }>
-      <CartContextProvider>
-        <LoadingContextProvider>
+    <MantineProvider theme={{ colors: { blue: [], }}}> 
+      <NotificationsProvider>
 
-          <Header />
+        <AuthContextProvider { ...{ restrict } }>
+          <CartContextProvider>
 
-          <main id="page" className={`${name} ${gutter}`}>
-            <div className='gutter'>
-              {children}
-            </div>
-          </main> 
+              <Header />
 
-          <Footer />
+              <main id="page" className={`${name} ${gutter}`}>
+                <div className='gutter'>
+                  {children}
+                </div>
+              </main> 
 
-          <LoadingOverlay />
-      
-        </LoadingContextProvider>
-      </CartContextProvider>
-    </AuthContextProvider>
+              <Footer />
+
+              <LoadingOverlay />
+          
+          </CartContextProvider>
+        </AuthContextProvider>
+
+      </NotificationsProvider>
+    </MantineProvider>
   );
 
   // --------------------------------------------

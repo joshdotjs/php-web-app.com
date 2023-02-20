@@ -1,7 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useRef, useContext } from 'react';
 import { createPortal } from 'react-dom';
 
-import LoadingContext from '@/context/loading-ctx.jsx';
+import { gsap } from 'gsap';
+
+// import LoadingContext from '@/context/loading-ctx.jsx';
+
+
+import { showNotify, updateNotify } from '@/comps/_layout/notify/notify';
+import { lr, lg } from '@/util/log';
+
+// ==============================================
+
+let startLoading, stopLoading;
 
 // ==============================================
 
@@ -9,11 +19,39 @@ export default function LoadingOverlay() {
 
   // --------------------------------------------
 
-  const { overlay_ref } = useContext(LoadingContext);
+  // const { overlay_ref } = useContext(LoadingContext);
+  const overlay_ref = useRef(null);
 
   // --------------------------------------------
 
   const portal_root = document.querySelector('#portal-loading');
+
+  // --------------------------------------------
+
+  startLoading = () => {
+    const ref = overlay_ref.current;
+    ref.style.display = 'flex';
+    gsap.to(ref, { 
+      opacity: 1, 
+      duration: 0.3,
+      onStart: () => {
+        document.body.style.overflow = "hidden"; // don't scroll stuff underneath the modal
+      },
+    });
+  };
+
+  // --------------------------------------------
+
+  stopLoading = () => {
+    const ref = overlay_ref.current;
+    gsap.to(ref, { 
+      opacity: 0,
+        duration: 0.3, 
+        onComplete: () => {
+          ref.style.display = 'none';
+          document.body.style.overflow = "overlay"; // custom scrollbar overlay
+      }});
+  };
 
   // --------------------------------------------
 
@@ -42,7 +80,7 @@ export default function LoadingOverlay() {
       >
         <lottie-player 
           id="lottie-player-1" 
-          src="ae/adobe-loading-animation--rounded-7dot5px.json"
+          src="/ae/adobe-loading-animation--rounded-7dot5px.json"
           background="transparent"
           speed="1"
           loop  
@@ -57,3 +95,7 @@ export default function LoadingOverlay() {
 
   // --------------------------------------------
 };
+
+// ==============================================
+
+export { startLoading, stopLoading };

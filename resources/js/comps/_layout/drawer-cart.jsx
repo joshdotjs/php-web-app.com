@@ -4,8 +4,6 @@ import uuid from 'react-uuid';
 import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 
-import LoadingContext from '@/context/loading-ctx';
-
 import Button from '@/comps/button/button';
 
 import { lc, lg, lo, lp, lb, lr, ly } from 'util/log';
@@ -14,6 +12,25 @@ import { getCartLS, removeFromCartLS, updateNumCartItems, clearCartLS } from '@/
 import { getLS, setLS } from 'util/local-storage';
 
 // import { fireEvent } from 'util/events.js';
+
+import { startLoading, stopLoading } from '@/comps/_layout/loading/loading-overlay';
+import { showNotify, updateNotify } from "@/comps/_layout/notify/notify";
+
+// ==============================================
+
+const redirect = (path /* string */ ) => {
+
+  console.log('redirect()');
+  gsap.to(document.body, { 
+    opacity: 0,
+    onComplete: () => {
+      console.log('onComplete()');
+      window.location = path;
+    },
+  });
+}
+
+// ==============================================
 
 gsap.registerPlugin(Flip);
 
@@ -59,12 +76,6 @@ export default function Cart() {
   const black = 'black';
   const light = '#757575';
   const green = '#41A139';
-  
-  // --------------------------------------------
-
-  const loadingCtx = useContext(LoadingContext);
-  const { startLoading, stopLoading } = loadingCtx;
-
 
   // --------------------------------------------
 
@@ -74,16 +85,32 @@ export default function Cart() {
 
     // lo('fire event: floading-animation-start');
     // fireEvent('loading-animation-start');
-    startLoading({
-      title: 'Submitting order',
-      message: 'Please wait...',
+    startLoading();
+
+    showNotify({
+      id: 'loading-notification',
+      loading: false,
+      title: 'Sending to checkout',
+      message: 'Just chill...',
+      autoClose: false,
+      disallowClose: true,
+      icon: (
+        <lottie-player 
+          src="/ae/adobe-loading-animation--rounded-7dot-5px--dark.json"
+          background="transparent"
+          speed="1"
+          loop  
+          autoplay
+        >
+        </lottie-player>
+      ),
     });
 
     // - - - - - - - - - - - - - - - - - - - - - 
 
     const submitOrderToNode = () => {
 
-      lr('submitOrderToNode()');
+      lo('submitOrderToNode()');
 
       // const url = `${process.env.NEXT_PUBLIC_API_URL}/api/checkout/stripe-checkout-node`;
       const url = `${API_URL_NODE}/api/checkout/php`;
@@ -91,10 +118,35 @@ export default function Cart() {
       const cart = getCartLS();
       const user = getLS('user');
       
-      if (!user) {
-        alert('please login to checkout.');
-        window.location = '/auth/login';
-      } else {
+      if (!user) { // case 1: user is not logged in
+
+        lr('user is not logged in');
+
+        setTimeout(() => {
+          
+          updateNotify({
+            id: 'loading-notification',
+            title: 'Sending to login',
+            message: 'Just chill...',
+            icon: 
+            <lottie-player 
+              src="/ae/adobe-loading-animation--rounded-7dot-5px--dark.json"
+              background="transparent"
+              speed="1"
+              loop  
+              autoplay
+            >
+            </lottie-player>
+            ,
+            autoClose: 1000,
+            onClose: () => {
+              stopLoading();
+              redirect('/auth/login');
+            }
+          });
+        }, 1500);
+
+      } else { // case 2: user is logged in
 
         fetch(url, {
           method: "POST",
@@ -106,15 +158,26 @@ export default function Cart() {
               return res.json();          
             return res.json().then((json) => Promise.reject(json));
           })
-          .then((data) => {
+          .then((data) => { // case 2.a: successful node endpoint hit - redirect to stripe checkout
             console.log('fetch().then().then() -- data: ', data); 
             const { url, payment_intent_id } = data;
             setLS('payment_intent_id', payment_intent_id);
 
-            window.location = url;
+            redirect(url);
           })
-          .catch(e => {
+          .catch(e => { // case 2.b: error from node endpoint - display error message from backend
             console.error(e.error);
+            // TODO: Robust error handling on backend endpoint and send descriptive error message to here
+            // TODO: Robust error handling on backend endpoint and send descriptive error message to here
+            // TODO: Robust error handling on backend endpoint and send descriptive error message to here
+            // TODO: Robust error handling on backend endpoint and send descriptive error message to here
+
+            stopLoading({
+              title: 'Error',
+              message: e.error,
+              status: 'error',
+            });
+
           });
       }
     };

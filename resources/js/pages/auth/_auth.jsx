@@ -4,20 +4,14 @@ import { gsap } from 'gsap';
 
 import AuthContext from '@/context/auth-ctx';
 
-// import { Modal, Button, Group, Table } from '@mantine/core';
-import { 
-  NotificationsProvider, 
-  showNotification, 
-  updateNotification, 
-  cleanNotifications 
-} from '@mantine/notifications';
-
 import logo from 'img/svg/logo.svg';
 
 import { lc, lg, lo, lp, lb, lr, ly, log } from 'util/log';
 import { getLS, setLS } from 'util/local-storage';
 import { fireEvent } from 'util/custom-event';
 import { fetchPOST2 } from 'util/fetch';
+
+import { showNotify, updateNotify } from "@/comps/_layout/notify/notify";
 
 // ==============================================
 
@@ -124,7 +118,7 @@ export default function PageAuth({ auth_type }) {
 
     e.preventDefault();
 
-    showNotification({
+    showNotify({
       id: 'auth-notification',
       loading: true,
       title: 'Authenticating...',
@@ -165,7 +159,7 @@ export default function PageAuth({ auth_type }) {
     console.log('error: ', error);
 
     if (data.status === 2 && !error) {
-      updateNotification({
+      updateNotify({
         id: 'auth-notification',
         color: 'teal',
         title: 'Success!',
@@ -194,7 +188,7 @@ export default function PageAuth({ auth_type }) {
 
       const { validation_failure, message } = data;
 
-      updateNotification({
+      updateNotify({
         id: 'auth-notification',
         color: 'red',
         title: 'Error!',
@@ -294,8 +288,7 @@ export default function PageAuth({ auth_type }) {
   // --------------------------------------------
 
   return (
-    <>
-      <NotificationsProvider />
+    // <NotificationsProvider>
 
       <div
         className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -412,6 +405,6 @@ export default function PageAuth({ auth_type }) {
         </div>
       </div>
     
-    </>
+    // </NotificationsProvider>
   );
 }
