@@ -9,19 +9,19 @@ const img_map = {
     'shoes': { title: 'Infinity React 3', img: '/img/products/shoes/women/Infinity-React-3-white.webp' },
     'clothes': { title: 'Dri Fit One', img: '/img/products/clothes/women/Dri-FIT-One-blue.webp' },
     'accessories': { title: 'Nike Swoosh Green', img: '/img/products/clothes/women/Nike-Swoosh-green.webp' }, 
-    'equipment': { title: 'Nike Swoosh Green', img: '/img/products/clothes/women/Nike-Swoosh-green.webp'  }, 
+    'equipment': { title: 'Nike Swoosh Green', img: '/img/products/accessories/women/Essential-Horizon-pink.webp'  }, 
   },
   'new': {
     'shoes': { title: 'Infinity React 3', img: '/img/products/shoes/women/Infinity-React-3-white.webp' },
-    'clothes': { title: 'Dri Fit One', img: '/img/products/clothes/women/Dri-FIT-One-blue.webp' },
-    'accessories': { title: 'Nike Swoosh Green', img: '/img/products/clothes/women/Nike-Swoosh-green.webp' }, 
-    'equipment': { title: 'Nike Swoosh Green', img: '/img/products/clothes/women/Nike-Swoosh-green.webp'  }, 
+    'clothes': { title: 'Dri Fit One', img: '/img/products/clothes/women/Nike-Sportswear-pink.webp' },
+    'accessories': { title: 'Nike Swoosh Green', img: '/img/products/accessories/unisex/Maverick-Polarized-Glasses-blue.webp' }, 
+    'equipment': { title: 'Nike Swoosh Green', img: '/img/products/accessories/unisex/tennis-bag-white.jpeg'  }, 
   },
   'sale': {
-    'shoes': { title: 'Infinity React 3', img: '/img/products/shoes/women/Infinity-React-3-white.webp' },
+    'shoes': { title: 'Infinity React 3', img: '/img/products/shoes/women/Pegasus-Trail-4-pink.webp' },
     'clothes': { title: 'Dri Fit One', img: '/img/products/clothes/women/Dri-FIT-One-blue.webp' },
-    'accessories': { title: 'Nike Swoosh Green', img: '/img/products/clothes/women/Nike-Swoosh-green.webp' }, 
-    'equipment': { title: 'Nike Swoosh Green', img: '/img/products/clothes/women/Nike-Swoosh-green.webp'  }, 
+    'accessories': { title: 'Nike Swoosh Green', img: '/img/products/accessories/unisex/Faux-Fur-Blanket-2.webp' }, 
+    'equipment': { title: 'Nike Swoosh Green', img: '/img/products/accessories/unisex/tennis-bag-white.jpeg'  }, 
   },
 };
 

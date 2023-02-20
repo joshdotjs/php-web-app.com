@@ -86,7 +86,7 @@
     'body'          =>  "The Nike Invincible 2 has the same supersoft feel that lets you feel the potential when your foot hits the pavement. We created the shoe with plenty of snappy responsiveness and incredible support to help keep you feeling secure and competitive. It's 1 of our most tested shoes, still designed for you to stay on the track and away from the sidelines.",     
     'category'      =>  "shoes",     
     'gender'        =>  "men",     
-    'tag'           =>  "new",     
+    'tag'           =>  "sale",     
     'price'         =>   10497,
     'price_compare' =>   18000,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -97,9 +97,9 @@
     'body'          =>  "Navigate the up and downs of uncompromising terrain with the Nike Zegama. Developed with great grip and stability, it has you covered so you can keep climbing and reach greater personal heights when the going gets grimy and gritty. Whether it's a challenging, rocky landscape going uphill or a steep, slick decline down a treacherous trail, feel confident when you decide to off-road it.",     
     'category'      =>  "shoes",     
     'gender'        =>  "men",     
-    'tag'           =>  "",     
+    'tag'           =>  "new",     
     'price'         =>   16000,
-    'price_compare' =>   11197,
+    'price_compare' =>   16000,
     'created_at'    =>  date("Y-m-d H:i:s")
   ]);
   DB::table('products')->insert([
@@ -108,7 +108,7 @@
     'body'          =>  "Let the Nike Pegasus 39 help you ascend to new heights. More lightweight up top than the Pegasus 38 and ideal to wear in any season, it has a supportive sensation to help keep your feet contained, while underfoot cushioning and double Zoom Air units (1 more than the Peg 38) give you an extra pop to your step. Your trusted workhorse with wings is back. Time to fly.",     
     'category'      =>  "shoes",     
     'gender'        =>  "men",     
-    'tag'           =>  "",     
+    'tag'           =>  "sale",     
     'price'         =>   10497,
     'price_compare' =>   13900,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -130,7 +130,7 @@
     'body'          =>  "It's time to get outside. Running is your daily ritual, taking you from road to trail as you seek out new routes and goals. With a supportive, springy feel, these trail runners can take you there and back again. Underfoot traction helps keep you going over rocky terrain while still providing a smooth ride for the road. Your trusted workhorse with wings is back and ready for an off-road adventure.",     
     'category'      =>  "shoes",     
     'gender'        =>  "women",     
-    'tag'           =>  "sale",     
+    'tag'           =>  "new",     
     'price'         =>   14500,
     'price_compare' =>   14500,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -141,7 +141,7 @@
     'body'          =>  "Continue the next evolution of speed with a racing shoe made to you help chase new goals and records. It helps improve comfort and breathability with a redesigned upper. From a 10K to a marathon, this model, like the previous version, has the responsive cushioning and secure support to push you towards your personal best.",     
     'category'      =>  "shoes",     
     'gender'        =>  "women",     
-    'tag'           =>  "",     
+    'tag'           =>  "sale",     
     'price'         =>   21297,
     'price_compare' =>   25000,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -152,7 +152,7 @@
     'body'          =>  "The Nike Structure 24 has you ready to hit the road. We tested hundreds of runners to design the crash pad under your heel that creates a cushioned, smooth transition from heel to toe. Those insights also created an airy upper with breathability right where you need it.",     
     'category'      =>  "shoes",     
     'gender'        =>  "women",     
-    'tag'           =>  "",     
+    'tag'           =>  "sale",     
     'price'         =>   11097,
     'price_compare' =>   13000,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -163,7 +163,7 @@
     'body'          =>  "Bridge the gap between your weekend training run and race day in a durable design that can be deployed not just at the starting line of your favorite race, but in the days and months after your conquest. It offers comfort and reliability but with a propulsive sensation that’ll help you feel fast and fresh. That kind of versatility is uncommon in the running arena. But who said you can’t have it all?",     
     'category'      =>  "shoes",     
     'gender'        =>  "women",     
-    'tag'           =>  "",     
+    'tag'           =>  "sale",     
     'price'         =>   13697,
     'price_compare' =>   16000,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -218,7 +218,7 @@
     'body'          =>  "Tapping into the iconic ACG Oregon Series from 2002, these cargo pants follow the original design lines for that authentic, trail-ready look and feel. They're made with durable woven fabric, and a reinforced seat to help them withstand your most rugged adventures. Multi-purpose cargo pockets give you secure space to store your hiking essentials and the integrated belt helps you find a comfy fit for the long haul.",     
     'category'      =>  "clothes",     
     'gender'        =>  "men",     
-    'tag'           =>  "sale",     
+    'tag'           =>  "new",     
     'price'         =>   20500,
     'price_compare' =>   20500,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -262,7 +262,7 @@
     'body'          =>  "The Nike Sportswear Windrunner Jacket updates our first running windbreaker with lightweight fabric made from recycled materials. Design details pulled from the original version provide a heritage Nike look. This product is made with 100% recycled polyester fibers.",     
     'category'      =>  "clothes",     
     'gender'        =>  "men",     
-    'tag'           =>  "new",     
+    'tag'           =>  "sale",     
     'price'         =>   7597,
     'price_compare' =>   10000,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -273,7 +273,7 @@
     'body'          =>  "Classic and comfortable, the Nike Sportswear Heritage 86 Cap features a 6-panel design made from cotton twill fabric and an adjustable closure for a snug, secure fit.",     
     'category'      =>  "accessories",     
     'gender'        =>  "unisex",     
-    'tag'           =>  "sale",     
+    'tag'           =>  "new",     
     'price'         =>   2400,
     'price_compare' =>   2400,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -328,7 +328,7 @@
     'body'          =>  "Serena doesn't shy away from being bold and daring with her style, and neither do you. The Serena Williams Design Crew Stash Duffel is as fun as it is functional—a main compartment creates plenty of space for your gear from the court to the gym and everything else life throws your way. Need some space? The front zippered pocket provides secure small-item storage and turns inside out to store the bag easily when not in use.",     
     'category'      =>  "accessories",     
     'gender'        =>  "women",     
-    'tag'           =>  "sale",     
+    'tag'           =>  "new",     
     'price'         =>   4900,
     'price_compare' =>   4900,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -383,7 +383,7 @@
     'body'          =>  "When everyday runs are on the menu, the Nike Renew Ride 3 Premium comes through with a smooth and soft ride. It has a secure fit and cozy feel, geared for those looking to find their running potential, while a subtle wink at the tongue reminds you to find the fun on your route. It's so comfortable, you'll want to keep wearing it throughout your day.",     
     'category'      =>  "shoes",     
     'gender'        =>  "women",     
-    'tag'           =>  "",     
+    'tag'           =>  "sale",     
     'price'         =>   5697,
     'price_compare' =>   8000,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -405,7 +405,7 @@
     'body'          =>  "When the road beckons, answer the call in a lightweight pair that’ll keep you moving mile after mile. Soft foam cushions your stride, and a reinforced heel delivers a smooth, stable ride. Crafted with knit material for breathable support, while a minimalist design fits in just about anywhere your day takes you.",     
     'category'      =>  "shoes",     
     'gender'        =>  "men ",     
-    'tag'           =>  "",     
+    'tag'           =>  "sale",     
     'price'         =>   4497,
     'price_compare' =>   6500,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -416,7 +416,7 @@
     'body'          =>  "Run the trail in a super responsive running shoe. Fast and lightweight, it delivers a breathable and secure feel as you race over rocky paths. Updated traction lugs provide stability for your downhill miles.",     
     'category'      =>  "shoes",     
     'gender'        =>  "men",     
-    'tag'           =>  "",     
+    'tag'           =>  "sale",     
     'price'         =>   9797,
     'price_compare' =>   14000,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -427,7 +427,7 @@
     'body'          =>  "With soft and supportive cushioning, built to help keep you on the run, the Infinity React 3 is here to help get you moving Regardless of whether your pace is snail-like or lickety-split, it helps keep you on the go. Expressive, playful graphics remind you fun can be found in every stride, even when those heavy miles won’t run themselves. So go ahead, put 1 foot in front of the other, we’ve got you.",     
     'category'      =>  "shoes",     
     'gender'        =>  "men",     
-    'tag'           =>  "sale",     
+    'tag'           =>  "",     
     'price'         =>   17000,
     'price_compare' =>   17000,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -460,7 +460,7 @@
     'body'          =>  "Take on those tough and extreme trail runs with the rugged build of the Nike Wildhorse 7. Confidently take on rocky terrain with high-abrasion rubber on the outsole that adds durable traction. The upper delivers durable ventilation with support where you need it. Foam midsole cushioning gives a neutral feel and provides responsiveness on every mile.",     
     'category'      =>  "shoes",     
     'gender'        =>  "men",     
-    'tag'           =>  "",     
+    'tag'           =>  "sale",     
     'price'         =>   8997,
     'price_compare' =>   13000,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -471,7 +471,7 @@
     'body'          =>  "Cushioned and comfortable, just like every run should feel. The Nike React Miler 3 gives you a soft and smooth ride as your feet hit the pavement. We added stability at the heel for a secure sensation, while durable traction helps keep you going on runs long and short.",     
     'category'      =>  "shoes",     
     'gender'        =>  "men",     
-    'tag'           =>  "",     
+    'tag'           =>  "sale",     
     'price'         =>   7197,
     'price_compare' =>   12000,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -493,7 +493,7 @@
     'body'          =>  "Lace up and feel the legacy. Produced at the intersection of art, music and culture, this champion running shoe helped define the ‘90s. Worn by presidents, revolutionized through collabs and celebrated through rare colorways, its striking visuals and exposed Nike Air keep it alive and well.",     
     'category'      =>  "shoes",     
     'gender'        =>  "women",     
-    'tag'           =>  "sale",     
+    'tag'           =>  "new",     
     'price'         =>   13000,
     'price_compare' =>   13000,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -515,7 +515,7 @@
     'body'          =>  "An essential piece to your running game gets an update on the Nike Repel Miler Jacket. It's built to take on wet weather with a water-repellent design and a hood. The packable design features a look steeped in Nike's heritage. This product is made with 100% recycled polyester fibers.",     
     'category'      =>  "clothes",     
     'gender'        =>  "men",     
-    'tag'           =>  "",     
+    'tag'           =>  "new",     
     'price'         =>   9000,
     'price_compare' =>   9000,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -526,7 +526,7 @@
     'body'          =>  "Celebrate the seasonal shift of weather by bundling up in this blanket. Made of the coziest faux fur fleece, this statement piece does double-duty as oversized layering piece or softest spot on your couch.",     
     'category'      =>  "accessories",     
     'gender'        =>  "unisex",     
-    'tag'           =>  "new",     
+    'tag'           =>  "sale",     
     'price'         =>   17097,
     'price_compare' =>   20000,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -537,7 +537,7 @@
     'body'          =>  "Comfortably zen, just like every run should be. With the Nike Flex Experience Run 11 Next Nature, we created a lightweight, clean design that feels as good as it looks. The shoes are supportive in all the right ways with movement so natural, you'll swear you've been wearing them for years.",     
     'category'      =>  "shoes",     
     'gender'        =>  "men",     
-    'tag'           =>  "",     
+    'tag'           =>  "sale",     
     'price'         =>   4197,
     'price_compare' =>   7000,
     'created_at'    =>  date("Y-m-d H:i:s")
@@ -548,7 +548,7 @@
     'body'          =>  "Your workhorse with wings returns. The Nike Air Zoom Pegasus 38 (NFL New Orleans Saints) puts a spring in your step while showing love for your team. Breathable mesh in the upper combines the comfort and durability you want with a wider fit at the toes.",     
     'category'      =>  "shoes",     
     'gender'        =>  "men",     
-    'tag'           =>  "",     
+    'tag'           =>  "sale",     
     'price'         =>   6500,
     'price_compare' =>   13000,
     'created_at'    =>  date("Y-m-d H:i:s")
