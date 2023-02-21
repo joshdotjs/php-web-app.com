@@ -16,19 +16,10 @@ import { getLS, setLS } from 'util/local-storage';
 import { startLoading, stopLoading } from '@/comps/_layout/loading/loading-overlay';
 import { showNotify, updateNotify } from "@/comps/_layout/notify/notify";
 
+import { redirect } from '@/comps/link/link';
+
 // ==============================================
 
-const redirect = (path /* string */ ) => {
-
-  console.log('redirect()');
-  gsap.to(document.body, { 
-    opacity: 0,
-    onComplete: () => {
-      console.log('onComplete()');
-      window.location = path;
-    },
-  });
-}
 
 // ==============================================
 

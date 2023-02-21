@@ -1,5 +1,7 @@
 import React from "react";
 
+import Link from "@/comps/link/link";
+
 import { setLS } from '@/util/local-storage';
 
 // ==============================================
@@ -22,13 +24,13 @@ export default function Storefront() {
         <h1 className="text-4xl font-bold tracking-tight text-white lg:text-6xl">eCommerce Store</h1>
         <p className="mt-4 text-xl text-white">This demo eCommerce store includes a full blown Buy Now Pay Later (BNPL) checkout flow. Go to the /store page to add items to your cart and checkout to test it!</p>
         
-        <a 
+        <Link
           href="/store" 
           className="mt-8 inline-block rounded-md border border-transparent bg-white py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100"
           style={{ borderRadius: '100vmax' }}
         >
           Shop Now
-        </a>
+        </Link>
 
       </div>
     </div>
