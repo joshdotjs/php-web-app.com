@@ -60,22 +60,6 @@ function Page() {
 
   // --------------------------------------------
 
-  // const products = [
-  //   {
-  //     id: 1,
-  //     name: 'Basic Tee',
-  //     href: '#',
-  //     price: '$36.00',
-  //     color: 'Charcoal',
-  //     size: 'L',
-  //     imageSrc: 'https://tailwindui.com/img/ecommerce-images/confirmation-page-06-product-01.jpg',
-  //     imageAlt: "Model wearing men's charcoal basic tee in large.",
-  //   },
-  //   // More products...
-  // ];
-
-  // --------------------------------------------
-
   return (
     <Layout name="order-summary" gutter="no-gutter">
       <main className="relative lg:min-h-full">
@@ -154,7 +138,7 @@ function Page() {
               </dl>
 
               <dl className="mt-16 grid grid-cols-2 gap-x-4 text-sm text-gray-600">
-                <div>
+                {/* <div>
                   <dt className="font-medium text-gray-900">Shipping Address</dt>
                   <dd className="mt-2">
                     <address className="not-italic">
@@ -163,7 +147,7 @@ function Page() {
                       <span className="block">Dallas, TX 75001</span>
                     </address>
                   </dd>
-                </div>
+                </div> */}
                 <div>
                   <dt className="font-medium text-gray-900">Payment Information</dt>
                   <dd className="mt-2 space-y-2 sm:flex sm:space-y-0 sm:space-x-4">
@@ -178,8 +162,8 @@ function Page() {
                       <p className="sr-only">Visa</p>
                     </div>
                     <div className="flex-auto">
-                      <p className="text-gray-900">Ending with 4242</p>
-                      <p>Expires 12 / 21</p>
+                      <p className="text-gray-900">Ending with {order?.card_last4}</p>
+                      <p>Expires: {order?.card_exp_month} / {order?.card_exp_year}</p>
                     </div>
                   </dd>
                 </div>
