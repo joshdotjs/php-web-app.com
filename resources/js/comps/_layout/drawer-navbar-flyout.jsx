@@ -2,6 +2,8 @@ import React, { Fragment, useCallback, useEffect, useLayoutEffect, useRef, useSt
 // import { createPortal } from 'react-dom';
 import { gsap } from "gsap";
 
+import Link from '@/comps/link/link';
+
 import { transitionTextColor } from '@/util/transition';
 import { lc, lg, lo, lp, lb, lr, ly } from '@/util/log';
 import { disableClick, enableClick } from '@/util/dom';
@@ -22,7 +24,7 @@ const flyout_height_minus_translation = `${300 - 120}px`; // flyout - header
 // ==============================================
 
 const Card = ({ jdx, title, img, classes, onHover, offHover, active_hovered, category, gender, tag }) => (
-  <a 
+  <Link 
     href="/store"
     className={`
       cursor-pointer
@@ -37,7 +39,7 @@ const Card = ({ jdx, title, img, classes, onHover, offHover, active_hovered, cat
     <img src={img} className={`rounded-md overflow-hidden mb-4 w-full ${active_hovered === jdx ? 'opacity-80' : 'opacity-100'}`}  />
     <h5 className={`text-sm font-medium ${active_hovered === jdx ? 'text-indigo-600' : 'text-gray-900'}`}>{title}</h5>
     <p className="text-sm text-gray-500">Shop now</p>
-  </a>
+  </Link>
 );
 
 // ==============================================

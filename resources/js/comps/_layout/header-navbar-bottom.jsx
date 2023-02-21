@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 // import { gsap } from 'gsap';
 
+import Link from '@/comps/link/link';
 import HamburgerButton from './header-button-hamburger';
 import CartButton from './header-button-cart';
 import NavbarFlyoutDrawer, { 
@@ -46,12 +47,9 @@ export default function NavbarBottom() {
       <nav id="bottom">
         <div className="gutter">
 
-          <a 
-            href="/"
-            >
+          <Link href="/">
             <img className="h-8 w-auto" src={logo} alt="Logo" />
-          </a>
-
+          </Link>
 
           <ul // navlinks
             className="hidden md:flex"
@@ -62,12 +60,14 @@ export default function NavbarBottom() {
             <li className={`pt-[2px] hidden lg:block ${transitionTextColor(active_panel === 3 && drawer_open, 'border-b-2', 'border-b-2 border-transparent')}`} onClick={() => openFlyout(3)}>Sale</li>
           </ul>
 
-
           <div // buttons container
             className="flex  justify-between  w-[110px]  md:w-fit"
-            >
+          >
 
-            <CartButton onClick={() => openCart({})} {...{cart_btn_ref, cart_count_ref, cart_icon_target_ref}} />
+            <CartButton 
+              onClick={() => openCart({})} 
+              {...{cart_btn_ref, cart_count_ref, cart_icon_target_ref}} 
+            />
 
             <HamburgerButton onClick={() => openNavDrawer()}/>
 
