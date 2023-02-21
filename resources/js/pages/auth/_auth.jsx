@@ -363,7 +363,8 @@ export default function PageAuth({ auth_type }) {
                   className="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   style={{ borderRadius: '100vmax' }}
                 >
-                  Sign in
+                  {auth_type === 'login' && <span>Sign in</span>}
+                  {auth_type === 'register' && <span>Register</span>}
                 </button>
               </div>
             </form>
