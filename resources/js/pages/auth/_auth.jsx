@@ -170,15 +170,14 @@ export default function PageAuth({ auth_type }) {
           </svg>
         ,
         autoClose: 2000,
-        onClose: () => {}
+        onClose: () => {
+          const { user, token } = data;
+          console.log('user: ', user);
+          console.log('token: ', token);
+          logIn({ user, token });
+        }
       });
 
-      setTimeout(() => {
-        const { user, token } = data;
-        console.log('user: ', user);
-        console.log('token: ', token);
-        logIn({ user, token });
-      }, 1e3);
 
     }
     if (data.status === 1 || error) {

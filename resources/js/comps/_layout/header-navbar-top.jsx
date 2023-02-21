@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 // import { gsap } from 'gsap';
 
+import Link from '@/comps/link/link';
+
 // import HamburgerButton from './header-button-hamburger';
 // import CartButton from './header-button-cart';
 
@@ -26,12 +28,12 @@ export default function NavbarTop() {
     <nav id="top">
       <div className="gutter">
         
-        <a id="logo-text" href="/" >React</a>
+        <Link id="logo-text" href="/" >React</Link>
 
         <ul id="nav-links">
 
           <li className="nav-link hidden md:inline">
-            <a href="/store">Store</a>
+            <Link href="/store">Store</Link>
           </li>
 
           <span className="hidden md:inline mx-2">│</span>
@@ -48,7 +50,7 @@ export default function NavbarTop() {
                 <span className="mx-2">│</span>
 
                 <li className="nav-link inline">
-                  <a href="/admin-dashboard">{user?.email}</a>
+                  <Link href="/admin-dashboard">{user?.email}</Link>
                 </li>
               </>
             )
@@ -56,13 +58,13 @@ export default function NavbarTop() {
             (
               <>
                 <li className="nav-link inline">
-                  <a href="/auth/register">Register</a>
+                  <Link href="/auth/register">Register</Link>
                 </li>
 
                 <span className="mx-2">│</span>
 
                 <li className="nav-link inline">
-                  <a href="/auth/login">Log in</a>
+                  <Link href="/auth/login">Log in</Link>
                 </li>
               </>
             )

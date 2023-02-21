@@ -1,7 +1,7 @@
 import React, { useState, createContext, useEffect } from 'react';
 
 import { getLS, setLS, removeLS } from '@/util/local-storage';
-import { redirect } from '@/util/routes';
+import { redirect } from "@/comps/link/link";
 
 // ==============================================
 
