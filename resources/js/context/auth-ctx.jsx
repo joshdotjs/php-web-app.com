@@ -81,14 +81,15 @@ function AuthContextProvider ({ children, restrict }) {
     setLoggedIn(true);
     setLS('logged_in', true);
 
-    if (user?.is_admin) {
-      // router.push('/admin');
-      redirect('/admin');
-    }
-    else {
-      // router.push('/user');
-      redirect('/user');
-    }
+    // if (user?.is_admin) {
+    //   // router.push('/admin');
+    //   redirect('/admin');
+    // }
+    // else {
+    //   // router.push('/user');
+    //   redirect('/user');
+    // }
+    redirect('/');
   };
 
   // --------------------------------------------
