@@ -11,6 +11,7 @@ import { getLS, setLS } from 'util/local-storage';
 import { fireEvent } from 'util/custom-event';
 import { fetchPOST2 } from 'util/fetch';
 
+import { startLoading, stopLoading } from '@/comps/_layout/loading/loading-overlay';
 import { showNotify, updateNotify } from "@/comps/_layout/notify/notify";
 
 // ==============================================
@@ -118,13 +119,24 @@ export default function PageAuth({ auth_type }) {
 
     e.preventDefault();
 
+    startLoading();
     showNotify({
       id: 'auth-notification',
-      loading: true,
+      loading: false,
       title: 'Authenticating...',
       message: 'Logging you in',
       autoClose: false,
       disallowClose: true,
+      icon: (
+        <lottie-player 
+          src="/ae/adobe-loading-animation--rounded-7dot-5px--dark.json"
+          background="transparent"
+          speed="1"
+          loop  
+          autoplay
+        >
+        </lottie-player>
+      ),
     });
 
     // clear previous errors
@@ -159,6 +171,7 @@ export default function PageAuth({ auth_type }) {
     console.log('error: ', error);
 
     if (data.status === 2 && !error) {
+
       updateNotify({
         id: 'auth-notification',
         color: 'teal',
@@ -187,6 +200,11 @@ export default function PageAuth({ auth_type }) {
 
       const { validation_failure, message } = data;
 
+      setTimeout(() => {
+        setFormValidationErrors((prev) => ({ ...prev,  [validation_failure]: { error: true, message } }))
+        stopLoading();
+      }, 1500);
+
       updateNotify({
         id: 'auth-notification',
         color: 'red',
@@ -201,7 +219,7 @@ export default function PageAuth({ auth_type }) {
         onClose: () => {}
       });
 
-      setFormValidationErrors((prev) => ({ ...prev,  [validation_failure]: { error: true, message } }));
+      
     }
   };
 

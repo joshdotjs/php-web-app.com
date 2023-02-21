@@ -42,7 +42,7 @@ export default function LoadingOverlay() {
 
   // --------------------------------------------
 
-  stopLoading = () => {
+  stopLoading = (onComplete=()=>{}) => {
     const ref = overlay_ref.current;
     gsap.to(ref, { 
       opacity: 0,
@@ -50,6 +50,7 @@ export default function LoadingOverlay() {
         onComplete: () => {
           ref.style.display = 'none';
           document.body.style.overflow = "overlay"; // custom scrollbar overlay
+          onComplete();
       }});
   };
 
