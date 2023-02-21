@@ -656,6 +656,8 @@ export default function Cart() {
           </div>
 
           <Button
+            hollow={true}
+            text_color="black"
             disabled={layout.items.length === 0}
             onClick={() => { 
               layout.items.map(item => remove(item));
@@ -663,7 +665,7 @@ export default function Cart() {
             }}
             classes="mb-4"
             >
-            Clear
+            Empty Cart
           </Button>
 
 

@@ -2,7 +2,7 @@ import React from "react";
 
 // ==============================================
 
-export default function Button({ children, onClick, disabled=false, classes, width=null, translucent=false, bg_color='black', text_color='white' }) {
+export default function Button({ children, onClick, disabled=false, classes, width=null, translucent=false, bg_color='black', text_color='white', hollow=false }) {
   return (
     <button
       type="button"
@@ -20,18 +20,29 @@ export default function Button({ children, onClick, disabled=false, classes, wid
         p-2 md:p-3
       `}
       
-      style={{
-        background: translucent ? 'rgba(0, 0, 0, 0.85)'  : bg_color,
-        backdropFilter: translucent ? 'blur(2px)' : '',
-        WebkitBackdropFilter: translucent ? 'blur(2px)' : '',
-        border: translucent ? '1px solid rgba( 255, 255, 255, 0.1)' : '',
-
-        color: text_color,
-        // padding: '0.75rem',
-        width: '100%',
-        borderRadius: '100vmax',
-        fontWeight: '500',
-      }}
+      style={
+        hollow 
+        ? 
+        {
+          background: 'transparent',
+          border: `solid ${text_color} 2px`,
+          color: text_color,
+          width: '100%',
+          borderRadius: '100vmax',
+          fontWeight: '500',          
+        } 
+        : 
+        {
+          background: translucent ? 'rgba(0, 0, 0, 0.85)'  : bg_color,
+          backdropFilter: translucent ? 'blur(2px)' : '',
+          WebkitBackdropFilter: translucent ? 'blur(2px)' : '',
+          border: translucent ? '2px solid rgba( 255, 255, 255, 0.1)' : `2px solid ${bg_color}`,
+          color: text_color,
+          width: '100%',
+          borderRadius: '100vmax',
+          fontWeight: '500',
+        }
+      }
       disabled={disabled}
     >
       {children}
