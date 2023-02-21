@@ -6,7 +6,6 @@ import { setLS } from '@/util/local-storage';
 
 // ==============================================
 
-
 export default function Storefront() {
 
   // -----------------------------------------------
@@ -47,7 +46,7 @@ export default function Storefront() {
         <p className="mt-4 text-base text-gray-500">Click one of the links below to be sent to the store page with the corresponding filters applied.</p>
   
         <div className="mt-10 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">
-          <a 
+          <Link 
             href="/store" 
             onClick={() => {
               setLS('filters', { category: 'all', gender: 'men', tag: 'none' });
@@ -60,9 +59,9 @@ export default function Storefront() {
             </div>
             <h3 className="mt-4 text-base font-semibold text-gray-900">Men's Collection</h3>
             <p className="mt-2 text-sm text-gray-500">The men's collection contains products that were made for men. There are several different sub-categories in the men's collection.</p>
-          </a>
+          </Link>
   
-          <a 
+          <Link 
             href="/store" 
             onClick={() => {
               setLS('filters', { category: 'all', gender: 'women', tag: 'none' });
@@ -75,9 +74,9 @@ export default function Storefront() {
             </div>
             <h3 className="mt-4 text-base font-semibold text-gray-900">Women's Collection</h3>
             <p className="mt-2 text-sm text-gray-500">The wommen's collection contains products that were made for women. There are several different sub-categories in this collection.</p>
-          </a>
+          </Link>
   
-          <a 
+          <Link 
             href="/store" 
             onClick={() => {
               setLS('filters', { category: 'all', gender: 'women', tag: 'none' });
@@ -90,7 +89,7 @@ export default function Storefront() {
             </div>
             <h3 className="mt-4 text-base font-semibold text-gray-900">Kid's Collection</h3>
             <p className="mt-2 text-sm text-gray-500">The kid's collection contains products that were made for kids. There are several different sub-categories in the kid's collection.</p>
-          </a>
+          </Link>
         </div>
       </section>
   
@@ -106,7 +105,7 @@ export default function Storefront() {
                 <span className="block sm:inline">Free standard shipping</span>
               </h2>
               <p className="mt-3 text-xl text-white">All items in the store include free shipping and handling. Expedited shipping speeds are also available at a slightly increased cost. We even offer next day shipping!</p>
-              <a href="/store" className="mt-8 block w-full rounded-md border border-transparent bg-white py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto" style={{ borderRadius: '100vmax' }}>Get Free Shipping</a>
+              <Link href="/store" className="mt-8 block w-full rounded-md border border-transparent bg-white py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto" style={{ borderRadius: '100vmax' }}>Get Free Shipping</Link>
             </div>
           </div>
         </div>
@@ -116,7 +115,7 @@ export default function Storefront() {
       <section aria-labelledby="category-heading" className="pt-24 sm:pt-32 xl:mx-auto xl:max-w-7xl xl:px-8">
         <div className="px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-0">
           <h2 id="category-heading" className="text-2xl font-bold tracking-tight text-gray-900">Shop by Category</h2>
-          <a 
+          <Link 
             href="/store" 
             onClick={() => {
               setLS('filters', { category: 'all', gender: 'all', tag: 'none' });
@@ -125,14 +124,14 @@ export default function Storefront() {
           >
             Browse all categories
             <span aria-hidden="true"> &rarr;</span>
-          </a>
+          </Link>
         </div>
   
         <div className="mt-4 flow-root">
           <div className="-my-2">
             <div className="relative box-content h-80 overflow-x-auto py-2 xl:overflow-visible">
               <div className="min-w-screen-xl absolute flex space-x-8 px-4 sm:px-6 lg:px-8 xl:relative xl:grid xl:grid-cols-5 xl:gap-x-8 xl:space-x-0 xl:px-0">
-                <a 
+                <Link 
                   href="/store" 
                   onClick={() => {
                     setLS('filters', { category: 'all', gender: 'all', tag: 'new' });
@@ -145,9 +144,9 @@ export default function Storefront() {
                   </span>
                   <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
                   <span className="relative mt-auto text-center text-xl font-bold text-white">New Arrivals</span>
-                </a>
+                </Link>
   
-                <a 
+                <Link 
                   href="/store" 
                   onClick={() => {
                     setLS('filters', { category: 'clothes', gender: 'all', tag: 'none' });
@@ -161,9 +160,9 @@ export default function Storefront() {
                   </span>
                   <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
                   <span className="relative mt-auto text-center text-xl font-bold text-white">Clothes</span>
-                </a>
+                </Link>
   
-                <a 
+                <Link 
                   href="/store" 
                   onClick={() => {
                     setLS('filters', { category: 'shoes', gender: 'all', tag: 'none' });
@@ -176,10 +175,10 @@ export default function Storefront() {
                   </span>
                   <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
                   <span className="relative mt-auto text-center text-xl font-bold text-white">Shoes</span>
-                </a>
+                </Link>
   
   
-                <a 
+                <Link 
                   href="/store" 
                   onClick={() => {
                     setLS('filters', { category: 'all', gender: 'all', tag: 'sale' });
@@ -194,9 +193,9 @@ export default function Storefront() {
                   </span>
                   <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
                   <span className="relative mt-auto text-center text-xl font-bold text-white">Sale</span>
-                </a>
+                </Link>
                 
-                <a 
+                <Link 
                   href="/store" 
                   onClick={() => {
                     setLS('filters', { category: 'accessories', gender: 'all', tag: 'none' });
@@ -210,7 +209,7 @@ export default function Storefront() {
                   </span>
                   <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
                   <span className="relative mt-auto text-center text-xl font-bold text-white">Accessories</span>
-                </a>
+                </Link>
 
               </div>
             </div>

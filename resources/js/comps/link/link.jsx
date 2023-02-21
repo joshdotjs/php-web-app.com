@@ -17,7 +17,7 @@ const redirect = (path /* string */ ) => {
 
 // ==============================================
 
-const Link = ({ href, className, style, children }) => {
+const Link = ({ href, className, style, onClick=()=>{}, children }) => {
 
   return (
     <a 
@@ -28,6 +28,7 @@ const Link = ({ href, className, style, children }) => {
         cursor: 'pointer',
       }}
       onClick={() => {
+        onClick();
         redirect(href);
       }}
     >
