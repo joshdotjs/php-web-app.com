@@ -154,7 +154,7 @@ export default function Cart() {
             console.log('fetch().then().then() -- data: ', data); 
             const { url, payment_intent_id } = data;
             setLS('payment_intent_id', payment_intent_id);
-
+            clearCartLS();
             redirect(url);
           })
           .catch(e => { // case 2.b: error from node endpoint - display error message from backend
