@@ -103,7 +103,7 @@ export default function PageAuth({ auth_type }) {
 
   // --------------------------------------------
   
-  const [auth_form, setAuthForm] = useState( { email: 'josh@josh.com', password: 'josh' } );
+  const [auth_form, setAuthForm] = useState( { email: '', password: '' } );
   const updateAuthForm = (key) => (e) => setAuthForm( (prev) => ({...prev, [key]: e.target.value }) );
 
     // --------------------------------------------
