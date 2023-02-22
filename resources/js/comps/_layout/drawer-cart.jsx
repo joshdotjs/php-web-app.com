@@ -44,7 +44,7 @@ const Ellipsis = ({ children, name, classes, color, fontSize, fontWeight }) => {
       className={`
         ${name}
         ${classes}
-        w-[130px] md:w-[145px]
+        w-[115px] md:w-[145px]
       `}
       style={{ 
         color,
