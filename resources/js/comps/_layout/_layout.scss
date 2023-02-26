@@ -1,5 +1,9 @@
 @forward './css-vars';
 
+$header-height: var(--header-height);
+
+/* ========================================= */
+
 html {                   box-sizing: border-box; }
 *, *::before, *::after { box-sizing: inherit;    }
 
@@ -50,7 +54,7 @@ body {
       nav#bottom { height: var(--navbar-bottom-height); }
     }
 
-    main#page {
+    main#page { 
 
       &:not(.no-gutter) {
         @include gutter-padding; 
@@ -66,7 +70,7 @@ body {
       // PAGE STYLES ARE INSERTED HERE
       // PAGE STYLES ARE INSERTED HERE
       // PAGE STYLES ARE INSERTED HERE
-      margin-top: var(--header-height);
+      margin-top: calc( #{$header-height} - 1px); //
       // background: deepskyblue;
     }
 
@@ -78,3 +82,5 @@ body {
   }
 
 }
+
+/* ========================================= */
