@@ -33,9 +33,10 @@ header#navbar {
     border-bottom: 1px solid rgba(255, 255, 255, 0.125);
     // border-top: solid $dark-blue 1px;
     color: white;
+    border-top: 1px solid transparent;
     margin-top: -1px; // offset upwards a little to hide the edge effect (it is very evident between the top and bottom), cover with the top navbar
     // position: relative; 
-    z-index: -1; // place under the top navbar
+    //z-index: -1; // place under the top navbar
 
     .gutter {
 

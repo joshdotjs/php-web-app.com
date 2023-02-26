@@ -8,7 +8,7 @@
     "src": "public/img/svg/logo.svg"
   },
   "resources/js/app.css": {
-    "file": "assets/app-086434cb.css",
+    "file": "assets/app-b7db29aa.css",
     "src": "resources/js/app.css"
   },
   "resources/css/app.css": {
@@ -17,11 +17,11 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-c7fa6171.js",
+    "file": "assets/app-423fa9f9.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-086434cb.css"
+      "assets/app-b7db29aa.css"
     ],
     "assets": [
       "assets/logo-826a4c32.svg",
